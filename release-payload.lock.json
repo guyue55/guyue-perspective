@@ -91,7 +91,7 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "sha256": "91be61986a55ee73a87b3936af28a25b19fd4fd2954c94600fc7a5fbbf95f981"
+      "sha256": "425e1ec92df5f81c7b1482810ca83a768a56b308470eec5cbfa5d25093b1e333"
     },
     {
       "path": "docs/release-v1.60.md",
@@ -139,7 +139,7 @@
     },
     {
       "path": "evals/capability-routing.json",
-      "sha256": "bdddb17f0fab1d2d448c496f523cdc847eb23a9de91e17e95a481f95d543ea32"
+      "sha256": "a0a68827da894ba15d684ba224f9f19d85c62a66b2209f2bafda0b8eea255b93"
     },
     {
       "path": "evals/evidence/aesthetic-review-2026-07-02.md",
@@ -627,7 +627,7 @@
     },
     {
       "path": "examples/quickstart-output.md",
-      "sha256": "eecb2847e3bea5cd67954b35120dc0499f9770430eea72274c03f244ce0796dc"
+      "sha256": "e348a2e158c216b4e1250ecc5dc8c4dca263c84c6e0155ccef289acb78c1e365"
     },
     {
       "path": "examples/saas-conversion-demo/index.html",
@@ -835,7 +835,7 @@
     },
     {
       "path": "scripts/test_skill_router.py",
-      "sha256": "c42f0f00682055608cf73db5b7fdf96cd58e26ceb5968b2dc4d21e7247ca2264"
+      "sha256": "a13b663ee7af172705e181aad8b74726b8de33e29e9117bec0d669ef1778f4bb"
     },
     {
       "path": "scripts/test_suite.sh",
@@ -1007,7 +1007,7 @@
     },
     {
       "path": "skills_manifest.json",
-      "sha256": "99b2b2bf3249fe5b11a1fe26eae7bcdba8a834eeef48f95fd3d54422e955d96f"
+      "sha256": "de9365050d553a2e7b140a6aeadddda20ae6e30c21489ac6bbe9bc7c3e59774c"
     },
     {
       "path": "src/context_budget.py",
@@ -1035,11 +1035,11 @@
     },
     {
       "path": "src/skill_router.py",
-      "sha256": "c4ea8aedaf99c0a381acb34c04e4d8b8f5e579c7fca7a2ed437096cbb83ec50e"
+      "sha256": "62da4c094382b4b97275546ca5e9e42397d4da77b3e0a5cdb924a46f20012dad"
     },
     {
       "path": "test-prompts.json",
-      "sha256": "ca7a0533e5d6cff088d73f0afbba05b01cc8c366f14201ee281a97d82bce8a7a"
+      "sha256": "9432911da4096216cdb2c356ee5f5afb742a06ebddf91a6a11014a389ea919e9"
     }
   ]
 }

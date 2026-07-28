@@ -423,5 +423,150 @@
     "name": "Multi Turn - Exact Current Version Approved",
     "prompt": "当前准确版本 V4 已完成问题、原生基线、不改或修现有或新机制比较、反证、影响面和回滚审查，并明确批准 V4 实施；请按 V4 边界开始开发。",
     "expected_behavior": "Should route coding-discipline first because the exact current version, direction proof, rollback, and implementation authorization are all explicit. It must not inherit a different version or broaden the approved boundary."
+  },
+  {
+    "name": "Open Intent - Confirmed Technical Planning Synonyms",
+    "prompt": "需求已定，请规划服务边界、数据流向和持久化策略。",
+    "expected_behavior": "Should route system-design first. Confirmed requirements plus planning, service boundaries, data flow, and persistence are technical design work, not renewed requirement analysis or implementation."
+  },
+  {
+    "name": "Open Intent - Frozen Acceptance Starts Coding",
+    "prompt": "需求和验收都已冻结，现在开始编码。",
+    "expected_behavior": "Should route coding-discipline first. Frozen requirement and acceptance boundaries plus an explicit coding action authorize implementation without reopening requirement analysis."
+  },
+  {
+    "name": "Open Intent - Reviewed Version Explicitly Authorized",
+    "prompt": "当前 R7 版本已经审完并明确授权落地，请开始实现。",
+    "expected_behavior": "Should route coding-discipline first because the current version is reviewed, explicitly authorized, and implementation is requested."
+  },
+  {
+    "name": "Multi Turn - Prior Advice Tenant Scope Expansion",
+    "prompt": "上次你说可以做；如今数据范围扩大到全部租户，照旧开始写代码。",
+    "expected_behavior": "Should route system-design first and block coding. Prior conversational advice cannot survive a tenant-wide data-scope expansion."
+  },
+  {
+    "name": "Multi Turn - Read Only Becomes Production Write",
+    "prompt": "前面确认的是只读报表，这次改为可写生产数据，直接做吧。",
+    "expected_behavior": "Should route system-design first and block coding because a read-only design changed into production writes."
+  },
+  {
+    "name": "Multi Turn - Built In Search Defeats Custom Module",
+    "prompt": "今天发现平台自带搜索已覆盖需求，但之前同意了自建模块，还是照原计划开发。",
+    "expected_behavior": "Should route system-design first and block coding. Newly discovered built-in coverage defeats the custom-module premise and invalidates the old agreement."
+  },
+  {
+    "name": "Open Intent - Browser Only Permission Check",
+    "prompt": "权限校验只在浏览器做，服务端全部放行，能不能这样设计？",
+    "expected_behavior": "Should route system-design first and reject a browser-only authorization boundary. Backend enforcement is required before implementation."
+  },
+  {
+    "name": "Open Intent - Client Side Private Data Hiding",
+    "prompt": "把全部用户数据先发到客户端，再根据角色隐藏，这个做法可行吗？",
+    "expected_behavior": "Should route system-design first because sending private data to the client and merely hiding it is a security-boundary failure."
+  },
+  {
+    "name": "Multi Turn - Agreement Before Database Migration",
+    "prompt": "前几轮已经达成一致，但方案从内存缓存迁到外部数据库，别再审查直接动工。",
+    "expected_behavior": "Should route system-design first and block coding. Repeated agreement cannot survive a persistence mechanism migration."
+  },
+  {
+    "name": "Open Intent Near Miss - Product Poster Color",
+    "prompt": "做一张产品海报。这个配色方案可行吗？",
+    "expected_behavior": "Must not route product-sense by combining `产品` from one sentence with visual feasibility from another. The request is a design-content question, not product investment judgment."
+  },
+  {
+    "name": "Open Intent Near Miss - Feature Document Sentence",
+    "prompt": "功能说明文档已经写好。这个句子可行吗？",
+    "expected_behavior": "Must not route product-sense or requirement-analysis by combining feature vocabulary with a separate sentence-level writing question."
+  },
+  {
+    "name": "Open Intent Near Miss - Capability Page Layout",
+    "prompt": "这是能力介绍页。请判断排版方案是否可行。",
+    "expected_behavior": "Must not route product-sense or requirement-analysis by combining capability vocabulary with a separate layout-feasibility sentence."
+  },
+  {
+    "name": "Open Intent - Capability Worth Resource Investment",
+    "prompt": "这个能力值得投入资源吗？",
+    "expected_behavior": "Should route product-sense first because this asks whether a capability merits investment, not how to design or implement it."
+  },
+  {
+    "name": "Open Intent - Technical Structure Synonyms",
+    "prompt": "范围无争议，请制定模块职责、调用链和数据库表结构。",
+    "expected_behavior": "Should route system-design first because scope is settled and the request concerns module responsibilities, call flow, and storage structure."
+  },
+  {
+    "name": "Open Intent - Finalized And Authorized Development",
+    "prompt": "当前方案定版并授权开发，开始实现。",
+    "expected_behavior": "Should route coding-discipline first because the current plan is finalized and implementation is explicitly authorized."
+  },
+  {
+    "name": "Multi Turn - Approved Plan Becomes Cross Tenant",
+    "prompt": "旧方案早已通过，可现在从单租户改成跨租户，直接开工。",
+    "expected_behavior": "Should route system-design first and block coding because a cross-tenant expansion invalidates prior approval."
+  },
+  {
+    "name": "Multi Turn - Draft Becomes Production Database Write",
+    "prompt": "此前定的是前端草稿；如今要写入正式数据库，仍按之前结论实现。",
+    "expected_behavior": "Should route system-design first and block coding because a frontend draft becoming a production write is a material boundary change."
+  },
+  {
+    "name": "Multi Turn - Local Storage Becomes Cloud Database",
+    "prompt": "大家已连续确认，不过存储从本机文件换成云数据库，马上开发。",
+    "expected_behavior": "Should route system-design first and block coding because changing the persistence mechanism invalidates repeated conversational agreement."
+  },
+  {
+    "name": "Multi Turn - Built In Retrieval Satisfies Need",
+    "prompt": "系统内置检索已经能满足需求，但仍想按旧结论造一套搜索服务。",
+    "expected_behavior": "Should route system-design first and block coding because current native evidence defeats the custom-service premise."
+  },
+  {
+    "name": "Open Intent - Browser Access Without API Authentication",
+    "prompt": "浏览器决定能否访问，API 不做鉴权，这种结构能用吗？",
+    "expected_behavior": "Should route system-design first and block coding because browser-only access control leaves the server authorization boundary open."
+  },
+  {
+    "name": "Open Intent - Sensitive Fields Hidden Only In UI",
+    "prompt": "敏感字段全量下发前端，UI 按角色不显示，方案安全吗？",
+    "expected_behavior": "Should route system-design first and block coding because UI hiding cannot protect sensitive data already sent to the client."
+  },
+  {
+    "name": "Open Intent - Client Tenant Check With Trusted Backend",
+    "prompt": "只在客户端检查租户身份，后端接口默认信任，是否合理？",
+    "expected_behavior": "Should route system-design first and block coding because tenant authorization must be enforced by the backend."
+  },
+  {
+    "name": "Open Intent Near Miss - Database Design Course",
+    "prompt": "我想持续学习数据库设计课程。",
+    "expected_behavior": "Must not route system-design or continuous-learning governance. The word `设计` is part of a course topic and cannot be reused as separate architecture-action evidence."
+  },
+  {
+    "name": "Open Intent - Change Has User Value",
+    "prompt": "这项改动对用户有价值吗？",
+    "expected_behavior": "Should route product-sense first because this asks for user-value judgment before requirements, architecture, or implementation."
+  },
+  {
+    "name": "Multi Turn - First Version Gains Admin Write Permission",
+    "prompt": "第一版已经批准，后来增加管理员写权限，按原来决定继续开发。",
+    "expected_behavior": "Should route system-design first and block coding because adding administrative write permission invalidates the first-version approval."
+  },
+  {
+    "name": "Multi Turn - Native Export Defeats Self Built Route",
+    "prompt": "现有平台已经具备导出功能，还按先前批准的自研路线做。",
+    "expected_behavior": "Should route system-design first and block coding because native capability evidence defeats the previously approved self-built direction."
+  },
+  {
+    "name": "Open Intent - Frontend Role Check Without Server Validation",
+    "prompt": "前端自行判断角色，服务端不验证，这个架构合理吗？",
+    "expected_behavior": "Should route system-design first and block coding because frontend role checks cannot replace server authorization."
+  },
+  {
+    "name": "Open Intent - Tenant Records Sent Then Hidden",
+    "prompt": "所有租户记录传给浏览器后再隐藏，这样没有风险吗？",
+    "expected_behavior": "Should route system-design first and block coding because hidden client data has already crossed the tenant security boundary."
+  },
+  {
+    "name": "Open Intent Near Miss - Repeated Database Design Compound",
+    "prompt": "数据库设计课程包含两个数据库设计案例。",
+    "expected_behavior": "Must not route system-design. Repeating a compound noun cannot turn the nested word `设计` into independent technical-planning action evidence."
   }
 ]

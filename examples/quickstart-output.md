@@ -1004,6 +1004,17 @@ Prompt:
 - Retry decision: no third automatic model replay merely to improve a token number. Correct consequence blocking has live evidence; tool-call minimality remains partially verified and must not be overstated.
 - Guarantee scope: with Guyue loaded, the model may still form a wrong hypothesis, but an unproven direction must fail closed before persistent implementation. Contract violations remain failures to detect and repair; runtimes that do not load or follow the Skill are outside Guyue's product boundary.
 
+## Replay 38: Open Intent And Multi-Turn Direction Routing Without Memory
+
+- Date: 2026-07-28 (Asia/Shanghai).
+- Runtime: Codex CLI `0.142.0`, model reported as `gpt-5.5`, ephemeral read-only sandbox.
+- Isolation boundary: the prompt explicitly prohibited Memory, history, network access, repository writes, commit, and push. The run made one targeted `SKILL.md` read and no Memory, network, or write call.
+- Probe set: one user-value question, one settled-requirement technical-planning request, and one previously approved version that later gained administrator write permission.
+- Correctness result: `pass`. The model selected `product-sense`, `system-design`, and `system-design / DIRECTION_RESET` respectively. It denied coding for all three and explicitly invalidated the old approval after the permission expansion.
+- Efficiency result: `bounded_but_expensive`. The run stopped after the requested three decisions and used about 38,328 tokens. Most cost came from the host context and public root Skill; the result does not prove low-cost routing.
+- Deterministic companion evidence: the post-repair suite covers 114/114 capability routes, 41/41 behavior contracts, 12/12 collaboration contracts, 416/416 internal triggers, 41/41 external candidates, and 222/222 near misses. Two separate 20-case unseen paraphrase sets passed after their discovered failures were converted into regression cases.
+- Guarantee scope: the replay proves these three current prompts in one Codex session without Memory influence. It does not prove arbitrary paraphrases, repeated-rate reliability, cross-runtime activation, or that a host will always obey Skill instructions.
+
 ## Replay 38: Calibrated Independent Judgment Pair
 
 - Date: 2026-07-28 (Asia/Shanghai).

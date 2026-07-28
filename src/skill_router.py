@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 import unicodedata
+from bisect import bisect_right
 from collections.abc import Iterable
 
 
@@ -11,6 +12,8 @@ MIN_ROUTE_SCORE = 10.0
 MIN_COLLABORATION_SCORE = 20.0
 LATIN_TOKEN_RE = re.compile(r"[a-z0-9][a-z0-9+_.-]*")
 HAN_RUN_RE = re.compile(r"[\u3400-\u9fff]+")
+SENTENCE_BOUNDARY_RE = re.compile(r"[。！？!?\n]+")
+COMPOSED_RULE_SCOPES = {"document", "sentence"}
 
 
 def normalize_text(value: object) -> str:
@@ -78,6 +81,17 @@ def _validated_composed_rules(value: object, skills_by_name: dict[str, dict]) ->
         score = rule.get("score")
         if isinstance(score, bool) or not isinstance(score, (int, float)) or score <= 0:
             raise ValueError(f"composed intent rule {rule_id} requires a positive score")
+        match_scope = str(rule.get("match_scope", "document")).strip()
+        exclude_scope = str(rule.get("exclude_scope", match_scope)).strip()
+        for field, scope in (
+            ("match_scope", match_scope),
+            ("exclude_scope", exclude_scope),
+        ):
+            if scope not in COMPOSED_RULE_SCOPES:
+                raise ValueError(
+                    f"composed intent rule {rule_id} field {field} "
+                    f"must be one of {sorted(COMPOSED_RULE_SCOPES)}"
+                )
         groups = rule.get("all_any")
         if not isinstance(groups, list) or not groups:
             raise ValueError(f"composed intent rule {rule_id} requires all_any groups")
@@ -94,6 +108,12 @@ def _validated_composed_rules(value: object, skills_by_name: dict[str, dict]) ->
                 raise ValueError(
                     f"composed intent rule {rule_id} field {field} must contain strings"
                 )
+        reject_nested = rule.get("reject_nested_evidence", False)
+        if not isinstance(reject_nested, bool):
+            raise ValueError(
+                f"composed intent rule {rule_id} field "
+                "reject_nested_evidence must be boolean"
+            )
         unknown_blocks = set(_string_list(rule.get("blocks_routes"))) - set(skills_by_name)
         if unknown_blocks:
             raise ValueError(
@@ -121,8 +141,12 @@ def _negative_matches(phrases: list[str], text: str) -> list[str]:
     return fuzzy
 
 
-def _phrase_occurs_unnegated(phrase: str, normalized_text: str) -> bool:
+def _unnegated_phrase_spans(
+    phrase: str, normalized_text: str
+) -> list[tuple[int, int]]:
     normalized_phrase = normalize_text(phrase)
+    if not normalized_phrase:
+        return []
     clause_boundaries = "，。；！？,;!?\n"
     negative_markers = (
         "不要",
@@ -137,16 +161,101 @@ def _phrase_occurs_unnegated(phrase: str, normalized_text: str) -> bool:
         "不评估",
         "不判断",
     )
+    spans: list[tuple[int, int]] = []
     start = 0
     while True:
         index = normalized_text.find(normalized_phrase, start)
         if index < 0:
-            return False
+            return spans
         clause_start = max(normalized_text.rfind(mark, 0, index) for mark in clause_boundaries)
         prefix = normalized_text[clause_start + 1 : index]
         if not any(marker in prefix for marker in negative_markers):
-            return True
+            spans.append((index, index + len(normalized_phrase)))
         start = index + len(normalized_phrase)
+
+
+def _match_composed_groups(
+    groups: list,
+    segment: str,
+    *,
+    reject_nested_evidence: bool,
+) -> list[str] | None:
+    candidates: list[list[tuple[str, int, int]]] = []
+    for group in groups:
+        group_candidates: list[tuple[str, int, int]] = []
+        for phrase in _string_list(group):
+            group_candidates.extend(
+                (phrase, start, end)
+                for start, end in _unnegated_phrase_spans(phrase, segment)
+            )
+        if not group_candidates:
+            return None
+        candidates.append(group_candidates)
+
+    if reject_nested_evidence:
+        distinct_candidates: list[list[tuple[str, int, int]]] = []
+        for group_index, group_candidates in enumerate(candidates):
+            other_intervals = sorted(
+                (start, end)
+                for other_index, other_group in enumerate(candidates)
+                if other_index != group_index
+                for _, start, end in other_group
+            )
+            other_starts = [start for start, _ in other_intervals]
+            prefix_max_ends: list[int] = []
+            for _, end in other_intervals:
+                prefix_max_ends.append(
+                    max(prefix_max_ends[-1] if prefix_max_ends else -1, end)
+                )
+
+            def nested_in_other_group(candidate: tuple[str, int, int]) -> bool:
+                index = bisect_right(other_starts, candidate[1]) - 1
+                return index >= 0 and prefix_max_ends[index] >= candidate[2]
+
+            distinct_candidates.append(
+                [
+                    candidate
+                    for candidate in group_candidates
+                    if not nested_in_other_group(candidate)
+                ]
+            )
+        if any(not group for group in distinct_candidates):
+            return None
+        candidates = distinct_candidates
+
+    def choose(
+        group_index: int,
+        occupied: list[tuple[int, int]],
+        evidence: list[str],
+    ) -> list[str] | None:
+        if group_index == len(candidates):
+            return evidence
+        for phrase, start, end in candidates[group_index]:
+            if any(start < used_end and used_start < end for used_start, used_end in occupied):
+                continue
+            matched = choose(
+                group_index + 1,
+                [*occupied, (start, end)],
+                [*evidence, phrase],
+            )
+            if matched is not None:
+                return matched
+        return None
+
+    return choose(0, [], [])
+
+
+def _intent_segments(text: str, scope: str) -> list[str]:
+    if scope == "document":
+        normalized = normalize_text(text)
+        return [normalized] if normalized else []
+    return [
+        normalized
+        for part in SENTENCE_BOUNDARY_RE.split(
+            unicodedata.normalize("NFKC", str(text)).casefold()
+        )
+        if (normalized := normalize_text(part))
+    ]
 
 
 def _derive_intent_signals(rules: object, text: str) -> list[dict]:
@@ -154,41 +263,66 @@ def _derive_intent_signals(rules: object, text: str) -> list[dict]:
         return []
     normalized_text = normalize_text(text)
     signals: list[dict] = []
+    segments_by_scope: dict[str, list[str]] = {}
     for rule in rules:
         if not isinstance(rule, dict):
             continue
-        excluded = [
-            phrase
-            for phrase in _string_list(rule.get("exclude_any"))
-            if normalize_text(phrase) in normalized_text
-        ]
-        if excluded:
-            continue
-        evidence: list[str] = []
+        match_scope = str(rule.get("match_scope", "document")).strip()
+        exclude_scope = str(rule.get("exclude_scope", match_scope)).strip()
         groups = rule.get("all_any")
         if not isinstance(groups, list) or not groups:
             continue
-        for group in groups:
-            phrases = _string_list(group)
-            matches = [
-                phrase
-                for phrase in phrases
-                if _phrase_occurs_unnegated(phrase, normalized_text)
-            ]
-            if not matches:
-                break
-            evidence.append(matches[0])
-        else:
-            signals.append(
-                {
-                    "id": str(rule.get("id", "")),
-                    "route": str(rule.get("route", "")),
-                    "canonical_trigger": str(rule.get("canonical_trigger", "")),
-                    "score": float(rule.get("score", 0)),
-                    "evidence": evidence,
-                    "blocks_routes": _string_list(rule.get("blocks_routes")),
-                }
+        if any(
+            not any(
+                normalize_text(phrase) in normalized_text
+                for phrase in _string_list(group)
             )
+            for group in groups
+        ):
+            continue
+        exclude_phrases = _string_list(rule.get("exclude_any"))
+        if exclude_scope == "document" and any(
+            normalize_text(phrase) in normalized_text for phrase in exclude_phrases
+        ):
+            continue
+        if match_scope not in segments_by_scope:
+            segments_by_scope[match_scope] = _intent_segments(text, match_scope)
+        segments = segments_by_scope[match_scope]
+        segment_cache: dict[str, list[str] | None] = {}
+        for segment in segments:
+            if segment in segment_cache:
+                evidence = segment_cache[segment]
+            else:
+                exclusion_text = (
+                    normalized_text if exclude_scope == "document" else segment
+                )
+                if any(
+                    normalize_text(phrase) in exclusion_text
+                    for phrase in exclude_phrases
+                ):
+                    evidence = None
+                else:
+                    evidence = _match_composed_groups(
+                        groups,
+                        segment,
+                        reject_nested_evidence=bool(
+                            rule.get("reject_nested_evidence", False)
+                        ),
+                    )
+                segment_cache[segment] = evidence
+            if evidence is not None:
+                signals.append(
+                    {
+                        "id": str(rule.get("id", "")),
+                        "route": str(rule.get("route", "")),
+                        "canonical_trigger": str(rule.get("canonical_trigger", "")),
+                        "score": float(rule.get("score", 0)),
+                        "evidence": evidence,
+                        "match_scope": match_scope,
+                        "blocks_routes": _string_list(rule.get("blocks_routes")),
+                    }
+                )
+                break
     return signals
 
 

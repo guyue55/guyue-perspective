@@ -137,6 +137,84 @@ def main() -> int:
         "material direction changes must suppress stale implementation approval",
     )
 
+    stale_synonym = resolve_routes(
+        manifest,
+        "上次你说可以做；如今数据范围扩大到全部租户，照旧开始写代码。",
+        limit=5,
+    )
+    stale_synonym_names = [item["name"] for item in stale_synonym["selected"]]
+    require(
+        stale_synonym_names[0] == "system-design"
+        and "coding-discipline" not in stale_synonym_names,
+        "stale approval synonyms must still force direction reset",
+    )
+
+    stale_new_persistence = resolve_routes(
+        manifest,
+        "最初同意先用 JSON；现在新增数据库持久化，别再核对直接实现。",
+        limit=5,
+    )
+    require(
+        any(
+            signal["id"] == "stale-approval-after-change"
+            for signal in stale_new_persistence["composed_intent_signals"]
+        ),
+        "material changes must use stale-approval evidence, not incidental design words",
+    )
+
+    client_only_permission = resolve_routes(
+        manifest,
+        "权限校验只在浏览器做，服务端全部放行，能不能这样设计？",
+        limit=5,
+    )
+    client_only_names = [item["name"] for item in client_only_permission["selected"]]
+    require(
+        client_only_names[0] == "system-design"
+        and "coding-discipline" not in client_only_names,
+        "client-only permission enforcement must route to system design",
+    )
+
+    cross_sentence = resolve_routes(
+        manifest,
+        "做一张产品海报。这个配色方案可行吗？",
+        limit=5,
+    )
+    require(
+        "product-sense" not in [item["name"] for item in cross_sentence["selected"]],
+        "sentence-scoped rules must not splice product and visual intents",
+    )
+
+    overlapping_evidence = resolve_routes(
+        manifest,
+        "我想持续学习数据库设计课程。",
+        limit=5,
+    )
+    require(
+        "system-design"
+        not in [item["name"] for item in overlapping_evidence["selected"]],
+        "one phrase span must not satisfy multiple composed-intent groups",
+    )
+
+    repeated_compound = resolve_routes(
+        manifest,
+        "数据库设计课程包含两个数据库设计案例。",
+        limit=5,
+    )
+    require(
+        "system-design"
+        not in [item["name"] for item in repeated_compound["selected"]],
+        "repeated compound nouns must not provide a hidden action signal",
+    )
+
+    invalid_rule = json.loads(json.dumps(manifest))
+    invalid_rule["composed_intent_rules"][0]["match_scope"] = "paragraph"
+    try:
+        resolve_routes(invalid_rule, "测试非法规则作用域。", limit=5)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("invalid composed-intent scopes must fail closed")
+
     external = resolve_routes(
         manifest,
         "先用古月压缩上下文，并评估 headroom 是否值得作为可选增强。",

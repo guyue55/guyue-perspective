@@ -74,6 +74,10 @@
       "sha256": "1f6d68bf27c394523d259ba636949e2ee2248041599a943a507a6bb773a43717"
     },
     {
+      "path": "docs/last30days-skill-intake-2026-07-28.md",
+      "sha256": "e854362f18c9dc323be1b10093c1d6c18412b1cadc1f734d213dba464ebce023"
+    },
+    {
       "path": "docs/learning-control.md",
       "sha256": "6a60ccf95008e81328b7a086123365c9eb2e1685464044c78fab73d7a8644cd8"
     },
@@ -767,7 +771,7 @@
     },
     {
       "path": "scripts/run_security_scan.py",
-      "sha256": "5cacc2172aa65e3c70a3298dafe26f44203832cea26d9efce1c41813b29e7a39"
+      "sha256": "0187fa09784bac56532670bd2e269822eca877012ba35701f1ebf0622cd87e30"
     },
     {
       "path": "scripts/security_patterns.py",
@@ -827,7 +831,7 @@
     },
     {
       "path": "scripts/test_security_scanners.py",
-      "sha256": "de6a3374a4f49cd48405b92203850160baa2a9da4140be7ddbfec6f4db1498f6"
+      "sha256": "3a63cb8f0204b0900369f1b7b915d3941d2f747c8cc7b06259a4dcddb5e0523c"
     },
     {
       "path": "scripts/test_skill_router.py",
@@ -907,7 +911,7 @@
     },
     {
       "path": "skills/ecosystem-scout/SKILL.md",
-      "sha256": "86ed2f01d44bc3e5e53a734ea6dbb1e327366b716062090637d435fba5b329b5"
+      "sha256": "f0b49359cd5ea77c923e5ee7b91dec97a4a171a3409e3112e76895777e947a01"
     },
     {
       "path": "skills/frontend-expert/SKILL.md",
@@ -943,7 +947,7 @@
     },
     {
       "path": "skills/research-and-sourcing/SKILL.md",
-      "sha256": "a515551f4e208d5efec21ffd1c089876c149539515eab4570bd51612cec2d161"
+      "sha256": "ff28dcef087160696363b1db67f0bc6337438244dd1733d11f60b742cdbe191d"
     },
     {
       "path": "skills/security-gate/SKILL.md",

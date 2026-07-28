@@ -80,6 +80,19 @@ def main() -> int:
             "empty target file count must remain explicit",
         )
 
+        remote_result = run_security_scan.run_scan(
+            "https://github.com/example/remote-skill"
+        )
+        require(
+            remote_result["status"] == "Yellow",
+            "a URL target must require manual review rather than crashing",
+        )
+        require(
+            remote_result["scanned_files"] == 0
+            and remote_result["total_files"] == 0,
+            "URL targets must keep explicit zero scan counts",
+        )
+
     fake_github_token = "gh" + "p_" + "a" * 24
     fake_aws_key = "AKIA" + "A" * 16
     fake_private_key = "-----BEGIN " + "PRIVATE KEY-----"

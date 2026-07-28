@@ -72,6 +72,8 @@ def run_scan(target_path):
     if not path.exists():
         return {
             "status": "Yellow",
+            "total_files": 0,
+            "scanned_files": 0,
             "findings": [
                 {
                     "type": "Manual Review",

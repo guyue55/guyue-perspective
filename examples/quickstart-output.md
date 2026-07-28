@@ -956,3 +956,13 @@ Prompt:
 - Observed workflow: `skill-release` with `craft -> secure -> verify -> publishable` stages.
 - Boundary result: the fresh model explicitly rejected automatic commit, merge, tag, or release because a collaboration candidate is sequencing evidence, not action-specific authorization.
 - Environment note: unrelated remote-plugin synchronization warnings and a read-only shell-snapshot warning appeared before the repository command completed successfully.
+
+## Replay 34: Risk-Adaptive Development Correctness And Context Cost
+
+- Date: 2026-07-28 (Asia/Shanghai).
+- Runtime: Codex CLI `0.142.0`, model reported as `gpt-5.5`, ephemeral read-only sandbox.
+- Probe: architecture and acceptance were already fixed; route a multi-caller observable behavior change through public test seams, vertical behavior slices, and separate spec/quality review without editing files.
+- Correctness result: `pass`. The model selected only `coding-discipline`, chose the standard lane, preserved the approved architecture, used public behavior seams, separated spec compliance from code quality, and made no repository write.
+- Efficiency result: `fail_then_guarded`. Before any implementation artifact existed, the model preloaded `reality-auditor` and consumed about 53,134 tokens. The contract now keeps two-axis implementation review inside `coding-discipline` and forbids loading post-implementation audit instructions until an implementation, diff, completion claim, or explicit audit request exists.
+- Retry decision: no automatic model retry. The deterministic suite covers the repaired no-preload boundary plus lightweight and domain-language holdouts; another high-cost replay would need a fresh budget decision.
+- Maturity boundary: routing and the original standard-lane behavior were observed live, but the new context-cost guard remains a deterministic candidate until a later bounded live replay verifies the repair.

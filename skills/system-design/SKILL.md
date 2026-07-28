@@ -1,6 +1,6 @@
 ---
 name: system-design
-description: Pragmatic system design for architecture, database schemas, permission contracts, core refactors, and complex-feature plans. Prefer existing stack and clear boundaries, minimize total lifecycle complexity, and require version-bound approval only for high-impact or irreversible decisions.
+description: Pragmatic system design for architecture, authoritative domain language, database schemas, permission contracts, core refactors, and complex-feature plans. Prefer existing stack and clear boundaries, minimize total lifecycle complexity, and require version-bound approval only for high-impact or irreversible decisions.
 ---
 
 # guyue / system-design
@@ -24,6 +24,7 @@ description: Pragmatic system design for architecture, database schemas, permiss
    - 关注依赖反转和接口契约。组件之间的通信必须通过清晰的 API 定义，而不是隐式的状态共享。
    - 引入“防腐层（Anti-Corruption Layer）”和“单体优先（Majestic Monolith）”思维。核心业务逻辑必须与外部依赖（如数据库、第三方 API、框架）隔离，方便十年后的单独测试和低成本迁移。
    - 关键工程标准件必须有单一权威入口：领域模型、数据库表、枚举、全局参数、配置、接口契约、权限矩阵、状态机、事件名、错误码和跨端共享规则不得在前端、后端、脚本或文档里各写一套。
+   - 共享领域语言也必须有权威入口。先查项目已有术语表、需求契约、领域模型、schema、ADR 或同等事实源；发现“一词多义、同义多名、文档与代码冲突”时，用具体业务场景澄清后再统一命名，不静默覆盖旧含义，也不为形式强制创建 `CONTEXT.md`。
    - 权限架构必须后端控制、前端体现：后端接口、服务、查询或数据层负责真实授权，前端只负责显隐、禁用、提示和引导。任何只靠前端硬编码隐藏按钮的方案都必须标为安全缺口。
 4. **长效续航与抗臃肿纪律 (Anti-Bloat Context Discipline)**
    - **严禁全量吞噬**：在调研和设计阶段，严禁使用 `cat` 强行读取超过 500 行的文档或日志。
@@ -56,7 +57,7 @@ description: Pragmatic system design for architecture, database schemas, permiss
 ## Step-by-Step Execution (标准执行工作流)
 1. **Phase 1: 摸底与边界确认**: 询问日活、并发、一致性要求。
 2. **Phase 2: 业务可读方案推演**: 提供 2-3 个技术路线对比，默认首选“原生/单体”。每个方案必须包含：解决什么问题、业务/用户价值、主要工作、成本风险限制、协作角色。
-3. **Phase 3: 标准件与契约归一**: 明确哪些函数、模型、表格、配置、全局参数、接口契约、权限规则、状态机、事件名和错误码必须复用现有入口；哪些需要新增单一权威入口；哪些只是相似但业务语义不同，不能合并。
+3. **Phase 3: 领域语言、标准件与契约归一**: 先用真实业务场景核对关键术语、同义词、边界和代码命名，再明确哪些函数、模型、表格、配置、全局参数、接口契约、权限规则、状态机、事件名和错误码必须复用现有入口；哪些需要新增单一权威入口；哪些只是相似但业务语义不同，不能合并。
 4. **Phase 4: 权限与体验分层**: 明确后端授权点、前端权限状态来源、显隐/禁用/提示策略、无权限异常流和审计证据，确保安全边界不落在前端硬编码上。
 5. **Phase 5: 架构视图**: 使用 Mermaid 绘制架构图/时序图。
 6. **Phase 6: 风险分级审批 (Human-in-the-Loop)**:
@@ -68,5 +69,6 @@ description: Pragmatic system design for architecture, database schemas, permiss
 - **技术栈异议权**：若指定工具的总成本明显不合理，给出证据和更轻替代；最终选择由约束与授权决定，不按年龄一票否决。
 - **单一权威入口**：不得让同一个模型、表格、全局参数、接口契约、权限规则或错误码在多个层重复定义。必须说明权威入口在哪里，调用方如何复用。
 - **后端权限边界**：权限控制必须落在后端；前端显隐只是体验层。架构方案必须说明授权校验点和前端表现，不得把前端硬编码当成安全策略。
+- **领域语言边界**：术语资产只记录业务含义、同义词、边界和可证伪场景，不混入实现步骤。ADR 只用于同时满足“难以撤回、脱离上下文会令人困惑、确实比较过替代方案”的决定；普通命名和容易撤回的实现细节不制造 ADR。
 - **术语解释**：首次出现专业词时必须解释业务含义，例如 `消息队列（把任务排队处理，避免高峰期压垮主系统）`。
 - **技术细节边界**：只有影响成本、周期、风险、稳定性或团队协作的技术细节才进入主方案；其余放到附录或暂不展开。

@@ -47,7 +47,7 @@
     },
     {
       "path": "docs/evaluation.md",
-      "sha256": "89858de0d0eac2aa6fd1a470380a9ef8a8d08186d8d33d0480baa6fa55088d56"
+      "sha256": "b520329551a89886ebf78c6a4fd170ab1aceadfe14b23f9571ff0bb1a94b1bcb"
     },
     {
       "path": "docs/guyue-capability-discovery-evidence-audit-plan-2026-07-12.md",
@@ -83,7 +83,7 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "sha256": "a1a7b67ae54f7f2957bd0d560336ab2c888eefd981755b89fb33211c4ff7691c"
+      "sha256": "a2f91aea37be7933d0303c3c0134758686fd6adb3a651cef328b0d83aaf18299"
     },
     {
       "path": "docs/release-v1.60.md",
@@ -111,7 +111,7 @@
     },
     {
       "path": "evals/behavior-contracts.json",
-      "sha256": "73513bffc85691991bef3a324f61570777b8034f0095bde2987d18b446e7d59e"
+      "sha256": "f82c89884371e1765e368ff4d0760f74f138f9b687fa2828e35858927b750e48"
     },
     {
       "path": "evals/capability-collaboration.json",
@@ -131,7 +131,7 @@
     },
     {
       "path": "evals/capability-routing.json",
-      "sha256": "cac8a2c42a98f3f5d5c3e4fb692c36957e58ded81cfaaee60e5341233e4d80a6"
+      "sha256": "3b9feb9f0d5b3d43496ef060e86de2ac837757087799af32ca5e2c7c59a68c68"
     },
     {
       "path": "evals/evidence/aesthetic-review-2026-07-02.md",
@@ -619,7 +619,7 @@
     },
     {
       "path": "examples/quickstart-output.md",
-      "sha256": "1e9a2af84b84b8d9022cc7532d989a4592db9a474a85b876e6c2838b61b2a820"
+      "sha256": "5b4bb6b0566b73d94911a5160ed620302a23596eeaf509124cef03619cca7141"
     },
     {
       "path": "examples/saas-conversion-demo/index.html",
@@ -699,7 +699,7 @@
     },
     {
       "path": "scripts/ci_validate_skills.py",
-      "sha256": "03ba96daba27038151b27eabb21b1d5425d5934eae2654a2c720270147999476"
+      "sha256": "50811d77fa60e8cd2921e3e0edd28ee60f1499a1d216a5108685c7021da6a6ab"
     },
     {
       "path": "scripts/claude_extractor.py",
@@ -863,7 +863,7 @@
     },
     {
       "path": "skills/coding-discipline/SKILL.md",
-      "sha256": "c8ae8808cd9a8946fe645d6ca865e928d7d0d71fece3a49a5000cdd09fdc6f39"
+      "sha256": "225fb9403795a84f629f01976b308b0aad692afd044dfc38008f59d7d453ecf6"
     },
     {
       "path": "skills/cognitive-expansion/SKILL.md",
@@ -899,7 +899,7 @@
     },
     {
       "path": "skills/documentation/SKILL.md",
-      "sha256": "8a0c0570be8178d85b7e0308eee3b64554f6940f7295d54455ac18688931f29e"
+      "sha256": "a9b41f84e6aa5d2c0aad6ef847e9d7ffd4703b6d20dd853035d677d175bbfb60"
     },
     {
       "path": "skills/ecosystem-scout/SKILL.md",
@@ -967,7 +967,7 @@
     },
     {
       "path": "skills/system-design/SKILL.md",
-      "sha256": "78eb21450f3e08a983930294f53a81074dcf3ffb4caf0f8de22c04f0ab48904f"
+      "sha256": "72931fed7a2fb34c3ed2ff4be35b89cead2d2a225e2abaf0ea9a54757e4d318b"
     },
     {
       "path": "skills/taste-aesthetics/SKILL.md",
@@ -999,7 +999,7 @@
     },
     {
       "path": "skills_manifest.json",
-      "sha256": "cced3906e192ff58c035d1cf4006182409ae47af15a90338a3aed95dc05bcd8b"
+      "sha256": "16ae1683e7030d26c7eecb613cba1ce957b938c7a68b7c09947953e14506b1c1"
     },
     {
       "path": "src/context_budget.py",
@@ -1031,7 +1031,7 @@
     },
     {
       "path": "test-prompts.json",
-      "sha256": "5136c71b8ad49eed2c37b2502c6a5cd54dafcc201c9e15b3132887bb12dd58e9"
+      "sha256": "69f5508eed1d7b38c1d1e4f29e0e2ee7b9643814c33d83faa4fd6888b930ecc7"
     }
   ]
 }

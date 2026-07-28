@@ -283,5 +283,20 @@
     "name": "Trigger Cognitive Expansion Micro",
     "prompt": "我在设计一个设置页，按钮、加载态等，有没有遗漏？请用已有知识做微量补充，不联网，也不要另起长报告。",
     "expected_behavior": "Should trigger ambient `cognitive-expansion` micro mode. Treat the named items as open-set seeds, infer only one to three consequential siblings, add two to five task-specific views and one reverse or omission view, distinguish user seeds from model candidates, stay under roughly 300 tokens, and do not browse, emit Trace, create formal ledgers, or replace the primary task."
+  },
+  {
+    "name": "Adaptive Development Standard Lane",
+    "prompt": "架构和验收已确定，不要重新设计系统。这个订单状态流会改变多个调用方的可观察行为，请按风险自适应开发：先锁定关键测试接缝，用纵向测试逐片实现，最后做规格符合度和代码质量双轴评审。",
+    "expected_behavior": "Should trigger `coding-discipline` standard lane without reopening `system-design`. Agent must derive public test seams from the approved acceptance contract and existing tests, ask only if an unresolved seam changes scope or cost, then work in one vertical behavior slice at a time. Tests must observe public behavior and use independent expected values rather than implementation-coupled or tautological assertions. Review must separately report spec compliance and code quality. Parallel subagents are optional, not mandatory. It must not preload `reality-auditor` before an implementation, diff, or completion claim exists, and it must still run risk-proportionate repository checks."
+  },
+  {
+    "name": "Adaptive Development Lightweight Boundary",
+    "prompt": "这是边界明确的小改：只修这个仓库里一处可回滚的配置默认值并做定向验证。不要新建规格文档，不要为了形式强制先写测试、创建 worktree 或启用子 Agent。",
+    "expected_behavior": "Should trigger `coding-discipline` lightweight lane. Agent must inspect the existing config source, make the smallest reversible change, and run the narrowest check that can falsify the result. It must not turn the task into a new spec, mandatory TDD exercise, worktree workflow, multi-stage plan, or subagent fan-out; if evidence reveals wider behavior, permission, data, or migration risk, it should explicitly upgrade the lane instead of hiding the risk."
+  },
+  {
+    "name": "Authoritative Domain Language And ADR Boundary",
+    "prompt": "订单域里的“账户”有人指客户、有人指登录用户。先核对已有术语表、需求、schema、代码和 ADR，用具体场景统一领域语言并整理文档；现在不要编码，也不要强制新建 CONTEXT.md。只有难以撤回、脱离上下文会困惑且确有替代方案取舍时才写 ADR。",
+    "expected_behavior": "Should trigger `system-design` for the semantic decision and `documentation` for persistence, while keeping `coding-discipline` inactive because implementation is explicitly excluded. Agent must find the existing authoritative source before creating a document, surface contradictions rather than silently rename concepts, use concrete business scenarios to distinguish Customer from User, and store only confirmed meaning, synonyms, exclusions, and examples in the narrowest project-standard location. It must not mix implementation details into the glossary, force a `CONTEXT.md`, or create an ADR unless all three decision gates are met."
   }
 ]

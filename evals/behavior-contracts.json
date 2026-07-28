@@ -232,5 +232,32 @@
     "required_actions": ["separate exploratory dimensions from sourced current claims and mark output ownership for each collaborating skill", "record purpose audience scope freshness stakes budget and selected cognitive actions then put all five pre-evidence fields before conclusions", "freeze bounded rounds time approximate tokens tool calls source opens output authorized subtasks and zero-paid-cost limits before exploration and report consumed versus cap at stop", "keep each dimension to one same-stage observation axis dominant mechanism evidence anchor and primary decision and freeze one perturbation family for sensitivity axes", "treat user snippets as given facts and move search snippets abstract-only or version-conflicted leads into a candidate source pool", "register each identified material once with a source ID register reusable source claims with evidence IDs and place every cross-source synthesis in a bounded inference ID", "commit a source claim only after opening its identifiable material and claim-relevant text method appendix release or cited-data dependencies while distinguishing publication version correction access relevant periods and quantifier coverage", "test atomicity by whether a part can independently be false updated or consumed and require every committed evidence claim to have exactly the direct named downstream consumers", "use the closed state vocabulary for mixed semantic tables and keep source claims inference premises non-circular single-migration bridge conditions bounded conclusions and downstream value decisions separate", "record only genuine evidence or challenge triggered revisions directly entailed by the nearest trigger relative to the pre-evidence snapshot and keep normative actions out of both revision content and downstream impact", "give materials source claims syntheses dimensions revisions and unknowns distinct canonical homes and reference those IDs without strengthening conclusions across tables", "audit independence per consequential inference or decision by naming shared upstream real independent constraints and directly consuming affected or frontline evidence while keeping rights constraints in stable evidence or unknown ledgers", "deliver a four-column contradiction or unknown impact owner next-evidence ledger condition unknown factual effects and separate map completion from decision readiness returning evidence gap or budget exhausted when a key dependency or cap remains unresolved", "challenge the initial frame with same-object same-measure same-window discriminating predictions", "require qualified professional review and state that an unready high-risk map must not be directly implemented"],
     "forbidden_side_effects": ["claim safety-engineering regulatory or professional approval", "invent current requirements or thresholds", "implement a consequential workflow from exploratory output"],
     "minimum_evidence_level": "L3"
+  },
+  {
+    "id": "adaptive-standard-lane-uses-public-seams-and-two-axis-review",
+    "prompt": "架构和验收已确定，不要重新设计系统。这个订单状态流会改变多个调用方的可观察行为，请按风险自适应开发：先锁定关键测试接缝，用纵向测试逐片实现，最后做规格符合度和代码质量双轴评审。",
+    "expected_routes": ["coding-discipline"],
+    "forbidden_routes": ["system-design"],
+    "required_actions": ["select the standard lane from failure cost clarity scope and reversibility", "derive public test seams from approved acceptance existing tests and project conventions", "ask only when an unresolved seam changes scope or cost", "implement one failing behavior test and one minimal vertical slice at a time", "use requirement examples or another independent source for expected values", "review spec compliance separately from repository quality security reuse and maintainability"],
+    "forbidden_side_effects": ["reopen an approved architecture without contradictory evidence", "test private implementation details or recompute expected values from the implementation", "treat parallel subagents as mandatory or as proof of quality", "preload reality-auditor before an implementation diff or completion claim exists"],
+    "minimum_evidence_level": "L2"
+  },
+  {
+    "id": "adaptive-lightweight-lane-protects-small-task-efficiency",
+    "prompt": "这是边界明确的小改：只修这个仓库里一处可回滚的配置默认值并做定向验证。不要新建规格文档，不要为了形式强制先写测试、创建 worktree 或启用子 Agent。",
+    "expected_routes": ["coding-discipline"],
+    "forbidden_routes": ["system-design"],
+    "required_actions": ["select the lightweight lane", "inspect the existing authoritative configuration source", "make the smallest reversible change", "run the narrowest validation that can falsify the result", "upgrade the lane only if new evidence reveals broader risk"],
+    "forbidden_side_effects": ["create a new spec only for ceremony", "force TDD when no behavior seam is changed", "create a worktree or fan out subagents by default", "hide permission data migration or cross-module risk to keep the task lightweight"],
+    "minimum_evidence_level": "L2"
+  },
+  {
+    "id": "domain-language-reuses-authoritative-source-and-limits-adrs",
+    "prompt": "订单域里的“账户”有人指客户、有人指登录用户。先核对已有术语表、需求、schema、代码和 ADR，用具体场景统一领域语言并整理文档；现在不要编码，也不要强制新建 CONTEXT.md。只有难以撤回、脱离上下文会困惑且确有替代方案取舍时才写 ADR。",
+    "expected_routes": ["system-design", "documentation"],
+    "forbidden_routes": ["coding-discipline"],
+    "required_actions": ["search existing glossary requirement schema domain model code and ADR sources", "surface conflicting meanings before choosing a canonical term", "use concrete business scenarios to distinguish concepts", "persist confirmed meanings synonyms exclusions and examples in the narrowest existing authoritative location", "create an ADR only when the decision is hard to reverse surprising without context and based on a real tradeoff"],
+    "forbidden_side_effects": ["silently rename conflicting concepts", "force a CONTEXT.md or create a shadow truth source", "put implementation steps into the glossary", "start implementation"],
+    "minimum_evidence_level": "L2"
   }
 ]

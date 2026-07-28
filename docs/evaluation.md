@@ -60,7 +60,7 @@ The 15-stage suite also runs `python3 scripts/check_full_install.py --self-test`
 
 The routing stage also runs `python3 scripts/check_capability_chain.py --json`. Current deterministic routing, trigger, near-miss, collaboration, file-integrity, and schema defects always fail. Stale global activation receipts or incomplete all-Skill synthetic output evidence remain visible as warnings during ordinary development, with the corresponding model-activation and output-quality claims left `false`; this prevents a temporary quota or a changed global routing hash from forcing repetitive model calls merely to unblock local implementation. Release verification must run `python3 scripts/check_capability_chain.py --strict --json` (or set `GUYUE_RELEASE_STRICT=1`), where the same warnings become blocking errors. Never hand-edit or relabel a failed receipt to satisfy either mode.
 
-The current contract covers 27 built-in Skills, 57 structural routing prompts, 26 behavior contracts, 12 collaboration contracts and 217 near-miss cases. The receipt separately reports arbitrary-input, real-user, cross-runtime and public-network boundaries; a green deterministic development result cannot silently promote those claims or a failed high-risk live replay.
+The current contract covers 27 built-in Skills, 60 structural routing prompts, 29 behavior contracts, 12 collaboration contracts and 217 near-miss cases. The receipt separately reports arbitrary-input, real-user, cross-runtime and public-network boundaries; a green deterministic development result cannot silently promote those claims or a failed high-risk live replay.
 
 Both live runners accept `--model <runtime-model-id>` or `GUYUE_EVAL_MODEL`. When the runtime exposes the Terra 5.6 alias, use that identifier for new agents; the receipt records the requested model. A model switch does not authorize extra retries or make old failed evidence pass.
 
@@ -84,7 +84,8 @@ The repository checkout is named `guyue-skill`, while the installed root skill i
 - documentation;
 - business-readable output;
 - research and sourcing;
-- coding discipline, reuse-first engineering, and development defaults;
+- coding discipline, reuse-first engineering, development defaults, risk-adaptive lanes, public test seams, vertical behavior tests, and two-axis review;
+- authoritative domain language, existing-source reuse, and selective ADR boundaries;
 - loop engineering and dynamic workflow routing;
 - frontend expert behavior;
 - frontend design ecosystem boundaries;

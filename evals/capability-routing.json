@@ -57,6 +57,9 @@
     {"id":"boundary-reality-before-debugging","prompt_name":"Route Boundary - Reality Audit Before Debugging","expected_routes":["reality-auditor"],"forbidden_routes":["debugging-mindset"]},
     {"id":"boundary-static-demo-before-frontend","prompt_name":"Route Boundary - Static Demo Workflow Before Generic Frontend","expected_routes":["static-demo-hardening"],"forbidden_routes":["frontend-expert"]},
     {"id":"cognitive-expansion-unfamiliar-domain","prompt_name":"Trigger Cognitive Expansion","expected_routes":["cognitive-expansion"],"forbidden_routes":["product-sense","requirement-analysis","system-design","debugging-mindset"]},
-    {"id":"cognitive-expansion-ambient-micro","prompt_name":"Trigger Cognitive Expansion Micro","expected_routes":["cognitive-expansion"],"forbidden_routes":["research-and-sourcing"]}
+    {"id":"cognitive-expansion-ambient-micro","prompt_name":"Trigger Cognitive Expansion Micro","expected_routes":["cognitive-expansion"],"forbidden_routes":["research-and-sourcing"]},
+    {"id":"adaptive-development-standard","prompt_name":"Adaptive Development Standard Lane","expected_routes":["coding-discipline"],"forbidden_routes":["system-design"]},
+    {"id":"adaptive-development-lightweight","prompt_name":"Adaptive Development Lightweight Boundary","expected_routes":["coding-discipline"],"forbidden_routes":["system-design"]},
+    {"id":"authoritative-domain-language","prompt_name":"Authoritative Domain Language And ADR Boundary","expected_routes":["system-design","documentation"],"forbidden_routes":["coding-discipline"]}
   ]
 }

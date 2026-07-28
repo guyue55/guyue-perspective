@@ -1536,6 +1536,236 @@ def check_development_defaults_contract(repo_root):
     return passed
 
 
+def check_adaptive_development_contract(repo_root):
+    """验证风险自适应开发、领域语言和双轴评审合同没有退化。"""
+    files = {
+        'coding_discipline': os.path.join(
+            repo_root, 'skills', 'coding-discipline', 'SKILL.md'
+        ),
+        'system_design': os.path.join(
+            repo_root, 'skills', 'system-design', 'SKILL.md'
+        ),
+        'documentation': os.path.join(
+            repo_root, 'skills', 'documentation', 'SKILL.md'
+        ),
+        'manifest': os.path.join(repo_root, 'skills_manifest.json'),
+        'prompts': os.path.join(repo_root, 'test-prompts.json'),
+        'behavior_contracts': os.path.join(
+            repo_root, 'evals', 'behavior-contracts.json'
+        ),
+    }
+    contents = {}
+    passed = True
+
+    for label, path in files.items():
+        try:
+            with open(path, 'r', encoding='utf-8') as f:
+                contents[label] = f.read()
+        except Exception as e:
+            print(
+                f"❌ [ADAPTIVE DEVELOPMENT ERROR] Failed to read {path}: {e}",
+                file=sys.stderr,
+            )
+            passed = False
+
+    if not passed:
+        return False
+
+    required_needles = {
+        'coding_discipline': [
+            '拒绝流程一刀切',
+            '风险自适应开发门',
+            '轻量轨',
+            '标准轨',
+            '严格轨',
+            '测试接缝',
+            '一个接缝、一个先失败的测试、一个最小实现',
+            '不伪造 TDD',
+            '双轴评审',
+            '规格轴',
+            '质量轴',
+            '不把并行本身当成质量证明',
+            '没有实现、diff 或完成声明时不得预加载 `reality-auditor`',
+        ],
+        'system_design': [
+            '共享领域语言也必须有权威入口',
+            '术语表、需求契约、领域模型、schema、ADR',
+            '用具体业务场景澄清后再统一命名',
+            '不为形式强制创建 `CONTEXT.md`',
+            '领域语言边界',
+            '难以撤回、脱离上下文会令人困惑、确实比较过替代方案',
+        ],
+        'documentation': [
+            '领域语言不另起影子事实源',
+            '领域语言与 ADR 门',
+            '术语表只保存已确认的业务含义',
+            '文档不能自行统一口径',
+            '只有决定难以撤回、未来读者脱离上下文会困惑',
+            '不为追求全局一致而无边界批量改名',
+        ],
+    }
+    for label, needles in required_needles.items():
+        for needle in needles:
+            if needle not in contents[label]:
+                print(
+                    f"❌ [ADAPTIVE DEVELOPMENT ERROR] Missing `{needle}` "
+                    f"in {os.path.relpath(files[label], repo_root)}",
+                    file=sys.stderr,
+                )
+                passed = False
+
+    try:
+        manifest = json.loads(contents['manifest'])
+    except Exception as e:
+        print(
+            f"❌ [ADAPTIVE DEVELOPMENT ERROR] "
+            f"Failed to parse skills_manifest.json: {e}",
+            file=sys.stderr,
+        )
+        return False
+
+    skill_map = {
+        skill.get('name'): skill for skill in manifest.get('skills', [])
+    }
+    expected_manifest = {
+        'coding-discipline': {
+            'triggers': {
+                '风险自适应开发',
+                '边界明确的小改',
+                '测试接缝',
+                '纵向测试',
+                '双轴评审',
+            },
+            'description': {
+                'Risk-adaptive',
+                'public test seams',
+                'vertical behavior tests',
+                'two-axis spec-and-quality review',
+            },
+        },
+        'system-design': {
+            'triggers': {'领域语言', '统一术语'},
+            'description': {'authoritative domain language'},
+        },
+        'documentation': {
+            'triggers': {'术语表', 'ADR'},
+            'description': {
+                'selective ADRs',
+                'authoritative domain glossaries',
+                'shadow documentation',
+            },
+        },
+    }
+    for skill_name, expected in expected_manifest.items():
+        skill = skill_map.get(skill_name)
+        if not skill:
+            print(
+                f"❌ [ADAPTIVE DEVELOPMENT ERROR] "
+                f"{skill_name} missing from skills_manifest.json",
+                file=sys.stderr,
+            )
+            passed = False
+            continue
+        triggers = set(skill.get('trigger_intent', []))
+        for trigger in expected['triggers']:
+            if trigger not in triggers:
+                print(
+                    f"❌ [ADAPTIVE DEVELOPMENT ERROR] "
+                    f"Missing {skill_name} trigger: {trigger}",
+                    file=sys.stderr,
+                )
+                passed = False
+        description = str(skill.get('description', ''))
+        for needle in expected['description']:
+            if needle not in description:
+                print(
+                    f"❌ [ADAPTIVE DEVELOPMENT ERROR] "
+                    f"{skill_name} description missing `{needle}`",
+                    file=sys.stderr,
+                )
+                passed = False
+
+    try:
+        prompts = json.loads(contents['prompts'])
+    except Exception as e:
+        print(
+            f"❌ [ADAPTIVE DEVELOPMENT ERROR] "
+            f"Failed to parse test-prompts.json: {e}",
+            file=sys.stderr,
+        )
+        return False
+
+    expected_prompts = {
+        'Adaptive Development Standard Lane': [
+            'public test seams',
+            'one vertical behavior slice at a time',
+            'spec compliance and code quality',
+            'Parallel subagents are optional',
+            'must not preload `reality-auditor`',
+        ],
+        'Adaptive Development Lightweight Boundary': [
+            'lightweight lane',
+            'smallest reversible change',
+            'must not turn the task into a new spec',
+            'upgrade the lane',
+        ],
+        'Authoritative Domain Language And ADR Boundary': [
+            'existing authoritative source',
+            'concrete business scenarios',
+            'must not mix implementation details into the glossary',
+            'all three decision gates',
+        ],
+    }
+    prompt_map = {item.get('name'): item for item in prompts}
+    for prompt_name, needles in expected_prompts.items():
+        prompt = prompt_map.get(prompt_name)
+        if not prompt:
+            print(
+                f"❌ [ADAPTIVE DEVELOPMENT ERROR] "
+                f"Missing prompt: {prompt_name}",
+                file=sys.stderr,
+            )
+            passed = False
+            continue
+        prompt_text = json.dumps(prompt, ensure_ascii=False)
+        for needle in needles:
+            if needle not in prompt_text:
+                print(
+                    f"❌ [ADAPTIVE DEVELOPMENT ERROR] "
+                    f"{prompt_name} missing `{needle}`",
+                    file=sys.stderr,
+                )
+                passed = False
+
+    try:
+        behavior_contracts = json.loads(contents['behavior_contracts'])
+    except Exception as e:
+        print(
+            f"❌ [ADAPTIVE DEVELOPMENT ERROR] "
+            f"Failed to parse behavior-contracts.json: {e}",
+            file=sys.stderr,
+        )
+        return False
+
+    required_contracts = {
+        'adaptive-standard-lane-uses-public-seams-and-two-axis-review',
+        'adaptive-lightweight-lane-protects-small-task-efficiency',
+        'domain-language-reuses-authoritative-source-and-limits-adrs',
+    }
+    contract_ids = {
+        item.get('id') for item in behavior_contracts if isinstance(item, dict)
+    }
+    for contract_id in required_contracts - contract_ids:
+        print(
+            f"❌ [ADAPTIVE DEVELOPMENT ERROR] "
+            f"Missing behavior contract: {contract_id}",
+            file=sys.stderr,
+        )
+        passed = False
+
+    return passed
+
+
 def check_context_compressor_budget_contract(repo_root):
     files = {
         'root_skill': os.path.join(repo_root, 'SKILL.md'),
@@ -2529,6 +2759,11 @@ def main():
 
     if check_development_defaults_contract(repo_root):
         print("✅ development defaults contract valid.")
+    else:
+        all_passed = False
+
+    if check_adaptive_development_contract(repo_root):
+        print("✅ adaptive development contract valid.")
     else:
         all_passed = False
 

@@ -20,6 +20,7 @@ description: Code-backed, business-readable documentation for "项目摸底", ar
 3. **事实源唯一与文档永续性 (Single Source of Truth & Documentation Permacomputing)**
    - 技术文档不是小说，它是活的。文档的结构应尽可能贴近代码结构。
    - **可维护源与目标格式分离**：仓库内长期维护的技术文档默认使用可搜索、可 Diff 的 Markdown；用户需要 Word、PDF、Slides、飞书或其他交付格式时，按目标读者与发布场景生成并验证，同时尽量保留一个可维护源。不能用格式偏好覆盖明确交付要求。
+   - **领域语言不另起影子事实源**：先查已有术语表、需求契约、schema、领域模型和 ADR；将已确认的业务含义沉淀到项目约定的最窄权威位置，不因外部方法推荐而强制创建固定文件名。
 
 ## 表达 DNA 与排版规范 (Expression DNA & Formatting)
 
@@ -63,6 +64,13 @@ description: Code-backed, business-readable documentation for "项目摸底", ar
 4. **Phase 4: 肌肉填充与极简剃刀 (Formatting & The Razor of Simplicity)**
    - 扩写节点，严格遵守中英文空格、重点加粗和 GitHub Alerts 的运用。晦涩文字转化为 Markdown 表格或 Mermaid 图。
    - 审查写好的文档，删掉所有“正确的废话”。如果一段话删掉不影响读者理解，就坚决删掉。
+
+### 领域语言与 ADR 门
+
+- 术语表只保存已确认的业务含义、同义词、排除边界和最小示例，不保存实现方案、临时讨论或未经确认的推断。
+- 术语与代码、schema 或需求冲突时先标出冲突并交给 `requirement-analysis` / `system-design` 决定，文档不能自行统一口径。
+- 只有决定难以撤回、未来读者脱离上下文会困惑、并且确有替代方案与取舍时才写 ADR；否则用普通说明、代码注释或提交记录即可。
+- 修改领域语言后，定向检查需求、接口、模型、测试和面向用户文案中的关键使用点；不为追求全局一致而无边界批量改名。
 
 ### Business-Facing Output Mode (业务侧可读模式)
 

@@ -47,6 +47,7 @@ def routing_sha256(manifest: dict[str, object]) -> str:
     )
     payload = {
         "routing_contract": manifest["routing_contract"],
+        "composed_intent_rules": manifest.get("composed_intent_rules", []),
         "skills": [
             {key: skill[key] for key in skill_fields if key in skill}
             for skill in manifest["skills"]
@@ -189,22 +190,38 @@ def build_receipt(root: Path = ROOT) -> dict[str, object]:
             continue
         expected = set(case.get("expected_routes", []))
         forbidden = set(case.get("forbidden_routes", []))
-        unknown = (expected | forbidden) - skill_names
+        expected_primary = str(case.get("expected_primary", "")).strip()
+        unknown = (expected | forbidden | ({expected_primary} if expected_primary else set())) - skill_names
         if unknown:
             errors.append(f"{case_id} references unknown routes: {sorted(unknown)}")
             continue
         if expected & forbidden:
             errors.append(f"{case_id} expects and forbids the same route")
             continue
+        if expected_primary and expected_primary not in expected:
+            errors.append(f"{case_id} expected_primary must also be expected")
+            continue
         decision = resolve_routes(manifest, str(prompt.get("prompt", "")), limit=8)
-        selected = {str(item.get("name", "")) for item in decision["selected"]}
+        selected_order = [
+            str(item.get("name", "")) for item in decision["selected"]
+        ]
+        selected = set(selected_order)
         missing = expected - selected
         leaked = forbidden & selected
+        primary_mismatch = bool(
+            expected_primary
+            and (not selected_order or selected_order[0] != expected_primary)
+        )
         if missing:
             errors.append(f"{case_id} missed expected routes: {sorted(missing)}")
         if leaked:
             errors.append(f"{case_id} selected forbidden routes: {sorted(leaked)}")
-        if not missing and not leaked:
+        if primary_mismatch:
+            actual_primary = selected_order[0] if selected_order else "<none>"
+            errors.append(
+                f"{case_id} expected primary {expected_primary}, got {actual_primary}"
+            )
+        if not missing and not leaked and not primary_mismatch:
             route_passed += 1
 
     unbound = set(prompts_by_name) - bound_prompt_names

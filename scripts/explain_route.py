@@ -52,7 +52,13 @@ def main() -> int:
         print("Guyue route candidates:")
         for index, route in enumerate(result["selected"], start=1):
             trigger_evidence = ", ".join(
-                item["trigger"] for item in route["matched_triggers"]
+                (
+                    f"{item['trigger']}<-{item['signal']}"
+                    f"({' + '.join(item['evidence'])})"
+                    if item["match"] == "composed"
+                    else item["trigger"]
+                )
+                for item in route["matched_triggers"]
             ) or "description similarity"
             context_evidence = ", ".join(route["matched_context"])
             suffix = f"; context={context_evidence}" if context_evidence else ""

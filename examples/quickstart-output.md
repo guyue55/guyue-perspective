@@ -1014,3 +1014,15 @@ Prompt:
 - Efficiency result: `fail`. The run consumed 51,768 tokens and unnecessarily loaded broad Memory plus the complete principles file after the public root. The three cases were combined to avoid repeated runtime startup, and no child Skill, external source, network action or repository write was used; correctness is therefore live-verified, but context minimality is not.
 - Retry decision: no automatic second replay merely to improve the token number. Deterministic contracts now cover 71/71 routes and 41/41 behavior cases; another live efficiency attempt requires a separately justified change that can reduce model-visible context rather than another wording-only retry.
 - Scope boundary: this proves one synthetic three-case behavior sample in Codex. It does not prove arbitrary-input judgment quality, zero future errors, or that host-level mandatory context and Memory policy can be controlled by Guyue.
+
+## Replay 39: Open Intent And Multi-Turn Direction Routing Without Memory
+
+- Date: 2026-07-28 (Asia/Shanghai).
+- Runtime: Codex CLI `0.142.0`, model reported as `gpt-5.5`, ephemeral read-only sandbox with `memories` and plugins disabled.
+- Isolation: the session was forbidden to read Memory, examples, evals, test prompts, test code, Git history, or network sources. It read only the public root, RTK, the routing script output, and each selected child Skill; it made no repository write.
+- Open-intent result: `pass`. “设计这个功能的边界、业务规则和验收场景” selected only `requirement-analysis`, with composed evidence `功能 + 边界`, and denied persistent implementation.
+- Multi-turn reset result: `pass`. A prior approval followed by expanded persistence and dependencies selected only `system-design`, entered `DIRECTION_RESET`, invalidated the old approval, and denied persistent writes.
+- Exact-version implementation result: `pass`. A V4 packet explicitly stating native baseline, three-route comparison, falsifier, impact, rollback, exact version, and implementation approval selected only `coding-discipline`; writes were allowed only inside the stated V4 boundary.
+- Deterministic post-repair result: 85/85 capability routes, including primary-route order, 41/41 behavior contracts, 12/12 collaboration contracts, 416/416 internal triggers, 41/41 external candidates, and 222/222 adjacent near misses.
+- Efficiency boundary: the replay used 37,432 tokens. That is lower than Replay 38 and excluded Memory, but still loaded the full public root plus three child Skills; it proves correct staged selection for these three samples, not minimal host startup cost or arbitrary multi-turn accuracy.
+- Host boundary: Codex reported that the globally enabled Skill catalog exceeded its shared 2% discovery budget and omitted many descriptions. The repository router still selected the intended local child Skills through explicit script evidence, but Guyue cannot reduce unrelated host-wide catalog cost.

@@ -108,6 +108,35 @@ def main() -> int:
         "explicit negative intent must prevent route selection",
     )
 
+    composed = resolve_routes(
+        manifest,
+        "先别写代码，帮我设计这个功能的边界、业务规则和验收场景。",
+        limit=5,
+    )
+    require(
+        composed["selected"][0]["name"] == "requirement-analysis",
+        "composed feature-scope intent must select requirement-analysis first",
+    )
+    require(
+        composed["selected"][0]["matched_triggers"][0]["match"] == "composed"
+        and composed["composed_intent_signals"][0]["evidence"],
+        "composed routing must expose its signal and source evidence",
+    )
+
+    reset = resolve_routes(
+        manifest,
+        (
+            "之前已经批准过这个方向，但持久化和依赖都扩大了；"
+            "仍按旧批准继续开发，不用重审。"
+        ),
+        limit=5,
+    )
+    reset_names = [item["name"] for item in reset["selected"]]
+    require(
+        reset_names[0] == "system-design" and "coding-discipline" not in reset_names,
+        "material direction changes must suppress stale implementation approval",
+    )
+
     external = resolve_routes(
         manifest,
         "先用古月压缩上下文，并评估 headroom 是否值得作为可选增强。",

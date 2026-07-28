@@ -52,6 +52,58 @@ def _string_list(value: object) -> list[str]:
     return [str(item).strip() for item in value if str(item).strip()]
 
 
+def _validated_composed_rules(value: object, skills_by_name: dict[str, dict]) -> list[dict]:
+    if value is None:
+        return []
+    if not isinstance(value, list):
+        raise ValueError("manifest composed_intent_rules must be a list")
+    validated: list[dict] = []
+    seen_ids: set[str] = set()
+    for index, rule in enumerate(value, start=1):
+        if not isinstance(rule, dict):
+            raise ValueError(f"composed intent rule #{index} must be an object")
+        rule_id = str(rule.get("id", "")).strip()
+        route = str(rule.get("route", "")).strip()
+        canonical = str(rule.get("canonical_trigger", "")).strip()
+        if not rule_id or rule_id in seen_ids:
+            raise ValueError(f"missing or duplicate composed intent rule id: {rule_id!r}")
+        seen_ids.add(rule_id)
+        if route not in skills_by_name:
+            raise ValueError(f"composed intent rule {rule_id} has unknown route: {route}")
+        target_triggers = _string_list(skills_by_name[route].get("trigger_intent"))
+        if canonical not in target_triggers:
+            raise ValueError(
+                f"composed intent rule {rule_id} canonical trigger is not owned by {route}"
+            )
+        score = rule.get("score")
+        if isinstance(score, bool) or not isinstance(score, (int, float)) or score <= 0:
+            raise ValueError(f"composed intent rule {rule_id} requires a positive score")
+        groups = rule.get("all_any")
+        if not isinstance(groups, list) or not groups:
+            raise ValueError(f"composed intent rule {rule_id} requires all_any groups")
+        for group in groups:
+            if not isinstance(group, list) or not group or len(_string_list(group)) != len(group):
+                raise ValueError(
+                    f"composed intent rule {rule_id} groups must contain strings"
+                )
+        for field in ("exclude_any", "blocks_routes"):
+            if field not in rule:
+                continue
+            values = rule[field]
+            if not isinstance(values, list) or len(_string_list(values)) != len(values):
+                raise ValueError(
+                    f"composed intent rule {rule_id} field {field} must contain strings"
+                )
+        unknown_blocks = set(_string_list(rule.get("blocks_routes"))) - set(skills_by_name)
+        if unknown_blocks:
+            raise ValueError(
+                f"composed intent rule {rule_id} blocks unknown routes: "
+                f"{sorted(unknown_blocks)}"
+            )
+        validated.append(rule)
+    return validated
+
+
 def _direct_matches(phrases: Iterable[str], text: str) -> list[str]:
     normalized_text = normalize_text(text)
     return [phrase for phrase in phrases if normalize_text(phrase) in normalized_text]
@@ -69,7 +121,83 @@ def _negative_matches(phrases: list[str], text: str) -> list[str]:
     return fuzzy
 
 
-def _score_skill(skill: dict, intent: str, context_markers: list[str]) -> dict:
+def _phrase_occurs_unnegated(phrase: str, normalized_text: str) -> bool:
+    normalized_phrase = normalize_text(phrase)
+    clause_boundaries = "，。；！？,;!?\n"
+    negative_markers = (
+        "不要",
+        "无需",
+        "不需要",
+        "暂不",
+        "先别",
+        "禁止",
+        "不是",
+        "不做",
+        "避免",
+        "不评估",
+        "不判断",
+    )
+    start = 0
+    while True:
+        index = normalized_text.find(normalized_phrase, start)
+        if index < 0:
+            return False
+        clause_start = max(normalized_text.rfind(mark, 0, index) for mark in clause_boundaries)
+        prefix = normalized_text[clause_start + 1 : index]
+        if not any(marker in prefix for marker in negative_markers):
+            return True
+        start = index + len(normalized_phrase)
+
+
+def _derive_intent_signals(rules: object, text: str) -> list[dict]:
+    if not isinstance(rules, list):
+        return []
+    normalized_text = normalize_text(text)
+    signals: list[dict] = []
+    for rule in rules:
+        if not isinstance(rule, dict):
+            continue
+        excluded = [
+            phrase
+            for phrase in _string_list(rule.get("exclude_any"))
+            if normalize_text(phrase) in normalized_text
+        ]
+        if excluded:
+            continue
+        evidence: list[str] = []
+        groups = rule.get("all_any")
+        if not isinstance(groups, list) or not groups:
+            continue
+        for group in groups:
+            phrases = _string_list(group)
+            matches = [
+                phrase
+                for phrase in phrases
+                if _phrase_occurs_unnegated(phrase, normalized_text)
+            ]
+            if not matches:
+                break
+            evidence.append(matches[0])
+        else:
+            signals.append(
+                {
+                    "id": str(rule.get("id", "")),
+                    "route": str(rule.get("route", "")),
+                    "canonical_trigger": str(rule.get("canonical_trigger", "")),
+                    "score": float(rule.get("score", 0)),
+                    "evidence": evidence,
+                    "blocks_routes": _string_list(rule.get("blocks_routes")),
+                }
+            )
+    return signals
+
+
+def _score_skill(
+    skill: dict,
+    intent: str,
+    context_markers: list[str],
+    composed_signals: list[dict] | None = None,
+) -> dict:
     name = str(skill.get("name", "")).strip()
     triggers = _string_list(skill.get("trigger_intent"))
     negatives = _string_list(skill.get("negative_intent"))
@@ -105,6 +233,11 @@ def _score_skill(skill: dict, intent: str, context_markers: list[str]) -> dict:
     score = 0.0
     matched_triggers: list[dict] = []
     normalized_query = normalize_text(combined_context)
+    signal_by_trigger = {
+        normalize_text(signal["canonical_trigger"]): signal
+        for signal in (composed_signals or [])
+        if signal["route"] == name
+    }
     for trigger in triggers:
         normalized_trigger = normalize_text(trigger)
         if normalized_trigger and normalized_trigger in normalized_query:
@@ -112,6 +245,20 @@ def _score_skill(skill: dict, intent: str, context_markers: list[str]) -> dict:
             score += contribution
             matched_triggers.append(
                 {"trigger": trigger, "match": "exact", "score": contribution}
+            )
+            continue
+        signal = signal_by_trigger.get(normalized_trigger)
+        if signal:
+            contribution = float(signal["score"])
+            score += contribution
+            matched_triggers.append(
+                {
+                    "trigger": trigger,
+                    "match": "composed",
+                    "score": contribution,
+                    "signal": signal["id"],
+                    "evidence": signal["evidence"],
+                }
             )
             continue
         coverage = phrase_coverage(trigger, combined_context)
@@ -231,12 +378,40 @@ def resolve_routes(
     skills = manifest.get("skills")
     if not isinstance(skills, list):
         raise ValueError("manifest skills must be a list")
+    skills_by_name = {
+        str(skill.get("name", "")).strip(): skill
+        for skill in skills
+        if isinstance(skill, dict) and str(skill.get("name", "")).strip()
+    }
+    composed_rules = _validated_composed_rules(
+        manifest.get("composed_intent_rules"),
+        skills_by_name,
+    )
     markers = [marker.strip() for marker in (context_markers or []) if marker.strip()]
+    composed_signals = _derive_intent_signals(
+        composed_rules,
+        "\n".join([intent, *markers]),
+    )
+    blocked_routes = {
+        route
+        for signal in composed_signals
+        for route in signal["blocks_routes"]
+    }
     decisions = [
-        _score_skill(skill, intent, markers)
+        _score_skill(skill, intent, markers, composed_signals)
         for skill in skills
         if isinstance(skill, dict) and str(skill.get("name", "")).strip()
     ]
+    for decision in decisions:
+        if decision["name"] not in blocked_routes:
+            continue
+        decision["score"] = 0.0
+        decision["reason"] = "blocked_by_composed_intent"
+        decision["blocking_signals"] = [
+            signal["id"]
+            for signal in composed_signals
+            if decision["name"] in signal["blocks_routes"]
+        ]
     selected = sorted(
         (
             decision
@@ -252,7 +427,12 @@ def resolve_routes(
             for decision in decisions
             if decision["name"] not in selected_names
             and decision["reason"]
-            in {"missing_required_context", "negative_intent", "insufficient_signal"}
+            in {
+                "missing_required_context",
+                "negative_intent",
+                "insufficient_signal",
+                "blocked_by_composed_intent",
+            }
         ),
         key=lambda item: (item["reason"], item["name"]),
     )
@@ -316,4 +496,6 @@ def resolve_routes(
         "external_candidates": external_candidates,
         "rejected": rejected,
         "context_markers": markers,
+        "composed_intent_signals": composed_signals,
+        "blocked_routes": sorted(blocked_routes),
     }

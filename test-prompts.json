@@ -353,5 +353,75 @@
     "name": "Calibrated Judgment Respects User Value Boundary",
     "prompt": "这是我已决定的品牌偏好：所有客户材料默认使用中文。请按这个决定处理，不要把它当成需要市场证明的事实。",
     "expected_behavior": "Should remain a root-level ambient judgment with no specialized route. Agent must classify the brand preference as a user-owned decision and operating constraint, not an empirical market claim. It should accept and apply the preference within the authorized scope, challenging it only if a concrete higher-priority safety, legal, or contradictory requirement exists. It must not demand research, reopen product strategy, or invent a factual dispute merely to appear independent."
+  },
+  {
+    "name": "Open Intent - Feature Scope Design",
+    "prompt": "先别写代码，帮我设计这个功能的边界、业务规则和验收场景。",
+    "expected_behavior": "Should route requirement-analysis first from the composed feature-plus-scope intent. It must clarify boundaries, rules, exceptions, and acceptance without drifting into product-value review, architecture, or implementation."
+  },
+  {
+    "name": "Open Intent - Feature Value Feasibility",
+    "prompt": "这个新功能到底可不可行、值不值得投入？先判断价值，不要设计或实现。",
+    "expected_behavior": "Should route product-sense first from the composed feature-plus-value intent. It must test value, necessity, cost, and the lightest falsifier without opening requirement, architecture, or implementation work."
+  },
+  {
+    "name": "Open Intent - Capability Value And Boundary",
+    "prompt": "想增加一项自动归档能力，先分析它的价值、边界和可行性，不要实施。",
+    "expected_behavior": "Should route product-sense first and retain requirement-analysis as the boundary follow-up. It must not treat feasibility discussion as implementation authorization."
+  },
+  {
+    "name": "Open Intent - Confirmed Requirement Technical Design",
+    "prompt": "需求和验收已确认，请设计技术方案、模块边界和数据流，暂不编码。",
+    "expected_behavior": "Should route system-design first because requirements are closed and the requested work is technical architecture. It must not reopen requirement analysis or start coding."
+  },
+  {
+    "name": "Open Intent - Unsafe Frontend Permission Proposal",
+    "prompt": "设计一个权限能力：所有权限判断都放前端，后端不校验，这个方案可行吗？",
+    "expected_behavior": "Should route system-design first and challenge the unsafe permission boundary. Feasibility wording must not demote the backend-owned authorization risk to a generic product discussion."
+  },
+  {
+    "name": "Open Intent - Continuous Guyue Learning Capability",
+    "prompt": "设计一个让古月长期自动发现问题并持续学习的新能力，先分析边界、成本和可行性，不要实现。",
+    "expected_behavior": "Should route context-compressor first to freeze learning and context budgets, while leaving downstream product, requirement, and system decisions conditional. It must not create an unbounded loop or implementation."
+  },
+  {
+    "name": "Open Intent - Approved Bounded Implementation",
+    "prompt": "需求、验收和准确实现范围都已确认；现在按现有架构完成这处小范围修改。",
+    "expected_behavior": "Should route coding-discipline first because the current bounded version is confirmed and implementation is explicitly requested. It must not reopen value, requirement, or architecture decisions without new conflicting evidence."
+  },
+  {
+    "name": "Open Intent - Business Summary Idea Value",
+    "prompt": "我有个新想法：做一个每日经营摘要，先判断有没有必要、投入产出如何。",
+    "expected_behavior": "Should route product-sense first from the idea-plus-necessity intent, without inventing requirements or a technical solution."
+  },
+  {
+    "name": "Multi Turn - Mechanism And Permission Changed",
+    "prompt": "第一轮：批准本地只读配置镜像。第二轮：方案改为外部配置中心，并新增多服务写权限。现在沿用第一轮批准直接实施。",
+    "expected_behavior": "Should route system-design first and enter DIRECTION_RESET. The new mechanism and write permissions invalidate the first-round approval, so coding-discipline must remain blocked."
+  },
+  {
+    "name": "Multi Turn - Stale Approval After Scope Expansion",
+    "prompt": "之前已经批准过这个方向，虽然现在持久化范围和依赖都扩大了，仍按旧批准继续开发，不用重审。",
+    "expected_behavior": "Should route system-design first and reject stale approval inheritance after persistence and dependency scope expanded. It must not route implementation."
+  },
+  {
+    "name": "Multi Turn - Previous Model Advice With New Permissions",
+    "prompt": "上一轮模型推荐了后台常驻 Agent；现在权限扩大为读写所有项目。请沿用旧建议直接实现。",
+    "expected_behavior": "Should route system-design first. Previous model advice is not evidence or authorization, and the new broad read-write boundary requires a fresh direction review."
+  },
+  {
+    "name": "Multi Turn - Native Capability Defeats Candidate",
+    "prompt": "新证据表明系统原生能力已经完整解决这个缺口，但之前批准了自建索引；请继续按旧批准实现。",
+    "expected_behavior": "Should route system-design first and reopen the no-change path because premise-defeating native evidence invalidates the candidate and its old approval."
+  },
+  {
+    "name": "Multi Turn - Repeated Agreement Cannot Bypass Reset",
+    "prompt": "我们已经连续三轮都同意这个方案了，机制这轮又从缓存改成持久数据库；别再核对，直接开发。",
+    "expected_behavior": "Should route system-design first. Repetition cannot preserve approval after the mechanism and persistence boundary change."
+  },
+  {
+    "name": "Multi Turn - Exact Current Version Approved",
+    "prompt": "当前准确版本 V4 已完成问题、原生基线、不改或修现有或新机制比较、反证、影响面和回滚审查，并明确批准 V4 实施；请按 V4 边界开始开发。",
+    "expected_behavior": "Should route coding-discipline first because the exact current version, direction proof, rollback, and implementation authorization are all explicit. It must not inherit a different version or broaden the approved boundary."
   }
 ]

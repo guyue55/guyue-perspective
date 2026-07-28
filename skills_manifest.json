@@ -29,6 +29,87 @@
             "blocked"
         ]
     },
+    "composed_intent_rules": [
+        {
+            "id": "continuous-learning-budget",
+            "route": "context-compressor",
+            "canonical_trigger": "持续学习预算",
+            "score": 68,
+            "all_any": [
+                ["古月", "guyue", "agent", "技能系统", "能力体系"],
+                ["长期", "持续", "不断", "自动", "常驻", "周期性"],
+                ["学习", "汲取", "发现问题", "自我提升", "能力演化"]
+            ],
+            "exclude_any": ["学习英语", "学习编程", "学习课程", "个人学习"]
+        },
+        {
+            "id": "stale-approval-after-change",
+            "route": "system-design",
+            "canonical_trigger": "方案连续改形",
+            "score": 64,
+            "all_any": [
+                ["之前批准", "此前批准", "旧批准", "第一轮批准", "上一轮认可", "上一轮推荐", "上一轮模型推荐", "之前同意", "连续三轮都同意", "已经反复确认", "原方案已经批准"],
+                ["扩大", "改成", "改为", "换成", "替换", "新增", "扩展", "变化", "调整", "持久化", "写权限", "依赖"],
+                ["继续", "直接", "沿用", "开发", "实现", "实施", "不用重审", "别再核对"]
+            ],
+            "blocks_routes": ["coding-discipline"]
+        },
+        {
+            "id": "native-evidence-defeats-candidate",
+            "route": "system-design",
+            "canonical_trigger": "阻止错误方向进入实现",
+            "score": 66,
+            "all_any": [
+                ["原生能力", "现有能力", "当前入口", "已有能力", "系统原生"],
+                ["已经解决", "完整解决", "无需新增", "不需要新增", "没有缺口", "前提不成立"],
+                ["旧批准", "之前批准", "继续", "仍然", "自建", "候选"]
+            ],
+            "blocks_routes": ["coding-discipline"]
+        },
+        {
+            "id": "technical-design",
+            "route": "system-design",
+            "canonical_trigger": "重大方向决策",
+            "score": 52,
+            "all_any": [
+                ["技术方案", "系统架构", "架构设计", "模块边界", "数据流", "事实源", "持久化", "权限模型", "权限判断", "数据库设计", "依赖边界", "自动化控制", "后台常驻", "外部配置中心", "多服务写权限", "前端权限", "后端不校验"],
+                ["设计", "评估", "可行", "比较", "选型", "重构", "替换", "改造", "实现", "实施"]
+            ],
+            "exclude_any": ["按现有架构", "架构和验收已确定", "准确实现范围都已确认", "明确批准 v4 实施"]
+        },
+        {
+            "id": "approved-bounded-implementation",
+            "route": "coding-discipline",
+            "canonical_trigger": "边界明确的小改",
+            "score": 70,
+            "all_any": [
+                ["已确认", "已经确认", "已批准", "已经批准", "明确批准", "边界明确", "准确版本", "准确实现范围"],
+                ["实现", "开发", "修改", "落地", "编码", "提交", "修复", "完成这处"]
+            ],
+            "exclude_any": ["不要实现", "不实施", "暂不实施", "暂不编码", "先分析", "先设计", "只读", "审计", "不要修改"]
+        },
+        {
+            "id": "value-feasibility",
+            "route": "product-sense",
+            "canonical_trigger": "值不值得做",
+            "score": 44,
+            "all_any": [
+                ["想法", "产品", "功能", "能力", "需求", "改动"],
+                ["值不值得", "有没有必要", "是否必要", "可不可行", "是否可行", "可行吗", "可行性", "投入产出", "业务价值", "用户价值", "收益", "回报"]
+            ]
+        },
+        {
+            "id": "requirement-scope",
+            "route": "requirement-analysis",
+            "canonical_trigger": "新加一个功能",
+            "score": 42,
+            "all_any": [
+                ["功能", "能力", "需求", "业务逻辑", "业务流程"],
+                ["边界", "范围", "业务规则", "规则", "验收", "异常流", "异常场景", "使用场景", "需求拆解", "设计"]
+            ],
+            "exclude_any": ["已确认", "已经确认", "已确定", "已经确定", "已批准", "已经批准"]
+        }
+    ],
     "collaboration_contract": {
         "version": 1,
         "selection_rule": "Route first, then propose only the narrowest matching collaboration workflow. A workflow is a candidate sequence, not automatic activation or authorization.",

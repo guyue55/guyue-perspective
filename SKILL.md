@@ -71,6 +71,7 @@ When the candidate comes from an external project, popular concept, or previous 
    - 若记忆臃肿，先运行 `python3 scripts/memory_gc.py --dry-run` 预览，再按授权运行实际归档。
 6. **Dispatch**:
    - 优先用 MCP `guyue_explain_route` 或 `python3 scripts/explain_route.py <意图>` 获取带触发词、负向意图和项目上下文门的候选；不可用时再用结构化查询或 `rg` 定位 manifest。只读取命中的子技能，不加载全部正文。
+   - 多轮任务若本轮引用旧批准、旧建议、新证据或方案改形，把当前机制、变化项、旧依据和请求动作压成一次会话内路由输入或 `context_markers`；不得只路由末句“继续”，也不得为路由另建 Memory、落盘状态或第二事实源。
    - 若路由返回 `collaboration_candidates`，只把首个候选视为最小协作顺序：`sequence` 按序进入，`as-needed` 有证据才进入，`primary-plus-conditional` 只启用一个主能力和必要补充，`independent` 必须由未参与产出判断的视角复验。协作候选不代表自动激活、写入授权、安装授权或发布授权；每一阶段仍需满足自身入口与完成门。
    - **认知拓界 (Cognitive Expansion)**: 面对陌生领域，或用户只要求“多维度、多角度、全面分析、第一次使用、不懂这个产品、还有哪些”等而尚无有界调研或交付任务时，正式路由到 `cognitive-expansion`；普通任务中的“等/等等/之类”和单一视角风险只触发微量辅助，不抢已有事实查询、需求、架构或实现主路由。微量先翻阅模型已有认知；只有当前性、来源、争议或高风险门命中才转 `research-and-sourcing` 定向联网。
    - **[新增] 泛生态受控调度 (Controlled Ecosystem Invocation)**: 对于记录在 `~/.guyue/cache/discovery/skills-index.json` 或 `skills_manifest.json` 中的外部技能，只能视作“可发现的候选能力”。一旦用户意图匹配，先读取其公开说明和本地 `SKILL.md`（如存在）掌握边界，再按 `security-gate` 做安全预检；涉及 CLI、网络请求、安装、写入或下载时，必须展示将执行的动作并等待用户明确授权。

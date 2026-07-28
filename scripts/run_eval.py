@@ -277,6 +277,20 @@ def main() -> int:
                 f"capability route case '{case_label}' expects and forbids: "
                 + ", ".join(sorted(overlap))
             )
+        expected_primary = normalize_skill_name(
+            str(raw_case.get("expected_primary", "")).strip()
+        )
+        if expected_primary:
+            if expected_primary not in manifest_names:
+                errors.append(
+                    f"capability route case '{case_label}' has unknown expected_primary: "
+                    f"{expected_primary}"
+                )
+            if expected_primary not in route_sets["expected_routes"]:
+                errors.append(
+                    f"capability route case '{case_label}' expected_primary must also "
+                    "appear in expected_routes"
+                )
 
         prompt = str(prompt_entry.get("prompt", "")).strip()
         try:
@@ -286,12 +300,17 @@ def main() -> int:
                 f"capability route case '{case_label}' route check failed: {exc}"
             )
             continue
-        selected = {
+        selected_order = [
             normalize_skill_name(str(item.get("name", "")))
             for item in decision["selected"]
-        }
+        ]
+        selected = set(selected_order)
         missing_expected = route_sets["expected_routes"] - selected
         selected_forbidden = route_sets["forbidden_routes"] & selected
+        primary_mismatch = bool(
+            expected_primary
+            and (not selected_order or selected_order[0] != expected_primary)
+        )
         if missing_expected:
             errors.append(
                 f"capability route case '{case_label}' missed expected routes: "
@@ -302,7 +321,13 @@ def main() -> int:
                 f"capability route case '{case_label}' selected forbidden routes: "
                 + ", ".join(sorted(selected_forbidden))
             )
-        if not missing_expected and not selected_forbidden:
+        if primary_mismatch:
+            actual_primary = selected_order[0] if selected_order else "<none>"
+            errors.append(
+                f"capability route case '{case_label}' expected primary "
+                f"{expected_primary}, got {actual_primary}"
+            )
+        if not missing_expected and not selected_forbidden and not primary_mismatch:
             capability_routes_passed += 1
 
     unbound_prompts = set(prompts_by_name) - capability_prompt_names

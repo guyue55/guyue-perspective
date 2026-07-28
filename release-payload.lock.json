@@ -35,7 +35,7 @@
     },
     {
       "path": "SKILL.md",
-      "sha256": "fcb2f17d3fd9acbcc8578f52677becd31db19b21aca35407cab5d32464fe787b"
+      "sha256": "d0d0e8b7cf724ebe2a507de9aba38d6262d5e3ce470de2dbd729da6beaca1677"
     },
     {
       "path": "assets/demo.gif",
@@ -87,7 +87,7 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "sha256": "807ad2237fbe5dfdcfe965589516816c3198deec2692ac680360bbfa5f9cbde4"
+      "sha256": "91be61986a55ee73a87b3936af28a25b19fd4fd2954c94600fc7a5fbbf95f981"
     },
     {
       "path": "docs/release-v1.60.md",
@@ -127,7 +127,7 @@
     },
     {
       "path": "evals/capability-near-misses.json",
-      "sha256": "a17edeb33dee238eb7dc46bb62698626bdf20f703e2d0918539c68dbba72cd43"
+      "sha256": "f25bc0578d240f60dcb53f3159fefbec98f77a22694700a63ff15d04e98bfb68"
     },
     {
       "path": "evals/capability-output-quality.json",
@@ -135,7 +135,7 @@
     },
     {
       "path": "evals/capability-routing.json",
-      "sha256": "52e323cca41c2360ad03db31d72b68ccfb57fa50cbec728b5697d84aaabbce35"
+      "sha256": "bdddb17f0fab1d2d448c496f523cdc847eb23a9de91e17e95a481f95d543ea32"
     },
     {
       "path": "evals/evidence/aesthetic-review-2026-07-02.md",
@@ -623,7 +623,7 @@
     },
     {
       "path": "examples/quickstart-output.md",
-      "sha256": "24362644001583bf9fbffce9c9d4182e6469bb966ef4fafbbefff327190e6f0e"
+      "sha256": "eecb2847e3bea5cd67954b35120dc0499f9770430eea72274c03f244ce0796dc"
     },
     {
       "path": "examples/saas-conversion-demo/index.html",
@@ -687,7 +687,7 @@
     },
     {
       "path": "scripts/check_capability_chain.py",
-      "sha256": "4da72fd441b74e1675667a150f10590e63688ce38c62ad5435ca775870cda90e"
+      "sha256": "b8ac383f0afde2531d16fdc87a487cbd432910519edce10f0e3bad39cf1edcdf"
     },
     {
       "path": "scripts/check_context_budget.py",
@@ -727,7 +727,7 @@
     },
     {
       "path": "scripts/explain_route.py",
-      "sha256": "cfaebc066a002bf07f7f067bcb389dd7222ac4f815bc0aa4203fe8602fa371fb"
+      "sha256": "3fe435ba487ae429bcfb8f75abb55f2a20d33d61b34ce843ea391d96d4b9c44d"
     },
     {
       "path": "scripts/extract_software_box.py",
@@ -763,7 +763,7 @@
     },
     {
       "path": "scripts/run_eval.py",
-      "sha256": "f97d0375aaaaa04defb93c9331df00997ae8122bfae5f1599b0e89b0ac099838"
+      "sha256": "30908669debcbae8da2f0cd80763204c1ee2d181bf6137795fe1efb4c273924d"
     },
     {
       "path": "scripts/run_security_scan.py",
@@ -831,7 +831,7 @@
     },
     {
       "path": "scripts/test_skill_router.py",
-      "sha256": "c8b1c12ce1f6c22236f5baf802f2b00cb42721f1095bfcbd2ca55c58e55a37c4"
+      "sha256": "c42f0f00682055608cf73db5b7fdf96cd58e26ceb5968b2dc4d21e7247ca2264"
     },
     {
       "path": "scripts/test_suite.sh",
@@ -1003,7 +1003,7 @@
     },
     {
       "path": "skills_manifest.json",
-      "sha256": "005dd710433fe1f9ecf1345c65458b4d9d6d0d0006cbe5a94a6f2c71cb8eedb0"
+      "sha256": "99b2b2bf3249fe5b11a1fe26eae7bcdba8a834eeef48f95fd3d54422e955d96f"
     },
     {
       "path": "src/context_budget.py",
@@ -1031,11 +1031,11 @@
     },
     {
       "path": "src/skill_router.py",
-      "sha256": "8b3fb5b2b22c575d37f0578b0e5a2ba53cf1c082ede2e817a2e2da0f3eb89a2e"
+      "sha256": "c4ea8aedaf99c0a381acb34c04e4d8b8f5e579c7fca7a2ed437096cbb83ec50e"
     },
     {
       "path": "test-prompts.json",
-      "sha256": "6cc76c2a805a9cb971f216ada86cad47b112e955a077a1378bc189ad03b9ea80"
+      "sha256": "ca7a0533e5d6cff088d73f0afbba05b01cc8c366f14201ee281a97d82bce8a7a"
     }
   ]
 }

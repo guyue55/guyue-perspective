@@ -7,7 +7,11 @@ import ast
 import importlib.util
 import re
 import subprocess
+import tomllib
 from pathlib import Path
+
+RUFF_VERSION = '0.16.0'
+RUFF_RULES = ['E4', 'E7', 'E9', 'F']
 
 ALLOWED_SKILL_FRONTMATTER_FIELDS = {
     'name',
@@ -118,6 +122,7 @@ def check_project_config(repo_root):
     release_manifest_path = os.path.join(repo_root, 'release-manifest.json')
     release_lock_path = os.path.join(repo_root, 'release-payload.lock.json')
     requirements_path = os.path.join(repo_root, 'requirements.txt')
+    ruff_config_path = os.path.join(repo_root, 'ruff.toml')
     workflow_path = os.path.join(repo_root, '.github', 'workflows', 'ci.yml')
     root_skill_path = os.path.join(repo_root, 'SKILL.md')
 
@@ -219,11 +224,35 @@ def check_project_config(repo_root):
         print(f"❌ [CONFIG ERROR] Failed to read requirements.txt: {e}", file=sys.stderr)
         requirements = set()
         passed = False
-    required_specs = {'mcp>=1.0.0,<2.0.0', 'PyYAML>=6.0,<7.0', 'ruff>=0.15,<1.0'}
+    required_specs = {
+        'mcp>=1.0.0,<2.0.0',
+        'PyYAML>=6.0,<7.0',
+        f'ruff=={RUFF_VERSION}',
+    }
     missing_specs = required_specs - requirements
     if missing_specs:
         print(
             f"❌ [CONFIG ERROR] requirements.txt missing bounded validation dependencies: {sorted(missing_specs)}",
+            file=sys.stderr,
+        )
+        passed = False
+
+    try:
+        with open(ruff_config_path, 'rb') as f:
+            ruff_config = tomllib.load(f)
+    except (OSError, tomllib.TOMLDecodeError) as e:
+        print(f"❌ [CONFIG ERROR] Failed to read ruff.toml: {e}", file=sys.stderr)
+        ruff_config = {}
+        passed = False
+    if ruff_config.get('required-version') != f'=={RUFF_VERSION}':
+        print(
+            f"❌ [CONFIG ERROR] ruff.toml required-version must be =={RUFF_VERSION}",
+            file=sys.stderr,
+        )
+        passed = False
+    if ruff_config.get('lint', {}).get('select') != RUFF_RULES:
+        print(
+            f"❌ [CONFIG ERROR] ruff.toml lint.select must be {RUFF_RULES}",
             file=sys.stderr,
         )
         passed = False

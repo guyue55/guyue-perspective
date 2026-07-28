@@ -1,5 +1,24 @@
 # Changelog
 
+## v1.70.1 - 2026-07-29
+
+Status: Released
+
+### Fixed
+
+- Pin Ruff to `0.16.0` and select the previously effective lint rules explicitly, preventing Ruff 0.16's expanded defaults from making local and CI release gates disagree.
+- Include the Ruff dependency and configuration in the required release payload without formatting or refactoring unrelated historical code.
+
+### Verification
+
+- Ruff `0.16.0` with `ruff.toml`
+- `bash scripts/test_suite.sh` under the pinned toolchain
+- GitHub Actions on `dev` and `main`
+
+### Boundaries
+
+- This hotfix stabilizes the existing lint contract; adopting additional Ruff rules remains separate work.
+
 ## v1.70 - 2026-07-29
 
 Status: Released

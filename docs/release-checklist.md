@@ -2,12 +2,14 @@
 
 Release only when installation, verification, safety, and examples are understandable to a new user.
 
-## v1.70 Release Evidence
+## v1.70.1 Release Evidence
 
 Date: 2026-07-29
-Candidate version: `1.70`
-Base tag: `v1.60`
+Candidate version: `1.70.1`
+Base tag: `v1.70`
 
+- [x] Ruff is pinned to `0.16.0`, and the effective lint rules are explicit rather than inherited from an upstream default.
+- [x] Local and GitHub Actions release gates use the same Ruff toolchain and configuration.
 - [x] High-impact designs prove the problem, native baseline, alternatives, falsifier, blast radius and rollback before implementation.
 - [x] Material multi-turn direction changes reset inherited confidence instead of preserving an unproven premise.
 - [x] External learning remains candidate-only until value, overlap, maturity, placement, subtraction and regression impact are proven.

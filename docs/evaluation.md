@@ -191,7 +191,7 @@ Runtime adapter changes must follow [runtime-adapters.md](runtime-adapters.md):
 
 ## Release Evidence Template
 
-Current release lineage is tracked in [release-v1.70.md](release-v1.70.md), while the reusable release gates and remaining boundaries live in [release-checklist.md](release-checklist.md). Update both before a release tag or marketplace submission.
+Current release lineage is tracked in [release-v1.70.1.md](release-v1.70.1.md), while the reusable release gates and remaining boundaries live in [release-checklist.md](release-checklist.md). Update both before a release tag or marketplace submission.
 
 Use this template when preparing a release:
 

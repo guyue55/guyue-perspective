@@ -11,7 +11,7 @@
     },
     {
       "path": "AGENTS.md",
-      "sha256": "354184681e0846822fae401bdd0b36f61960ee03179a9f5dd2f06c46398198bb"
+      "sha256": "cf795535d37ca7f10c067a9bb6721036b45ad0eb47215d533da80580b63a24b7"
     },
     {
       "path": "CHANGELOG.md",
@@ -27,15 +27,15 @@
     },
     {
       "path": "README.md",
-      "sha256": "e5ae8ee14f1e6f946318e4e010c3e0ef772018103da5e13e2c591814fd51326a"
+      "sha256": "0f1884c5a868cf88242e0fc05df2c99253d957429cd2e0247928e42927147189"
     },
     {
       "path": "RTK.md",
-      "sha256": "42d84d04315cbe93864968df36d65725d9b252e8cf087a4e59da0af3f167ee62"
+      "sha256": "972ca1a4d3b65892b1fd8ea0be9589342c52ba96d9963ef2a95a26c18cd9818d"
     },
     {
       "path": "SKILL.md",
-      "sha256": "858d161dbd33a7ba69a296e50620eefd49d787a3fdadb437eca781944e94d4bd"
+      "sha256": "54f10ab83ddc6396abbe1a50aedffa461bbef3ef8aff9f8d414ae00a43f89430"
     },
     {
       "path": "assets/demo.gif",
@@ -75,7 +75,7 @@
     },
     {
       "path": "docs/learning-control.md",
-      "sha256": "5218dff6102346da9c33557512298c9ea6a056893b40841eec2b4e7f368a7961"
+      "sha256": "6a60ccf95008e81328b7a086123365c9eb2e1685464044c78fab73d7a8644cd8"
     },
     {
       "path": "docs/long-goal-protocol.md",
@@ -87,7 +87,7 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "sha256": "aed6339c3613f551daf8d4b94ab8f6afd4f9a087e70e55607d83ffa01a9954ae"
+      "sha256": "5a6709a8ca93ea310df34e0ecdc3b8684c7b9587a5b81dda6a9cae04f31369fd"
     },
     {
       "path": "docs/release-v1.60.md",
@@ -95,7 +95,7 @@
     },
     {
       "path": "docs/runtime-adapters.md",
-      "sha256": "3ffb1be76ab3471cad92f9fd5fe885d7c88f82a5de4710a99e281882fccf4c36"
+      "sha256": "133a9c3180ffc2cbcd37f6a9c3cfb5c08e885c75e3c63db40a9bc3655790097d"
     },
     {
       "path": "docs/security.md",
@@ -115,7 +115,7 @@
     },
     {
       "path": "evals/behavior-contracts.json",
-      "sha256": "d0e8973c6b9234d7979ca824ad14d3da419c17397d6be99bdb23c74cdd5e6e05"
+      "sha256": "21812afb93123994413807fd7c8af3191b3eee8f4051434040273e80b66ef5e4"
     },
     {
       "path": "evals/capability-collaboration.json",
@@ -135,7 +135,7 @@
     },
     {
       "path": "evals/capability-routing.json",
-      "sha256": "bfcbea352283f53c85a1830e8877d2266365f684abacba7aa80953ad51f3162d"
+      "sha256": "91c2d0d30903301ec6a9cc357d83c94d8c69cd81499d97be1d4d4046f8f80d0b"
     },
     {
       "path": "evals/evidence/aesthetic-review-2026-07-02.md",
@@ -623,7 +623,7 @@
     },
     {
       "path": "examples/quickstart-output.md",
-      "sha256": "ddbdc812ecbe4fae5c5769878341aa9b869395f6508b7e17d792f2531b45383a"
+      "sha256": "78eb1ea1896fe803672c2aaaf5cde97e40a82ae5aaf105ec42c07ea7b72a50cd"
     },
     {
       "path": "examples/saas-conversion-demo/index.html",
@@ -703,7 +703,7 @@
     },
     {
       "path": "scripts/ci_validate_skills.py",
-      "sha256": "247a00e7315fc5f8bc62319c8a740d2fc3b503496d87bd172d225c997cc7592f"
+      "sha256": "e43289ba42168f20d1573d6b7aca57372ec5c649130d68cf4475fd342f82d56b"
     },
     {
       "path": "scripts/claude_extractor.py",
@@ -867,7 +867,7 @@
     },
     {
       "path": "skills/coding-discipline/SKILL.md",
-      "sha256": "225fb9403795a84f629f01976b308b0aad692afd044dfc38008f59d7d453ecf6"
+      "sha256": "ed5413f2c758c198f435f0ce1f46b102a597d3b9a3bfe8530bb072b08f14dc1e"
     },
     {
       "path": "skills/cognitive-expansion/SKILL.md",
@@ -951,7 +951,7 @@
     },
     {
       "path": "skills/skill-crafting/SKILL.md",
-      "sha256": "ddb6abffd52c1f4608ca244ef7efde264b94e379e55ffa77e9577ad2906c3e4e"
+      "sha256": "e47f4d6fc108caaa7d5f00e9f52e6e0425414de4f100bbeda0f74bd4f438d9ba"
     },
     {
       "path": "skills/software-advisor/SKILL.md",
@@ -971,7 +971,7 @@
     },
     {
       "path": "skills/system-design/SKILL.md",
-      "sha256": "72931fed7a2fb34c3ed2ff4be35b89cead2d2a225e2abaf0ea9a54757e4d318b"
+      "sha256": "37deedd3d74f58f47366dcea462c5dafb267078a90eebb6b3f222772fd3134a7"
     },
     {
       "path": "skills/taste-aesthetics/SKILL.md",
@@ -1003,7 +1003,7 @@
     },
     {
       "path": "skills_manifest.json",
-      "sha256": "7dd20543846fcc5c9117b706a1b1c54b38885e39b40f36f685e5aaa2456b0718"
+      "sha256": "005dd710433fe1f9ecf1345c65458b4d9d6d0d0006cbe5a94a6f2c71cb8eedb0"
     },
     {
       "path": "src/context_budget.py",
@@ -1035,7 +1035,7 @@
     },
     {
       "path": "test-prompts.json",
-      "sha256": "9dc57471ecda67e45db6462efdc1f2ce8ab2419b9bb21204ec71b4ea501dba3e"
+      "sha256": "cb6a1a1f500a3d3855422d338a721a8a6847d55516a6ada50722ebd43ba7ea4e"
     }
   ]
 }

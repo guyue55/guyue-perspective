@@ -1,19 +1,19 @@
 # Runtime Adapters
 
-Guyue should stay portable without letting runtime-specific instruction files drift apart. This document defines the adapter strategy for Codex, Claude Code, Gemini CLI, GitHub Copilot, Cursor, and adjacent coding-agent runtimes.
+Guyue should stay portable without letting runtime-specific repository instructions drift apart. This document defines the adapter strategy for coding agents that modify Guyue through Codex, Claude Code, Gemini CLI, GitHub Copilot, Cursor, and adjacent runtimes.
 
 ## Decision
 
-Use one canonical runtime kernel and keep every tool-specific file as a thin adapter.
+Keep the public Skill chain and the repository-maintenance chain separate. `SKILL.md` and routed child Skills define portable user-visible behavior; `RTK.md` only helps coding agents work safely inside this repository.
 
 ```text
-SKILL.md        public Skill entrypoint
+SKILL.md        public Skill entrypoint and portable behavior source
 README.md      human-facing product and installation entrypoint
-RTK.md         repository runtime kernel for coding agents
+RTK.md         repository-maintenance guidance for coding agents
 AGENTS.md      currently active thin adapter
 ```
 
-Do not add `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, or `.cursor/rules/*` until there is a real user path and a read-only live replay proving that the target runtime loads the adapter as expected. Claude's plugin manifest is a package/discovery surface, not evidence that Claude reads `AGENTS.md` or a substitute for a project adapter.
+The public Skill must still interpret, route, stop, authorize, and answer correctly when neither `AGENTS.md` nor `RTK.md` is loaded. Repository adapters may point to public rules but must not copy or strengthen them. Do not add `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`, or `.cursor/rules/*` until there is a real repository-maintenance path and a read-only live replay proving that the target runtime loads the adapter as expected. Claude's plugin manifest is a package/discovery surface, not evidence that Claude reads `AGENTS.md` or a substitute for a project adapter.
 
 ## Current Runtime Matrix
 
@@ -32,7 +32,7 @@ Discovery, repository instructions, and payload installation are separate claims
 
 ## Thin Adapter Rule
 
-Every runtime-specific adapter must be under 20 lines unless a live replay proves more context is necessary. It must point back to `RTK.md` and must not copy the full rules.
+Every runtime-specific repository adapter must be under 20 lines unless a live replay proves more context is necessary. It may point back to `RTK.md` for repository work and must not copy public Skill rules. Installing or invoking Guyue must never depend on this adapter chain.
 
 Template:
 
@@ -41,13 +41,13 @@ Template:
 
 This file is a thin adapter for <runtime>.
 
-Canonical entrypoints:
+Repository-maintenance entrypoints:
 1. `RTK.md`
 2. `SKILL.md`
 3. `GUYUE_PRINCIPLES.md`
 4. `skills_manifest.json`
 
-Do not duplicate runtime rules here. If this file conflicts with `RTK.md`, treat `RTK.md` as the repository runtime kernel unless the active tool's system instructions say otherwise.
+Do not duplicate repository-maintenance rules here. Public Guyue behavior remains authoritative in `SKILL.md` and the selected child Skill; `RTK.md` cannot replace or override that behavior.
 ```
 
 ## Adapter Admission Gate
@@ -72,6 +72,7 @@ Before adding a new active adapter file:
 ## Anti-Patterns
 
 - Do not keep full copies of `RTK.md` in `CLAUDE.md`, `GEMINI.md`, Copilot, or Cursor files.
+- Do not place user-visible routing, stopping, authorization, or response behavior only in `RTK.md` or another repository adapter.
 - Do not create adapters for tools that no one has asked to use.
 - Do not assume one runtime reads another runtime's file.
 - Do not hide high-risk permissions, install commands, push/release rights, or secrets in adapter files.

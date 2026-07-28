@@ -331,7 +331,7 @@ python3 scripts/check_context_budget.py
 ```text
 guyue/
 ├── AGENTS.md                # coding-agent 项目指令适配入口
-├── RTK.md                   # 轻量运行时内核说明
+├── RTK.md                   # 仓库编码代理维护适配说明
 ├── SKILL.md                 # 核心路由中枢
 ├── README.md                # 本文件
 ├── GUYUE_PRINCIPLES.md      # 古月大盘心法原则

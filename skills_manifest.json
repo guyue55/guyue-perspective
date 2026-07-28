@@ -102,27 +102,32 @@
             },
             {
                 "id": "capability-learning-governance",
-                "description": "Run bounded learning expeditions that separate discovery, evidence maturity, minimal placement, rollback, and retirement before Guyue changes its core behavior.",
+                "description": "Run bounded learning expeditions that prove the problem and current/native gap before separating discovery, evidence maturity, minimal placement, rollback, and retirement.",
                 "trigger_intent": [
                     "持续学习治理",
                     "学习与汲取治理",
                     "汲取、学习的判断",
                     "互联网学习控制",
-                    "古月能力演化治理"
+                    "古月能力演化治理",
+                    "外部架构适配古月",
+                    "流行方案适配古月",
+                    "古月能力索引设计"
                 ],
                 "entry_skills": [
                     "context-compressor",
                     "ecosystem-scout",
-                    "skill-crafting"
+                    "skill-crafting",
+                    "system-design"
                 ],
                 "stages": [
                     {"id": "bound", "mode": "sequence", "skills": ["context-compressor"]},
                     {"id": "discover", "mode": "as-needed", "skills": ["ecosystem-scout", "research-and-sourcing"]},
+                    {"id": "direction", "mode": "primary-plus-conditional", "skills": ["system-design", "product-sense"]},
                     {"id": "test-and-place", "mode": "as-needed", "skills": ["skill-crafting"]},
                     {"id": "verify", "mode": "independent", "skills": ["reality-auditor"]},
                     {"id": "retain", "mode": "as-needed", "skills": ["documentation"]}
                 ],
-                "completion_gate": "Admission level, maturity, minimal placement, consumed-versus-cap budget, critical non-regressions, rollback, review date, and retirement path are explicit; discovery alone never authorizes promotion."
+                "completion_gate": "The problem, observed failure, current/native baseline, no-change path, lightest fix, candidate mechanism, disconfirming evidence, blast radius, rollback, exact approval boundary, and consumed direction-evidence budget are explicit before admission level, maturity, minimal placement, critical non-regressions, review date, and retirement; discovery or conversational agreement never authorizes promotion or persistent implementation."
             },
             {
                 "id": "external-capability-intake",
@@ -521,7 +526,19 @@
                 "不可逆迁移",
                 "重构底层",
                 "鉴权模块",
-                "底层权限"
+                "底层权限",
+                "架构是否适合古月",
+                "外部架构适配古月",
+                "流行方案适配古月",
+                "古月能力索引设计",
+                "方案连续改形",
+                "高影响方案",
+                "重大方向决策",
+                "方向防火墙",
+                "阻止错误方向进入实现",
+                "核心事实源变更",
+                "持久化边界变更",
+                "扩大权限、依赖和影响范围"
             ],
             "negative_intent": [
                 "language-only rewrite",
@@ -532,7 +549,7 @@
                 "先判断值不值得做",
                 "不要马上设计系统"
             ],
-            "description": "DEPTH framework for business-readable architecture, authoritative domain language, refactoring plans, backend-owned permission boundaries, frontend permission presentation, and single-source contracts for models, tables, parameters, permissions, and APIs after value and requirement boundaries are clear.",
+            "description": "DEPTH framework and direction firewall for business-readable high-impact architecture, source-of-truth, persistence, permission, dependency, migration, public-contract, automation, and cross-module decisions. Preserves authoritative domain language, backend-owned permission boundaries, frontend permission presentation, and single-source contracts for models, tables, parameters, permissions, and APIs. Blocks persistent implementation until the problem, current/native baseline, no-change and repair paths, falsifier, blast radius, rollback, exact version, and explicit approval are closed.",
             "root_exposure": "explicit",
             "evidence_profile": "E2-change",
             "activation_policy": "model-or-explicit",

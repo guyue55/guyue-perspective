@@ -1,6 +1,6 @@
-# Guyue Runtime Kernel
+# Guyue Repository Maintenance Kernel
 
-`RTK.md` is the lightweight runtime entrypoint for coding agents working inside this repository. It is not a public Skill standard and is not required by all AI tools.
+`RTK.md` is the lightweight repository-maintenance entrypoint for coding agents changing this repository. It is not part of Guyue's public invocation chain and is not required by all AI tools.
 
 ## Scope
 
@@ -9,6 +9,8 @@
 - `skills_manifest.json` is the routing and capability map.
 - `GUYUE_PRINCIPLES.md` is the shared discipline layer.
 - `AGENTS.md` and `RTK.md` are repository-level coding-agent adapters.
+
+Public Guyue behavior must remain complete when this file is not loaded. Any rule that changes how Guyue interprets, routes, stops, authorizes, or answers a user request must live in `SKILL.md`, the selected child Skill, or their public routing contract. Do not add, restate, or strengthen user-visible behavior here; this file may only point coding agents to the public source.
 
 ## Source Of Truth Order
 
@@ -35,10 +37,6 @@ If any instruction conflicts with higher-priority instructions from the active r
 - Repository-local, reversible changes within the stated task may proceed without repeated confirmation. Do not add dependencies, install third-party skills, call external APIs, push, tag, release, deploy, spend money, change permissions, or run destructive commands without explicit authorization for that concrete action.
 - Treat frontend, debugging, product, and system-design work as separate routed skills. Do not silently merge them into one generic answer.
 
-### Long Goal Clarification Budget
-
-When Long Goal Forge still has an unresolved direction decision, read the root entry with exactly `sed -n '1,120p' SKILL.md`; do not read later lines in that round. Count it inside the maximum of four targeted reads/searches, plus one lightweight status probe. Use the remaining reads only for project identity and existing goal paths, then ask one highest-impact question. Do not pre-read the long-goal protocol/template or run full validation gates before the decision closes.
-
 ## Required Checks
 
 Before committing a repository change, run:
@@ -63,5 +61,6 @@ Record notable live replay results in `examples/quickstart-output.md`.
 
 - This file does not replace `SKILL.md`.
 - This file does not define a cross-vendor standard.
+- This file must not be required for correct public Skill behavior.
 - This file does not grant permission to push, tag, release, deploy, or expose data externally.
 - This file exists to make the repository self-contained for coding agents that support project instruction files.

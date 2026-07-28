@@ -1917,6 +1917,8 @@ def check_external_capability_admission_contract(repo_root):
         'replay': 'examples/quickstart-output.md',
         'scout': 'skills/ecosystem-scout/SKILL.md',
         'craft': 'skills/skill-crafting/SKILL.md',
+        'design': 'skills/system-design/SKILL.md',
+        'coding': 'skills/coding-discipline/SKILL.md',
         'context': 'skills/context-compressor/SKILL.md',
         'book': 'skills/book-distiller/SKILL.md',
         'video': 'skills/video-extractor/SKILL.md',
@@ -1950,6 +1952,16 @@ def check_external_capability_admission_contract(repo_root):
             '纯研究/方法吸收不得写 manifest、安装或创建影子 Skill',
             '规划长期持续学习、互联网探索或古月能力演化治理',
             '无具体来源不进生态调研',
+            '方向防火墙',
+            '任何会改变架构、事实源、持久数据、权限安全、依赖运行时、迁移、公共契约、自动化控制面或跨模块目标',
+            '## Direction Firewall Fast Gate',
+            '`DIRECTION_UNPROVEN`',
+            '`DIRECTION_APPROVED_FOR_IMPLEMENTATION`',
+            'decide `DIRECTION_UNPROVEN` immediately after this root entrypoint',
+            'after the root read, make no further tool call',
+            'do not inspect repository history, memory, the Manifest, child Skills, external sources',
+            'at most 3 targeted local reads, 2 external primary materials, and 1 lightweight status probe',
+            'never auto-renew the budget',
         },
         'principles': {
             '**学习控制权**',
@@ -1962,7 +1974,7 @@ def check_external_capability_admission_contract(repo_root):
             '## 三、有界学习闭环',
             '## 四、学习控制记录',
             '## 五、全局健康门',
-            '## 六、停止状态',
+            '## 六、方向与学习停止状态',
             '广发现不等于广加载',
             '`candidate`',
             '`verified`',
@@ -1972,6 +1984,16 @@ def check_external_capability_admission_contract(repo_root):
             '正确性与控制权不可折价',
             '一项增强没有“删除、压缩、替代、按需剥离”中的至少一项补偿',
             '`LEARNING_BUDGET_EXHAUSTED`',
+            '`DIRECTION_UNPROVEN`',
+            '`DIRECTION_PROVEN_FOR_EXPERIMENT`',
+            '`DIRECTION_APPROVED_FOR_IMPLEMENTATION`',
+            '`DIRECTION_RESET`',
+            '`blast_radius` 与 `rollback`',
+            '`approval_boundary`',
+            'current_native_baseline',
+            '用户继续讨论、缩小方案或同意研究，只是约束变清，不是候选获得了新证据',
+            '根入口之后默认只允许 3 次定向本地读取、2 份外部原始材料和 1 次轻量状态探针',
+            '不以“全面研究”为名自动续杯',
         },
         'scout': {
             '外部能力净收益门',
@@ -1984,6 +2006,16 @@ def check_external_capability_admission_contract(repo_root):
             '没有边界的“持续自我学习”不得启动',
             '禁止失控学习循环',
         },
+        'design': {
+            '方向防火墙 (Direction Firewall)',
+            'DIRECTION_UNPROVEN',
+            'DIRECTION_PROVEN_FOR_EXPERIMENT',
+            'DIRECTION_APPROVED_FOR_IMPLEMENTATION',
+            'DIRECTION_RESET',
+            '污染半径',
+            '禁止方案名偷渡需求',
+            '方向写入屏障',
+        },
         'craft': {
             '能力/质量增益',
             '新增上下文、延迟、误路由、依赖、安全、维护和迁移成本',
@@ -1993,6 +2025,18 @@ def check_external_capability_admission_contract(repo_root):
             '新增必须有减法',
             '关键词存在、文件数量和自评得分不能证明方法有效',
             '`superseded / retired`',
+            '方向防火墙',
+            '不改变、修好现有入口和新增机制',
+            'DIRECTION_APPROVED_FOR_IMPLEMENTATION',
+            'DIRECTION_RESET',
+        },
+        'coding': {
+            '方向写入屏障',
+            'DIRECTION_UNPROVEN',
+            'DIRECTION_PROVEN_FOR_EXPERIMENT',
+            'DIRECTION_APPROVED_FOR_IMPLEMENTATION',
+            '方向状态检查',
+            '方向批准复核',
         },
         'context': {
             '## 学习探索预算',
@@ -2056,6 +2100,15 @@ def check_external_capability_admission_contract(repo_root):
             '互联网探索预算',
             '所能接收的消息有限',
         },
+        'system-design': {
+            '高影响方案',
+            '重大方向决策',
+            '方向防火墙',
+            '阻止错误方向进入实现',
+            '核心事实源变更',
+            '持久化边界变更',
+            '扩大权限、依赖和影响范围',
+        },
         'requirement-analysis': {'防绕过验收', '任务验收标准'},
         'book-distiller': {'这本书的方法论', '提炼成可复用的 Agent 技能', '长视频转写稿蒸馏'},
     }
@@ -2077,6 +2130,12 @@ def check_external_capability_admission_contract(repo_root):
         },
         'skill-crafting': {'promoting', 'rolling back', 'retiring', 'unverified self-improvement'},
         'context-compressor': {'learning expeditions', 'candidates', 'promotions', 'retention', 'retries'},
+        'system-design': {
+            'direction firewall',
+            'source-of-truth',
+            'blast radius',
+            'explicit approval',
+        },
     }
     for name, required in description_contracts.items():
         description = str(skills.get(name, {}).get('description', ''))
@@ -2101,7 +2160,7 @@ def check_external_capability_admission_contract(repo_root):
         )
         passed = False
     else:
-        required_entries = {'context-compressor', 'ecosystem-scout', 'skill-crafting'}
+        required_entries = {'context-compressor', 'ecosystem-scout', 'skill-crafting', 'system-design'}
         actual_entries = set(learning_workflow.get('entry_skills', []))
         if not required_entries.issubset(actual_entries):
             print(
@@ -2112,6 +2171,7 @@ def check_external_capability_admission_contract(repo_root):
         stage_contract = [
             ('bound', 'sequence', {'context-compressor'}),
             ('discover', 'as-needed', {'ecosystem-scout', 'research-and-sourcing'}),
+            ('direction', 'primary-plus-conditional', {'system-design', 'product-sense'}),
             ('test-and-place', 'as-needed', {'skill-crafting'}),
             ('verify', 'independent', {'reality-auditor'}),
         ]
@@ -2129,7 +2189,20 @@ def check_external_capability_admission_contract(repo_root):
                 )
                 passed = False
         completion_gate = str(learning_workflow.get('completion_gate', ''))
-        for phrase in {'maturity', 'minimal placement', 'rollback', 'retirement', 'discovery alone never authorizes promotion'}:
+        for phrase in {
+            'observed failure',
+            'current/native baseline',
+            'no-change path',
+            'disconfirming evidence',
+            'blast radius',
+            'exact approval boundary',
+            'consumed direction-evidence budget',
+            'maturity',
+            'minimal placement',
+            'rollback',
+            'retirement',
+            'conversational agreement never authorizes promotion or persistent implementation',
+        }:
             if phrase not in completion_gate:
                 print(
                     f"❌ [EXTERNAL ADMISSION ERROR] learning workflow completion gate missing `{phrase}`",
@@ -2174,6 +2247,10 @@ def check_external_capability_admission_contract(repo_root):
         'Learning Promotion Resists Authority And Injection',
         'Learning Regression Rollback And Retirement',
         'Learning Governance Near-Miss - Ordinary Topic Study',
+        'External Pattern Architecture Adoption Gate',
+        'Learning Direction Drift Forces Reset',
+        'High Impact Direction Firewall Blocks Writes',
+        'Material Direction Change Invalidates Approval',
     }
     actual_prompt_names = {
         str(item.get('name', '')).strip()
@@ -2195,6 +2272,10 @@ def check_external_capability_admission_contract(repo_root):
         'learning-critical-regression-forces-rollback',
         'stale-learning-evidence-does-not-inherit-completion',
         'ordinary-topic-learning-does-not-trigger-capability-governance',
+        'external-pattern-requires-native-baseline-before-architecture',
+        'learning-direction-drift-forces-reset',
+        'high-impact-direction-firewall-blocks-writes',
+        'material-direction-change-invalidates-approval',
     }
     for missing in sorted(required_behavior_ids - behavior_ids):
         print(f"❌ [EXTERNAL ADMISSION ERROR] Learning behavior contract missing `{missing}`", file=sys.stderr)
@@ -2221,6 +2302,22 @@ def check_external_capability_admission_contract(repo_root):
         'learning-governance-near-miss': {
             'expected': set(),
             'forbidden': {'context-compressor', 'ecosystem-scout', 'skill-crafting'},
+        },
+        'external-pattern-adoption-gate': {
+            'expected': {'system-design'},
+            'forbidden': {'coding-discipline', 'ecosystem-scout'},
+        },
+        'learning-direction-reset': {
+            'expected': {'system-design'},
+            'forbidden': {'coding-discipline'},
+        },
+        'high-impact-direction-firewall': {
+            'expected': {'system-design'},
+            'forbidden': {'coding-discipline'},
+        },
+        'material-direction-change-reset': {
+            'expected': {'system-design'},
+            'forbidden': {'coding-discipline'},
         },
     }
     for case_id, contract in route_contracts.items():
@@ -2397,10 +2494,81 @@ def check_loop_engineering_contract(repo_root):
     return passed
 
 
+def check_public_skill_portability_contract(repo_root):
+    """确保公共 Skill 行为不依赖仓库编码代理适配文件。"""
+    paths = {
+        'root_skill': os.path.join(repo_root, 'SKILL.md'),
+        'rtk': os.path.join(repo_root, 'RTK.md'),
+        'adapters': os.path.join(repo_root, 'docs', 'runtime-adapters.md'),
+    }
+    contents = {}
+    passed = True
+
+    for label, path in paths.items():
+        try:
+            contents[label] = Path(path).read_text(encoding='utf-8')
+        except OSError as e:
+            print(f"❌ [PUBLIC PORTABILITY ERROR] Failed to read {path}: {e}", file=sys.stderr)
+            passed = False
+
+    if not passed:
+        return False
+
+    public_needles = {
+        '## Long Goal Forge Fast Gate',
+        '## Direction Firewall Fast Gate',
+        'DIRECTION_UNPROVEN',
+        'DIRECTION_APPROVED_FOR_IMPLEMENTATION',
+        'decide `DIRECTION_UNPROVEN` immediately after this root entrypoint',
+        'after the root read, make no further tool call',
+        'never auto-renew the budget',
+    }
+    for needle in public_needles:
+        if needle not in contents['root_skill']:
+            print(
+                f"❌ [PUBLIC PORTABILITY ERROR] SKILL.md missing public behavior `{needle}`",
+                file=sys.stderr,
+            )
+            passed = False
+
+    forbidden_rtk_copies = {
+        '### Long Goal Clarification Budget',
+        '### Learning Direction Budget',
+        '### Direction Firewall Budget',
+    }
+    for needle in forbidden_rtk_copies:
+        if needle in contents['rtk']:
+            print(
+                f"❌ [PUBLIC PORTABILITY ERROR] RTK.md duplicates public behavior `{needle}`",
+                file=sys.stderr,
+            )
+            passed = False
+
+    required_boundary_text = {
+        'rtk': [
+            'Public Guyue behavior must remain complete when this file is not loaded.',
+            'Do not add, restate, or strengthen user-visible behavior here',
+        ],
+        'adapters': [
+            'Keep the public Skill chain and the repository-maintenance chain separate.',
+            'Installing or invoking Guyue must never depend on this adapter chain.',
+        ],
+    }
+    for label, needles in required_boundary_text.items():
+        for needle in needles:
+            if needle not in contents[label]:
+                print(
+                    f"❌ [PUBLIC PORTABILITY ERROR] {label} missing boundary `{needle}`",
+                    file=sys.stderr,
+                )
+                passed = False
+
+    return passed
+
+
 def check_long_goal_forge_contract(repo_root):
     files = {
         'principles': os.path.join(repo_root, 'GUYUE_PRINCIPLES.md'),
-        'rtk': os.path.join(repo_root, 'RTK.md'),
         'root_skill': os.path.join(repo_root, 'SKILL.md'),
         'requirement_analysis': os.path.join(repo_root, 'skills', 'requirement-analysis', 'SKILL.md'),
         'protocol': os.path.join(repo_root, 'docs', 'long-goal-protocol.md'),
@@ -2437,12 +2605,6 @@ def check_long_goal_forge_contract(repo_root):
             '每轮只确认一个',
             '不得把未决问题转嫁给执行阶段',
             '铸造不能再次外包',
-        ],
-        'rtk': [
-            'Long Goal Clarification Budget',
-            "sed -n '1,120p' SKILL.md",
-            'maximum of four targeted reads/searches',
-            'Do not pre-read the long-goal protocol/template',
         ],
         'root_skill': [
             'Long Goal Forge',
@@ -2983,6 +3145,11 @@ def main():
 
     if check_external_capability_admission_contract(repo_root):
         print("✅ external capability admission and learning-control contract valid.")
+    else:
+        all_passed = False
+
+    if check_public_skill_portability_contract(repo_root):
+        print("✅ public Skill behavior is independent from repository adapters.")
     else:
         all_passed = False
 

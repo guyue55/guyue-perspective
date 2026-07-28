@@ -1,6 +1,6 @@
 ---
 name: system-design
-description: Pragmatic system design for architecture, authoritative domain language, database schemas, permission contracts, core refactors, and complex-feature plans. Prefer existing stack and clear boundaries, minimize total lifecycle complexity, and require version-bound approval only for high-impact or irreversible decisions.
+description: Pragmatic system design and direction-firewall control for high-impact architecture, authoritative domain language, database schemas, permission contracts, core refactors, and complex-feature plans. Prefer existing stack and clear boundaries, minimize total lifecycle complexity, and block persistent implementation until direction proof and version-bound approval exist.
 ---
 
 # guyue / system-design
@@ -11,6 +11,11 @@ description: Pragmatic system design for architecture, authoritative domain lang
 
 ## 核心心智模型 (Core Mental Models)
 
+0. **方向防火墙 (Direction Firewall)**
+   - 流行架构、作者方案、Wiki、索引、路由器以及模型自己的旧建议都只是候选。任何会改变架构、事实源、持久数据、权限安全、依赖运行时、迁移、公共契约、自动化控制面或跨模块目标的高影响方向，都先用不含方案名的语言冻结问题和已观察失败。
+   - 方向证明包必须包含当前/宿主原生基线、不改变、修好现有入口、新机制、反证、污染半径、回滚和准确版本边界。缺失时状态为 `DIRECTION_UNPROVEN`，只能分析或做不进入产品/仓库事实源的最小可逆实验。
+   - 证据关闭缺口后只能进入 `DIRECTION_PROVEN_FOR_EXPERIMENT`。持久实现还需要用户对同一版本的影响、成本、权限和回滚明确授权，才进入 `DIRECTION_APPROVED_FOR_IMPLEMENTATION`。
+   - 机制、范围、成本、权限、持久化、依赖或污染半径发生实质变化，旧证据和批准立即失效并进入 `DIRECTION_RESET`。用户催促、继续讨论、泛化的“按建议执行”或把方案改薄都不能替代重新审查。
 1. **务实至上，拒绝过度设计与拥抱林迪寿命 (Pragmatism & Lindy Effect)**
    - 警惕为了设计而设计的倾向。如果当前的业务体量和场景不需要微服务/复杂的设计模式，就坚决使用单体/简单脚本。
    - **依赖治理权**：优先项目现有技术栈、标准接口和成熟组件。比较依赖的维护、安全、许可、体积、团队熟悉度与自研长期成本；解析器、加密、鉴权、协议和成熟领域引擎不为追求零依赖重复造轮子。
@@ -56,16 +61,18 @@ description: Pragmatic system design for architecture, authoritative domain lang
 
 ## Step-by-Step Execution (标准执行工作流)
 1. **Phase 1: 摸底与边界确认**: 询问日活、并发、一致性要求。
-2. **Phase 2: 业务可读方案推演**: 提供 2-3 个技术路线对比，默认首选“原生/单体”。每个方案必须包含：解决什么问题、业务/用户价值、主要工作、成本风险限制、协作角色。
-3. **Phase 3: 领域语言、标准件与契约归一**: 先用真实业务场景核对关键术语、同义词、边界和代码命名，再明确哪些函数、模型、表格、配置、全局参数、接口契约、权限规则、状态机、事件名和错误码必须复用现有入口；哪些需要新增单一权威入口；哪些只是相似但业务语义不同，不能合并。
-4. **Phase 4: 权限与体验分层**: 明确后端授权点、前端权限状态来源、显隐/禁用/提示策略、无权限异常流和审计证据，确保安全边界不落在前端硬编码上。
-5. **Phase 5: 架构视图**: 使用 Mermaid 绘制架构图/时序图。
-6. **Phase 6: 风险分级审批 (Human-in-the-Loop)**:
+2. **Phase 2: 方向防火墙**: 对所有高影响方向冻结证明包并给出明确状态。`DIRECTION_UNPROVEN` 不得进入实现；`DIRECTION_PROVEN_FOR_EXPERIMENT` 只允许隔离、可逆、不会形成新事实源的实验；只有绑定准确版本和用户授权的 `DIRECTION_APPROVED_FOR_IMPLEMENTATION` 才能交给编码纪律。外部候选的首轮仍受根入口 3 次本地读取、2 份原始材料和 1 次状态探针约束，不自动续杯。
+3. **Phase 3: 业务可读方案推演**: 提供 2-3 个技术路线对比，默认首选“原生/单体”。每个方案必须包含：解决什么问题、业务/用户价值、主要工作、成本风险限制、协作角色。
+4. **Phase 4: 领域语言、标准件与契约归一**: 先用真实业务场景核对关键术语、同义词、边界和代码命名，再明确哪些函数、模型、表格、配置、全局参数、接口契约、权限规则、状态机、事件名和错误码必须复用现有入口；哪些需要新增单一权威入口；哪些只是相似但业务语义不同，不能合并。
+5. **Phase 5: 权限与体验分层**: 明确后端授权点、前端权限状态来源、显隐/禁用/提示策略、无权限异常流和审计证据，确保安全边界不落在前端硬编码上。
+6. **Phase 6: 架构视图**: 使用 Mermaid 绘制架构图/时序图。
+7. **Phase 7: 风险分级审批 (Human-in-the-Loop)**:
    - 仓库内可逆、边界明确且用户已要求实施的普通设计，可继续实现并验证，不重复索取同义确认。
-   - 技术栈替换、不可逆数据迁移、权限模型改变、公开发布、显著新增成本或跨团队契约变更，必须列出具体动作、影响、回滚与版本摘要，并等待明确批准；内容实质变化后重新审批。
+   - 高影响方向必须列出证明包、状态、具体动作、影响、回滚与版本摘要并等待明确批准；内容实质变化后旧批准失效。技术栈替换、不可逆数据迁移、权限模型改变、公开发布、显著新增成本或跨团队契约变更不得仅凭通用授权进入实现。
 
 ## Guardrails (诚实边界)
-- **禁止越界编码**：需求方向、风险边界或高影响方案尚未决定时不抢跑；已明确要求且可逆的仓库内实现主动完成。
+- **方向写入屏障**：状态不是 `DIRECTION_APPROVED_FOR_IMPLEMENTATION` 时，禁止对高影响方向进行产品/仓库持久写入、暂存、提交、发布、部署或外部副作用；隔离实验不得被包装成正式实现。
+- **禁止方案名偷渡需求**：外部概念、流行架构和自己的上一版提议都不能绕过问题与原生基线。没有证实现有能力缺口时，不得用“先设计、以后验证”推进持久索引、缓存、生成器、第二事实源或控制面。
 - **技术栈异议权**：若指定工具的总成本明显不合理，给出证据和更轻替代；最终选择由约束与授权决定，不按年龄一票否决。
 - **单一权威入口**：不得让同一个模型、表格、全局参数、接口契约、权限规则或错误码在多个层重复定义。必须说明权威入口在哪里，调用方如何复用。
 - **后端权限边界**：权限控制必须落在后端；前端显隐只是体验层。架构方案必须说明授权校验点和前端表现，不得把前端硬编码当成安全策略。

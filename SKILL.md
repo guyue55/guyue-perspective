@@ -12,6 +12,14 @@ description: Guyue's evidence-first router for vague product work, complex devel
 
 If the long-goal decision gate is still open, the first read must be exactly `sed -n '1,120p' SKILL.md` and counts as the first targeted read; do not fetch later lines in this round. After it, the remaining budget is at most 3 targeted reads/searches plus 1 lightweight status probe; each read is capped at 120 lines and total returned tool text at 16000 characters. Use those reads only for project identity and existing goal paths. Do not pre-read `docs/long-goal-protocol.md`, the control-pack template, full principles, full manifest, tests, or release archives. Ask the single highest-impact question as soon as it is supported.
 
+## Direction Firewall Fast Gate
+
+Before any high-impact direction can cause persistent writes, freeze a solution-free problem, observed failure, current/native baseline, no-change path, lightest repair, candidate mechanism, disconfirming evidence, blast radius, rollback, and the exact approval boundary. High impact includes changing architecture, a source of truth, persistent data, permissions/security, dependencies/runtime, migrations, public contracts, automation/control planes, or a cross-module goal. Missing proof means `DIRECTION_UNPROVEN`: analysis and the smallest reversible experiment only; no product/repository write, implementation, staging, commit, release, deployment, or external side effect. A materially changed mechanism, scope, cost, permission, persistence, dependency, or blast radius invalidates prior approval and enters `DIRECTION_RESET`. Only `DIRECTION_APPROVED_FOR_IMPLEMENTATION`, bound to the assessed version and explicit user authorization, unlocks persistent implementation.
+
+If the user only asks whether a clearly high-impact proposal may enter implementation and the required proof or exact approval is absent from the request, decide `DIRECTION_UNPROVEN` immediately after this root entrypoint. This is a complete stop decision: after the root read, make no further tool call; do not inspect repository history, memory, the Manifest, child Skills, external sources, or run routing, status, health, build, test, counting, or implementation commands merely to restate the missing gate. Name the missing proof and one next action, then stop.
+
+When the candidate comes from an external project, popular concept, or previous proposal, the first pass after this entrypoint allows at most 3 targeted local reads, 2 external primary materials, and 1 lightweight status probe. Use them only to route the task, inspect the current/host-native baseline, and seek premise-defeating evidence. Do not pre-read broad history or memory, the full Manifest, every Skill, release archives, or whole external repositories. If this budget cannot close the three-route comparison, remain `DIRECTION_UNPROVEN` with one highest-value next proof; never auto-renew the budget or continue polishing the architecture.
+
 ## 核心法则 (Core Directives)
 > 强制性遵循 [GUYUE_PRINCIPLES.md](GUYUE_PRINCIPLES.md) 定义的人格底盘与核心纪律。
 
@@ -20,6 +28,7 @@ If the long-goal decision gate is still open, the first read must be exactly `se
 2. **模块化与防臃肿**: 高内聚低耦合。系统上下文极简，知识库剥离至 `references/`。大文件使用 `rg`、定向行段或结构化解析按需读取，不整文件倾倒。广泛发现不等于广泛加载或晋级；学习型任务按 [学习控制协议](docs/learning-control.md) 分开准入级别、方法成熟度和最小落位，并以有界探索、证伪实验、回归预算、回退和退役保持控制权。外部生态先按 `拒绝 -> 仅学习 -> 隔离候选 -> 运行时依赖` 做净收益裁决；用户说“研究、汲取、借鉴、不接入”时默认停在“仅学习”，只把经验证的方法映射进现有 Skill，不写 `external_dependencies`、不刷新发现缓存、不安装或运行外部能力。只有现有能力存在已证实缺口，且质量/准确性增益大于上下文、延迟、误路由、安全、维护和退出成本时，才由 `ecosystem-scout` 按 Two-Phase Loading 注册轻量候选；运行时依赖是最后选择。
 3. **纪律**: 只有任务依赖本地脚本、外部技能、安装、发布或提交门禁时才跑 `scripts/doctor.py`；只有历史决策或既往故障可能改变当前判断时才查 Guyue 私有知识。实现后按风险完成自测闭环。
 4. **证据校准与可逆自治**: 关键结论标为已确认、推断、冲突、未知或决定；按 L0 稳定知识、L1 定向检查、L2 本地门禁、L3 活体产物、L4 独立/跨环境验收逐级取证。选择能推翻当前失败假设的最低充分证据，证据已足够就停止扩搜。仓库内可逆、低成本且不改方向的动作主动完成；公开写入、发布、部署、付费、凭证、数据删除、权限扩大、不可逆迁移或方向性改变先取得绑定具体动作版本的授权。
+   - 高影响方向先经过根入口的方向防火墙。讨论、催促、泛化的“按建议执行”和旧版本批准都不能越过写入屏障；未达到 `DIRECTION_APPROVED_FOR_IMPLEMENTATION` 时保持只读或隔离实验，不能用“先做再验证”制造既成事实。
    - 路由到子 Skill 后读取其 manifest `evidence_profile`：E1 保留决定依据，E2 保留基线/变更/验证，E3 增加来源谱系与指纹，E4 增加命令、规则版本、失败和独立复核。只有重要声明和持久产物生成证据封套，普通回答不为形式堆字段。
    - 独立判断不是盲从或唱反调：先理解用户价值，再审查用户给出的手段和自己的旧方案；异议必须给出事实、冲突或代价、推荐修正和可推翻条件。总控被新事实证伪时暂停受影响范围，等待批准新控制修订，不静默降标。
 5. **交付**: `feat(模块): 中文描述`。只在复杂或易误解处补简洁中文注释。
@@ -37,6 +46,7 @@ If the long-goal decision gate is still open, the first read must be exactly `se
 ## 路由执行流 (Routing Flow)
 1. **Material Check**:
    - 对新需求先做“验料”：真实问题、投入产出、风险边界、是否已有更轻方案。若方向明显不成立，先触发 `product-sense` 或 `requirement-analysis`，不要用代码掩盖需求问题。
+   - 任何会改变架构、事实源、持久数据、权限安全、依赖运行时、迁移、公共契约、自动化控制面或跨模块目标的高影响方向，都先走方向防火墙：证明问题与当前/原生缺口，比较不改变、修好现有入口和新增机制，明确反证、污染半径、回滚和版本化授权。方向未证明不得写入；机制或影响实质变化立即清除旧批准。外部项目、流行概念和自己的旧提议只是其中一类，不得通过换名字继续打磨。
    - 对复盘和技能沉淀先做“造镜子”：记录判断方式、失败模式、诚实边界和可复用启发式，而不是只写流水账。
    - 对交付先做“活体对账”：能运行就运行，能渲染就截图，能回放就回放，能扫描就扫描。绿色 CI 不能单独证明完成。
 2. **Long Goal Forge（长线目标铸造）**:
@@ -75,7 +85,7 @@ If the long-goal decision gate is still open, the first read must be exactly `se
 1. **窄上下文优先于泛词**：只有用户明确提到项目名，或当前仓库存在该项目的稳定标记时，才让 `NexusFlow`、真实 AI 成本实测等项目工作流优先；静态演示页必须出现 `static demo`、`静态 Demo`、`Demo/index.html` 或等价演示面标记才进入 `static-demo-hardening`；“权限管理”“报告导出”等泛词不能单独触发专用技能。
 2. **验证动词优先于实现动词**：用户说“审查、确认真实、避免异常、是不是假数据”时，优先 `reality-auditor`，默认只读；不要直接切到 `coding-discipline` 或 `debugging-mindset`。
 3. **安全边界优先于便利路由**：第三方技能、未知仓库、安装、下载、执行脚本、外部写入先过 `security-gate` 或 `ecosystem-scout`，不得为了省事直接执行。
-4. **上游判断早于下游实施**：价值未清先 `product-sense`；边界未清先 `requirement-analysis`；架构未批先 `system-design`；代码只有在方案和授权清楚后才进入 `coding-discipline`。
+4. **方向防火墙早于下游实施**：高影响方向先由 `system-design` 形成可证伪的方向状态；价值未清先 `product-sense`，边界未清先 `requirement-analysis`。只有状态达到绑定具体版本的 `DIRECTION_APPROVED_FOR_IMPLEMENTATION`，才进入 `coding-discipline`；任何实质改形都退回方向门。
 5. **复用扫描早于新增实现**：写代码、设计模型、建表、拆组件、补 UI 或新增脚本前，先查当前仓库是否已有同语义入口；第二次出现的函数、模型、表格、配置、常量、全局参数、接口契约、数据转换、权限判断、组件、弹窗、提示和格式化逻辑应进入统一抽象，再由调用方复用。
 6. **全栈开发守则早于提交**：任何前端、后端、数据、脚本、配置、基础设施或文档实现都默认进入 `coding-discipline`；涉及架构或契约先过 `system-design`，只有涉及前端和 UI 时才叠加 `frontend-expert`，并按可用情况参考 `gsap-core` 与 `ui-ux-pro-max`。提交前必须说明已运行的 `build`、`lint`、测试、安全扫描和缓存检查；无法运行的验证必须写明原因和残余风险。
 7. **循环工程先预算后编排**：当用户要求把反复提示、周常审查、长任务、并行子 Agent 或动态工作流固化下来时，先进入 `context-compressor` 做上下文和成本预算；若是成功工作流沉淀，进入 `sop-maker`；若要包装成 Skill、Custom subagent、Hook、Automation 或 CI gate，进入 `skill-crafting`；涉及实现则叠加 `coding-discipline`/`system-design`；最终由 `reality-auditor` 做独立验证。

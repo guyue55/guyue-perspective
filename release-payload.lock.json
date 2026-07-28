@@ -19,7 +19,7 @@
     },
     {
       "path": "GUYUE_PRINCIPLES.md",
-      "sha256": "055cc2a2bf3784fa890e930e6c0efe943882b699ca19995aae2e9187f0dfdfb8"
+      "sha256": "471a9e2de7092e92067c04396974a3f0e8b87a64af8c317f14ebffdef9709ca6"
     },
     {
       "path": "LICENSE",
@@ -35,7 +35,7 @@
     },
     {
       "path": "SKILL.md",
-      "sha256": "54f10ab83ddc6396abbe1a50aedffa461bbef3ef8aff9f8d414ae00a43f89430"
+      "sha256": "fcb2f17d3fd9acbcc8578f52677becd31db19b21aca35407cab5d32464fe787b"
     },
     {
       "path": "assets/demo.gif",
@@ -47,7 +47,7 @@
     },
     {
       "path": "docs/evaluation.md",
-      "sha256": "483477d6b8de3bdf95c2fb87609a3419ec0362cab6ed746743b7c8d1dde77739"
+      "sha256": "a59b220f0ce19533634f9591e3f461b084c20d5574cf7f8a4660126b50a11043"
     },
     {
       "path": "docs/guyue-capability-discovery-evidence-audit-plan-2026-07-12.md",
@@ -87,7 +87,7 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "sha256": "5a6709a8ca93ea310df34e0ecdc3b8684c7b9587a5b81dda6a9cae04f31369fd"
+      "sha256": "807ad2237fbe5dfdcfe965589516816c3198deec2692ac680360bbfa5f9cbde4"
     },
     {
       "path": "docs/release-v1.60.md",
@@ -115,7 +115,7 @@
     },
     {
       "path": "evals/behavior-contracts.json",
-      "sha256": "21812afb93123994413807fd7c8af3191b3eee8f4051434040273e80b66ef5e4"
+      "sha256": "d4e19ad1fbacb6c84210962e0b2b287eb4ddfc76a560138014147ebfe4531a44"
     },
     {
       "path": "evals/capability-collaboration.json",
@@ -135,7 +135,7 @@
     },
     {
       "path": "evals/capability-routing.json",
-      "sha256": "91c2d0d30903301ec6a9cc357d83c94d8c69cd81499d97be1d4d4046f8f80d0b"
+      "sha256": "52e323cca41c2360ad03db31d72b68ccfb57fa50cbec728b5697d84aaabbce35"
     },
     {
       "path": "evals/evidence/aesthetic-review-2026-07-02.md",
@@ -623,7 +623,7 @@
     },
     {
       "path": "examples/quickstart-output.md",
-      "sha256": "78eb1ea1896fe803672c2aaaf5cde97e40a82ae5aaf105ec42c07ea7b72a50cd"
+      "sha256": "24362644001583bf9fbffce9c9d4182e6469bb966ef4fafbbefff327190e6f0e"
     },
     {
       "path": "examples/saas-conversion-demo/index.html",
@@ -703,7 +703,7 @@
     },
     {
       "path": "scripts/ci_validate_skills.py",
-      "sha256": "e43289ba42168f20d1573d6b7aca57372ec5c649130d68cf4475fd342f82d56b"
+      "sha256": "a9931658f5dcbca70ae35cfe8f404d476c18b7fd53f0b73f90d23156d2f9adb9"
     },
     {
       "path": "scripts/claude_extractor.py",
@@ -1035,7 +1035,7 @@
     },
     {
       "path": "test-prompts.json",
-      "sha256": "cb6a1a1f500a3d3855422d338a721a8a6847d55516a6ada50722ebd43ba7ea4e"
+      "sha256": "6cc76c2a805a9cb971f216ada86cad47b112e955a077a1378bc189ad03b9ea80"
     }
   ]
 }

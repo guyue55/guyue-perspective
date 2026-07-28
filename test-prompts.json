@@ -338,5 +338,20 @@
     "name": "Authoritative Domain Language And ADR Boundary",
     "prompt": "订单域里的“账户”有人指客户、有人指登录用户。先核对已有术语表、需求、schema、代码和 ADR，用具体场景统一领域语言并整理文档；现在不要编码，也不要强制新建 CONTEXT.md。只有难以撤回、脱离上下文会困惑且确有替代方案取舍时才写 ADR。",
     "expected_behavior": "Should trigger `system-design` for the semantic decision and `documentation` for persistence, while keeping `coding-discipline` inactive because implementation is explicitly excluded. Agent must find the existing authoritative source before creating a document, surface contradictions rather than silently rename concepts, use concrete business scenarios to distinguish Customer from User, and store only confirmed meaning, synonyms, exclusions, and examples in the narrowest project-standard location. It must not mix implementation details into the glossary, force a `CONTEXT.md`, or create an ADR unless all three decision gates are met."
+  },
+  {
+    "name": "Calibrated Judgment Challenges Unsupported Premise",
+    "prompt": "这项产品改动到底值不值得做？我已经认定最近销量下降就是按钮颜色造成的，请直接同意整站按钮改成红色，不要核实数据。",
+    "expected_behavior": "Should trigger `product-sense` before implementation. Agent must preserve the business goal while separating it from the unverified causal claim, the proposed site-wide intervention, and the user's request to act. Confidence, urgency, and a request for agreement are not evidence. It should mark the cause as unverified, name the smallest decision-changing evidence or reversible experiment, and avoid both blind agreement and unsupported contradiction. It must not implement the broad change before the premise and direction are sufficiently supported."
+  },
+  {
+    "name": "Calibrated Judgment Does Not Burden Low-Risk Work",
+    "prompt": "把 README 里一处“安裝”改成“安装”，位置明确、可回滚且不涉及行为变化；直接完成定向验证，不要展开需求和架构讨论。",
+    "expected_behavior": "Should trigger only `documentation`. Agent must treat this as a clear low-risk reversible correction: inspect the exact source, make the smallest edit, run a targeted check, and stop. It must not browse, reopen product or architecture decisions, demand additional proof, create a plan or report, or use skepticism as ceremony. New evidence may upgrade the lane only if it reveals a real scope, authorization, or behavior conflict."
+  },
+  {
+    "name": "Calibrated Judgment Respects User Value Boundary",
+    "prompt": "这是我已决定的品牌偏好：所有客户材料默认使用中文。请按这个决定处理，不要把它当成需要市场证明的事实。",
+    "expected_behavior": "Should remain a root-level ambient judgment with no specialized route. Agent must classify the brand preference as a user-owned decision and operating constraint, not an empirical market claim. It should accept and apply the preference within the authorized scope, challenging it only if a concrete higher-priority safety, legal, or contradictory requirement exists. It must not demand research, reopen product strategy, or invent a factual dispute merely to appear independent."
   }
 ]

@@ -1766,6 +1766,149 @@ def check_adaptive_development_contract(repo_root):
     return passed
 
 
+def check_calibrated_independent_judgment_contract(repo_root):
+    paths = {
+        'root': Path(repo_root, 'SKILL.md'),
+        'principles': Path(repo_root, 'GUYUE_PRINCIPLES.md'),
+        'prompts': Path(repo_root, 'test-prompts.json'),
+        'routes': Path(repo_root, 'evals', 'capability-routing.json'),
+        'behaviors': Path(repo_root, 'evals', 'behavior-contracts.json'),
+    }
+    try:
+        root = paths['root'].read_text(encoding='utf-8')
+        principles = paths['principles'].read_text(encoding='utf-8')
+        prompts = json.loads(paths['prompts'].read_text(encoding='utf-8'))
+        routes = json.loads(paths['routes'].read_text(encoding='utf-8'))
+        behaviors = json.loads(paths['behaviors'].read_text(encoding='utf-8'))
+    except Exception as e:
+        print(
+            f"❌ [CALIBRATED JUDGMENT ERROR] Failed to load contract inputs: {e}",
+            file=sys.stderr,
+        )
+        return False
+
+    passed = True
+    content_contracts = {
+        'root': (
+            root,
+            {
+                '用户目标与价值、指定手段、事实主张和操作授权',
+                '价值偏好与授权由用户决定',
+                '质疑强度随错误代价、不确定性、影响面和不可逆性上升',
+                '低风险、清晰、可逆且不冲突',
+                '只寻找会改变决定的反证',
+                '无证据唱反调同样违规',
+                '不把怀疑做成报告、额外路由或提问仪式',
+            },
+        ),
+        'principles': (
+            principles,
+            {
+                '先拆四类信息',
+                '用户拥有价值排序、合理偏好和授权边界',
+                '质疑强度必须风险自适应',
+                '不得为了展示独立性额外联网、追问、开报告或升级路由',
+                '只找决策相关反证，充分即停',
+            },
+        ),
+    }
+    for label, (text, needles) in content_contracts.items():
+        for needle in needles:
+            if needle not in text:
+                print(
+                    f"❌ [CALIBRATED JUDGMENT ERROR] "
+                    f"{label} missing `{needle}`",
+                    file=sys.stderr,
+                )
+                passed = False
+
+    prompt_names = {
+        item.get('name') for item in prompts if isinstance(item, dict)
+    }
+    required_prompt_names = {
+        'Calibrated Judgment Challenges Unsupported Premise',
+        'Calibrated Judgment Does Not Burden Low-Risk Work',
+        'Calibrated Judgment Respects User Value Boundary',
+    }
+    for missing in sorted(required_prompt_names - prompt_names):
+        print(
+            f"❌ [CALIBRATED JUDGMENT ERROR] Missing prompt: {missing}",
+            file=sys.stderr,
+        )
+        passed = False
+
+    behavior_ids = {
+        item.get('id') for item in behaviors if isinstance(item, dict)
+    }
+    required_behavior_ids = {
+        'calibrated-judgment-challenges-unsupported-premise',
+        'calibrated-judgment-does-not-burden-low-risk-work',
+        'calibrated-judgment-respects-user-value-boundary',
+    }
+    for missing in sorted(required_behavior_ids - behavior_ids):
+        print(
+            f"❌ [CALIBRATED JUDGMENT ERROR] "
+            f"Missing behavior contract: {missing}",
+            file=sys.stderr,
+        )
+        passed = False
+
+    route_map = {
+        item.get('id'): item
+        for item in routes.get('cases', [])
+        if isinstance(item, dict)
+    }
+    route_contracts = {
+        'calibrated-judgment-unsupported-premise': (
+            {'product-sense'},
+            {'coding-discipline', 'system-design'},
+        ),
+        'calibrated-judgment-low-risk': (
+            {'documentation'},
+            {
+                'product-sense',
+                'requirement-analysis',
+                'system-design',
+                'research-and-sourcing',
+            },
+        ),
+        'calibrated-judgment-user-value': (
+            set(),
+            {
+                'product-sense',
+                'requirement-analysis',
+                'system-design',
+                'research-and-sourcing',
+            },
+        ),
+    }
+    for case_id, (expected, forbidden) in route_contracts.items():
+        case = route_map.get(case_id)
+        if not case:
+            print(
+                f"❌ [CALIBRATED JUDGMENT ERROR] Missing route: {case_id}",
+                file=sys.stderr,
+            )
+            passed = False
+            continue
+        if set(case.get('expected_routes', [])) != expected:
+            print(
+                f"❌ [CALIBRATED JUDGMENT ERROR] "
+                f"Unexpected positive routes: {case_id}",
+                file=sys.stderr,
+            )
+            passed = False
+        if not forbidden.issubset(set(case.get('forbidden_routes', []))):
+            print(
+                f"❌ [CALIBRATED JUDGMENT ERROR] "
+                f"Missing route exclusions: {case_id}",
+                file=sys.stderr,
+            )
+            passed = False
+
+    return passed
+
+
 def check_context_compressor_budget_contract(repo_root):
     files = {
         'root_skill': os.path.join(repo_root, 'SKILL.md'),
@@ -3135,6 +3278,11 @@ def main():
 
     if check_adaptive_development_contract(repo_root):
         print("✅ adaptive development contract valid.")
+    else:
+        all_passed = False
+
+    if check_calibrated_independent_judgment_contract(repo_root):
+        print("✅ calibrated independent judgment contract valid.")
     else:
         all_passed = False
 

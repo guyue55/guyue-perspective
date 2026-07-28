@@ -68,6 +68,9 @@
     {"id":"cognitive-expansion-ambient-micro","prompt_name":"Trigger Cognitive Expansion Micro","expected_routes":["cognitive-expansion"],"forbidden_routes":["research-and-sourcing"]},
     {"id":"adaptive-development-standard","prompt_name":"Adaptive Development Standard Lane","expected_routes":["coding-discipline"],"forbidden_routes":["system-design"]},
     {"id":"adaptive-development-lightweight","prompt_name":"Adaptive Development Lightweight Boundary","expected_routes":["coding-discipline"],"forbidden_routes":["system-design"]},
-    {"id":"authoritative-domain-language","prompt_name":"Authoritative Domain Language And ADR Boundary","expected_routes":["system-design","documentation"],"forbidden_routes":["coding-discipline"]}
+    {"id":"authoritative-domain-language","prompt_name":"Authoritative Domain Language And ADR Boundary","expected_routes":["system-design","documentation"],"forbidden_routes":["coding-discipline"]},
+    {"id":"calibrated-judgment-unsupported-premise","prompt_name":"Calibrated Judgment Challenges Unsupported Premise","expected_routes":["product-sense"],"forbidden_routes":["coding-discipline","system-design"]},
+    {"id":"calibrated-judgment-low-risk","prompt_name":"Calibrated Judgment Does Not Burden Low-Risk Work","expected_routes":["documentation"],"forbidden_routes":["product-sense","requirement-analysis","system-design","research-and-sourcing"]},
+    {"id":"calibrated-judgment-user-value","prompt_name":"Calibrated Judgment Respects User Value Boundary","expected_routes":[],"forbidden_routes":["product-sense","requirement-analysis","system-design","research-and-sourcing"]}
   ]
 }

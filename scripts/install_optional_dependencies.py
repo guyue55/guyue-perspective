@@ -83,20 +83,6 @@ KNOWN_DEPENDENCIES = {
         "risk": "green",
         "risk_note": "skill subdirectory passed local heuristic preflight",
     },
-    "cangjie-skill": {
-        "repo": "https://github.com/kangarooking/cangjie-skill",
-        "source_name": "cangjie-skill",
-        "skill_subpath": ".",
-        "risk": "yellow",
-        "risk_note": "contains external links in documentation",
-    },
-    "video-downloader": {
-        "repo": "https://github.com/kangarooking/kangarooking-skills",
-        "source_name": "video-downloader-source",
-        "skill_subpath": "video-downloader",
-        "risk": "red",
-        "risk_note": "contains external command execution helpers and API key examples",
-    },
     "skillspector": {
         "repo": "https://github.com/NVIDIA/SkillSpector",
         "source_name": "skillspector",

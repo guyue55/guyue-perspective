@@ -20,6 +20,17 @@ Create a dedicated folder only when the user asks for an actual extraction. Do n
 
 Every downloaded or generated file records `sha256`, byte size, and verification status. For planning-only or blocked assets, use `sha256: null` with an explicit status; never omit the checksum field or invent a digest before a file exists.
 
+## Downstream Distillation Handoff
+
+When material will be passed to `book-distiller`, `skill-crafting`, or another methodology extractor, provide one normalized handoff instead of coupling to a downloader-specific directory:
+
+- source URL, platform, title/author when known, extraction time, authorization basis, selected mode, and tool/provider version;
+- transcript or caption origin (`platform_caption`, `ASR`, `user_provided`), language, timestamp coverage, known gaps, confidence/quality notes, and transformations;
+- file names, byte sizes, SHA-256 values, and field-level provenance;
+- missing/failed assets, blocked segments, and what must not be inferred from them.
+
+The downstream Skill consumes this contract, not the downloader implementation. Acquisition failure remains an explicit material gap; it must not be repaired by invented transcript content.
+
 ## Authorization Boundary
 - Only extract media the user owns, is authorized to process, or that is explicitly licensed for download and reuse.
 - Do not bypass login, paywalls, DRM, geo-blocking, private groups, or platform anti-abuse controls.

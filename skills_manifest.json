@@ -463,7 +463,9 @@
                 "彻底重做",
                 "全自动 AI 平台",
                 "决定需求和架构",
-                "先判断值不值得做"
+                "先判断值不值得做",
+                "防绕过验收",
+                "任务验收标准"
             ],
             "negative_intent": [
                 "方案已经确认",
@@ -692,14 +694,18 @@
                 "integrate",
                 "找一个适合接入",
                 "图表渲染 Agent 技能",
-                "第三方工具"
+                "第三方工具",
+                "研究外部 Skill",
+                "汲取外部技能",
+                "只学习不接入",
+                "汲取精华",
+                "汲取的精华"
             ],
             "negative_intent": [
                 "优先查古月本地精选库",
-                "不要收纳第三方 skill",
                 "本地精选库"
             ],
-            "description": "External skill, plugin, and tool discovery, intake, or quick-install assistance with source checks, explicit approval, security-gate handoff, smoke tests, and anti-bloat boundaries; not local catalog software advice.",
+            "description": "External skill, plugin, and tool research, learn-only method absorption, intake, or quick-install assistance with source checks, explicit approval, security-gate handoff, smoke tests, net-benefit gates, and anti-bloat boundaries; not local catalog software advice.",
             "root_exposure": "explicit",
             "evidence_profile": "E3-lineage",
             "activation_policy": "model-or-explicit",
@@ -811,7 +817,10 @@
                 "book-distiller",
                 "方法论文档",
                 "提炼成可复用技能",
-                "提取决策框架"
+                "提取决策框架",
+                "这本书的方法论",
+                "提炼成可复用的 Agent 技能",
+                "长视频转写稿蒸馏"
             ],
             "description": "Distill books and long-form methodologies into skill-shaped workflows; not a normal summary or project document.",
             "root_exposure": "explicit",
@@ -1302,47 +1311,6 @@
             "activation_policy": "external-candidate",
             "evidence_profile": "E3-lineage",
             "risk_level": "medium",
-            "relationship": "complements-built-in"
-        },
-        {
-            "name": "cangjie-skill",
-            "description": "将书籍、视频知识蒸馏为Agent原子技能",
-            "package_id": "kangarooking/cangjie-skill",
-            "trigger_intent": [
-                "知识蒸馏",
-                "仓颉",
-                "沉淀书本知识",
-                "沉淀视频技能"
-            ],
-            "command": "python3 scripts/install_optional_dependencies.py --install --only cangjie-skill",
-            "url": "https://github.com/kangarooking/cangjie-skill",
-            "ref": "78899a9ec906451c1d1685cb0c248fe2441bbb89",
-            "required": false,
-            "type": "agent-skill",
-            "root_exposure": "external-candidate",
-            "activation_policy": "external-candidate",
-            "evidence_profile": "E3-lineage",
-            "risk_level": "medium",
-            "relationship": "complements-built-in"
-        },
-        {
-            "name": "video-downloader",
-            "description": "视频下载与自动化处理技能",
-            "package_id": "kangarooking/kangarooking-skills/video-downloader",
-            "trigger_intent": [
-                "下载视频",
-                "视频抓取",
-                "video downloader"
-            ],
-            "command": "python3 scripts/install_optional_dependencies.py --install --only video-downloader",
-            "url": "https://github.com/kangarooking/kangarooking-skills/tree/main/video-downloader",
-            "ref": "528b53c1005812b1203a9abe5a1f6b9b01f1ed98",
-            "required": false,
-            "type": "agent-skill",
-            "root_exposure": "external-candidate",
-            "activation_policy": "external-candidate",
-            "evidence_profile": "E3-lineage",
-            "risk_level": "high",
             "relationship": "complements-built-in"
         },
         {

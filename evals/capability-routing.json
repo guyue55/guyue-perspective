@@ -22,6 +22,7 @@
     {"id":"product-sense-distribution","prompt_name":"Trigger Product Sense","expected_routes":["product-sense"],"forbidden_routes":["coding-discipline"]},
     {"id":"skill-crafting-new-skill","prompt_name":"Trigger Skill Crafting","expected_routes":["skill-crafting"],"forbidden_routes":["documentation"]},
     {"id":"ecosystem-scout-chart","prompt_name":"Trigger Ecosystem Scout","expected_routes":["ecosystem-scout"],"forbidden_routes":["software-advisor"]},
+    {"id":"ecosystem-learn-only","prompt_name":"External Skill Method Absorption Without Intake","expected_routes":["ecosystem-scout"],"forbidden_routes":["skill-crafting"]},
     {"id":"website-cloner-owned","prompt_name":"Trigger AI Website Cloner","expected_routes":["ai-website-cloner"],"forbidden_routes":[]},
     {"id":"software-advisor-local","prompt_name":"Trigger Software Advisor","expected_routes":["software-advisor"],"forbidden_routes":["ecosystem-scout"]},
     {"id":"taste-review","prompt_name":"Trigger Taste Aesthetics","expected_routes":["taste-aesthetics"],"forbidden_routes":["frontend-expert"]},

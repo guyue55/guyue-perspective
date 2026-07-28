@@ -27,7 +27,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "b059f3d20071e624d514374901df76caeb7612625cb671ed3f97e179e4553cd9"
+      "sha256": "e5ae8ee14f1e6f946318e4e010c3e0ef772018103da5e13e2c591814fd51326a"
     },
     {
       "path": "RTK.md",
@@ -35,7 +35,7 @@
     },
     {
       "path": "SKILL.md",
-      "sha256": "9cc1508269afe14074d6d3fbea8f83912a65c8678773b2447636b67f02562da2"
+      "sha256": "79f1b64d64fab8779fb1dd5df03c3dc40fc3a6bf9644d41870d911ed808bdbc7"
     },
     {
       "path": "assets/demo.gif",
@@ -47,7 +47,7 @@
     },
     {
       "path": "docs/evaluation.md",
-      "sha256": "79f6f2cd25f187b325becfcd18c623dd72546e1dfa675989c7327f6c35c241ab"
+      "sha256": "89858de0d0eac2aa6fd1a470380a9ef8a8d08186d8d33d0480baa6fa55088d56"
     },
     {
       "path": "docs/guyue-capability-discovery-evidence-audit-plan-2026-07-12.md",
@@ -83,7 +83,7 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "sha256": "0dfab9c63ff8f6fbc839547db78ae81871a0900967e8b42b1ae79fd9c89053c0"
+      "sha256": "a1a7b67ae54f7f2957bd0d560336ab2c888eefd981755b89fb33211c4ff7691c"
     },
     {
       "path": "docs/release-v1.60.md",
@@ -131,7 +131,7 @@
     },
     {
       "path": "evals/capability-routing.json",
-      "sha256": "3c32e85ed0fa81c6bdff1fbebcfdf617adb5f580c98fc804be8c64a73a8d0a42"
+      "sha256": "cac8a2c42a98f3f5d5c3e4fb692c36957e58ded81cfaaee60e5341233e4d80a6"
     },
     {
       "path": "evals/evidence/aesthetic-review-2026-07-02.md",
@@ -699,7 +699,7 @@
     },
     {
       "path": "scripts/ci_validate_skills.py",
-      "sha256": "6ddbec23d58d81a81d8c19e06712160c7e06e7da6fd2ae7b7a5cd317f8b1a53e"
+      "sha256": "03ba96daba27038151b27eabb21b1d5425d5934eae2654a2c720270147999476"
     },
     {
       "path": "scripts/claude_extractor.py",
@@ -735,7 +735,7 @@
     },
     {
       "path": "scripts/install_optional_dependencies.py",
-      "sha256": "b7f830570e51dbd5772d7bde02c8d0b7723a6fadaf797bf70d73c87e7a74c153"
+      "sha256": "a0e632ed87bf7f8f7216877ba2005696e7ca9074e259983c390b325e583dc5bc"
     },
     {
       "path": "scripts/memory_gc.py",
@@ -855,7 +855,7 @@
     },
     {
       "path": "skills/book-distiller/SKILL.md",
-      "sha256": "3349a321b1156bda4897fb2ba02d625991eb11f0f8e8009e049b2c4afa3d1c15"
+      "sha256": "1fde615908f3cd7491db6cc9e1225f1483e7174c48ab1639fae01f2b205e0c71"
     },
     {
       "path": "skills/code-minimalism/SKILL.md",
@@ -903,7 +903,7 @@
     },
     {
       "path": "skills/ecosystem-scout/SKILL.md",
-      "sha256": "313cf060c1a9a2a674947d9ffce6e818d663e69ee7ef08902bebbde17ef4c694"
+      "sha256": "37044d63d139144e8e6f51a0fb6845def351186a79f8422541bc401256ab7407"
     },
     {
       "path": "skills/frontend-expert/SKILL.md",
@@ -935,7 +935,7 @@
     },
     {
       "path": "skills/requirement-analysis/SKILL.md",
-      "sha256": "2f12ba4ddde50b0f19b9ed8dbb0c979632d336af7c59f9f13481186bf7e85fdb"
+      "sha256": "f371376f7a9dc96d286c74eecc2eeed4ab77a7aaf49ceb1bfc16995f4ee8aa18"
     },
     {
       "path": "skills/research-and-sourcing/SKILL.md",
@@ -947,7 +947,7 @@
     },
     {
       "path": "skills/skill-crafting/SKILL.md",
-      "sha256": "9343b2131f212d969a5a26b72026785a0f11fda73d1d06356d1b86d4b11addf9"
+      "sha256": "2435f4d6d0230b1fc7394e25782a9ab79e897b1ebc214c544685bfd73af4089d"
     },
     {
       "path": "skills/software-advisor/SKILL.md",
@@ -995,11 +995,11 @@
     },
     {
       "path": "skills/video-extractor/SKILL.md",
-      "sha256": "ec388b45ec3fa47e7013b71e6001c30dac63b3890f0958fd33f4c7bba57e767c"
+      "sha256": "c6d604bd0d966ad45bc6d24e2c9b198be9a8cef8f9ad68992239ea912a4ac0c6"
     },
     {
       "path": "skills_manifest.json",
-      "sha256": "a5692edcf12cf513c0fc809bc0a122394d824a3238322522f06fe46cfd5f3d0e"
+      "sha256": "cced3906e192ff58c035d1cf4006182409ae47af15a90338a3aed95dc05bcd8b"
     },
     {
       "path": "src/context_budget.py",
@@ -1031,7 +1031,7 @@
     },
     {
       "path": "test-prompts.json",
-      "sha256": "bb8a7cd71aff9345cadc89d3e7aa79e3a180799727e8e52ea256fc59662bd80d"
+      "sha256": "5136c71b8ad49eed2c37b2502c6a5cd54dafcc201c9e15b3132887bb12dd58e9"
     }
   ]
 }

@@ -1679,6 +1679,129 @@ def check_context_compressor_budget_contract(repo_root):
     return passed
 
 
+def check_external_capability_admission_contract(repo_root):
+    paths = {
+        'root': 'SKILL.md',
+        'scout': 'skills/ecosystem-scout/SKILL.md',
+        'craft': 'skills/skill-crafting/SKILL.md',
+        'book': 'skills/book-distiller/SKILL.md',
+        'video': 'skills/video-extractor/SKILL.md',
+        'requirements': 'skills/requirement-analysis/SKILL.md',
+        'installer': 'scripts/install_optional_dependencies.py',
+    }
+    try:
+        texts = {
+            label: Path(os.path.join(repo_root, rel_path)).read_text(encoding='utf-8')
+            for label, rel_path in paths.items()
+        }
+        manifest = json.loads(Path(os.path.join(repo_root, 'skills_manifest.json')).read_text(encoding='utf-8'))
+        prompts = json.loads(Path(os.path.join(repo_root, 'test-prompts.json')).read_text(encoding='utf-8'))
+    except Exception as e:
+        print(f"❌ [EXTERNAL ADMISSION ERROR] Failed to load contract inputs: {e}", file=sys.stderr)
+        return False
+
+    passed = True
+    content_contracts = {
+        'root': {
+            '拒绝 -> 仅学习 -> 隔离候选 -> 运行时依赖',
+            '用户说“研究、汲取、借鉴、不接入”时默认停在“仅学习”',
+            '纯研究/方法吸收不得写 manifest、安装或创建影子 Skill',
+        },
+        'scout': {
+            '外部能力净收益门',
+            '`拒绝`、`仅学习`、`隔离候选`、`运行时依赖`',
+            'candidate / verified / rejected',
+            '相邻 Skill 混淆测试',
+            '不得写 `external_dependencies`、运行发现缓存、安装或执行外部代码',
+        },
+        'craft': {
+            '能力/质量增益',
+            '新增上下文、延迟、误路由、依赖、安全、维护和迁移成本',
+            '相邻 Skill 混淆场景',
+            '回归预算',
+        },
+        'book': {
+            '`candidate / verified / rejected`',
+            '书外新样本',
+            '相邻 Skill 混淆',
+            '未证明净增益的内容不进入核心 Skill',
+        },
+        'video': {
+            'Downstream Distillation Handoff',
+            '`platform_caption`, `ASR`, `user_provided`',
+            'Acquisition failure remains an explicit material gap',
+        },
+        'requirements': {
+            '硬约束与建议分层，验收不可自证',
+            '跳过测试、放宽断言、修改验证器、替换被测对象、降低阈值或吞掉失败',
+            '防绕过与反向告警 (Anti-Circumvention)',
+        },
+    }
+    for label, required in content_contracts.items():
+        for missing in sorted(required - {needle for needle in required if needle in texts[label]}):
+            print(
+                f"❌ [EXTERNAL ADMISSION ERROR] Missing `{missing}` in {paths[label]}",
+                file=sys.stderr,
+            )
+            passed = False
+
+    skills = {
+        str(item.get('name', '')).strip(): item
+        for item in manifest.get('skills', [])
+        if isinstance(item, dict)
+    }
+    trigger_contracts = {
+        'ecosystem-scout': {'研究外部 Skill', '汲取外部技能', '只学习不接入', '汲取精华', '汲取的精华'},
+        'requirement-analysis': {'防绕过验收', '任务验收标准'},
+        'book-distiller': {'这本书的方法论', '提炼成可复用的 Agent 技能', '长视频转写稿蒸馏'},
+    }
+    for name, required in trigger_contracts.items():
+        actual = set(skills.get(name, {}).get('trigger_intent', []))
+        for missing in sorted(required - actual):
+            print(f"❌ [EXTERNAL ADMISSION ERROR] {name} missing trigger: {missing}", file=sys.stderr)
+            passed = False
+
+    scout_description = str(skills.get('ecosystem-scout', {}).get('description', ''))
+    for phrase in {'learn-only method absorption', 'net-benefit gates', 'anti-bloat boundaries'}:
+        if phrase not in scout_description:
+            print(f"❌ [EXTERNAL ADMISSION ERROR] ecosystem-scout description missing `{phrase}`", file=sys.stderr)
+            passed = False
+
+    research_only = {'leader', 'cangjie-skill', 'video-downloader'}
+    external_names = {
+        str(item.get('name', '')).strip()
+        for item in manifest.get('external_dependencies', [])
+        if isinstance(item, dict)
+    }
+    for leaked in sorted(research_only & external_names):
+        print(f"❌ [EXTERNAL ADMISSION ERROR] Research-only runtime candidate: {leaked}", file=sys.stderr)
+        passed = False
+    for source in sorted(research_only):
+        if f'"{source}": {{' in texts['installer']:
+            print(f"❌ [EXTERNAL ADMISSION ERROR] Research-only source remains installable: {source}", file=sys.stderr)
+            passed = False
+
+    prompt = next(
+        (item for item in prompts if item.get('name') == 'External Skill Method Absorption Without Intake'),
+        {},
+    )
+    prompt_text = json.dumps(prompt, ensure_ascii=False)
+    prompt_contract = {
+        'leader',
+        'cangjie-skill',
+        'video-downloader',
+        'learn-only',
+        'candidate/verified/rejected',
+        'sibling-Skill confusion',
+        'must not write these research-only sources to `external_dependencies`',
+    }
+    for missing in sorted(prompt_contract - {phrase for phrase in prompt_contract if phrase in prompt_text}):
+        print(f"❌ [EXTERNAL ADMISSION ERROR] Method-absorption prompt missing `{missing}`", file=sys.stderr)
+        passed = False
+
+    return passed
+
+
 def check_loop_engineering_contract(repo_root):
     files = {
         'principles': os.path.join(repo_root, 'GUYUE_PRINCIPLES.md'),
@@ -2411,6 +2534,11 @@ def main():
 
     if check_context_compressor_budget_contract(repo_root):
         print("✅ context-compressor budget contract valid.")
+    else:
+        all_passed = False
+
+    if check_external_capability_admission_contract(repo_root):
+        print("✅ external capability admission contract valid.")
     else:
         all_passed = False
 

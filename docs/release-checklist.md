@@ -40,7 +40,7 @@ Base tag: `v1.5.1`
 
 ## Verification
 
-- [ ] Current deterministic contract contains 56 structural prompts; update this count whenever `test-prompts.json` changes.
+- [ ] Current deterministic contract contains 57 structural prompts; update this count whenever `test-prompts.json` changes.
 - [ ] `python3 scripts/security_scanner.py` passes.
 - [ ] `python3 scripts/doctor.py` passes.
 - [ ] `python3 scripts/ci_validate_skills.py` passes.

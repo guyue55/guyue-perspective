@@ -2,14 +2,17 @@
   "schema_version": 1,
   "status": "pass",
   "runtime": "codex-cli",
-  "runtime_version": "codex-cli 0.144.1",
-  "observed_at": "2026-07-13T03:45:21.491208+00:00",
-  "source_commit": "54a99ea0791f058da56108495961e9451d76044d",
+  "runtime_version": "codex-cli 0.146.0-alpha.3.1",
+  "requested_model": "gpt-5.6-terra",
+  "observed_at": "2026-07-28T17:29:45.573664+00:00",
+  "source_commit": "197b6c6557739b9bbb898e5fb4dd2d870025ea7c",
   "worktree_state": "dirty",
-  "manifest_sha256": "a79cbd4804c7f3f9280f419e48509ce3b4816d8b139afcf7e1e7dee76e6f47d5",
-  "routing_sha256": "bd8850d2a4da51b03dbe711921d8c26125c2aef41b921bb9eb895eac19c3e027",
-  "passed": 26,
-  "total": 26,
+  "manifest_sha256": "de9365050d553a2e7b140a6aeadddda20ae6e30c21489ac6bbe9bc7c3e59774c",
+  "routing_sha256": "50372c55a70cb19392c5f99514fa2babbf7d09909307dc71107a37573eb91269",
+  "passed": 27,
+  "total": 27,
+  "expected_total": 27,
+  "stopped_early": false,
   "results": [
     {
       "skill": "sop-maker",
@@ -18,18 +21,20 @@
       "expected_final": "ACTIVATED:sop-maker",
       "observed_final": "ACTIVATED:sop-maker",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 90753,
-        "cached_input_tokens": 82944,
-        "output_tokens": 402,
-        "reasoning_output_tokens": 65
+        "input_tokens": 70988,
+        "cached_input_tokens": 55040,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 500,
+        "reasoning_output_tokens": 294
       },
-      "raw_event_sha256": "170367b278033bd9f0d88f7d46021daf9fccc5ca1e88ccfab9833e44f0bda231",
+      "raw_event_sha256": "c9046c7b2e10692db5e213dc27e2bfb2504058e1ad4adfceca10a08619bdfa04",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/sop-maker.json",
-      "audit_artifact_sha256": "a8d6926cf0ece8467e692b65c59bf4c808a5fff0681ea2e1dd1c2f9a509d75f8",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "69c4c4fa077f563f4b83cea92e53b4ce72ad4813794fd0d6db0583ccb412e7f0",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -39,18 +44,20 @@
       "expected_final": "ACTIVATED:frontend-expert",
       "observed_final": "ACTIVATED:frontend-expert",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 91765,
-        "cached_input_tokens": 69632,
-        "output_tokens": 373,
-        "reasoning_output_tokens": 114
+        "input_tokens": 71966,
+        "cached_input_tokens": 55040,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 455,
+        "reasoning_output_tokens": 276
       },
-      "raw_event_sha256": "18b21af4bf05acef7cf944f407d03cb0123f6b41f937c3f513d6433edd64498e",
+      "raw_event_sha256": "d757a691d78541b9a92154d0da57f8c28fc5455dd6b69901e38bc4c825bc9158",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/frontend-expert.json",
-      "audit_artifact_sha256": "b3367d50e948da79625c2253a92a849e342a4be2d8377d5457b9ad4bbeefcddd",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "5c7f8cc28eb4fccad3a488cf8b030b2c589afe2fce4c900f8585689ed19c6805",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -62,16 +69,18 @@
       "target_skill_file_read": true,
       "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 68983,
-        "cached_input_tokens": 61696,
-        "output_tokens": 450,
-        "reasoning_output_tokens": 99
+        "input_tokens": 73766,
+        "cached_input_tokens": 66304,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 416,
+        "reasoning_output_tokens": 194
       },
-      "raw_event_sha256": "f7414b6e07bf0f80496474269154844ada532547e5800c6442ef2d17fcc8c2b4",
+      "raw_event_sha256": "97f0b9569dc0635883e7621b2e144c9a1c3cacea3bc471164fdf069ab08fe143",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/product-sense.json",
-      "audit_artifact_sha256": "81026a79706d79465ea02469285aa54622870c8a9bd1da2bc10c4f77e1bdc338",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "bb354d7daa6b642cdfc474dd4dddca137db6eb982aada965656469a7a14392b7",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -81,18 +90,20 @@
       "expected_final": "ACTIVATED:research-and-sourcing",
       "observed_final": "ACTIVATED:research-and-sourcing",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 90224,
-        "cached_input_tokens": 60416,
-        "output_tokens": 453,
-        "reasoning_output_tokens": 110
+        "input_tokens": 70676,
+        "cached_input_tokens": 64256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 519,
+        "reasoning_output_tokens": 301
       },
-      "raw_event_sha256": "74030c447ed00ef93279b67e3e3ddddc524612e096aab9f3b0a63ce0cf36565b",
+      "raw_event_sha256": "8e398ff48853a0192e19774de2a1ec9f3ce555af563ece7bc3b41fadf121a443",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/research-and-sourcing.json",
-      "audit_artifact_sha256": "e297f2187a977b06ad7bdece59576d051574de43c6ad860274e13733d519e194",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "7a2070eada18bce6d925b6c7c277551fdd9e7a0312c8ce005046ab87f566db2a",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -102,18 +113,20 @@
       "expected_final": "ACTIVATED:requirement-analysis",
       "observed_final": "ACTIVATED:requirement-analysis",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 93204,
-        "cached_input_tokens": 64512,
-        "output_tokens": 500,
-        "reasoning_output_tokens": 227
+        "input_tokens": 74393,
+        "cached_input_tokens": 65280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 473,
+        "reasoning_output_tokens": 258
       },
-      "raw_event_sha256": "f372b94bf00b11647bc79f89a5f2eeae9c647c726a462d691d79544f45738030",
+      "raw_event_sha256": "7dcfa777bc4826c8c82aa6b3cfe5123190dfa5e303472f825af25273c1148c00",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/requirement-analysis.json",
-      "audit_artifact_sha256": "35828cd371c5eedf32572a297ff9a07462633fb9fe3f697d0e69c7aa8ee4f8b5",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "b10cb819adfda79d55c55d1a06e863656614dd6b1518622efb6440f63df2a3f0",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -125,16 +138,18 @@
       "target_skill_file_read": true,
       "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 66733,
-        "cached_input_tokens": 50432,
-        "output_tokens": 425,
-        "reasoning_output_tokens": 175
+        "input_tokens": 72083,
+        "cached_input_tokens": 64256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 454,
+        "reasoning_output_tokens": 255
       },
-      "raw_event_sha256": "9ccb7b429ab448c8afa233ccc0b33b4d4f82605d1cc67b5f4c26c695a7f6f93f",
+      "raw_event_sha256": "836bbac22abeeabde3f69c69b36a68abad25dbda52945353820d160b66008cfd",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/system-design.json",
-      "audit_artifact_sha256": "b8318a224b02e5ef2d8202545cbe6bfbf10f26eb8f7ef65336b4ea07f4fa4efd",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "256240ac6ef9cd9b9da86bc80c846c97ed4d5ddfa27b4d9a6081a7087f721dc8",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -144,18 +159,20 @@
       "expected_final": "ACTIVATED:coding-discipline",
       "observed_final": "ACTIVATED:coding-discipline",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 89909,
-        "cached_input_tokens": 71680,
-        "output_tokens": 476,
-        "reasoning_output_tokens": 153
+        "input_tokens": 72600,
+        "cached_input_tokens": 64256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 501,
+        "reasoning_output_tokens": 280
       },
-      "raw_event_sha256": "edc127e1f7bf53b67eb9100f2d603184c557e9a2f1938172bf2cddbaf20fe438",
+      "raw_event_sha256": "0a411ffa4943f0403378c2bbfdb7bca2a4295f69968dd6f055c6e45fbbbbc881",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/coding-discipline.json",
-      "audit_artifact_sha256": "07ff13992d28e180f992e09768a7946105edf43cd3df83e8a6ef40e33467f380",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "e93e36bf1d8aaa4558bb7eab696c4d41d9e16b1e98f2a1f885cb62f7f956a2c5",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -165,18 +182,20 @@
       "expected_final": "ACTIVATED:debugging-mindset",
       "observed_final": "ACTIVATED:debugging-mindset",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 90690,
-        "cached_input_tokens": 71680,
-        "output_tokens": 415,
-        "reasoning_output_tokens": 74
+        "input_tokens": 72566,
+        "cached_input_tokens": 64256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 644,
+        "reasoning_output_tokens": 440
       },
-      "raw_event_sha256": "e72695b699ba5ed5e49afdd895dcfce23d908bcb36757ce1f45f92b4ff1b57f1",
+      "raw_event_sha256": "3fe3f10f0ed35cb90c074815abc7776d1a57c83047268123132b464969adf71a",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/debugging-mindset.json",
-      "audit_artifact_sha256": "071c224ac5f114faf81c391571d53eac1a365d0faa12b741654558e7346cfa3b",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "0e691f8ab5e323f325c96e320f784658d9f1830d283c89dae5f66393382d815c",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -186,18 +205,20 @@
       "expected_final": "ACTIVATED:documentation",
       "observed_final": "ACTIVATED:documentation",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 91342,
-        "cached_input_tokens": 80896,
-        "output_tokens": 383,
-        "reasoning_output_tokens": 23
+        "input_tokens": 72256,
+        "cached_input_tokens": 64256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 302,
+        "reasoning_output_tokens": 143
       },
-      "raw_event_sha256": "f49ae257c4d9b64e1fef6c61826a5e27436d4acb841f117e9e3bf1ae8d617174",
+      "raw_event_sha256": "cb5e1dbf789f0d93e1ade96901ee939c214c33da441a1c2f08d49a319decbe4c",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/documentation.json",
-      "audit_artifact_sha256": "4b49f08f7f0095ad105660ecc4ef6dd454ae3ab46520f0381b78ea0673484a9a",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "f5a49fd80eb0b45a815a2fc2494c2f182037a0da27ddc06cef459bb120eab1a0",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -207,18 +228,20 @@
       "expected_final": "ACTIVATED:human-voice",
       "observed_final": "ACTIVATED:human-voice",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 92322,
-        "cached_input_tokens": 74752,
-        "output_tokens": 445,
-        "reasoning_output_tokens": 83
+        "input_tokens": 72348,
+        "cached_input_tokens": 55040,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 490,
+        "reasoning_output_tokens": 268
       },
-      "raw_event_sha256": "72a0dfd62186e9f9d5f2a715686f74ef728f0c3048d0f4f8e13e6e34af7f15e6",
+      "raw_event_sha256": "ff67a8960a6773710dd36f202c2c831e2bb75ba71f3eac9130345d1a52759aaf",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/human-voice.json",
-      "audit_artifact_sha256": "f8ca4e8401e0ac277bd0a9f8d893ee28f1d296a8fa0bcc06a96a05e25288afff",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "eca80e9f69d668791a542089155ed16cfd3b1c8e305f93595ef833b9354bcb81",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -230,16 +253,18 @@
       "target_skill_file_read": true,
       "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 67823,
-        "cached_input_tokens": 51456,
-        "output_tokens": 273,
-        "reasoning_output_tokens": 101
+        "input_tokens": 72717,
+        "cached_input_tokens": 64768,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 582,
+        "reasoning_output_tokens": 391
       },
-      "raw_event_sha256": "d9b8198d1449c34c3b239115c5a09f4ef74ee0a7dfd64029ff904dd2ce9757fe",
+      "raw_event_sha256": "ab42699173ffb0695c5b3e49bbd439da54a126059dd0c02d3a19c170edc82528",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/skill-crafting.json",
-      "audit_artifact_sha256": "5578b368b21e5fed20dbe13e1cbf50f7d469c22c0d106a3affbd57311eafe826",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "a804d296185a64d674597fe5d8f3d00dccc2f4b5f5ed9677a68d57e515cc7a5f",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -249,18 +274,20 @@
       "expected_final": "ACTIVATED:memory-bank",
       "observed_final": "ACTIVATED:memory-bank",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 91358,
-        "cached_input_tokens": 73728,
-        "output_tokens": 491,
-        "reasoning_output_tokens": 112
+        "input_tokens": 72225,
+        "cached_input_tokens": 65280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 373,
+        "reasoning_output_tokens": 158
       },
-      "raw_event_sha256": "913379e5dec38116b762424ff29df4f3eca3b378c6876d342c5f929afb46972a",
+      "raw_event_sha256": "1ce6ccb3f4173223d2015cce23b550fcd6a7463107e5e323236b81f7f246dd39",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/memory-bank.json",
-      "audit_artifact_sha256": "a95572afe8e507c54d20c96562f1f6acc6bfe6df6bf55bbcdb2ef7e5ee235fb6",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "14e53a78de6e92bf37eeadf4e870b5e3d9cd202ab41f63ba79ec4a71ee8ddc83",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -272,16 +299,18 @@
       "target_skill_file_read": true,
       "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 63140,
-        "cached_input_tokens": 47360,
-        "output_tokens": 320,
-        "reasoning_output_tokens": 90
+        "input_tokens": 73323,
+        "cached_input_tokens": 64256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 471,
+        "reasoning_output_tokens": 263
       },
-      "raw_event_sha256": "0bc47e6949904ad102902b052b6fd734e752c7a9971b964b9d6724dbad8e876e",
+      "raw_event_sha256": "947fe59e550ccd8aa0520c36c95be81f74b035188a28816a2d1d422f2dde80fa",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/ecosystem-scout.json",
-      "audit_artifact_sha256": "7249e6a7e42c1cc71b40cabe52c6b970ac6da7e4f733559ce35986e8dee494fd",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "bb1bf686c2616f973474885a81133c7d7c6c90f5f5a9101797a18498fdf62c57",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -291,18 +320,20 @@
       "expected_final": "ACTIVATED:ai-website-cloner",
       "observed_final": "ACTIVATED:ai-website-cloner",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 88497,
-        "cached_input_tokens": 80896,
-        "output_tokens": 420,
-        "reasoning_output_tokens": 147
+        "input_tokens": 70257,
+        "cached_input_tokens": 64256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 470,
+        "reasoning_output_tokens": 261
       },
-      "raw_event_sha256": "1c79fd3d2bbe8429d5dc523700466d8d1bd8d223c40c7467deb1308119de93ac",
+      "raw_event_sha256": "e08235c75ecc59ff7abd727586c8fd1dab6331ab4c5b14ee02a6db590de14197",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/ai-website-cloner.json",
-      "audit_artifact_sha256": "d6517a5fce10087dbd2e9508a8f29c538cea032ff9c29054d1d56273e5570036",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "ba460cb47eae3d4652aad3d30937ec9becf32391ce6360440cf1ef9a676162f0",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -314,16 +345,18 @@
       "target_skill_file_read": true,
       "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 68019,
-        "cached_input_tokens": 52480,
-        "output_tokens": 434,
+        "input_tokens": 71414,
+        "cached_input_tokens": 65280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 333,
         "reasoning_output_tokens": 157
       },
-      "raw_event_sha256": "c5fa39a679a99e0a76b5000d03b008da4f83fc2a9b5f6156c57fa7547c09f8f6",
+      "raw_event_sha256": "16e9428df274c275233bf928215e0ab882de21208ad3ddf517d08f25e8a59fbf",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/software-advisor.json",
-      "audit_artifact_sha256": "0a0dbaaea29a478919e8b6cd95dda4d640f6c1de31a2b74b74973914e4123a0b",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "abcaf66fb35da6834cadd9bae2d19efff431cbd500b4cad195787b1c597f9edd",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -335,16 +368,18 @@
       "target_skill_file_read": true,
       "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 67744,
-        "cached_input_tokens": 60672,
-        "output_tokens": 400,
-        "reasoning_output_tokens": 124
+        "input_tokens": 70102,
+        "cached_input_tokens": 64256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 482,
+        "reasoning_output_tokens": 282
       },
-      "raw_event_sha256": "bb7a1c786ed49215597ac6fc4165882c577adf3cd6282831a2c28030eb09d2cd",
+      "raw_event_sha256": "26270f9b0707e70223e36242bf0237537118c46e1918edf735774570884f9edf",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/taste-aesthetics.json",
-      "audit_artifact_sha256": "f36eff7738cb694cbd4df38800e2cef0154e171f75657a8d33a3131abcb0e47d",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "cc4df2c7e858b779c3c7437746aaa1d25f930035e92e3f0ca56d67634d89750f",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -354,18 +389,20 @@
       "expected_final": "ACTIVATED:code-minimalism",
       "observed_final": "ACTIVATED:code-minimalism",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 84049,
-        "cached_input_tokens": 68608,
-        "output_tokens": 577,
-        "reasoning_output_tokens": 127
+        "input_tokens": 70096,
+        "cached_input_tokens": 64256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 444,
+        "reasoning_output_tokens": 276
       },
-      "raw_event_sha256": "a306e02b695be24d845a7c249d18ccfbb9795f73770c3ddf0ed5f0a019b0161d",
+      "raw_event_sha256": "a00284fc441d6ce4a3cae7f38d47053a567df87c58797244ad989be827f2fb2f",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/code-minimalism.json",
-      "audit_artifact_sha256": "6f831a18d619a6a5a56053d5f5b89901d1d134ff4b8bc561e887cd44127845c2",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "4f6a2fc9309d1149155562db637e28b2da56de18bbba771b38fa0e3b8e5a274e",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -375,18 +412,20 @@
       "expected_final": "ACTIVATED:book-distiller",
       "observed_final": "ACTIVATED:book-distiller",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 82898,
-        "cached_input_tokens": 68608,
-        "output_tokens": 528,
-        "reasoning_output_tokens": 139
+        "input_tokens": 70309,
+        "cached_input_tokens": 64768,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 595,
+        "reasoning_output_tokens": 292
       },
-      "raw_event_sha256": "15d7d642ccea1ba3bac0abaed59fbf28579f68a3399538e03db13cbb48e31288",
+      "raw_event_sha256": "3521f9ee161f9d74df9b80f2bd0cb93e159898d061bafcb48b54fb16fcb7cc32",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/book-distiller.json",
-      "audit_artifact_sha256": "2a6045ee0ab0a5e82a67ab0849b952b35aeb573336cda83b0aeb4121c827e433",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "d1b7eaae8cb0d056d76913e3fe6064886a8d39d1028bf8d3b234bff4f9a43c9c",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -396,18 +435,20 @@
       "expected_final": "ACTIVATED:video-extractor",
       "observed_final": "ACTIVATED:video-extractor",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 83159,
-        "cached_input_tokens": 68608,
-        "output_tokens": 558,
-        "reasoning_output_tokens": 193
+        "input_tokens": 70069,
+        "cached_input_tokens": 55040,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 498,
+        "reasoning_output_tokens": 298
       },
-      "raw_event_sha256": "a3d3221c703adda23b5b5d58c027dfcfc0e00392e63fa76f41ac287f3c6b24bf",
+      "raw_event_sha256": "da9635b70eb98ea9d20ac9a43755abca6b361d3ee1c643ddac09b5f975f9adbb",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/video-extractor.json",
-      "audit_artifact_sha256": "b5dacc5455de889d4cb8e9498bae41b8e24112c48578b7849a105b94a091c786",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "1ae7e4a0ae140782b7fe6784415306bb041fdabad02b7419835b54764798ee14",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -417,18 +458,20 @@
       "expected_final": "ACTIVATED:video-creation-sop",
       "observed_final": "ACTIVATED:video-creation-sop",
       "target_skill_file_read": true,
-      "command_count": 8,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 112558,
-        "cached_input_tokens": 93952,
-        "output_tokens": 706,
-        "reasoning_output_tokens": 228
+        "input_tokens": 74015,
+        "cached_input_tokens": 64768,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 567,
+        "reasoning_output_tokens": 325
       },
-      "raw_event_sha256": "1a920a514775ff59bd54f729b06f1cf1197c0498c3cdec376b7adbb539af96ff",
+      "raw_event_sha256": "39e7a57e9ac53b50d1b2f0d23829c3b20a3d64dda77e699b164ad8e846c7fa7b",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/video-creation-sop.json",
-      "audit_artifact_sha256": "42fcd2c25cd975bdc7773ec1764d0f9ec23f956f1d9198a334c84279972045ea",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "f12ca6c67dab8bb0a70b134981f8fe8de6b1841646da5a3c7785e4028cf778cf",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -438,18 +481,20 @@
       "expected_final": "ACTIVATED:context-compressor",
       "observed_final": "ACTIVATED:context-compressor",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 84915,
-        "cached_input_tokens": 68608,
-        "output_tokens": 422,
-        "reasoning_output_tokens": 72
+        "input_tokens": 74549,
+        "cached_input_tokens": 65280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 403,
+        "reasoning_output_tokens": 193
       },
-      "raw_event_sha256": "4bcc2adb791610ec97538eab7784be264cad56885beb96bf9b0051aa5c985257",
+      "raw_event_sha256": "86da55c6549f552f43089bf6801b9122944afae33b3d1e8e26a64d882b9aca96",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/context-compressor.json",
-      "audit_artifact_sha256": "4111615779f339f1eff556ca11cdfcb7fc24d3a10a571661dc31c3757f615b8f",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "bf26754701be3c32fa8be72743973f40c1529b33adbb08184fa6bcde51eaf9b5",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -459,18 +504,20 @@
       "expected_final": "ACTIVATED:security-gate",
       "observed_final": "ACTIVATED:security-gate",
       "target_skill_file_read": true,
-      "command_count": 6,
+      "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 83308,
-        "cached_input_tokens": 68608,
-        "output_tokens": 377,
-        "reasoning_output_tokens": 119
+        "input_tokens": 71501,
+        "cached_input_tokens": 55552,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 734,
+        "reasoning_output_tokens": 438
       },
-      "raw_event_sha256": "3e9e11cb8073e0ccaa3af34bf703e698c55c3dc856c5c8c6ba376bc2833a33fd",
+      "raw_event_sha256": "8dcfb4d361cb710fde256402b512b71431c1d633f4070e633c142be4877f10b9",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/security-gate.json",
-      "audit_artifact_sha256": "7054da68c57e7eab1810929fb23c121a6c519988897aa95f0af6628d75035d95",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "1138b289db662706f5970ed5c3fb15d45efa6881c95efc06cd3ac1510eb6731e",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -482,16 +529,18 @@
       "target_skill_file_read": true,
       "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 62222,
-        "cached_input_tokens": 48384,
-        "output_tokens": 426,
-        "reasoning_output_tokens": 137
+        "input_tokens": 71226,
+        "cached_input_tokens": 64256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 595,
+        "reasoning_output_tokens": 366
       },
-      "raw_event_sha256": "9adf181245584f02aeb58d658675bcb849297566ca8e8cf1db2135125f33b383",
+      "raw_event_sha256": "a8acc703d3dd706c8a50d8c0b97eccdaab8ce2d2bca2eecacb9322d0642802c1",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/reality-auditor.json",
-      "audit_artifact_sha256": "841227044015b75df1e03e9386515b744db1f435ca01778b76baa681bf94b253",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "65a291da6069292c3e09c9d127b3bb7bff5faad243fb41cd589a23a1f1750932",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -503,16 +552,18 @@
       "target_skill_file_read": true,
       "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 63582,
-        "cached_input_tokens": 49408,
-        "output_tokens": 458,
-        "reasoning_output_tokens": 130
+        "input_tokens": 72710,
+        "cached_input_tokens": 65280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 720,
+        "reasoning_output_tokens": 458
       },
-      "raw_event_sha256": "1187cfc78151d0f214ae1c72b92a2126443f4b23361770e56e89f28058d3832c",
+      "raw_event_sha256": "61cc6f1ca82a25f4f7e5c9f6c22290a8aa513eeee5c48c2c35c83f200b3df6ad",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/nexusflow-governance-workflow.json",
-      "audit_artifact_sha256": "549184e9a4024e9b5765267d20ca8c493d8dba3b632950907aedfff6543e2db9",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "d67b294584fd26d4413c1770d87f72958bc33c0c64eea7cf93a0a2f79ffdf59d",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -524,16 +575,18 @@
       "target_skill_file_read": true,
       "command_count": 6,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 83118,
-        "cached_input_tokens": 67584,
-        "output_tokens": 481,
-        "reasoning_output_tokens": 213
+        "input_tokens": 95209,
+        "cached_input_tokens": 88064,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 705,
+        "reasoning_output_tokens": 391
       },
-      "raw_event_sha256": "b238d78b467275bf6513a69d99cda0b66a935f291992bd5fba12d963e8340e19",
+      "raw_event_sha256": "b8b51c0cef414c816506f23cbbfc9e2ba201f655be0f0c2c991708fba6006d26",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/static-demo-hardening.json",
-      "audit_artifact_sha256": "27990990ea57dd97ed9939b3d3ffd27bb6a6c7471772162d26f5341d57ee0634",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "e6b726379defa0f67c53a55b46cf6d502efdf1da27f3ea6aea78de21e8cb2300",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     },
     {
@@ -545,16 +598,41 @@
       "target_skill_file_read": true,
       "command_count": 4,
       "exit_code": 0,
+      "failure_diagnostic": "",
       "usage": {
-        "input_tokens": 63118,
-        "cached_input_tokens": 49408,
-        "output_tokens": 331,
-        "reasoning_output_tokens": 121
+        "input_tokens": 72178,
+        "cached_input_tokens": 65280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 468,
+        "reasoning_output_tokens": 231
       },
-      "raw_event_sha256": "36b62e18a6c1d991115c28dff7460ef198a7c5c546fab5b3ae0ecc98735fc1fd",
+      "raw_event_sha256": "e7a413fa22275b83294b1dbeb51cb9f266b16bf94b351ae8ae1fa13dd404705e",
       "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/ai-cost-grounding-measurement.json",
-      "audit_artifact_sha256": "8f63c1a6787617da540b0fee04ae0f04dd4e0ad4ca63530077f7d3d0f42badcf",
-      "skills_context_budget_warning": true,
+      "audit_artifact_sha256": "3b4340d7b9259853a3c5b4bb3c22e6c3db693b2d60c269ad8a828943c8936b85",
+      "skills_context_budget_warning": false,
+      "boundary": "Proves one Codex routing/activation canary, not output quality."
+    },
+    {
+      "skill": "cognitive-expansion",
+      "prompt_name": "Trigger Cognitive Expansion",
+      "status": "pass",
+      "expected_final": "ACTIVATED:cognitive-expansion",
+      "observed_final": "ACTIVATED:cognitive-expansion",
+      "target_skill_file_read": true,
+      "command_count": 4,
+      "exit_code": 0,
+      "failure_diagnostic": "",
+      "usage": {
+        "input_tokens": 72230,
+        "cached_input_tokens": 64768,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 598,
+        "reasoning_output_tokens": 278
+      },
+      "raw_event_sha256": "1823ff4cf3ddc7c479c6b3c893e271627e73e2c792f2fb5fb33b1a7fa57b081d",
+      "audit_artifact": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/cognitive-expansion.json",
+      "audit_artifact_sha256": "d1e30e94716aff23fe6b8f39d3064a3ac7d2ba23780811b8a8411e100e65f326",
+      "skills_context_budget_warning": false,
       "boundary": "Proves one Codex routing/activation canary, not output quality."
     }
   ],

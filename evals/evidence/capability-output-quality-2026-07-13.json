@@ -2,47 +2,11 @@
   "schema_version": 1,
   "status": "pass",
   "runtime": "codex-cli",
-  "runtime_version": "codex-cli 0.144.1",
-  "observed_at": "2026-07-13T04:14:45.987455+00:00",
-  "attempt_history": [
-    {
-      "attempt": 1,
-      "status": "fail",
-      "passed": 18,
-      "total": 26,
-      "failed_skills": [
-        "requirement-analysis",
-        "documentation",
-        "ecosystem-scout",
-        "book-distiller",
-        "video-extractor",
-        "context-compressor",
-        "video-creation-sop",
-        "reality-auditor"
-      ],
-      "boundary": "Seven content/rule failures and one reviewer-session failure; no failure was promoted to pass."
-    },
-    {
-      "attempt": 2,
-      "status": "fail",
-      "passed": 24,
-      "total": 26,
-      "failed_skills": [
-        "context-compressor",
-        "reality-auditor"
-      ],
-      "boundary": "The first repairs exposed missing compression stop conditions and an incomplete four-state deployment matrix."
-    },
-    {
-      "attempt": 3,
-      "status": "pass",
-      "passed": 26,
-      "total": 26,
-      "failed_skills": []
-    }
-  ],
-  "passed": 26,
-  "total": 26,
+  "runtime_version": "codex-cli 0.146.0-alpha.3.1",
+  "requested_model": "gpt-5.6-terra",
+  "observed_at": "2026-07-28T17:44:55.081201+00:00",
+  "passed": 27,
+  "total": 27,
   "results": [
     {
       "skill": "sop-maker",
@@ -781,6 +745,36 @@
         "reasoning_output_tokens": 982
       },
       "findings": [],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "cognitive-expansion",
+      "status": "pass",
+      "criteria_count": 8,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-13/cognitive-expansion.producer.json",
+      "producer_artifact_sha256": "e4a0ebd4dad9be44d3a3ca3fd96eb0abf3856cfd864b0bfe2ff5b94efed8a025",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-13/cognitive-expansion.output.md",
+      "output_sha256": "4f381b7e4f463cbedf0f2a2931eefc1f9e00d060ebb634990de4d8b34a6783dd",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-13/cognitive-expansion.review.json",
+      "review_artifact_sha256": "58d214868720ffedf575a9a3e5438744b2e76f4d739e1d5d90493f53ed455450",
+      "producer_usage": {
+        "input_tokens": 72722,
+        "cached_input_tokens": 66816,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7698,
+        "reasoning_output_tokens": 5031
+      },
+      "reviewer_usage": {
+        "input_tokens": 190053,
+        "cached_input_tokens": 157952,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7450,
+        "reasoning_output_tokens": 5884
+      },
+      "findings": [
+        "产物SHA-256与生产收据一致。",
+        "生产收据的mechanical_audit_errors为空，且以保存的runtime_receipt独立重跑机械审计结果为pass。"
+      ],
       "boundary": "One synthetic read-only task and one independent review for this Skill."
     }
   ],

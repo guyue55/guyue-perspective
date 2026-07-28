@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "package": "guyue-digital-twin",
-  "version": "1.60",
+  "version": "1.70",
   "release_state": "released",
-  "base_tag": "v1.5.1",
+  "base_tag": "v1.60",
   "files": [
     {
       "path": ".claude-plugin/marketplace.json",
-      "sha256": "594c27f9c4b2c6c7371a4c630c0a54161bdbd99392f3838848ee7362c69bce41"
+      "sha256": "e552690fe4db7e350284987ae9cf911714a8ce316e9b952a4b611077070151af"
     },
     {
       "path": "AGENTS.md",
@@ -15,7 +15,7 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "830ed9b671a91a8b3caab4918e9a5f1c35bcc01f024c983e356e3cbb0e1f5962"
+      "sha256": "f22ab18f4c67618f10005b3d00d7b1e652fd2b2c5efb835462156d84c2ad09fc"
     },
     {
       "path": "GUYUE_PRINCIPLES.md",
@@ -27,7 +27,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "0f1884c5a868cf88242e0fc05df2c99253d957429cd2e0247928e42927147189"
+      "sha256": "643bab7d8a49cd5aa4de0290e63c5bc7779fd02bb12bff5f2762b972322804a5"
     },
     {
       "path": "RTK.md",
@@ -35,7 +35,7 @@
     },
     {
       "path": "SKILL.md",
-      "sha256": "d0d0e8b7cf724ebe2a507de9aba38d6262d5e3ce470de2dbd729da6beaca1677"
+      "sha256": "4b506909d259a1db2c47f6b778af37eebaf1b8f68112e78d2ba5632c964e1f23"
     },
     {
       "path": "assets/demo.gif",
@@ -47,7 +47,7 @@
     },
     {
       "path": "docs/evaluation.md",
-      "sha256": "a59b220f0ce19533634f9591e3f461b084c20d5574cf7f8a4660126b50a11043"
+      "sha256": "b7d1937ebabb856811c60ac17d5b22cfb0fb680d295c599ef249636ede6da8b4"
     },
     {
       "path": "docs/guyue-capability-discovery-evidence-audit-plan-2026-07-12.md",
@@ -91,11 +91,15 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "sha256": "425e1ec92df5f81c7b1482810ca83a768a56b308470eec5cbfa5d25093b1e333"
+      "sha256": "b8675f90fe5b35816f59a4dfe671f5d855c42a8b785f509308fe3d4ccbf01818"
     },
     {
       "path": "docs/release-v1.60.md",
       "sha256": "446153e06e5bf6e1a7a236ce7dabbb27fec86dc5926bcc3fa16eaf18b1710860"
+    },
+    {
+      "path": "docs/release-v1.70.md",
+      "sha256": "523f82d1a5273520236d3a1bdc81d3a55f99f3758e494d7d373fc5375c9ada71"
     },
     {
       "path": "docs/runtime-adapters.md",
@@ -119,7 +123,7 @@
     },
     {
       "path": "evals/behavior-contracts.json",
-      "sha256": "d4e19ad1fbacb6c84210962e0b2b287eb4ddfc76a560138014147ebfe4531a44"
+      "sha256": "fb02dd853e69313e1d37200d03b3f6b5ce6e62fbf55df60801d08e6a126fc56d"
     },
     {
       "path": "evals/capability-collaboration.json",
@@ -135,7 +139,7 @@
     },
     {
       "path": "evals/capability-output-quality.json",
-      "sha256": "a22456310d4cfcd6689c0daaeb00e8f98c4ac127f624b0502206ff39d743e0ba"
+      "sha256": "041a1b6677945448a8a7108fa718462a8506eb77160755b1a65aa8c78ad3a780"
     },
     {
       "path": "evals/capability-routing.json",
@@ -155,107 +159,111 @@
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/ai-cost-grounding-measurement.json",
-      "sha256": "8f63c1a6787617da540b0fee04ae0f04dd4e0ad4ca63530077f7d3d0f42badcf"
+      "sha256": "3b4340d7b9259853a3c5b4bb3c22e6c3db693b2d60c269ad8a828943c8936b85"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/ai-website-cloner.json",
-      "sha256": "d6517a5fce10087dbd2e9508a8f29c538cea032ff9c29054d1d56273e5570036"
+      "sha256": "ba460cb47eae3d4652aad3d30937ec9becf32391ce6360440cf1ef9a676162f0"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/book-distiller.json",
-      "sha256": "2a6045ee0ab0a5e82a67ab0849b952b35aeb573336cda83b0aeb4121c827e433"
+      "sha256": "d1b7eaae8cb0d056d76913e3fe6064886a8d39d1028bf8d3b234bff4f9a43c9c"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/code-minimalism.json",
-      "sha256": "6f831a18d619a6a5a56053d5f5b89901d1d134ff4b8bc561e887cd44127845c2"
+      "sha256": "4f6a2fc9309d1149155562db637e28b2da56de18bbba771b38fa0e3b8e5a274e"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/coding-discipline.json",
-      "sha256": "07ff13992d28e180f992e09768a7946105edf43cd3df83e8a6ef40e33467f380"
+      "sha256": "e93e36bf1d8aaa4558bb7eab696c4d41d9e16b1e98f2a1f885cb62f7f956a2c5"
+    },
+    {
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/cognitive-expansion.json",
+      "sha256": "d1e30e94716aff23fe6b8f39d3064a3ac7d2ba23780811b8a8411e100e65f326"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/context-compressor.json",
-      "sha256": "4111615779f339f1eff556ca11cdfcb7fc24d3a10a571661dc31c3757f615b8f"
+      "sha256": "bf26754701be3c32fa8be72743973f40c1529b33adbb08184fa6bcde51eaf9b5"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/debugging-mindset.json",
-      "sha256": "071c224ac5f114faf81c391571d53eac1a365d0faa12b741654558e7346cfa3b"
+      "sha256": "0e691f8ab5e323f325c96e320f784658d9f1830d283c89dae5f66393382d815c"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/documentation.json",
-      "sha256": "4b49f08f7f0095ad105660ecc4ef6dd454ae3ab46520f0381b78ea0673484a9a"
+      "sha256": "f5a49fd80eb0b45a815a2fc2494c2f182037a0da27ddc06cef459bb120eab1a0"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/ecosystem-scout.json",
-      "sha256": "7249e6a7e42c1cc71b40cabe52c6b970ac6da7e4f733559ce35986e8dee494fd"
+      "sha256": "bb1bf686c2616f973474885a81133c7d7c6c90f5f5a9101797a18498fdf62c57"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/frontend-expert.json",
-      "sha256": "b3367d50e948da79625c2253a92a849e342a4be2d8377d5457b9ad4bbeefcddd"
+      "sha256": "5c7f8cc28eb4fccad3a488cf8b030b2c589afe2fce4c900f8585689ed19c6805"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/human-voice.json",
-      "sha256": "f8ca4e8401e0ac277bd0a9f8d893ee28f1d296a8fa0bcc06a96a05e25288afff"
+      "sha256": "eca80e9f69d668791a542089155ed16cfd3b1c8e305f93595ef833b9354bcb81"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/memory-bank.json",
-      "sha256": "a95572afe8e507c54d20c96562f1f6acc6bfe6df6bf55bbcdb2ef7e5ee235fb6"
+      "sha256": "14e53a78de6e92bf37eeadf4e870b5e3d9cd202ab41f63ba79ec4a71ee8ddc83"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/nexusflow-governance-workflow.json",
-      "sha256": "549184e9a4024e9b5765267d20ca8c493d8dba3b632950907aedfff6543e2db9"
+      "sha256": "d67b294584fd26d4413c1770d87f72958bc33c0c64eea7cf93a0a2f79ffdf59d"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/product-sense.json",
-      "sha256": "81026a79706d79465ea02469285aa54622870c8a9bd1da2bc10c4f77e1bdc338"
+      "sha256": "bb354d7daa6b642cdfc474dd4dddca137db6eb982aada965656469a7a14392b7"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/reality-auditor.json",
-      "sha256": "841227044015b75df1e03e9386515b744db1f435ca01778b76baa681bf94b253"
+      "sha256": "65a291da6069292c3e09c9d127b3bb7bff5faad243fb41cd589a23a1f1750932"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/requirement-analysis.json",
-      "sha256": "35828cd371c5eedf32572a297ff9a07462633fb9fe3f697d0e69c7aa8ee4f8b5"
+      "sha256": "b10cb819adfda79d55c55d1a06e863656614dd6b1518622efb6440f63df2a3f0"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/research-and-sourcing.json",
-      "sha256": "e297f2187a977b06ad7bdece59576d051574de43c6ad860274e13733d519e194"
+      "sha256": "7a2070eada18bce6d925b6c7c277551fdd9e7a0312c8ce005046ab87f566db2a"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/security-gate.json",
-      "sha256": "7054da68c57e7eab1810929fb23c121a6c519988897aa95f0af6628d75035d95"
+      "sha256": "1138b289db662706f5970ed5c3fb15d45efa6881c95efc06cd3ac1510eb6731e"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/skill-crafting.json",
-      "sha256": "5578b368b21e5fed20dbe13e1cbf50f7d469c22c0d106a3affbd57311eafe826"
+      "sha256": "a804d296185a64d674597fe5d8f3d00dccc2f4b5f5ed9677a68d57e515cc7a5f"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/software-advisor.json",
-      "sha256": "0a0dbaaea29a478919e8b6cd95dda4d640f6c1de31a2b74b74973914e4123a0b"
+      "sha256": "abcaf66fb35da6834cadd9bae2d19efff431cbd500b4cad195787b1c597f9edd"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/sop-maker.json",
-      "sha256": "a8d6926cf0ece8467e692b65c59bf4c808a5fff0681ea2e1dd1c2f9a509d75f8"
+      "sha256": "69c4c4fa077f563f4b83cea92e53b4ce72ad4813794fd0d6db0583ccb412e7f0"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/static-demo-hardening.json",
-      "sha256": "27990990ea57dd97ed9939b3d3ffd27bb6a6c7471772162d26f5341d57ee0634"
+      "sha256": "e6b726379defa0f67c53a55b46cf6d502efdf1da27f3ea6aea78de21e8cb2300"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/system-design.json",
-      "sha256": "b8318a224b02e5ef2d8202545cbe6bfbf10f26eb8f7ef65336b4ea07f4fa4efd"
+      "sha256": "256240ac6ef9cd9b9da86bc80c846c97ed4d5ddfa27b4d9a6081a7087f721dc8"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/taste-aesthetics.json",
-      "sha256": "f36eff7738cb694cbd4df38800e2cef0154e171f75657a8d33a3131abcb0e47d"
+      "sha256": "cc4df2c7e858b779c3c7437746aaa1d25f930035e92e3f0ca56d67634d89750f"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/video-creation-sop.json",
-      "sha256": "42fcd2c25cd975bdc7773ec1764d0f9ec23f956f1d9198a334c84279972045ea"
+      "sha256": "f12ca6c67dab8bb0a70b134981f8fe8de6b1841646da5a3c7785e4028cf778cf"
     },
     {
       "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/video-extractor.json",
-      "sha256": "b5dacc5455de889d4cb8e9498bae41b8e24112c48578b7849a105b94a091c786"
+      "sha256": "1ae7e4a0ae140782b7fe6784415306bb041fdabad02b7419835b54764798ee14"
     },
     {
       "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/ai-cost-grounding-measurement.output.md",
@@ -316,6 +324,18 @@
     {
       "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/coding-discipline.review.json",
       "sha256": "6ce08b7879171f2a9c8ee48aa48ff09462b1f351d71e303898fc095b81605b94"
+    },
+    {
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/cognitive-expansion.output.md",
+      "sha256": "4f381b7e4f463cbedf0f2a2931eefc1f9e00d060ebb634990de4d8b34a6783dd"
+    },
+    {
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/cognitive-expansion.producer.json",
+      "sha256": "e4a0ebd4dad9be44d3a3ca3fd96eb0abf3856cfd864b0bfe2ff5b94efed8a025"
+    },
+    {
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/cognitive-expansion.review.json",
+      "sha256": "58d214868720ffedf575a9a3e5438744b2e76f4d739e1d5d90493f53ed455450"
     },
     {
       "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/context-compressor.output.md",
@@ -575,11 +595,11 @@
     },
     {
       "path": "evals/evidence/capability-live-canaries-2026-07-13.json",
-      "sha256": "f5198a4c78a9c980cabce056f8b0b99f8f4304a210b62a74b9acd168d041c901"
+      "sha256": "34cc743a6ac57adee822d9b2c92124908d37f52fafbe3a36d7515c2d497f225d"
     },
     {
       "path": "evals/evidence/capability-output-quality-2026-07-13.json",
-      "sha256": "ba14e41e5963a2e9904eb8304d67b4cb4c8840655ac89c812beea70b4757b7b4"
+      "sha256": "3186b395fcd89f53b02d58aca0b401ae566c749968164425c779b22636477673"
     },
     {
       "path": "evals/evidence/cognitive-expansion-comparison-2026-07-17.md",
@@ -627,7 +647,7 @@
     },
     {
       "path": "examples/quickstart-output.md",
-      "sha256": "e348a2e158c216b4e1250ecc5dc8c4dca263c84c6e0155ccef289acb78c1e365"
+      "sha256": "240ef404b7f2a33024ee30210adb6ba7a3fda034de220fcfadb7cf8cb3a77260"
     },
     {
       "path": "examples/saas-conversion-demo/index.html",
@@ -663,7 +683,7 @@
     },
     {
       "path": "release-manifest.json",
-      "sha256": "ce8e64d9e8b0a14361f282f0e22ad541fe15e28b83bb1c5519706506bee6f922"
+      "sha256": "627fd357c925ad51aa4f977aa712a103ab12930c01d1fca4de9da845d7b65f50"
     },
     {
       "path": "requirements.txt",
@@ -675,7 +695,7 @@
     },
     {
       "path": "scripts/audit_cognitive_expansion_output.py",
-      "sha256": "27a80100cc7b71b3106f0888f6f223b22f27e3e353355530617a0f611e80e015"
+      "sha256": "53bb828726caeb774049e741b1e87bbf50f8e8a343f3eb45bdd58e1532fb03d4"
     },
     {
       "path": "scripts/build_release_lock.py",
@@ -687,7 +707,7 @@
     },
     {
       "path": "scripts/check_birth_certificate.py",
-      "sha256": "7f6d366418ebf840124a5a19180c27c29a69042b2efade01494082d504406999"
+      "sha256": "0e1310a4ca200b40291f89ade7d8494f046acbcdc5d24e82e530fd0ce8508588"
     },
     {
       "path": "scripts/check_capability_chain.py",
@@ -759,11 +779,11 @@
     },
     {
       "path": "scripts/run_capability_live_canaries.py",
-      "sha256": "bc02e752474ee29a3e5cd3e790089f699e425d4d557201240f3843df513cfe22"
+      "sha256": "cc4ded3f91a60145a6988c36a7f33b44f02c4f6d9973150d92014a7c845861ef"
     },
     {
       "path": "scripts/run_capability_output_quality.py",
-      "sha256": "7cbdbe1f6eb6ecb741facc8f9386297a20f01b37dd58627d1129987c18c98ca5"
+      "sha256": "d2f0fbf0aa5ea7b066fc1cd0ff2802527bb720d5fe112e95fd898dbcb1729a2e"
     },
     {
       "path": "scripts/run_eval.py",
@@ -795,11 +815,11 @@
     },
     {
       "path": "scripts/test_cognitive_expansion_contract.py",
-      "sha256": "4cdc012813d5868e6d6beb596343024189fe17e20ce40d0a251dd3bc87dc5459"
+      "sha256": "46f74d0538f5ba3d590a9710c27a2d700ebc16a9a53245e605135e02d4776fa7"
     },
     {
       "path": "scripts/test_cognitive_expansion_output_audit.py",
-      "sha256": "7d6f8c8d9ecd87d010ac40915796f36184b9f908a59391b4d21de450953040f4"
+      "sha256": "05da7f0990152b20c4c32648c4c319f75bfd4ba46dc9f1cdf17e945ec5ce31c6"
     },
     {
       "path": "scripts/test_context_budget.py",
@@ -835,7 +855,7 @@
     },
     {
       "path": "scripts/test_skill_router.py",
-      "sha256": "a13b663ee7af172705e181aad8b74726b8de33e29e9117bec0d669ef1778f4bb"
+      "sha256": "cf00ede4ecc55b264328e827dd32a07b34b1f9f6a6cc373e6e18ce6f7601c5ee"
     },
     {
       "path": "scripts/test_suite.sh",
@@ -875,7 +895,7 @@
     },
     {
       "path": "skills/cognitive-expansion/SKILL.md",
-      "sha256": "121fe06ec3c3d4c0cc0d42db076d2fe8cfed11eaee2fecab51d9f33e4ad26aa7"
+      "sha256": "faf0957036724ffa84d3b8553bf147623530814c39191935690eed4dce9b78c8"
     },
     {
       "path": "skills/cognitive-expansion/agents/openai.yaml",
@@ -895,7 +915,7 @@
     },
     {
       "path": "skills/cognitive-expansion/references/output-contract.md",
-      "sha256": "d345a00098b4a9789f8f1a911f7eb938eb8df04a61ef1ca8c2ee0746e59add11"
+      "sha256": "026a7395ddf7b418e2914bd3058fa4cf66cd296a6bdd6faa6c5018a0534ce2f4"
     },
     {
       "path": "skills/context-compressor/SKILL.md",
@@ -1007,7 +1027,7 @@
     },
     {
       "path": "skills_manifest.json",
-      "sha256": "de9365050d553a2e7b140a6aeadddda20ae6e30c21489ac6bbe9bc7c3e59774c"
+      "sha256": "6f6c68df125d6e13aff328852c9e1a7e56fb8107694d145c819dff10765af5e0"
     },
     {
       "path": "src/context_budget.py",

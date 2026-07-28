@@ -32,6 +32,7 @@ def routing_sha256() -> str:
     )
     payload = {
         "routing_contract": manifest["routing_contract"],
+        "composed_intent_rules": manifest.get("composed_intent_rules", []),
         "skills": [
             {key: skill[key] for key in skill_fields if key in skill}
             for skill in manifest["skills"]
@@ -110,11 +111,31 @@ def sanitize_text(value: object) -> str:
     return text
 
 
+def extract_failure_diagnostic(stdout: str, stderr: str) -> str:
+    """保留有界、已脱敏的非事件诊断，避免失败只剩空白结果。"""
+    non_event_stdout = [
+        line for line in stdout.splitlines()
+        if line.strip() and not line.lstrip().startswith("{")
+    ]
+    diagnostic_lines = [*stderr.splitlines(), *non_event_stdout]
+    diagnostic = sanitize_text("\n".join(diagnostic_lines[-20:])).strip()
+    return diagnostic[-2000:]
+
+
+def artifact_ref(path: Path) -> str:
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
 def write_audit_artifact(
     artifact_dir: Path,
     case: dict[str, str],
     commands: list[dict[str, object]],
     final_message: str,
+    exit_code: int,
+    failure_diagnostic: str,
 ) -> tuple[str, str]:
     artifact_dir.mkdir(parents=True, exist_ok=True)
     artifact_path = artifact_dir / f"{case['skill']}.json"
@@ -124,19 +145,26 @@ def write_audit_artifact(
         "prompt_name": case["prompt_name"],
         "commands": commands,
         "observed_final": final_message,
+        "exit_code": exit_code,
+        "failure_diagnostic": failure_diagnostic,
         "boundary": (
-            "Compact sanitized execution evidence; excludes reasoning and the full raw event stream."
+            "Compact sanitized execution evidence; excludes reasoning and the full raw event stream. "
+            "Failure diagnostics retain at most the final 2,000 characters."
         ),
     }
     artifact_path.write_text(
         json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    return str(artifact_path.relative_to(ROOT)), sha256_bytes(artifact_path.read_bytes())
+    return artifact_ref(artifact_path), sha256_bytes(artifact_path.read_bytes())
 
 
 def run_case(
-    case: dict[str, str], timeout: int, artifact_dir: Path, model: str | None
+    case: dict[str, str],
+    timeout: int,
+    artifact_dir: Path,
+    model: str | None,
+    codex_bin: str,
 ) -> dict[str, object]:
     skill = case["skill"]
     child_path = f"skills/{skill}/SKILL.md"
@@ -153,7 +181,7 @@ def run_case(
     env = os.environ.copy()
     env["PYTHONDONTWRITEBYTECODE"] = "1"
     command = [
-        "codex",
+        codex_bin,
         "exec",
         "--ephemeral",
         "--json",
@@ -197,14 +225,24 @@ def run_case(
         if event.get("type") == "turn.completed" and isinstance(event.get("usage"), dict):
             usage = event["usage"]
     final_message = messages[-1].strip() if messages else ""
+    failure_diagnostic = (
+        extract_failure_diagnostic(result.stdout, result.stderr)
+        if result.returncode != 0 or not final_message
+        else ""
+    )
     child_read = any(child_path in str(item["command"]) for item in commands)
     passed = (
         result.returncode == 0
         and child_read
         and final_message == f"ACTIVATED:{skill}"
     )
-    artifact_ref, artifact_sha256 = write_audit_artifact(
-        artifact_dir, case, commands, final_message
+    artifact_reference, artifact_sha256 = write_audit_artifact(
+        artifact_dir,
+        case,
+        commands,
+        final_message,
+        result.returncode,
+        failure_diagnostic,
     )
     return {
         "skill": skill,
@@ -215,9 +253,10 @@ def run_case(
         "target_skill_file_read": child_read,
         "command_count": len(commands),
         "exit_code": result.returncode,
+        "failure_diagnostic": failure_diagnostic,
         "usage": usage,
         "raw_event_sha256": sha256_bytes(raw.encode("utf-8")),
-        "audit_artifact": artifact_ref,
+        "audit_artifact": artifact_reference,
         "audit_artifact_sha256": artifact_sha256,
         "skills_context_budget_warning": (
             "Skill descriptions were shortened to fit the 2% skills context budget"
@@ -238,9 +277,19 @@ def main() -> int:
     )
     parser.add_argument("--timeout", type=int, default=180)
     parser.add_argument(
+        "--fail-fast",
+        action="store_true",
+        help="任一探针失败后立即停止，避免继续消耗模型调用预算",
+    )
+    parser.add_argument(
         "--model",
         default=os.getenv("GUYUE_EVAL_MODEL"),
         help="Codex model identifier, for example the locally configured Terra 5.6 alias",
+    )
+    parser.add_argument(
+        "--codex-bin",
+        default=os.getenv("GUYUE_CODEX_BIN", "codex"),
+        help="Codex CLI executable path; defaults to GUYUE_CODEX_BIN or PATH",
     )
     args = parser.parse_args()
     cases = load_cases(args.skill)
@@ -252,15 +301,33 @@ def main() -> int:
     results = []
     for index, case in enumerate(cases, start=1):
         print(f"[{index}/{len(cases)}] live canary: {case['skill']}", flush=True)
-        results.append(run_case(case, args.timeout, artifact_dir, args.model))
-        print(f"  {results[-1]['status']}: {results[-1]['observed_final']}", flush=True)
+        results.append(
+            run_case(
+                case,
+                args.timeout,
+                artifact_dir,
+                args.model,
+                args.codex_bin,
+            )
+        )
+        detail = (
+            results[-1]["observed_final"]
+            or results[-1]["failure_diagnostic"]
+            or "no diagnostic"
+        )
+        print(f"  {results[-1]['status']}: {detail}", flush=True)
+        if args.fail_fast and results[-1]["status"] != "pass":
+            break
     passed = sum(item["status"] == "pass" for item in results)
     receipt = {
         "schema_version": 1,
         "status": "pass" if passed == len(results) else "fail",
         "runtime": "codex-cli",
         "runtime_version": subprocess.run(
-            ["codex", "--version"], capture_output=True, text=True, check=False
+            [args.codex_bin, "--version"],
+            capture_output=True,
+            text=True,
+            check=False,
         ).stdout.strip(),
         "requested_model": args.model or "runtime-default",
         "observed_at": datetime.now(timezone.utc).isoformat(),
@@ -272,6 +339,8 @@ def main() -> int:
         "routing_sha256": routing_sha256(),
         "passed": passed,
         "total": len(results),
+        "expected_total": len(cases),
+        "stopped_early": len(results) < len(cases),
         "results": results,
         "runtime_boundaries": [
             "Codex may shorten globally installed Skill descriptions to fit its shared 2% discovery budget.",

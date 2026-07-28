@@ -2,20 +2,23 @@
 
 Release only when installation, verification, safety, and examples are understandable to a new user.
 
-## v1.60 Release Evidence
+## v1.70 Release Evidence
 
-Date: 2026-07-21
-Candidate version: `1.60`
-Base tag: `v1.5.1`
+Date: 2026-07-29
+Candidate version: `1.70`
+Base tag: `v1.60`
 
-- [x] The former private static-demo Skill wording is renamed to `static-demo-hardening`.
-- [x] Current release files use anonymous static-demo surface wording.
-- [x] Previous release-note and old candidate-lineage files are removed from the current payload.
+- [x] High-impact designs prove the problem, native baseline, alternatives, falsifier, blast radius and rollback before implementation.
+- [x] Material multi-turn direction changes reset inherited confidence instead of preserving an unproven premise.
+- [x] External learning remains candidate-only until value, overlap, maturity, placement, subtraction and regression impact are proven.
+- [x] The reduced cognitive-expansion output contract preserves source, competition, professional-review and budget truth boundaries.
+- [x] Live activation and output-quality receipts both pass `27/27` on Codex CLI `0.146.0-alpha.3.1` with requested model `gpt-5.6-terra`.
+- [x] The strict capability chain passes `114/114` routing checks, `416/416` internal triggers, `41/41` external candidate triggers and `222/222` near misses.
+- [x] The live evidence runner and strict checker hash the same routing semantics, including composed-intent rules.
 - [x] The exact payload lock is rebuilt after the release metadata and documentation changes.
 - [x] The complete local suite passes.
 - [x] Ruff runs with `--no-cache`.
-- [x] Diff whitespace, generated-cache, zero-leakage, full-install, and static-demo routing proofs pass.
-- [x] A custom residue scan over the repository and ignored local worktree copy reports `findings=0`.
+- [x] Diff whitespace, generated-cache, zero-leakage and full-install proofs pass.
 
 ## Reusable Release Gate
 

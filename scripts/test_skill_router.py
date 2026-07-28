@@ -13,6 +13,8 @@ sys.path.insert(0, str(ROOT))
 sys.dont_write_bytecode = True
 
 from src.skill_router import resolve_routes  # noqa: E402
+from scripts.check_capability_chain import routing_sha256 as expected_routing_sha256  # noqa: E402
+from scripts.run_capability_live_canaries import routing_sha256 as live_routing_sha256  # noqa: E402
 
 
 def require(condition: bool, message: str) -> None:
@@ -22,6 +24,10 @@ def require(condition: bool, message: str) -> None:
 
 def main() -> int:
     manifest = json.loads((ROOT / "skills_manifest.json").read_text(encoding="utf-8"))
+    require(
+        live_routing_sha256() == expected_routing_sha256(manifest),
+        "live evidence runner and strict gate must hash the same routing semantics",
+    )
     contracts = json.loads(
         (ROOT / "evals" / "behavior-contracts.json").read_text(encoding="utf-8")
     )

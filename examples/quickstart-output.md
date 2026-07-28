@@ -61,6 +61,16 @@ Post-metadata micro smoke replay:
 - Boundary: after emitting the final message, the CLI reported `Reading additional input from stdin` and the launcher did not return a recordable exit code. The retained final artifact confirms the micro shape but is not counted as an activation canary or output-quality receipt.
 - Evidence: prompt, current Skill hash, final-message hash and full boundary are in [the metadata smoke replay](../evals/evidence/cognitive-expansion-metadata-replay-2026-07-17.md).
 
+v1.70 release-wide evidence refresh:
+
+- Receipt time: `2026-07-28T17:29:45.573664+00:00`.
+- Runtime/model: Codex CLI `0.146.0-alpha.3.1`, requested model `gpt-5.6-terra`, ephemeral read-only sandbox.
+- Live activation: `27/27`; every case read its selected child `SKILL.md`, returned the exact activation marker and retained a sanitized, hash-bound command artifact.
+- Synthetic output quality: `27/27`; every child Skill produced one bounded task artifact and passed independent review. The cognitive-expansion case also passed the mechanical output audit and runtime-receipt budget check on the fresh “特殊教育学校无障碍电梯设备采购” sample.
+- Strict chain after refresh: routing `114/114`, collaboration `12/12`, internal triggers `416/416`, external candidate triggers `41/41`, near misses `222/222`.
+- Evidence: [activation receipt](../evals/evidence/capability-live-canaries-2026-07-13.json) and [output-quality receipt](../evals/evidence/capability-output-quality-2026-07-13.json), with per-Skill artifacts under their adjacent `artifacts/` directories.
+- Boundary: this proves one runtime/model matrix and the recorded synthetic tasks. It does not prove arbitrary inputs, other runtimes, real-user value, public-network behavior or long-term outcomes.
+
 ## Replay 1: Points Mall, "Write All Code Now"
 
 Prompt:

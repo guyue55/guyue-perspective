@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "guyue",
-  "version": "1.60",
+  "version": "1.70",
   "description": "Personal Agent Operating Layer for evidence-first planning, implementation, audits, long-running goals, and reusable workflow discipline.",
   "owner": {
     "name": "Guyue"
@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "guyue",
-      "version": "1.60",
+      "version": "1.70",
       "description": "Evidence-first Guyue orchestrator with 27 routed workflow modules, release gates, and optional local memory tooling.",
       "author": {
         "name": "Guyue"

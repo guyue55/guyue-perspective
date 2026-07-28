@@ -60,9 +60,9 @@ The 15-stage suite also runs `python3 scripts/check_full_install.py --self-test`
 
 The routing stage also runs `python3 scripts/check_capability_chain.py --json`. Current deterministic routing, trigger, near-miss, collaboration, file-integrity, and schema defects always fail. Stale global activation receipts or incomplete all-Skill synthetic output evidence remain visible as warnings during ordinary development, with the corresponding model-activation and output-quality claims left `false`; this prevents a temporary quota or a changed global routing hash from forcing repetitive model calls merely to unblock local implementation. Release verification must run `python3 scripts/check_capability_chain.py --strict --json` (or set `GUYUE_RELEASE_STRICT=1`), where the same warnings become blocking errors. Never hand-edit or relabel a failed receipt to satisfy either mode.
 
-The current development contract covers 27 built-in Skills, 71 structural routing prompts, 41 behavior contracts, 12 collaboration contracts and 217 near-miss cases. The receipt separately reports arbitrary-input, real-user, cross-runtime and public-network boundaries; a green deterministic development result cannot silently promote those claims or a failed high-risk live replay.
+The current development contract covers 27 built-in Skills, 114 structural routing prompts, 42 behavior contracts, 12 collaboration contracts, 11 workflows and 222 near-miss cases. The receipt separately reports arbitrary-input, real-user, cross-runtime and public-network boundaries; a green deterministic development result cannot silently promote those claims or a failed high-risk live replay.
 
-Both live runners accept `--model <runtime-model-id>` or `GUYUE_EVAL_MODEL`. When the runtime exposes the Terra 5.6 alias, use that identifier for new agents; the receipt records the requested model. A model switch does not authorize extra retries or make old failed evidence pass.
+Both live runners accept `--model <runtime-model-id>` or `GUYUE_EVAL_MODEL`, and `--codex-bin <path>` or `GUYUE_CODEX_BIN`. The receipt records the requested model and observed runtime version. A model switch does not authorize extra retries or make old failed evidence pass.
 
 For public Agent Skills frontmatter compatibility, run the official reference validator against every child skill and against a temporary root directory named `guyue`:
 
@@ -163,6 +163,19 @@ Use a read-only runtime when collecting replay output:
 codex exec --ephemeral -C <repo-root> --sandbox read-only -o /tmp/guyue-replay-root.md "<prompt>"
 ```
 
+Release-wide activation and output-quality receipts use the bounded runners:
+
+```bash
+python3 scripts/run_capability_live_canaries.py \
+  --fail-fast --model <runtime-model-id> --codex-bin <codex-path>
+
+python3 scripts/run_capability_output_quality.py \
+  --output evals/evidence/capability-output-quality-2026-07-13.json \
+  --model <runtime-model-id> --codex-bin <codex-path>
+```
+
+`--review-existing` may reuse only a producer artifact whose recorded output hash still matches; it reruns the independent review and does not turn a failed or edited artifact into a pass. `--merge-existing` preserves untouched Skill results during a bounded single-Skill refresh. The cognitive-expansion case additionally receives a runtime receipt; model-side B1 values remain proxies, while the runner receipt is the final budget fact.
+
 Record both passes and deviations. For example, if the runtime follows Guyue's debugging trace but still emits concrete retry code before raw logs are available, mark it as `partial_pass` and convert it into a follow-up boundary fix.
 
 Security-gate live runs must be strict about target admission: if the prompt says only "this third-party skill" but provides no path, URL, package name, or archive path, the correct result is to ask for the target and stop. Inferring a local skill directory is a replay deviation and must be fixed before release.
@@ -178,7 +191,7 @@ Runtime adapter changes must follow [runtime-adapters.md](runtime-adapters.md):
 
 ## Release Evidence Template
 
-Current release lineage is tracked in [release-v1.60.md](release-v1.60.md), while the reusable release gates and remaining boundaries live in [release-checklist.md](release-checklist.md). Update both before a release tag or marketplace submission.
+Current release lineage is tracked in [release-v1.70.md](release-v1.70.md), while the reusable release gates and remaining boundaries live in [release-checklist.md](release-checklist.md). Update both before a release tag or marketplace submission.
 
 Use this template when preparing a release:
 

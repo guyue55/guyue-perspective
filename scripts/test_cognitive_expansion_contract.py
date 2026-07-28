@@ -48,6 +48,10 @@ def main() -> int:
         (
             "默认只补会改变判断的少量遗漏",
             "## 先选最小深度",
+            "深度按**后果风险**而不是请求动词选择",
+            "公共基础设施、安全关键设备",
+            "准备后续调研",
+            "证据不足只降低决策就绪度，不得把交付降成轻量清单",
             "## 默认运行微量拓界",
             "多维度/多角度/全面一点/有没有遗漏/第一次用/不懂这个产品",
             "种子集合",
@@ -59,6 +63,8 @@ def main() -> int:
             "## 通过升级门才加深",
             "发布日、事实发生期/数据期、版本/更正/撤回和访问日",
             "模式｜预计耗时区间｜联网/材料上限｜停止检查点｜主要不确定性",
+            "不得仅因进入专业/高风险档再次索要“确认继续”",
+            "只在联网、追加材料、委派、付费、写入或跨越单次预算前等待确认",
             "## 冻结探索预算",
             "PRE-EVIDENCE-SNAPSHOT E0",
             "B0 PRE-TOOL 预算账本",
@@ -71,6 +77,7 @@ def main() -> int:
             "材料打开只计算外部证据材料",
             "上限不是证据充分性",
             "## 正式地图按需加载",
+            "references/output-contract.md` 控制卡",
             "references/domain-bootstrap.md",
             "references/cognitive-loop.md",
             "references/evidence-and-challenge.md",
@@ -106,26 +113,30 @@ def main() -> int:
     require_all(
         output_contract,
         (
-            "普通专业交付按**语义合同**执行",
-            "严格序列化合同",
             "微量与轻量模式不加载本卡",
-            "budget_ledger",
-            "E0 → B0 → 框定/动作 → D → C → S → E → I → R → 挑战 → U → 所有权 → 摘要 → B1/停止",
-            "固定六列 P 表",
-            "K 表",
-            "A1.E/A1.F/A1.K/A1.H",
-            "G 边界行",
-            "D 是叶子决策轴",
-            "原子类型=封闭集合",
-            "命题类型=经验/定义/方法/规范立场",
-            "生产位置=受影响者/一线/独立权利",
-            "一个 I 最多桥接一个迁移缺口",
-            "规范立场不成为经验 I 前提",
-            "字面序列化门",
-            "合格专业复核",
-            "效果识别",
-            "运营容量成本",
-            "权利法域遗漏",
+            "## 固定交付顺序",
+            "## PRE-EVIDENCE-SNAPSHOT E0",
+            "## B0 PRE-TOOL 预算账本",
+            "## 问题地图",
+            "给定片段不是已核来源",
+            "不可恢复材料不授 `S/E`",
+            "竞争解释与遗漏",
+            "同一观察结果的另一条因果链",
+            "只是证据状态，不算竞争机制",
+            "效果或有效性识别",
+            "运营容量与成本",
+            "安全、权利或法域遗漏",
+            "生产模型看不到任务结束后才生成的运行器收据",
+            "模型侧代理，运行器收据待补",
+            "运行器收据才是最终用量事实",
+            "所有正式表格必须使用 ASCII `|`",
+            "B0 表后必须单独写一行 `BΣ：`",
+            "题面给出的材料类型只能写成“用户标注为……”",
+            "不得自行补充匿名、官方、内部、独立或具体机构",
+            "证据边界认定材料身份不可恢复时",
+            "不得出现 `来源主张`",
+            "3–6 个会改变",
+            "版本规则",
             "CE-BUDGET-EXHAUSTED",
             "CE-PROFESSIONAL-REVIEW",
             "最高价值下一项",
@@ -133,6 +144,15 @@ def main() -> int:
         ),
         "output-contract.md",
     )
+    if len(output_contract.splitlines()) > 180:
+        raise AssertionError("output-contract.md exceeds the 180-line lean contract budget")
+    for relative, limit in (
+        ("scripts/audit_cognitive_expansion_output.py", 350),
+        ("scripts/test_cognitive_expansion_output_audit.py", 250),
+    ):
+        line_count = len((ROOT / relative).read_text(encoding="utf-8").splitlines())
+        if line_count > limit:
+            raise AssertionError(f"{relative} exceeds its {limit}-line budget")
     forbid_all(
         output_contract,
         (
@@ -153,6 +173,7 @@ def main() -> int:
             "发布日、事实发生期/数据期、版本/更正/撤回和访问日",
             "预计超过 10 分钟",
             "不因“等”自动联网",
+            "一次只读、自包含交付不因专业或高风险标签重复索要确认",
             "额度/usage limit",
         ),
         "root SKILL.md",
@@ -190,6 +211,7 @@ def main() -> int:
     required_behavior_ids = {
         "ambient-micro-expands-open-list-without-research",
         "explicit-closed-list-suppresses-expansion",
+        "public-infrastructure-procurement-forces-high-risk-cognitive-contract",
     }
     missing_behavior_ids = required_behavior_ids - behavior_ids
     if missing_behavior_ids:

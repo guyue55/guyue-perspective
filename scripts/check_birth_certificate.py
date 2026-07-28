@@ -42,7 +42,6 @@ README_NEEDLES = [
     "docs/installation.md",
     "docs/security.md",
     "docs/evaluation.md",
-    "docs/release-v1.60.md",
     "完整古月必须以整个仓库作为一个技能目录挂载",
     "claude plugin install guyue@guyue",
 ]
@@ -190,6 +189,12 @@ def check_release_sync(errors: list[str], skill_count: int, prompt_count: int) -
             add_error(errors, f"CHANGELOG does not contain the dated release heading for v{version}")
         if f"Candidate version: `{version}`" not in release:
             add_error(errors, f"release checklist does not name candidate version: {version}")
+        current_release_doc = f"docs/release-v{version}.md"
+        if current_release_doc not in readme:
+            add_error(
+                errors,
+                f"README public entrypoint missing `{current_release_doc}` in README.md",
+            )
 
 
 def check_public_boundaries(errors: list[str]) -> None:

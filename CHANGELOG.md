@@ -1,5 +1,33 @@
 # Changelog
 
+## v1.70 - 2026-07-29
+
+Status: Released
+
+### Changed
+
+- Add a high-impact direction firewall that requires a real problem, native baseline, no-change and repair paths, falsifier, blast radius and rollback before a new mechanism can enter implementation.
+- Reset inherited confidence when a multi-turn proposal is materially reshaped, preventing repeated local optimization of an unproven direction.
+- Strengthen external-learning admission, maturity, minimal-placement, subtraction, regression and retirement gates so Guyue can absorb reusable value without accumulating redundant machinery.
+- Replace the oversized high-risk `cognitive-expansion` ledger with an eight-section evidence spine and align the root orchestration boundary with one-pass, read-only analysis.
+- Improve live and output-quality runners with explicit runtime selection, bounded diagnostics, hash-matched review reuse and consistent routing-semantic hashing.
+
+### Verification
+
+- `bash scripts/test_suite.sh`
+- `ruff check --no-cache scripts src`
+- `git diff --check`
+- generated-cache scan
+- `python3 scripts/security_scanner.py`
+- `python3 scripts/check_capability_chain.py --strict --json`
+- Codex CLI `0.146.0-alpha.3.1` with requested model `gpt-5.6-terra`: `27/27` live activations and `27/27` all-Skill synthetic output-quality cases
+
+### Boundaries
+
+- The live matrix proves one Codex runtime/model configuration, not every runtime, arbitrary prompt or long-term user outcome.
+- No autonomous browsing, self-modification, automatic promotion or external installation loop is enabled.
+- Model-side budget estimates remain proxies until the runner receipt is available.
+
 ## v1.60 - 2026-07-21
 
 Status: Released

@@ -1912,8 +1912,12 @@ def check_context_compressor_budget_contract(repo_root):
 def check_external_capability_admission_contract(repo_root):
     paths = {
         'root': 'SKILL.md',
+        'principles': 'GUYUE_PRINCIPLES.md',
+        'protocol': 'docs/learning-control.md',
+        'replay': 'examples/quickstart-output.md',
         'scout': 'skills/ecosystem-scout/SKILL.md',
         'craft': 'skills/skill-crafting/SKILL.md',
+        'context': 'skills/context-compressor/SKILL.md',
         'book': 'skills/book-distiller/SKILL.md',
         'video': 'skills/video-extractor/SKILL.md',
         'requirements': 'skills/requirement-analysis/SKILL.md',
@@ -1926,6 +1930,12 @@ def check_external_capability_admission_contract(repo_root):
         }
         manifest = json.loads(Path(os.path.join(repo_root, 'skills_manifest.json')).read_text(encoding='utf-8'))
         prompts = json.loads(Path(os.path.join(repo_root, 'test-prompts.json')).read_text(encoding='utf-8'))
+        behavior_contracts = json.loads(
+            Path(os.path.join(repo_root, 'evals', 'behavior-contracts.json')).read_text(encoding='utf-8')
+        )
+        capability_routes = json.loads(
+            Path(os.path.join(repo_root, 'evals', 'capability-routing.json')).read_text(encoding='utf-8')
+        )
     except Exception as e:
         print(f"❌ [EXTERNAL ADMISSION ERROR] Failed to load contract inputs: {e}", file=sys.stderr)
         return False
@@ -1934,21 +1944,67 @@ def check_external_capability_admission_contract(repo_root):
     content_contracts = {
         'root': {
             '拒绝 -> 仅学习 -> 隔离候选 -> 运行时依赖',
+            '广泛发现不等于广泛加载或晋级',
+            '[学习控制协议](docs/learning-control.md)',
             '用户说“研究、汲取、借鉴、不接入”时默认停在“仅学习”',
             '纯研究/方法吸收不得写 manifest、安装或创建影子 Skill',
+            '规划长期持续学习、互联网探索或古月能力演化治理',
+            '无具体来源不进生态调研',
+        },
+        'principles': {
+            '**学习控制权**',
+            '外部内容只作为不可信材料',
+            '过期、被替代或负收益的规则必须退役',
+        },
+        'protocol': {
+            '## 一、不可破坏的不变量',
+            '## 二、三个正交控制轴',
+            '## 三、有界学习闭环',
+            '## 四、学习控制记录',
+            '## 五、全局健康门',
+            '## 六、停止状态',
+            '广发现不等于广加载',
+            '`candidate`',
+            '`verified`',
+            '`rejected`',
+            '`superseded`',
+            '`retired`',
+            '正确性与控制权不可折价',
+            '一项增强没有“删除、压缩、替代、按需剥离”中的至少一项补偿',
+            '`LEARNING_BUDGET_EXHAUSTED`',
         },
         'scout': {
             '外部能力净收益门',
             '`拒绝`、`仅学习`、`隔离候选`、`运行时依赖`',
-            'candidate / verified / rejected',
+            '`candidate`',
+            '`verified / rejected`',
+            '`superseded / retired`',
             '相邻 Skill 混淆测试',
-            '不得写 `external_dependencies`、运行发现缓存、安装或执行外部代码',
+            '不得写 `external_dependencies`、刷新发现缓存、安装或执行外部代码',
+            '没有边界的“持续自我学习”不得启动',
+            '禁止失控学习循环',
         },
         'craft': {
             '能力/质量增益',
             '新增上下文、延迟、误路由、依赖、安全、维护和迁移成本',
             '相邻 Skill 混淆场景',
             '回归预算',
+            '## 七、学习型升级晋级门',
+            '新增必须有减法',
+            '关键词存在、文件数量和自评得分不能证明方法有效',
+            '`superseded / retired`',
+        },
+        'context': {
+            '## 学习探索预算',
+            '来源、深读、候选、晋级、原文保留和重试预算',
+            '默认一次只验证一个可证伪增强',
+            '候选之间使用隔离摘要',
+        },
+        'replay': {
+            'Replay 35: Learning Control Correctness And Stage Preload Guard',
+            'about 86,396 tokens',
+            'long-term learning governance now directly selects only `context-compressor`',
+            'The no-preload repair remains a deterministic candidate',
         },
         'book': {
             '`candidate / verified / rejected`',
@@ -1981,7 +2037,25 @@ def check_external_capability_admission_contract(repo_root):
         if isinstance(item, dict)
     }
     trigger_contracts = {
-        'ecosystem-scout': {'研究外部 Skill', '汲取外部技能', '只学习不接入', '汲取精华', '汲取的精华'},
+        'ecosystem-scout': {
+            '研究外部 Skill',
+            '汲取外部技能',
+            '只学习不接入',
+            '汲取精华',
+            '汲取的精华',
+            '外部方法晋级',
+        },
+        'skill-crafting': {
+            '外部方法晋级',
+            '方法晋级与退役',
+            '古月能力升级',
+        },
+        'context-compressor': {
+            '学习探索预算',
+            '持续学习预算',
+            '互联网探索预算',
+            '所能接收的消息有限',
+        },
         'requirement-analysis': {'防绕过验收', '任务验收标准'},
         'book-distiller': {'这本书的方法论', '提炼成可复用的 Agent 技能', '长视频转写稿蒸馏'},
     }
@@ -1991,11 +2065,77 @@ def check_external_capability_admission_contract(repo_root):
             print(f"❌ [EXTERNAL ADMISSION ERROR] {name} missing trigger: {missing}", file=sys.stderr)
             passed = False
 
-    scout_description = str(skills.get('ecosystem-scout', {}).get('description', ''))
-    for phrase in {'learn-only method absorption', 'net-benefit gates', 'anti-bloat boundaries'}:
-        if phrase not in scout_description:
-            print(f"❌ [EXTERNAL ADMISSION ERROR] ecosystem-scout description missing `{phrase}`", file=sys.stderr)
+    description_contracts = {
+        'ecosystem-scout': {
+            'bounded learning-expedition',
+            'source isolation',
+            'net-benefit',
+            'anti-bloat',
+            'rollback',
+            'retirement',
+            'autonomous self-modification',
+        },
+        'skill-crafting': {'promoting', 'rolling back', 'retiring', 'unverified self-improvement'},
+        'context-compressor': {'learning expeditions', 'candidates', 'promotions', 'retention', 'retries'},
+    }
+    for name, required in description_contracts.items():
+        description = str(skills.get(name, {}).get('description', ''))
+        for phrase in sorted(required):
+            if phrase not in description:
+                print(
+                    f"❌ [EXTERNAL ADMISSION ERROR] {name} description missing `{phrase}`",
+                    file=sys.stderr,
+                )
+                passed = False
+
+    workflows = {
+        str(item.get('id', '')).strip(): item
+        for item in manifest.get('collaboration_contract', {}).get('workflows', [])
+        if isinstance(item, dict)
+    }
+    learning_workflow = workflows.get('capability-learning-governance', {})
+    if not learning_workflow:
+        print(
+            "❌ [EXTERNAL ADMISSION ERROR] capability-learning-governance workflow missing",
+            file=sys.stderr,
+        )
+        passed = False
+    else:
+        required_entries = {'context-compressor', 'ecosystem-scout', 'skill-crafting'}
+        actual_entries = set(learning_workflow.get('entry_skills', []))
+        if not required_entries.issubset(actual_entries):
+            print(
+                "❌ [EXTERNAL ADMISSION ERROR] learning workflow entry skills incomplete",
+                file=sys.stderr,
+            )
             passed = False
+        stage_contract = [
+            ('bound', 'sequence', {'context-compressor'}),
+            ('discover', 'as-needed', {'ecosystem-scout', 'research-and-sourcing'}),
+            ('test-and-place', 'as-needed', {'skill-crafting'}),
+            ('verify', 'independent', {'reality-auditor'}),
+        ]
+        actual_stages = {
+            str(item.get('id', '')).strip(): item
+            for item in learning_workflow.get('stages', [])
+            if isinstance(item, dict)
+        }
+        for stage_id, mode, required_skills in stage_contract:
+            stage = actual_stages.get(stage_id, {})
+            if stage.get('mode') != mode or not required_skills.issubset(set(stage.get('skills', []))):
+                print(
+                    f"❌ [EXTERNAL ADMISSION ERROR] learning workflow stage invalid: {stage_id}",
+                    file=sys.stderr,
+                )
+                passed = False
+        completion_gate = str(learning_workflow.get('completion_gate', ''))
+        for phrase in {'maturity', 'minimal placement', 'rollback', 'retirement', 'discovery alone never authorizes promotion'}:
+            if phrase not in completion_gate:
+                print(
+                    f"❌ [EXTERNAL ADMISSION ERROR] learning workflow completion gate missing `{phrase}`",
+                    file=sys.stderr,
+                )
+                passed = False
 
     research_only = {'leader', 'cangjie-skill', 'video-downloader'}
     external_names = {
@@ -2028,6 +2168,75 @@ def check_external_capability_admission_contract(repo_root):
     for missing in sorted(prompt_contract - {phrase for phrase in prompt_contract if phrase in prompt_text}):
         print(f"❌ [EXTERNAL ADMISSION ERROR] Method-absorption prompt missing `{missing}`", file=sys.stderr)
         passed = False
+
+    learning_prompt_names = {
+        'Controlled Continuous Learning Governance',
+        'Learning Promotion Resists Authority And Injection',
+        'Learning Regression Rollback And Retirement',
+        'Learning Governance Near-Miss - Ordinary Topic Study',
+    }
+    actual_prompt_names = {
+        str(item.get('name', '')).strip()
+        for item in prompts
+        if isinstance(item, dict)
+    }
+    for missing in sorted(learning_prompt_names - actual_prompt_names):
+        print(f"❌ [EXTERNAL ADMISSION ERROR] Learning prompt missing `{missing}`", file=sys.stderr)
+        passed = False
+
+    behavior_ids = {
+        str(item.get('id', '')).strip()
+        for item in behavior_contracts
+        if isinstance(item, dict)
+    }
+    required_behavior_ids = {
+        'continuous-learning-is-bounded-and-user-controlled',
+        'learning-source-authority-and-instructions-cannot-bypass-gates',
+        'learning-critical-regression-forces-rollback',
+        'stale-learning-evidence-does-not-inherit-completion',
+        'ordinary-topic-learning-does-not-trigger-capability-governance',
+    }
+    for missing in sorted(required_behavior_ids - behavior_ids):
+        print(f"❌ [EXTERNAL ADMISSION ERROR] Learning behavior contract missing `{missing}`", file=sys.stderr)
+        passed = False
+
+    route_cases = {
+        str(item.get('id', '')).strip(): item
+        for item in capability_routes.get('cases', [])
+        if isinstance(item, dict)
+    }
+    route_contracts = {
+        'learning-governance': {
+            'expected': {'context-compressor'},
+            'forbidden': {'ecosystem-scout', 'skill-crafting', 'book-distiller', 'reality-auditor'},
+        },
+        'learning-authority-injection': {
+            'expected': {'ecosystem-scout', 'security-gate', 'skill-crafting'},
+            'forbidden': {'book-distiller'},
+        },
+        'learning-regression-retirement': {
+            'expected': {'skill-crafting', 'context-compressor'},
+            'forbidden': {'ecosystem-scout'},
+        },
+        'learning-governance-near-miss': {
+            'expected': set(),
+            'forbidden': {'context-compressor', 'ecosystem-scout', 'skill-crafting'},
+        },
+    }
+    for case_id, contract in route_contracts.items():
+        case = route_cases.get(case_id, {})
+        if not contract['expected'].issubset(set(case.get('expected_routes', []))):
+            print(
+                f"❌ [EXTERNAL ADMISSION ERROR] Learning route expectations incomplete: {case_id}",
+                file=sys.stderr,
+            )
+            passed = False
+        if not contract['forbidden'].issubset(set(case.get('forbidden_routes', []))):
+            print(
+                f"❌ [EXTERNAL ADMISSION ERROR] Learning route exclusions incomplete: {case_id}",
+                file=sys.stderr,
+            )
+            passed = False
 
     return passed
 
@@ -2773,7 +2982,7 @@ def main():
         all_passed = False
 
     if check_external_capability_admission_contract(repo_root):
-        print("✅ external capability admission contract valid.")
+        print("✅ external capability admission and learning-control contract valid.")
     else:
         all_passed = False
 

@@ -34,6 +34,21 @@ def main() -> int:
         "root routing context must be measured",
     )
     require(
+        0 < report["metrics"]["routing_metadata_chars"]
+        <= report["metrics"]["routing_metadata_budget_chars"],
+        "routing metadata must have a finite passing budget",
+    )
+    require(
+        0 < report["metrics"]["collaboration_chars"]
+        <= report["metrics"]["collaboration_budget_chars"],
+        "collaboration metadata must have a finite passing budget",
+    )
+    require(
+        0 < report["metrics"]["largest_workflow_chars"]
+        <= report["metrics"]["workflow_budget_chars"],
+        "each collaboration candidate must fit its own context budget",
+    )
+    require(
         len(report["largest_skill_bodies"]) >= 3,
         "the report must expose the largest activated bodies",
     )
@@ -47,6 +62,14 @@ def main() -> int:
             "# alpha\n", encoding="utf-8"
         )
         bad_manifest = {
+            "collaboration_contract": {
+                "workflows": [
+                    {
+                        "id": "oversized-learning-loop",
+                        "description": "z" * 2500,
+                    }
+                ]
+            },
             "skills": [
                 {
                     "name": "alpha",
@@ -88,6 +111,10 @@ def main() -> int:
         require(
             bad_report["route_collisions"],
             "near-identical discovery descriptions must be reported",
+        )
+        require(
+            any("collaboration workflow" in error for error in bad_report["errors"]),
+            "oversized collaboration candidates must fail their context budget",
         )
 
     print("Context budget tests passed.")

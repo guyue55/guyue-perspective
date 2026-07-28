@@ -966,3 +966,14 @@ Prompt:
 - Efficiency result: `fail_then_guarded`. Before any implementation artifact existed, the model preloaded `reality-auditor` and consumed about 53,134 tokens. The contract now keeps two-axis implementation review inside `coding-discipline` and forbids loading post-implementation audit instructions until an implementation, diff, completion claim, or explicit audit request exists.
 - Retry decision: no automatic model retry. The deterministic suite covers the repaired no-preload boundary plus lightweight and domain-language holdouts; another high-cost replay would need a fresh budget decision.
 - Maturity boundary: routing and the original standard-lane behavior were observed live, but the new context-cost guard remains a deterministic candidate until a later bounded live replay verifies the repair.
+
+## Replay 35: Learning Control Correctness And Stage Preload Guard
+
+- Date: 2026-07-28 (Asia/Shanghai).
+- Runtime: Codex CLI `0.142.0`, model reported as `gpt-5.5`, ephemeral read-only sandbox.
+- Probe: route a request for long-term Guyue learning governance while forbidding network, installation, repository writes, scheduling, and permanent authorization.
+- Correctness result: `pass`. The model found `context-compressor`, `ecosystem-scout`, and `skill-crafting`, selected `capability-learning-governance` first, separated admission level, method maturity, and minimal placement, and explicitly denied automatic network, installation, write, scheduling, core modification, cache refresh, background learning, or permanent authorization.
+- Efficiency result: `fail_then_guarded`. The run loaded all three child Skills, the learning protocol, and historical context and used about 86,396 tokens. Global Codex startup also reported that its shared installed-Skill catalog exceeded the runtime 2% discovery budget; that host-wide catalog cost is outside this repository's direct control.
+- Repair: long-term learning governance now directly selects only `context-compressor`. The collaboration candidate keeps `discover` and `test-and-place` as `as-needed`; `ecosystem-scout` requires a concrete source or authorized discovery action, `skill-crafting` requires a real `candidate`, and `reality-auditor` requires a change or completion claim.
+- Deterministic post-repair proof: the original natural-language prompt selects only `context-compressor` and returns only `capability-learning-governance`; all 64 routing prompts, 34 behavior contracts, 12 collaboration contracts, the ordinary-learning near-miss, and context budgets pass with 27 Skills and zero route collisions.
+- Retry decision: no automatic second model replay after the high-cost run. The no-preload repair remains a deterministic candidate until a later separately budgeted live replay; the original correctness result is retained without being promoted into an efficiency claim.

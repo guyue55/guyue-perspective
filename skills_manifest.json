@@ -101,6 +101,30 @@
                 "completion_gate": "The control pack, ledger, stop conditions, FINAL evidence, and A/B/C seal all agree on completion."
             },
             {
+                "id": "capability-learning-governance",
+                "description": "Run bounded learning expeditions that separate discovery, evidence maturity, minimal placement, rollback, and retirement before Guyue changes its core behavior.",
+                "trigger_intent": [
+                    "持续学习治理",
+                    "学习与汲取治理",
+                    "汲取、学习的判断",
+                    "互联网学习控制",
+                    "古月能力演化治理"
+                ],
+                "entry_skills": [
+                    "context-compressor",
+                    "ecosystem-scout",
+                    "skill-crafting"
+                ],
+                "stages": [
+                    {"id": "bound", "mode": "sequence", "skills": ["context-compressor"]},
+                    {"id": "discover", "mode": "as-needed", "skills": ["ecosystem-scout", "research-and-sourcing"]},
+                    {"id": "test-and-place", "mode": "as-needed", "skills": ["skill-crafting"]},
+                    {"id": "verify", "mode": "independent", "skills": ["reality-auditor"]},
+                    {"id": "retain", "mode": "as-needed", "skills": ["documentation"]}
+                ],
+                "completion_gate": "Admission level, maturity, minimal placement, consumed-versus-cap budget, critical non-regressions, rollback, review date, and retirement path are explicit; discovery alone never authorizes promotion."
+            },
+            {
                 "id": "external-capability-intake",
                 "description": "Evaluate an external Skill or tool as a bounded candidate before any installation, execution, or integration.",
                 "trigger_intent": [
@@ -109,9 +133,7 @@
                     "外部能力接入"
                 ],
                 "entry_skills": [
-                    "context-compressor",
-                    "ecosystem-scout",
-                    "security-gate"
+                    "ecosystem-scout"
                 ],
                 "stages": [
                     {"id": "need", "mode": "sequence", "skills": ["context-compressor"]},
@@ -658,9 +680,12 @@
                 "新的 Agent 技能",
                 "可复用的 Skill",
                 "Skill 升级流程",
-                "动态工作流"
+                "动态工作流",
+                "外部方法晋级",
+                "方法晋级与退役",
+                "古月能力升级"
             ],
-            "description": "Workflow for creating, upgrading, auditing, and validating Agent Skills, plus packaging repeatable loops into Skill, Custom subagent, Hook, Automation, or CI gate when stable inputs, verifiers, stop conditions, and budgets exist; not ordinary docs or task SOPs.",
+            "description": "Workflow for creating, upgrading, auditing, validating, promoting, rolling back, and retiring Agent Skills or learned methods, or packaging stable inputs, verifiers, stop conditions, and budgets as Skill, Custom subagent, Hook, Automation, or CI gate; not ordinary docs, task SOPs, or unverified self-improvement.",
             "root_exposure": "explicit",
             "evidence_profile": "E3-lineage",
             "activation_policy": "model-or-explicit",
@@ -710,13 +735,14 @@
                 "汲取外部技能",
                 "只学习不接入",
                 "汲取精华",
-                "汲取的精华"
+                "汲取的精华",
+                "外部方法晋级"
             ],
             "negative_intent": [
                 "优先查古月本地精选库",
                 "本地精选库"
             ],
-            "description": "External skill, plugin, and tool research, learn-only method absorption, intake, or quick-install assistance with source checks, explicit approval, security-gate handoff, smoke tests, net-benefit gates, and anti-bloat boundaries; not local catalog software advice.",
+            "description": "External skill, plugin, tool, and bounded learning-expedition research with learn-only absorption, source isolation, net-benefit and anti-bloat gates, explicit approval, rollback, retirement, quick-install assistance, security-gate handoff, and smoke tests; not local catalog advice or autonomous self-modification.",
             "root_exposure": "explicit",
             "evidence_profile": "E3-lineage",
             "activation_policy": "model-or-explicit",
@@ -915,9 +941,13 @@
                 "Context7",
                 "context-compressor",
                 "日志太长",
-                "动态工作流"
+                "动态工作流",
+                "学习探索预算",
+                "持续学习预算",
+                "互联网探索预算",
+                "所能接收的消息有限"
             ],
-            "description": "Context budget manager for diagnosing token waste across files, code maps, MCP tool schemas, tool outputs, docs, long sessions, loop budgets, and subagent budgets; chooses minimal-context tactics and can recommend controlled third-party quick installs with traceability and measured-or-marked token savings.",
+            "description": "Context budget manager for diagnosing token waste across files, code maps, MCP tool schemas, tool outputs, docs, long sessions, loop budgets, subagent budgets, and learning expeditions; bounds sources, deep reads, candidates, promotions, retention, and retries, and supports controlled third-party quick installs with traceability and measured-or-marked token savings.",
             "root_exposure": "explicit",
             "evidence_profile": "E2-change",
             "activation_policy": "model-or-explicit",

@@ -2177,6 +2177,11 @@ def check_external_capability_admission_contract(repo_root):
             '不得写 `external_dependencies`、刷新发现缓存、安装或执行外部代码',
             '没有边界的“持续自我学习”不得启动',
             '禁止失控学习循环',
+            'GitHub 项目发现',
+            '`gh search repos`',
+            '不要求新增 OpenRouter 或 GitHub Token',
+            '最多 3 轮',
+            'Issue、PR 或代码搜索',
         },
         'design': {
             '方向防火墙 (Direction Firewall)',
@@ -2260,6 +2265,12 @@ def check_external_capability_admission_contract(repo_root):
             '汲取精华',
             '汲取的精华',
             '外部方法晋级',
+            '查找 GitHub 项目',
+            '搜索 GitHub 仓库',
+            '在 GitHub 找',
+            'GitHub 开源项目',
+            'GitHub 上的开源',
+            'find GitHub repositories',
         },
         'skill-crafting': {
             '外部方法晋级',
@@ -2288,6 +2299,33 @@ def check_external_capability_admission_contract(repo_root):
         actual = set(skills.get(name, {}).get('trigger_intent', []))
         for missing in sorted(required - actual):
             print(f"❌ [EXTERNAL ADMISSION ERROR] {name} missing trigger: {missing}", file=sys.stderr)
+            passed = False
+
+    negative_contracts = {
+        'ecosystem-scout': {
+            '优先查古月本地精选库',
+            '搜索 GitHub 仓库代码',
+            'GitHub 找 Issue',
+            'GitHub 找 PR',
+            'GitHub 找代码',
+            '仓库的 Issue',
+            '仓库的 PR',
+            '仓库的代码',
+            'GitHub 用户',
+            'GitHub 找某个用户',
+        },
+        'software-advisor': {
+            '查找 GitHub 项目',
+            '搜索 GitHub 仓库',
+            '在 GitHub 找',
+            'GitHub 开源项目',
+            'GitHub 上的开源',
+        },
+    }
+    for name, required in negative_contracts.items():
+        actual = set(skills.get(name, {}).get('negative_intent', []))
+        for missing in sorted(required - actual):
+            print(f"❌ [EXTERNAL ADMISSION ERROR] {name} missing negative intent: {missing}", file=sys.stderr)
             passed = False
 
     description_contracts = {

@@ -1,6 +1,6 @@
 ---
 name: ecosystem-scout
-description: Find, compare, learn from, intake, or install external Agent Skills, plugins, libraries, and tools. Use bounded learning expeditions, source isolation, net-benefit gates, two-phase loading, explicit action approval, rollback, retirement, and security-gate; software-advisor handles local curated software recommendations.
+description: Find, compare, learn from, intake, or install external Agent Skills, plugins, libraries, tools, and GitHub repositories. Use bounded GitHub project discovery and learning expeditions, source isolation, net-benefit gates, two-phase loading, explicit action approval, rollback, retirement, and security-gate; software-advisor handles local curated software recommendations.
 ---
 
 # ecosystem-scout (生态侦察兵)
@@ -15,6 +15,7 @@ description: Find, compare, learn from, intake, or install external Agent Skills
 - **场景三（生态防胖）**：希望 Agent 能记住几百个技能，但不想让全局 Context Window 被这几百个工具说明文书塞爆时。
 - **场景四（快速接入）**：当前任务明显适合第三方工具，用户希望推荐、安装、试用并应用到当前工作流。
 - **场景五（只学方法）**：“研究这个 Skill 有什么值得古月学习的，不要接入或新增能力。”
+- **场景六（GitHub 项目发现）**：“在 GitHub 找一个轻量的开源文档工具”或“查找 GitHub 项目并比较匹配度”。
 
 ## 核心机制：Two-Phase Loading (两级防胖挂载)
 Two-Phase Loading 只适用于已经通过净收益门的“隔离候选”，不是所有调研对象的默认归宿。
@@ -61,6 +62,17 @@ Two-Phase Loading 只适用于已经通过净收益门的“隔离候选”，�
 - **运行时依赖**：内置替代不可行，且真实回放证明质量/效率增益，安全、维护、预算和退出门全部通过。仍需动作级授权。
 
 若没有“无外部能力基线”、至少一个旧失败样本、同级替代对比和回归检查，不得从“仅学习”升级。外部方法要进入古月，还必须依次证明：跨场景稳定、能预测或解决未用于提炼的新样本、相对现有能力有独特增益，并通过相邻 Skill 混淆测试。正确性、安全、权限、授权和失败可见性属于不可加权抵消的硬门；不能用速度、Token 节省或功能数量补偿关键项下降。
+
+### 1.7 GitHub 项目发现 (GitHub Project Discovery)
+
+只在用户要按需求寻找、比较 GitHub 项目或仓库时进入。这不包括已知仓库的 Issue、PR 或代码搜索，也不包括 GitHub 用户、账号或人员搜索；它同样不替代 GitHub 项目自身的安全、许可证和接入审查。
+
+1. **压缩搜索意图**：把非英文需求翻译成英文搜索词，保留品牌、框架、库、协议和领域名词；只选择 2–4 个核心功能词。只有用户明确指定编程语言时才加入 `language:`，不得从框架反推语言。
+2. **使用现有宿主能力**：优先使用可用的 Web 搜索或 `gh search repos`。该路径不要求新增 OpenRouter 或 GitHub Token；宿主未提供 GitHub 访问能力时，明确降级并给出可复制查询。
+3. **有界增删词重试**：初始查询外最多 3 轮。结果为 0–3 个时，每轮只删除一个通用、冗余或疑似过度约束词，不删除受保护技术词；结果明显过宽时，只增加一个尚未使用的功能词、领域词或官方筛选条件。查询不再有意义、结果不再改善或达到上限时立即停止。
+4. **拉取可比较事实**：默认只保留 3–5 个候选，并尽量核对名称、URL、描述、许可证、归档状态、主要语言、主题、更新时间、Stars 和 Forks。搜索摘要只用于发现，重要判断回到仓库主页、README 或许可证原文。
+5. **按匹配度而非热度裁决**：先看用途和约束匹配，再看活跃度、许可证、维护风险、接入成本和退出路径；Stars 只能作为弱信号。缺许可证、已归档、长期未更新或描述与实现不符时显式降级。
+6. **输出查询谱系**：列出实际使用的查询、增删词原因、入选项和淘汰原因。搜索本身不授权 Clone、安装、执行、写入依赖或读取私有仓库；这些动作继续走净收益门、`security-gate` 和动作级授权。
 
 ### 2. 差异化执行 (Differentiated Execution)
 
@@ -145,6 +157,9 @@ python3 scripts/discover_local_skills.py
 
 > **User**: "研究这个外部 Skill，汲取值得学习的地方完善古月，不要接入。"
 > **Expected**: scout 启动 -> 冻结内置基线 -> 提取方法而非复制正文 -> 映射现有 Skill -> 用新样本验证并记录 candidate/verified/rejected -> 输出净收益与拒绝项；不写 manifest、不刷新发现缓存、不安装、不执行。
+
+> **User**: "帮我在 GitHub 找一个轻量的开源文档工具，先比较，不要安装。"
+> **Expected**: scout 启动 -> 将需求压缩为 2–4 个英文核心词 -> 用 Web 或 `gh search repos` 搜索 -> 结果过少或过宽时最多 3 轮增删词 -> 核对 3–5 个候选的匹配度、许可证、归档和活跃度 -> 输出查询谱系与淘汰原因；不要求新增凭证，不搜索指定仓库 Issue/PR/代码，不 Clone、安装或写依赖。
 
 
 ## Anti-Slop 与防注入规范 (Anti-Slop & Security)

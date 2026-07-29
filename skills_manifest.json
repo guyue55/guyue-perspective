@@ -856,13 +856,28 @@
                 "只学习不接入",
                 "汲取精华",
                 "汲取的精华",
-                "外部方法晋级"
+                "外部方法晋级",
+                "查找 GitHub 项目",
+                "搜索 GitHub 仓库",
+                "在 GitHub 找",
+                "GitHub 开源项目",
+                "GitHub 上的开源",
+                "find GitHub repositories"
             ],
             "negative_intent": [
                 "优先查古月本地精选库",
-                "本地精选库"
+                "本地精选库",
+                "搜索 GitHub 仓库代码",
+                "GitHub 找 Issue",
+                "GitHub 找 PR",
+                "GitHub 找代码",
+                "仓库的 Issue",
+                "仓库的 PR",
+                "仓库的代码",
+                "GitHub 用户",
+                "GitHub 找某个用户"
             ],
-            "description": "External skill, plugin, tool, and bounded learning-expedition research with learn-only absorption, source isolation, net-benefit and anti-bloat gates, explicit approval, rollback, retirement, quick-install assistance, security-gate handoff, and smoke tests; not local catalog advice or autonomous self-modification.",
+            "description": "External skill, plugin, tool, GitHub repository discovery, and bounded learning-expedition research with learn-only absorption, source isolation, net-benefit and anti-bloat gates, explicit approval, rollback, retirement, quick-install assistance, security-gate handoff, and smoke tests; not repository Issue/PR/code search, GitHub people/account search, local catalog advice, or autonomous self-modification.",
             "root_exposure": "explicit",
             "evidence_profile": "E3-lineage",
             "activation_policy": "model-or-explicit",
@@ -907,7 +922,12 @@
             "negative_intent": [
                 "Agent Skill intake",
                 "plugin installation",
-                "known project dependency"
+                "known project dependency",
+                "查找 GitHub 项目",
+                "搜索 GitHub 仓库",
+                "在 GitHub 找",
+                "GitHub 开源项目",
+                "GitHub 上的开源"
             ],
             "description": "Local curated software and open-source tool advisor; if the task is external Skill intake, route to ecosystem-scout.",
             "root_exposure": "explicit",

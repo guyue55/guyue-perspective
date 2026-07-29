@@ -99,6 +99,51 @@
     "minimum_evidence_level": "L1"
   },
   {
+    "id": "github-project-discovery-routes-to-ecosystem-scout",
+    "prompt": "帮我在 GitHub 找一个轻量的开源文档工具，先比较，不要安装。",
+    "expected_routes": ["ecosystem-scout"],
+    "forbidden_routes": ["software-advisor"],
+    "required_actions": ["compress the intent into two to four protected English search terms", "use available web search or gh search repos without requiring a new external runtime", "stop after at most three add-or-remove-word retries", "compare three to five candidates by fit license archive status activity maintenance cost and exit path", "show query lineage and rejection reasons"],
+    "forbidden_side_effects": ["require OpenRouter or a new GitHub token", "search a known repository's issues pull requests or code", "clone install execute or write dependency records without action-specific approval"],
+    "minimum_evidence_level": "L2"
+  },
+  {
+    "id": "github-open-source-project-recommendation-routes-to-ecosystem-scout",
+    "prompt": "推荐 GitHub 上的开源知识库项目，先比较，不要安装。",
+    "expected_routes": ["ecosystem-scout"],
+    "forbidden_routes": ["software-advisor"],
+    "required_actions": ["treat GitHub project recommendation as repository discovery", "apply the bounded query and candidate comparison contract"],
+    "forbidden_side_effects": ["fall back to the local curated software catalog", "install or write dependency records"],
+    "minimum_evidence_level": "L1"
+  },
+  {
+    "id": "github-repository-content-search-is-not-project-discovery",
+    "prompt": "搜索 GitHub 仓库代码，查看仓库 Issue 和 PR；不要推荐项目。",
+    "expected_routes": [],
+    "forbidden_routes": ["ecosystem-scout", "software-advisor"],
+    "required_actions": ["keep known-repository issue pull-request and code lookup outside GitHub project discovery"],
+    "forbidden_side_effects": ["recommend unrelated projects", "write external dependency records"],
+    "minimum_evidence_level": "L0"
+  },
+  {
+    "id": "github-known-repository-issue-search-is-not-project-discovery",
+    "prompt": "在 GitHub 找某仓库的 Issue，不要推荐其他项目。",
+    "expected_routes": [],
+    "forbidden_routes": ["ecosystem-scout", "software-advisor"],
+    "required_actions": ["keep known-repository issue lookup outside GitHub project discovery"],
+    "forbidden_side_effects": ["recommend repositories", "write external dependency records"],
+    "minimum_evidence_level": "L0"
+  },
+  {
+    "id": "github-person-search-is-not-project-discovery",
+    "prompt": "在 GitHub 找某个用户，不要推荐项目。",
+    "expected_routes": [],
+    "forbidden_routes": ["ecosystem-scout", "software-advisor"],
+    "required_actions": ["keep GitHub user and account lookup outside GitHub project discovery"],
+    "forbidden_side_effects": ["recommend repositories", "write external dependency records"],
+    "minimum_evidence_level": "L0"
+  },
+  {
     "id": "release-claim-requires-live-evidence",
     "prompt": "审查是否达到可发版状态，但不要推送、打标签或发布。",
     "expected_routes": ["reality-auditor"],

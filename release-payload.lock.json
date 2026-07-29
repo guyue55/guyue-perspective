@@ -818,6 +818,10 @@
       "sha256": "5b25f2cb63c8bd71171b90b68eca87033d8bc8d94e32410b4138db54e3754079"
     },
     {
+      "path": "scripts/test_capability_runner_paths.py",
+      "sha256": "05fd8a68ecd27b5bcb86b06dd46dcd4fc8fab13d2692079776c90b40b7a3fb82"
+    },
+    {
       "path": "scripts/test_codex_extractor.py",
       "sha256": "6c925bdcf0abce92a97a6babe7658594de6edc79b2dbde5fe44ca0079f926748"
     },
@@ -867,7 +871,7 @@
     },
     {
       "path": "scripts/test_suite.sh",
-      "sha256": "21e85fe4ce17c9b03c3c7d5a0f141f4f4c1153b51279ed0ec9452a8efec657bf"
+      "sha256": "e4638c334abe0c9ab3db1e02550e9a24217c977cdf3187bf4dea1f80a49c9b83"
     },
     {
       "path": "scripts/test_try_guyue.py",

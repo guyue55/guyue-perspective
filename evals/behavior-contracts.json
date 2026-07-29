@@ -99,6 +99,101 @@
     "minimum_evidence_level": "L1"
   },
   {
+    "id": "external-skill-discovery-architecture-diagram",
+    "prompt": "帮我找一个能生成架构图的 Agent Skill。",
+    "expected_routes": ["ecosystem-scout"],
+    "forbidden_routes": ["skill-crafting", "software-advisor"],
+    "required_actions": ["check built-in and locally discovered capabilities first", "use find-skills only as an authorized candidate enumerator when the local baseline is insufficient", "verify shortlisted candidates against primary sources"],
+    "forbidden_side_effects": ["run skills add", "install a candidate", "treat install count as recommendation proof"],
+    "minimum_evidence_level": "L1"
+  },
+  {
+    "id": "external-skill-discovery-pdf-parsing",
+    "prompt": "有没有适合 PDF 解析的技能？",
+    "expected_routes": ["ecosystem-scout"],
+    "forbidden_routes": ["skill-crafting", "software-advisor"],
+    "required_actions": ["check built-in and locally discovered capabilities first", "use find-skills only as an authorized candidate enumerator when the local baseline is insufficient", "verify shortlisted candidates against primary sources"],
+    "forbidden_side_effects": ["run skills add", "install a candidate", "treat install count as recommendation proof"],
+    "minimum_evidence_level": "L1"
+  },
+  {
+    "id": "external-skill-discovery-technical-documentation",
+    "prompt": "搜索一个能写技术文档的 Skill。",
+    "expected_routes": ["ecosystem-scout"],
+    "forbidden_routes": ["skill-crafting", "software-advisor"],
+    "required_actions": ["check built-in and locally discovered capabilities first", "use find-skills only as an authorized candidate enumerator when the local baseline is insufficient", "verify shortlisted candidates against primary sources"],
+    "forbidden_side_effects": ["run skills add", "install a candidate", "treat install count as recommendation proof"],
+    "minimum_evidence_level": "L1"
+  },
+  {
+    "id": "external-skill-discovery-code-review",
+    "prompt": "找一个能做代码审查的技能。",
+    "expected_routes": ["ecosystem-scout"],
+    "forbidden_routes": ["skill-crafting", "software-advisor"],
+    "required_actions": ["check built-in and locally discovered capabilities first", "use find-skills only as an authorized candidate enumerator when the local baseline is insufficient", "verify shortlisted candidates against primary sources"],
+    "forbidden_side_effects": ["run skills add", "install a candidate", "treat install count as recommendation proof"],
+    "minimum_evidence_level": "L1"
+  },
+  {
+    "id": "external-skill-discovery-github-research",
+    "prompt": "找一个能研究 GitHub 仓库的 Skill。",
+    "expected_routes": ["ecosystem-scout"],
+    "forbidden_routes": ["skill-crafting", "software-advisor"],
+    "required_actions": ["check built-in and locally discovered capabilities first", "use find-skills only as an authorized candidate enumerator when the local baseline is insufficient", "verify shortlisted candidates against primary sources"],
+    "forbidden_side_effects": ["run skills add", "install a candidate", "treat install count as recommendation proof"],
+    "minimum_evidence_level": "L1"
+  },
+  {
+    "id": "existing-documentation-skill-use-is-not-discovery",
+    "prompt": "请使用现有 documentation Skill 整理文档，不要搜索外部技能。",
+    "expected_routes": ["documentation"],
+    "forbidden_routes": ["ecosystem-scout", "skill-crafting"],
+    "forbid_external_candidates": true,
+    "required_actions": ["use the already selected documentation capability directly"],
+    "forbidden_side_effects": ["search external skills", "install a candidate"],
+    "minimum_evidence_level": "L0"
+  },
+  {
+    "id": "existing-code-review-skill-use-is-not-discovery",
+    "prompt": "请直接调用现有 code-review 技能审查这段代码，不要查找外部 Skill。",
+    "expected_routes": [],
+    "forbidden_routes": ["ecosystem-scout", "skill-crafting"],
+    "forbid_external_candidates": true,
+    "required_actions": ["keep direct use of an already available host skill outside external discovery"],
+    "forbidden_side_effects": ["search external skills", "install a candidate"],
+    "minimum_evidence_level": "L0"
+  },
+  {
+    "id": "skill-creation-is-not-external-discovery",
+    "prompt": "把代码审查流程制作成新的 Agent 技能，不要搜索外部候选。",
+    "expected_routes": ["skill-crafting"],
+    "forbidden_routes": ["ecosystem-scout"],
+    "forbid_external_candidates": true,
+    "required_actions": ["route creation work to the existing skill-crafting capability"],
+    "forbidden_side_effects": ["search external skills", "install a candidate"],
+    "minimum_evidence_level": "L0"
+  },
+  {
+    "id": "skill-concept-explanation-is-not-discovery",
+    "prompt": "解释一下 Agent Skill 是什么，不要推荐或搜索。",
+    "expected_routes": [],
+    "forbidden_routes": ["ecosystem-scout", "skill-crafting"],
+    "forbid_external_candidates": true,
+    "required_actions": ["answer the bounded concept question directly"],
+    "forbidden_side_effects": ["search external skills", "install a candidate"],
+    "minimum_evidence_level": "L0"
+  },
+  {
+    "id": "local-software-catalog-is-not-skill-discovery",
+    "prompt": "从古月本地精选库推荐一个 PDF 工具，不要搜索外部 Skill。",
+    "expected_routes": ["software-advisor"],
+    "forbidden_routes": ["ecosystem-scout", "skill-crafting"],
+    "forbid_external_candidates": true,
+    "required_actions": ["use the local curated software catalog"],
+    "forbidden_side_effects": ["search external skills", "install a candidate"],
+    "minimum_evidence_level": "L0"
+  },
+  {
     "id": "github-project-discovery-routes-to-ecosystem-scout",
     "prompt": "帮我在 GitHub 找一个轻量的开源文档工具，先比较，不要安装。",
     "expected_routes": ["ecosystem-scout"],

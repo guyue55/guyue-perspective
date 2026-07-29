@@ -2170,6 +2170,10 @@ def check_external_capability_admission_contract(repo_root):
         'scout': {
             '外部能力净收益门',
             '`拒绝`、`仅学习`、`隔离候选`、`运行时依赖`',
+            '本地能力优先',
+            '`find-skills` 只负责候选枚举',
+            '不得执行 `skills add`',
+            '原始来源复核',
             '`candidate`',
             '`verified / rejected`',
             '`superseded / retired`',
@@ -2265,6 +2269,12 @@ def check_external_capability_admission_contract(repo_root):
             '汲取精华',
             '汲取的精华',
             '外部方法晋级',
+            '查找外部 Skill',
+            '找技能',
+            '查找技能',
+            '搜索技能',
+            '找 Agent Skill',
+            'find a skill',
             '查找 GitHub 项目',
             '搜索 GitHub 仓库',
             '在 GitHub 找',
@@ -2313,6 +2323,16 @@ def check_external_capability_admission_contract(repo_root):
             '仓库的代码',
             'GitHub 用户',
             'GitHub 找某个用户',
+            '不要搜索外部技能',
+            '不要查找外部 Skill',
+            '不要搜索外部候选',
+            '不要推荐或搜索',
+            '不搜索外部技能',
+            '不查找外部 Skill',
+            '使用现有 Skill',
+            '调用现有 Skill',
+            '使用现有技能',
+            '调用现有技能',
         },
         'software-advisor': {
             '查找 GitHub 项目',
@@ -2327,6 +2347,33 @@ def check_external_capability_admission_contract(repo_root):
         for missing in sorted(required - actual):
             print(f"❌ [EXTERNAL ADMISSION ERROR] {name} missing negative intent: {missing}", file=sys.stderr)
             passed = False
+
+    external_candidate_negatives = {
+        '本地精选库',
+        '不要搜索外部技能',
+        '不要查找外部 Skill',
+        '不要搜索外部候选',
+        '不要推荐或搜索',
+        '不搜索外部技能',
+        '不查找外部 Skill',
+        '使用现有 Skill',
+        '调用现有 Skill',
+        '使用现有技能',
+        '调用现有技能',
+    }
+    actual_external_negatives = set(
+        skills.get('ecosystem-scout', {}).get(
+            'external_candidate_negative_intent',
+            [],
+        )
+    )
+    for missing in sorted(external_candidate_negatives - actual_external_negatives):
+        print(
+            f"❌ [EXTERNAL ADMISSION ERROR] "
+            f"ecosystem-scout missing external candidate negative intent: {missing}",
+            file=sys.stderr,
+        )
+        passed = False
 
     description_contracts = {
         'ecosystem-scout': {

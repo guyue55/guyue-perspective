@@ -127,7 +127,7 @@
     },
     {
       "path": "evals/behavior-contracts.json",
-      "sha256": "c3a8be327da2d29cec7a0323ba3f3618509df6f6de05748361482fbab3a9623e"
+      "sha256": "9abba5f7d60608524f9c5084c58d6d9dfac2b9d30e10af4cd682c67757ab59b0"
     },
     {
       "path": "evals/capability-collaboration.json",
@@ -735,7 +735,7 @@
     },
     {
       "path": "scripts/ci_validate_skills.py",
-      "sha256": "711156d032017e9232f37570e8358447d4594644d60bd6e362728cfcd42e8ba3"
+      "sha256": "6b278a1802151d97ca649d10b86232b5459bc47317daf683f88a970f1e60011c"
     },
     {
       "path": "scripts/claude_extractor.py",
@@ -867,7 +867,7 @@
     },
     {
       "path": "scripts/test_skill_router.py",
-      "sha256": "cf00ede4ecc55b264328e827dd32a07b34b1f9f6a6cc373e6e18ce6f7601c5ee"
+      "sha256": "f884df2f37d4d639e7ca6cf400d4ce8f00640e2470259c87c861151a3fb0422e"
     },
     {
       "path": "scripts/test_suite.sh",
@@ -943,7 +943,7 @@
     },
     {
       "path": "skills/ecosystem-scout/SKILL.md",
-      "sha256": "a4ef912bbef890efede4a7c3be00a19f7091773a848fd17b78eb4d668468ef53"
+      "sha256": "97da154061e0ad400189f848a548805ec420e6b1ae50fbf2bb16e57861df0c01"
     },
     {
       "path": "skills/frontend-expert/SKILL.md",
@@ -1039,7 +1039,7 @@
     },
     {
       "path": "skills_manifest.json",
-      "sha256": "4873b9727ec70b58dd9cf2be2ead24b6613affb96f047a78c89cdffc06a50ae2"
+      "sha256": "367ef34bec6b88ab4cd0d8e6ff3b51e787363f04be63eba3135dfacf2cd61f9b"
     },
     {
       "path": "src/context_budget.py",
@@ -1067,7 +1067,7 @@
     },
     {
       "path": "src/skill_router.py",
-      "sha256": "62da4c094382b4b97275546ca5e9e42397d4da77b3e0a5cdb924a46f20012dad"
+      "sha256": "6fb33b78f7369167bb72607218031c6b38926dca09b57e2aa42d616d5817f90d"
     },
     {
       "path": "test-prompts.json",

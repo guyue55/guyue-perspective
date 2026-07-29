@@ -570,12 +570,21 @@ def resolve_routes(
         ),
         key=lambda item: (item["reason"], item["name"]),
     )
-    external_decisions = [
-        _score_skill(dependency, intent, markers)
-        for dependency in manifest.get("external_dependencies", [])
-        if isinstance(dependency, dict)
-        and str(dependency.get("name", "")).strip()
-    ]
+    ecosystem_skill = skills_by_name.get("ecosystem-scout", {})
+    external_candidate_blockers = _negative_matches(
+        _string_list(ecosystem_skill.get("external_candidate_negative_intent")),
+        "\n".join([intent, *markers]),
+    )
+    external_decisions = (
+        []
+        if external_candidate_blockers
+        else [
+            _score_skill(dependency, intent, markers)
+            for dependency in manifest.get("external_dependencies", [])
+            if isinstance(dependency, dict)
+            and str(dependency.get("name", "")).strip()
+        ]
+    )
     external_by_name = {
         str(item.get("name", "")): item
         for item in manifest.get("external_dependencies", [])
@@ -628,6 +637,7 @@ def resolve_routes(
         "collaboration_contract_version": collaboration_version,
         "collaboration_candidates": collaboration_candidates,
         "external_candidates": external_candidates,
+        "external_candidate_blockers": external_candidate_blockers,
         "rejected": rejected,
         "context_markers": markers,
         "composed_intent_signals": composed_signals,

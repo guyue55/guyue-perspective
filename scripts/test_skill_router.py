@@ -51,6 +51,13 @@ def main() -> int:
             forbidden.isdisjoint(selected),
             f"{contract['id']} selected a forbidden route: {selected}",
         )
+        if contract.get("forbid_external_candidates"):
+            require(
+                not result["external_candidates"]
+                and result["external_candidate_blockers"],
+                f"{contract['id']} must suppress external candidates with visible blockers: "
+                f"{result['external_candidates']}",
+            )
 
     generic = resolve_routes(
         manifest,
@@ -254,6 +261,17 @@ def main() -> int:
             "action_specific_authorization",
         ],
         "external candidates must expose every activation gate",
+    )
+
+    mixed_external = resolve_routes(
+        manifest,
+        "在 GitHub 找某仓库的 Issue；另外评估 headroom 是否值得作为可选增强。",
+        limit=8,
+    )
+    require(
+        "headroom"
+        in [item["name"] for item in mixed_external["external_candidates"]],
+        "unrelated ecosystem negatives must not suppress an explicitly requested external candidate",
     )
 
     for contract in collaboration_contracts:

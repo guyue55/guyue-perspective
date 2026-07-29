@@ -31,6 +31,18 @@
     },
     "composed_intent_rules": [
         {
+            "id": "external-skill-discovery",
+            "route": "ecosystem-scout",
+            "canonical_trigger": "查找外部 Skill",
+            "score": 60,
+            "match_scope": "sentence",
+            "all_any": [
+                ["帮我找", "找一个", "查找", "搜索", "寻找", "有没有", "有无", "推荐"],
+                ["Agent Skill", "Agent 技能", "Skill", "技能"]
+            ],
+            "exclude_any": ["不要搜索", "不搜索", "无需搜索", "不要查找", "不查找", "无需查找", "不要推荐", "不推荐", "使用现有", "调用现有", "直接调用", "解释一下", "是什么", "本地精选库", "制作成", "创建", "新建"]
+        },
+        {
             "id": "continuous-learning-budget",
             "route": "context-compressor",
             "canonical_trigger": "持续学习预算",
@@ -857,6 +869,12 @@
                 "汲取精华",
                 "汲取的精华",
                 "外部方法晋级",
+                "查找外部 Skill",
+                "找技能",
+                "查找技能",
+                "搜索技能",
+                "找 Agent Skill",
+                "find a skill",
                 "查找 GitHub 项目",
                 "搜索 GitHub 仓库",
                 "在 GitHub 找",
@@ -875,7 +893,30 @@
                 "仓库的 PR",
                 "仓库的代码",
                 "GitHub 用户",
-                "GitHub 找某个用户"
+                "GitHub 找某个用户",
+                "不要搜索外部技能",
+                "不要查找外部 Skill",
+                "不要搜索外部候选",
+                "不要推荐或搜索",
+                "不搜索外部技能",
+                "不查找外部 Skill",
+                "使用现有 Skill",
+                "调用现有 Skill",
+                "使用现有技能",
+                "调用现有技能"
+            ],
+            "external_candidate_negative_intent": [
+                "本地精选库",
+                "不要搜索外部技能",
+                "不要查找外部 Skill",
+                "不要搜索外部候选",
+                "不要推荐或搜索",
+                "不搜索外部技能",
+                "不查找外部 Skill",
+                "使用现有 Skill",
+                "调用现有 Skill",
+                "使用现有技能",
+                "调用现有技能"
             ],
             "description": "External skill, plugin, tool, GitHub repository discovery, and bounded learning-expedition research with learn-only absorption, source isolation, net-benefit and anti-bloat gates, explicit approval, rollback, retirement, quick-install assistance, security-gate handoff, and smoke tests; not repository Issue/PR/code search, GitHub people/account search, local catalog advice, or autonomous self-modification.",
             "root_exposure": "explicit",

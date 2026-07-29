@@ -66,6 +66,7 @@ fi
 echo ""
 echo "[9/15] Running MCP Route And Memory Safety Tests..."
 python3 scripts/test_guyue_paths.py
+python3 scripts/test_local_skill_discovery.py
 python3 scripts/test_memory_concurrency.py
 python3 scripts/test_memory_migration.py
 python3 scripts/test_mcp_server.py

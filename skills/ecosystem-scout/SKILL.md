@@ -21,7 +21,7 @@ description: Find, compare, learn from, intake, or install external Agent Skills
 Two-Phase Loading 只适用于已经通过净收益门的“隔离候选”，不是所有调研对象的默认归宿。
 
 1. **Level 1 (轻量注册)**：将工具的 `name`, `description` 和 `trigger_intent` 写入 `skills_manifest.json` 下的 `external_dependencies`。
-2. **Level 2 (按需提取)**：只有当用户当前的聊天语境完美匹配到某个 `trigger_intent` 时，古月才会利用该记录里的 `command` (克隆/安装) 或 `url` 去拉取真实的文档和能力。
+2. **Level 2 (按需提取)**：只有当前意图明确匹配并通过对应门禁时，古月才读取本地 `SKILL.md` 或访问登记来源。候选命中本身不允许执行 `command`；克隆、安装、更新和联网分别需要动作级授权。
 
 ## 工作流与分级安全边界 (Execution SOP)
 
@@ -29,10 +29,10 @@ Two-Phase Loading 只适用于已经通过净收益门的“隔离候选”，�
 
 当用户说“找一个能做 X 的 Skill / 技能”时，先判断古月和当前宿主是否已经具备该能力，再决定是否进入外部搜索：
 
-1. 只读检查 `skills_manifest.json` 与已有的 `~/.guyue/cache/discovery/skills-index.json`，按能力语义比较内置 Skill、宿主 Skill 和已登记候选；缓存不存在时只说明本地发现证据不足，不为搜索而刷新缓存。
-2. 已有能力足以完成任务时，直接返回最窄的现有入口并停止；除非用户明确要求比较外部方案，否则不联网、不调用外部候选。
+1. 先使用当前宿主已经提供的 Skill/Plugin/Connector 目录；再只读检查 `skills_manifest.json` 与已有的 `~/.guyue/cache/discovery/skills-index.json`。新版缓存保存名称、描述、触发线索、来源和私有位置，路由只返回脱敏候选；旧版 `名称 -> 路径` 指针本身只能证明“本地存在”，只有指向的当前 `SKILL.md` 仍可读取时才可临时派生语义匹配。缓存不存在时只说明本地发现证据不足，不为搜索而刷新缓存。
+2. 已有能力足以完成任务时，直接返回最窄的现有入口并停止；本地目录命中只证明“可读取候选”，还要读取目标 `SKILL.md` 并确认宿主可激活。除非用户明确要求比较外部方案，否则不联网、不调用外部候选。
 3. 只有本地基线不存在匹配项或边界明显不足时，才记录具体缺口并进入外部候选阶段。
-4. `find-skills` 只负责候选枚举，不负责推荐裁决。调用前必须经过 `security-gate` 和本次联网动作授权；只允许执行查找，不得执行 `skills add`、安装或更新。
+4. `find-skills` 只负责候选枚举，不负责推荐裁决。文件或目录存在不等于来源可信；必须先核对固定仓库和 ref，再经过 `security-gate` 与本次联网动作授权。只允许执行查找，不得执行 `skills add`、安装或更新。
 5. 所有入围候选都必须回到 GitHub 仓库、官方 `SKILL.md`、README、许可证和维护状态做原始来源复核；安装量、Stars 或搜索排名只能作为弱发现信号。
 
 GitHub 项目发现不是本地 Skill 查找，直接进入 1.7；本地精选软件推荐仍由 `software-advisor` 处理。
@@ -75,6 +75,8 @@ GitHub 项目发现不是本地 Skill 查找，直接进入 1.7；本地精选�
 
 若没有“无外部能力基线”、至少一个旧失败样本、同级替代对比和回归检查，不得从“仅学习”升级。外部方法要进入古月，还必须依次证明：跨场景稳定、能预测或解决未用于提炼的新样本、相对现有能力有独特增益，并通过相邻 Skill 混淆测试。正确性、安全、权限、授权和失败可见性属于不可加权抵消的硬门；不能用速度、Token 节省或功能数量补偿关键项下降。
 
+`skills_manifest.json` 的外部 lifecycle 只是必须按顺序通过的门清单，不是持久状态机。路由器只会产出 `external_candidate`；`source_checked / installed / security_checked / authorized / activated / blocked` 的每次迁移都必须由对应动作收据单独证明，不能从列表存在或本地目录存在推断。
+
 ### 1.7 GitHub 项目发现 (GitHub Project Discovery)
 
 只在用户要按需求寻找、比较 GitHub 项目或仓库时进入。这不包括已知仓库的 Issue、PR 或代码搜索，也不包括 GitHub 用户、账号或人员搜索；它同样不替代 GitHub 项目自身的安全、许可证和接入审查。
@@ -113,7 +115,7 @@ GitHub 项目发现不是本地 Skill 查找，直接进入 1.7；本地精选�
 #### 【分支 A：如果目标是 Agent 技能 / 插件】
 只有净收益门允许“隔离候选”或“运行时依赖”时才进入，采取**零冗余映射与受控候选策略**：
 1. **理解、掌握与受控调用 (Controlled Invocation)**：**查阅并分析**该技能的使用方式（如 `SKILL.md`）。一旦收纳，古月只能将其视作“可发现的候选能力”；如果当前用户的需求能够用该技能解决，必须先说明将读取/执行的动作，经过 `security-gate` 预检，并在涉及 CLI、网络请求、安装、写入或下载时等待用户明确授权。
-2. **零冗余挂载与发现缓存**：**绝对不要**在 `skills_manifest.json` 中硬编码本机的绝对路径。在 `manifest` 中仅登记其官方项目地址或安装口令（如 `url: https://skills.sh`）。对于它在本地的具体位置，请调用 `scripts/discover_local_skills.py`，古月会扫描全局技能目录并将路径写入可删除重建的 `~/.guyue/cache/discovery/skills-index.json`。它是机器相关缓存，不是长期知识，也不得进入发布包。
+2. **零冗余挂载与发现缓存**：**绝对不要**在 `skills_manifest.json` 中硬编码本机的绝对路径。在 `manifest` 中仅登记其官方项目地址或安装口令（如 `url: https://skills.sh`）。对于本地位置，请在用户明确要求刷新本机目录时调用 `scripts/discover_local_skills.py`；新版索引覆盖 Codex、共享 Agent、CC Switch、Gemini、Cursor、Guyue 和已安装 Codex Plugin 目录，保存紧凑语义线索与来源。它是机器相关、可删除重建的私有缓存，不是长期知识，也不得进入发布包。
 3. **提炼与吸收 (可选)**：如果外部技能中有优秀思路，按分支 0 的验证轨迹提取少量精华，优先打磨现有领域 Skill；只有跨领域且长期稳定的原则才考虑进入 `GUYUE_PRINCIPLES.md`。
 4. **输出战报**：向用户展示收纳情况，以及古月现在学会了用它能做什么事。
 
@@ -162,7 +164,7 @@ python3 scripts/discover_local_skills.py
 ## 测试样例 (Test Prompts)
 * `dry_run`
 > **User**: "收纳技能 find-skills。"
-> **Expected**: scout 启动 -> 发现它是类型 A (Agent Skill) -> 分析该技能 -> 在 manifest 中记录它的官方信息和 trigger_intent (不写本地路径) -> 运行 `discover_local_skills.py` 沉淀本地地址到记忆里 -> 提炼经验反哺给古月 -> 输出战报。
+> **Expected**: scout 启动 -> 发现它是类型 A (Agent Skill) -> 分析该技能 -> 在 manifest 中记录它的官方信息和 trigger_intent (不写本地路径) -> 仅在用户明确要求刷新本机目录时运行 `discover_local_skills.py`，写入可删除的私有缓存 -> 提炼经验反哺给古月 -> 输出战报。
 
 > **User**: "整合 `https://github.com/torvalds/linux` 到古月里。"
 > **Expected**: scout 启动 -> 发现它是类型 B (巨型开源项目) -> 生成《Linux 评估报告》Artifact -> 停下来询问：“这是通用开源库，是执行本地 Clone 还是仅做收纳记录？” -> 等待用户指示。

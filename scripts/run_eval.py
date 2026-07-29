@@ -169,6 +169,45 @@ def main() -> int:
                     f"behavior contract '{contract_id or index}' field '{field}' must be a non-empty string list"
                 )
 
+        expected_external = raw_contract.get("expected_external_candidates", [])
+        if not isinstance(expected_external, list):
+            errors.append(
+                f"behavior contract '{contract_id or index}' field "
+                "'expected_external_candidates' must be a list"
+            )
+            expected_external = []
+        known_external = {
+            normalize_skill_name(str(item.get("name", "")).strip())
+            for item in manifest.get("external_dependencies", [])
+            if isinstance(item, dict)
+        }
+        normalized_external = {
+            normalize_skill_name(str(value).strip())
+            for value in expected_external
+            if str(value).strip()
+        }
+        unknown_external = normalized_external - known_external
+        if unknown_external:
+            errors.append(
+                f"behavior contract '{contract_id or index}' has unknown "
+                "expected_external_candidates: "
+                + ", ".join(sorted(unknown_external))
+            )
+        expected_lifecycle = str(
+            raw_contract.get("expected_lifecycle_state", "")
+        ).strip()
+        if expected_lifecycle and expected_lifecycle not in {
+            "selected",
+            "collaboration_candidate",
+            "local_candidate",
+            "external_candidate",
+            "failed",
+        }:
+            errors.append(
+                f"behavior contract '{contract_id or index}' has invalid "
+                f"expected_lifecycle_state: {expected_lifecycle}"
+            )
+
         level = str(raw_contract.get("minimum_evidence_level", "")).strip()
         if level not in evidence_levels:
             errors.append(
@@ -192,6 +231,15 @@ def main() -> int:
                 forbidden = route_sets.get("forbidden_routes", set())
                 missing_expected = expected - selected
                 selected_forbidden = forbidden & selected
+                actual_external = {
+                    normalize_skill_name(str(item.get("name", "")))
+                    for item in decision["external_candidates"]
+                }
+                missing_external = normalized_external - actual_external
+                lifecycle_mismatch = bool(
+                    expected_lifecycle
+                    and decision["lifecycle_state"] != expected_lifecycle
+                )
                 if missing_expected:
                     errors.append(
                         f"behavior contract '{contract_id or index}' missed expected routes: "
@@ -202,7 +250,24 @@ def main() -> int:
                         f"behavior contract '{contract_id or index}' selected forbidden routes: "
                         + ", ".join(sorted(selected_forbidden))
                     )
-                if not missing_expected and not selected_forbidden:
+                if missing_external:
+                    errors.append(
+                        f"behavior contract '{contract_id or index}' missed "
+                        "expected external candidates: "
+                        + ", ".join(sorted(missing_external))
+                    )
+                if lifecycle_mismatch:
+                    errors.append(
+                        f"behavior contract '{contract_id or index}' expected "
+                        f"lifecycle {expected_lifecycle}, got "
+                        f"{decision['lifecycle_state']}"
+                    )
+                if (
+                    not missing_expected
+                    and not selected_forbidden
+                    and not missing_external
+                    and not lifecycle_mismatch
+                ):
                     deterministic_routes_passed += 1
 
     capability_cases = (
@@ -347,6 +412,10 @@ def main() -> int:
     print(f"prompts: {len(prompts)}")
     print(f"behavior contracts: {len(contracts)}")
     print(f"deterministic route checks: {deterministic_routes_passed}/{len(contracts)}")
+    print(
+        "required action execution checks: 0/"
+        f"{len(contracts)} (declarative; requires live replay evidence)"
+    )
     print(
         f"capability route checks: {capability_routes_passed}/{len(capability_cases)}"
     )

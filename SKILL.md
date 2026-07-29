@@ -76,7 +76,7 @@ When the candidate comes from an external project, popular concept, or previous 
    - **认知拓界 (Cognitive Expansion)**: 面对陌生领域，或用户只要求“多维度、多角度、全面分析、第一次使用、不懂这个产品、还有哪些”等而尚无有界调研或交付任务时，正式路由到 `cognitive-expansion`；普通任务中的“等/等等/之类”和单一视角风险只触发微量辅助，不抢已有事实查询、需求、架构或实现主路由。微量先翻阅模型已有认知；只有当前性、来源、争议或高风险门命中才转 `research-and-sourcing` 定向联网。
    - **[新增] 泛生态受控调度 (Controlled Ecosystem Invocation)**: 对于记录在 `~/.guyue/cache/discovery/skills-index.json` 或 `skills_manifest.json` 中的外部技能，只能视作“可发现的候选能力”。一旦用户意图匹配，先读取其公开说明和本地 `SKILL.md`（如存在）掌握边界，再按 `security-gate` 做安全预检；涉及 CLI、网络请求、安装、写入或下载时，必须展示将执行的动作并等待用户明确授权。
    - **生态安检 (Security Gate)**: 若涉及第三方技能包的执行、收纳或代码读取，必须首先调用 `skills/security-gate`。目标必须由用户明确提供为路径、URL、包名或压缩包路径；目标不明确时先询问，禁止自动挑选本机随机技能目录。目标明确后再运行 `python3 scripts/run_security_scan.py` 进行本地启发式预检；预检不是完整供应链审计，见红旗即拦截，见黄旗则等待人工确认。
-   - **生态寻猎拦截 (Ecosystem Routing)**: 若用户提供未知 GitHub/工具链接，或提出模糊的技能需求（如“推荐个做图表的工具”、“收纳 xxx”），必须路由至 `ecosystem-scout` 进行联网调研与防臃肿评估。仅当净收益门允许“隔离候选”或“运行时依赖”时才注册；纯研究/方法吸收不得写 manifest、安装或创建影子 Skill。
+   - **生态寻猎拦截 (Ecosystem Routing)**: 若用户提供未知 GitHub/工具链接，或提出模糊的技能需求（如“推荐个做图表的工具”、“收纳 xxx”），必须路由至 `ecosystem-scout`。找 Skill 时先比较当前宿主目录、古月内置能力和已有登记；已有能力足够就停止。只有确认本地缺口、用户明确要求外部比较，或目标本身是未知链接时才联网调研。仅当净收益门允许“隔离候选”或“运行时依赖”时才注册；纯研究/方法吸收不得写 manifest、安装或创建影子 Skill。
 
 ## 路由仲裁规则 (Routing Arbitration)
 

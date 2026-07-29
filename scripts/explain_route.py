@@ -13,6 +13,8 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 sys.dont_write_bytecode = True
 
+from src.local_skill_index import load_local_skill_index, router_inputs  # noqa: E402
+from src.paths import discovery_cache_file  # noqa: E402
 from src.skill_router import resolve_routes  # noqa: E402
 
 
@@ -30,11 +32,16 @@ def main() -> int:
     args = parser.parse_args()
 
     manifest = json.loads((ROOT / "skills_manifest.json").read_text(encoding="utf-8"))
+    local_capabilities, local_catalog = router_inputs(
+        load_local_skill_index(discovery_cache_file())
+    )
     try:
         result = resolve_routes(
             manifest,
             args.intent,
             context_markers=args.context_marker,
+            local_capabilities=local_capabilities,
+            local_catalog=local_catalog,
             limit=args.limit,
         )
     except ValueError as exc:
@@ -45,7 +52,14 @@ def main() -> int:
         return 0 if result["lifecycle_state"] != "failed" else 2
 
     collaborations = result.get("collaboration_candidates", [])
-    if not result["selected"] and not collaborations:
+    local_candidates = result.get("local_candidates", [])
+    external_candidates = result.get("external_candidates", [])
+    if (
+        not result["selected"]
+        and not collaborations
+        and not local_candidates
+        and not external_candidates
+    ):
         print("No route reached the local evidence threshold.")
         return 2
     if result["selected"]:
@@ -67,7 +81,7 @@ def main() -> int:
                 f"evidence={trigger_evidence}{suffix}"
             )
     else:
-        print("No direct Skill route matched; showing a bounded workflow candidate.")
+        print("No direct Skill route matched; showing bounded candidates.")
     if collaborations:
         workflow = collaborations[0]
         print(
@@ -81,6 +95,22 @@ def main() -> int:
             )
         print(f"Completion gate: {workflow['completion_gate']}")
         print(f"Boundary: {workflow['boundary']}")
+    if local_candidates:
+        print("Local capability candidates:")
+        for candidate in local_candidates:
+            print(
+                f"- {candidate['name']} score={candidate['score']:.3f}; "
+                f"source={candidate['source']}; relationship={candidate['relationship']}"
+            )
+            print(f"  Boundary: {candidate['boundary']}")
+    if external_candidates:
+        print("External capability candidates:")
+        for candidate in external_candidates:
+            print(
+                f"- {candidate['name']} score={candidate['score']:.3f}; "
+                f"source={candidate['url']}@{candidate['ref']}"
+            )
+            print(f"  Boundary: {candidate['boundary']}")
     return 0
 
 

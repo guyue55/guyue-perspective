@@ -27,7 +27,8 @@
             "authorized",
             "activated",
             "blocked"
-        ]
+        ],
+        "external_lifecycle_semantics": "required_gate_sequence_not_persisted_state"
     },
     "composed_intent_rules": [
         {
@@ -40,7 +41,21 @@
                 ["帮我找", "找一个", "查找", "搜索", "寻找", "有没有", "有无", "推荐"],
                 ["Agent Skill", "Agent 技能", "Skill", "技能"]
             ],
-            "exclude_any": ["不要搜索", "不搜索", "无需搜索", "不要查找", "不查找", "无需查找", "不要推荐", "不推荐", "使用现有", "调用现有", "直接调用", "解释一下", "是什么", "本地精选库", "制作成", "创建", "新建"]
+            "exclude_any": ["不要搜索", "不搜索", "无需搜索", "不要查找", "不查找", "无需查找", "不要推荐", "不推荐", "使用现有", "调用现有", "直接调用", "解释一下", "是什么", "本地精选库", "制作成", "创建", "新建", "游戏技能", "沟通技能", "职业技能", "生活技能", "运动技能", "社交技能", "语言技能", "孩子学习", "课程", "培训"]
+        },
+        {
+            "id": "external-skill-fallback",
+            "route": "ecosystem-scout",
+            "canonical_trigger": "本地不足再找外部 Skill",
+            "score": 64,
+            "match_scope": "document",
+            "all_any": [
+                ["本地精选库", "使用现有 Skill", "使用现有技能", "调用现有 Skill", "调用现有技能", "先查本地", "先用现有"],
+                ["如果没有", "如果不够", "若没有", "若不够", "不足再", "不够再", "没有再", "找不到再"],
+                ["外部技能", "外部 Skill", "外部候选", "headroom"]
+            ],
+            "exclude_any": ["不要搜索外部技能", "不要查找外部 Skill", "不搜索外部技能", "不查找外部 Skill", "不要搜索外部候选"],
+            "overrides_negative_intent": ["本地精选库", "使用现有 Skill", "调用现有 Skill", "使用现有技能", "调用现有技能"]
         },
         {
             "id": "continuous-learning-budget",
@@ -880,7 +895,8 @@
                 "在 GitHub 找",
                 "GitHub 开源项目",
                 "GitHub 上的开源",
-                "find GitHub repositories"
+                "find GitHub repositories",
+                "本地不足再找外部 Skill"
             ],
             "negative_intent": [
                 "优先查古月本地精选库",
@@ -903,7 +919,21 @@
                 "使用现有 Skill",
                 "调用现有 Skill",
                 "使用现有技能",
-                "调用现有技能"
+                "调用现有技能",
+                "不要找技能",
+                "不需要搜索技能",
+                "无需搜索技能",
+                "不是要找技能",
+                "游戏技能",
+                "沟通技能",
+                "职业技能",
+                "生活技能",
+                "运动技能",
+                "社交技能",
+                "语言技能",
+                "孩子学习",
+                "课程",
+                "培训"
             ],
             "external_candidate_negative_intent": [
                 "本地精选库",
@@ -916,7 +946,21 @@
                 "使用现有 Skill",
                 "调用现有 Skill",
                 "使用现有技能",
-                "调用现有技能"
+                "调用现有技能",
+                "不要找技能",
+                "不需要搜索技能",
+                "无需搜索技能",
+                "不是要找技能",
+                "游戏技能",
+                "沟通技能",
+                "职业技能",
+                "生活技能",
+                "运动技能",
+                "社交技能",
+                "语言技能",
+                "孩子学习",
+                "课程",
+                "培训"
             ],
             "description": "External skill, plugin, tool, GitHub repository discovery, and bounded learning-expedition research with learn-only absorption, source isolation, net-benefit and anti-bloat gates, explicit approval, rollback, retirement, quick-install assistance, security-gate handoff, and smoke tests; not repository Issue/PR/code search, GitHub people/account search, local catalog advice, or autonomous self-modification.",
             "root_exposure": "explicit",
@@ -1057,7 +1101,8 @@
                 "视频元数据",
                 "提取字幕",
                 "视频转录",
-                "分析视频链接"
+                "分析视频链接",
+                "分析公开视频链接"
             ],
             "description": "Methodologies for extracting normalized metadata, post captions, transcripts, and source media from video platforms.",
             "root_exposure": "explicit",

@@ -281,7 +281,15 @@ def check_project_config(repo_root):
         'activated',
         'blocked',
     ]:
-        print("❌ [CONFIG ERROR] external capability lifecycle is incomplete or out of order", file=sys.stderr)
+        print("❌ [CONFIG ERROR] external capability gate sequence is incomplete or out of order", file=sys.stderr)
+        passed = False
+    elif routing_contract.get('external_lifecycle_semantics') != (
+        'required_gate_sequence_not_persisted_state'
+    ):
+        print(
+            "❌ [CONFIG ERROR] external lifecycle semantics must deny persisted-state claims",
+            file=sys.stderr,
+        )
         passed = False
 
     manifest_skills = manifest.get('skills')

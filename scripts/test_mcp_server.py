@@ -70,6 +70,12 @@ def main() -> int:
         "must contain" in mcp_server.guyue_explain_route("   "),
         "MCP route explanations must reject empty intent",
     )
+    external_route = json.loads(mcp_server.guyue_explain_route("找工具"))
+    require(
+        external_route["lifecycle_state"] == "external_candidate"
+        and external_route["external_candidates"][0]["name"] == "find-skills",
+        "MCP route explanations must preserve external-only candidates",
+    )
 
     originals = {
         "MEMORY_DIR": mcp_server.MEMORY_DIR,

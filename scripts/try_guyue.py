@@ -15,6 +15,8 @@ sys.dont_write_bytecode = True
 
 from scripts.check_full_install import build_receipt  # noqa: E402
 from src.context_budget import analyze_context_budget  # noqa: E402
+from src.local_skill_index import load_local_skill_index, router_inputs  # noqa: E402
+from src.paths import discovery_cache_file  # noqa: E402
 from src.skill_router import resolve_routes  # noqa: E402
 
 
@@ -56,10 +58,15 @@ def build_proof(
 
     manifest = load_manifest()
     receipt = build_receipt(ROOT, runtime)
+    local_capabilities, local_catalog = router_inputs(
+        load_local_skill_index(discovery_cache_file())
+    )
     route = resolve_routes(
         manifest,
         intent,
         context_markers=context_markers,
+        local_capabilities=local_capabilities,
+        local_catalog=local_catalog,
         limit=limit,
     )
     budget = analyze_context_budget(ROOT, manifest)
@@ -84,7 +91,7 @@ def build_proof(
     problems = []
     if receipt["payload_status"] != "complete":
         problems.append("package payload is incomplete")
-    if not selected:
+    if route["lifecycle_state"] == "failed":
         problems.append("no route reached the local evidence threshold")
     problems.extend(budget["errors"])
 
@@ -107,7 +114,12 @@ def build_proof(
         },
         "routing": {
             "contract_version": route["routing_contract_version"],
+            "lifecycle_state": route["lifecycle_state"],
             "selected": selected,
+            "local_catalog": route["local_catalog"],
+            "local_candidates": route["local_candidates"],
+            "external_candidates": route["external_candidates"],
+            "collaboration_candidates": route["collaboration_candidates"],
             "context_gated": context_gated,
             "negative_rejections": negative_rejections,
         },

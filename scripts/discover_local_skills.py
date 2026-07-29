@@ -8,17 +8,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from src.paths import discovery_cache_file, ensure_private_directory  # noqa: E402
+from src.local_skill_index import build_local_skill_index  # noqa: E402
 
-# 定义可能存在技能的本地扩展目录。这里只保存可移植的家目录写法。
-SEARCH_DIRS = [
-    "~/.cc-switch/skills",
-    "~/.gemini/config/skills",
-    "~/.gemini/config/plugins",
-    "~/.gemini/antigravity/skills",
-    "~/skills"
-]
-
-def write_index_atomic(output_file: Path, index: dict[str, str]) -> None:
+def write_index_atomic(output_file: Path, index: dict) -> None:
     ensure_private_directory(output_file.parent)
     temporary = output_file.with_name(f".{output_file.name}.{os.getpid()}.tmp")
     try:
@@ -34,23 +26,14 @@ def write_index_atomic(output_file: Path, index: dict[str, str]) -> None:
 
 
 def discover(output_file: Path | None = None):
-    index = {}
-    for d in SEARCH_DIRS:
-        p = Path(d).expanduser()
-        if p.exists():
-            # 扫描目录下的 SKILL.md
-            for skill_file in p.rglob("SKILL.md"):
-                skill_dir = skill_file.parent
-                skill_name = skill_dir.name
-
-                # 避免一些不规范的嵌套导致覆盖，优先保留层级浅的
-                if skill_name not in index:
-                    index[skill_name] = str(skill_dir)
-
+    index = build_local_skill_index()
     destination = output_file or discovery_cache_file()
     write_index_atomic(destination, index)
 
-    print(f"✅ 成功发现 {len(index)} 个本地技能并写入可重建缓存: {destination}")
+    print(
+        f"✅ 成功发现 {len(index['skills'])} 个本地技能并写入可重建缓存: "
+        f"{destination}"
+    )
     return destination
 
 if __name__ == "__main__":

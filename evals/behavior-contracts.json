@@ -516,5 +516,94 @@
     "required_actions": ["classify the language preference as a user-owned decision", "treat the decision as an operating constraint within its authorized scope", "apply the preference without demanding empirical proof", "challenge only when a concrete higher-priority safety legal or contradictory requirement exists"],
     "forbidden_side_effects": ["reframe the preference as a market claim", "demand research or product-strategy review", "invent a disagreement to appear independent", "expand the authorization beyond customer-material language"],
     "minimum_evidence_level": "L0"
+  },
+  {
+    "id": "negated-generic-skill-search-does-not-route",
+    "prompt": "不要找技能，只解释 Skill 是什么。",
+    "expected_routes": [],
+    "forbidden_routes": ["ecosystem-scout"],
+    "forbid_external_candidates": true,
+    "required_actions": ["respect the explicit search negation", "answer the bounded explanation directly"],
+    "forbidden_side_effects": ["surface find-skills", "search or install a Skill"],
+    "minimum_evidence_level": "L0"
+  },
+  {
+    "id": "game-skill-is-not-agent-skill",
+    "prompt": "我不是要找技能，是想问游戏技能怎么升级。",
+    "expected_routes": [],
+    "forbidden_routes": ["ecosystem-scout"],
+    "forbid_external_candidates": true,
+    "required_actions": ["treat game skill as a non-Agent domain phrase"],
+    "forbidden_side_effects": ["surface find-skills", "open external Skill intake"],
+    "minimum_evidence_level": "L0"
+  },
+  {
+    "id": "child-learning-skill-is-not-agent-skill",
+    "prompt": "有没有适合孩子学习的技能？",
+    "expected_routes": [],
+    "forbidden_routes": ["ecosystem-scout"],
+    "forbid_external_candidates": true,
+    "required_actions": ["treat human learning skills as outside Agent Skill discovery"],
+    "forbidden_side_effects": ["search the Agent Skill ecosystem"],
+    "minimum_evidence_level": "L0"
+  },
+  {
+    "id": "communication-course-is-not-agent-skill",
+    "prompt": "推荐提升沟通技能的课程。",
+    "expected_routes": [],
+    "forbidden_routes": ["ecosystem-scout"],
+    "forbid_external_candidates": true,
+    "required_actions": ["treat communication training as a human learning request"],
+    "forbidden_side_effects": ["surface external Agent Skills"],
+    "minimum_evidence_level": "L0"
+  },
+  {
+    "id": "existing-skill-with-external-fallback",
+    "prompt": "使用现有 Skill；如果不够再找一个外部技能。",
+    "expected_routes": ["ecosystem-scout"],
+    "forbidden_routes": ["skill-crafting"],
+    "required_actions": ["check the existing host and Guyue catalog first", "enter external discovery only after a concrete local gap"],
+    "forbidden_side_effects": ["treat local-first wording as a permanent external-search ban", "install a candidate"],
+    "minimum_evidence_level": "L1"
+  },
+  {
+    "id": "local-catalog-with-named-external-fallback",
+    "prompt": "先查本地精选库，如果没有，再评估 headroom 作为外部增强。",
+    "expected_routes": ["ecosystem-scout"],
+    "forbidden_routes": [],
+    "expected_external_candidates": ["headroom"],
+    "required_actions": ["preserve the ordered local-first fallback", "keep headroom as an external candidate"],
+    "forbidden_side_effects": ["suppress the explicit fallback", "activate or install headroom"],
+    "minimum_evidence_level": "L1"
+  },
+  {
+    "id": "external-candidate-only-is-not-failure",
+    "prompt": "找工具",
+    "expected_routes": [],
+    "forbidden_routes": [],
+    "expected_external_candidates": ["find-skills"],
+    "expected_lifecycle_state": "external_candidate",
+    "required_actions": ["surface the bounded external candidate"],
+    "forbidden_side_effects": ["return a failed lifecycle", "install find-skills"],
+    "minimum_evidence_level": "L1"
+  },
+  {
+    "id": "explicit-external-search-ban-still-wins",
+    "prompt": "不要搜索外部技能，但评估 headroom。",
+    "expected_routes": [],
+    "forbidden_routes": ["ecosystem-scout"],
+    "forbid_external_candidates": true,
+    "required_actions": ["respect the explicit external-search ban"],
+    "forbidden_side_effects": ["surface or activate headroom"],
+    "minimum_evidence_level": "L0"
+  },
+  {
+    "id": "github-project-query-preserves-technical-terms",
+    "prompt": "在 GitHub 找一个 React 架构图工具；没有结果时调整查询，但我没有指定 JavaScript。",
+    "expected_routes": ["ecosystem-scout"],
+    "forbidden_routes": [],
+    "required_actions": ["compress the request to two to four core terms", "preserve React and architecture diagram semantics during retries", "add a language qualifier only when the user explicitly names a programming language", "modify one term per retry for at most three retries", "report the query lineage and stop condition"],
+    "forbidden_side_effects": ["infer language javascript from React", "remove protected framework or purpose terms", "require OpenRouter or a new GitHub token", "search issues pull requests code or users", "clone install or execute a candidate"],
+    "minimum_evidence_level": "L1"
   }
 ]

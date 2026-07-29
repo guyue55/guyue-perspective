@@ -17,6 +17,9 @@ from scripts.run_capability_live_canaries import (  # noqa: E402
     artifact_ref as live_artifact_ref,
     write_audit_artifact,
 )
+from scripts.check_capability_chain import (  # noqa: E402
+    model_activation_claim_verified,
+)
 from scripts.run_capability_output_quality import (  # noqa: E402
     artifact_ref as quality_artifact_ref,
 )
@@ -28,6 +31,30 @@ def require(condition: bool, message: str) -> None:
 
 
 def main() -> int:
+    live_claim = {
+        "status": "pass",
+        "claims": {"model_activation_verified": True},
+    }
+    require(
+        not model_activation_claim_verified(
+            live_claim,
+            routing_current=False,
+            live_passed=27,
+            live_total=27,
+            expected_total=27,
+        ),
+        "stale routing evidence must never preserve model activation truth",
+    )
+    require(
+        model_activation_claim_verified(
+            live_claim,
+            routing_current=True,
+            live_passed=27,
+            live_total=27,
+            expected_total=27,
+        ),
+        "current complete live evidence should preserve model activation truth",
+    )
     repository_artifact = ROOT / "evals" / "evidence" / "sample.json"
     expected_repository_ref = "evals/evidence/sample.json"
     require(

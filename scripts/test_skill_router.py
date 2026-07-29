@@ -51,6 +51,23 @@ def main() -> int:
             forbidden.isdisjoint(selected),
             f"{contract['id']} selected a forbidden route: {selected}",
         )
+        expected_external = set(contract.get("expected_external_candidates", []))
+        external_candidates = {
+            item["name"] for item in result["external_candidates"]
+        }
+        require(
+            expected_external.issubset(external_candidates),
+            f"{contract['id']} missed expected external candidates "
+            f"{sorted(expected_external - external_candidates)}: "
+            f"{sorted(external_candidates)}",
+        )
+        expected_lifecycle = contract.get("expected_lifecycle_state")
+        if expected_lifecycle:
+            require(
+                result["lifecycle_state"] == expected_lifecycle,
+                f"{contract['id']} expected lifecycle {expected_lifecycle}, "
+                f"got {result['lifecycle_state']}",
+            )
         if contract.get("forbid_external_candidates"):
             require(
                 not result["external_candidates"]
@@ -315,7 +332,7 @@ def main() -> int:
         )
 
     print(
-        "Skill router tests passed: "
+        "Deterministic router tests passed: "
         f"{len(contracts)} behavior contracts, "
         f"{len(collaboration_contracts)} collaboration contracts."
     )

@@ -85,6 +85,18 @@ def main() -> int:
         "explicit project markers must promote the project workflow",
     )
 
+    external = try_guyue.build_proof(
+        "找工具",
+        context_markers=[],
+        runtime="generic",
+        limit=3,
+    )
+    require(
+        external["routing"]["lifecycle_state"] == "external_candidate"
+        and external["routing"]["external_candidates"][0]["name"] == "find-skills",
+        "external-only candidates must remain visible instead of becoming failures",
+    )
+
     try:
         try_guyue.build_proof("   ", context_markers=[], runtime="generic", limit=3)
     except ValueError:

@@ -194,6 +194,7 @@ def run_case(
 ) -> dict[str, object]:
     skill = str(case["skill"])
     skill_path = f"skills/{skill}/SKILL.md"
+    skill_sha256 = file_sha256(ROOT / skill_path)
     output_path = artifact_dir / f"{skill}.output.md"
     producer_path = artifact_dir / f"{skill}.producer.json"
     review_path = artifact_dir / f"{skill}.review.json"
@@ -204,6 +205,8 @@ def run_case(
         producer_artifact = json.loads(producer_path.read_text(encoding="utf-8"))
         if producer_artifact.get("output_sha256") != file_sha256(output_path):
             raise RuntimeError(f"{skill} existing producer/output hash mismatch")
+        if producer_artifact.get("skill_sha256") != skill_sha256:
+            raise RuntimeError(f"{skill} existing producer Skill hash is stale")
     else:
         producer_prompt = (
             f"你正在接受 Guyue 子能力输出质量验收。必须先读取 `{skill_path}`，"
@@ -222,6 +225,7 @@ def run_case(
         producer_artifact = {
             "schema_version": 1,
             "skill": skill,
+            "skill_sha256": skill_sha256,
             "skill_file_read": any(
                 skill_path in str(item.get("command", ""))
                 for item in producer["commands"]
@@ -269,6 +273,7 @@ def run_case(
         review_artifact = {
             "schema_version": 1,
             "skill": skill,
+            "skill_sha256": skill_sha256,
             "parsed_review": {
                 "status": "fail",
                 "criteria": [],
@@ -323,6 +328,7 @@ def run_case(
     review_artifact = {
         "schema_version": 1,
         "skill": skill,
+        "skill_sha256": skill_sha256,
         "parsed_review": parsed_review,
         "raw_final": review_message,
         **reviewer,

@@ -23,6 +23,8 @@ try:
         write_index_atomic,
         write_text_atomic,
     )
+    from src.local_skill_index import load_local_skill_index, router_inputs
+    from src.paths import discovery_cache_file
     from src.skill_router import resolve_routes
 except ModuleNotFoundError:
     sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -44,6 +46,11 @@ except ModuleNotFoundError:
         write_index_atomic,
         write_text_atomic,
     )
+    from local_skill_index import (  # type: ignore[no-redef]
+        load_local_skill_index,
+        router_inputs,
+    )
+    from paths import discovery_cache_file  # type: ignore[no-redef]
     from skill_router import resolve_routes  # type: ignore[no-redef]
 
 
@@ -116,10 +123,15 @@ def guyue_explain_route(
         return "skills_manifest.json not found. Ensure you are running in the guyue workspace."
     try:
         manifest = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
+        local_capabilities, local_catalog = router_inputs(
+            load_local_skill_index(discovery_cache_file())
+        )
         decision = resolve_routes(
             manifest,
             intent,
             context_markers=context_markers,
+            local_capabilities=local_capabilities,
+            local_catalog=local_catalog,
             limit=limit,
         )
     except json.JSONDecodeError:

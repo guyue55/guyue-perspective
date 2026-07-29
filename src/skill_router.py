@@ -100,7 +100,11 @@ def _validated_composed_rules(value: object, skills_by_name: dict[str, dict]) ->
                 raise ValueError(
                     f"composed intent rule {rule_id} groups must contain strings"
                 )
-        for field in ("exclude_any", "blocks_routes"):
+        for field in (
+            "exclude_any",
+            "blocks_routes",
+            "overrides_negative_intent",
+        ):
             if field not in rule:
                 continue
             values = rule[field]
@@ -320,6 +324,9 @@ def _derive_intent_signals(rules: object, text: str) -> list[dict]:
                         "evidence": evidence,
                         "match_scope": match_scope,
                         "blocks_routes": _string_list(rule.get("blocks_routes")),
+                        "overrides_negative_intent": _string_list(
+                            rule.get("overrides_negative_intent")
+                        ),
                     }
                 )
                 break
@@ -351,7 +358,22 @@ def _score_skill(
             "required_context": required_context,
         }
 
-    negative_matches = _negative_matches(negatives, combined_context)
+    route_signals = [
+        signal
+        for signal in (composed_signals or [])
+        if signal["route"] == name
+    ]
+    overridden_negatives = {
+        phrase
+        for signal in route_signals
+        for phrase in signal.get("overrides_negative_intent", [])
+    }
+    all_negative_matches = _negative_matches(negatives, combined_context)
+    negative_matches = [
+        phrase
+        for phrase in all_negative_matches
+        if phrase not in overridden_negatives
+    ]
     if negative_matches:
         return {
             "name": name,
@@ -369,17 +391,17 @@ def _score_skill(
     normalized_query = normalize_text(combined_context)
     signal_by_trigger = {
         normalize_text(signal["canonical_trigger"]): signal
-        for signal in (composed_signals or [])
-        if signal["route"] == name
+        for signal in route_signals
     }
     for trigger in triggers:
         normalized_trigger = normalize_text(trigger)
         if normalized_trigger and normalized_trigger in normalized_query:
-            contribution = 30.0 + min(len(normalized_trigger), 12)
-            score += contribution
-            matched_triggers.append(
-                {"trigger": trigger, "match": "exact", "score": contribution}
-            )
+            if _unnegated_phrase_spans(trigger, normalized_query):
+                contribution = 30.0 + min(len(normalized_trigger), 12)
+                score += contribution
+                matched_triggers.append(
+                    {"trigger": trigger, "match": "exact", "score": contribution}
+                )
             continue
         signal = signal_by_trigger.get(normalized_trigger)
         if signal:
@@ -420,8 +442,75 @@ def _score_skill(
         "matched_triggers": matched_triggers,
         "matched_context": matched_context,
         "negative_matches": [],
+        "overridden_negative_matches": sorted(
+            set(all_negative_matches) - set(negative_matches)
+        ),
         "required_context": required_context,
     }
+
+
+def _resolve_local_candidates(
+    capabilities: list[dict],
+    intent: str,
+    context_markers: list[str],
+    *,
+    built_in_names: set[str],
+    external_names: set[str],
+    limit: int,
+) -> list[dict]:
+    decisions = []
+    for capability in capabilities:
+        if not isinstance(capability, dict):
+            continue
+        name = str(capability.get("name", "")).strip()
+        if not name:
+            continue
+        searchable = "\n".join(
+            [
+                str(capability.get("description", "")),
+                str(capability.get("search_text", "")),
+            ]
+        )
+        decision = _score_skill(
+            {
+                "name": name,
+                "trigger_intent": _string_list(
+                    capability.get("trigger_intent")
+                ),
+                "description": searchable,
+            },
+            intent,
+            context_markers,
+        )
+        if decision["reason"] != "matched":
+            continue
+        if name in built_in_names:
+            relationship = "built-in"
+        elif name in external_names:
+            relationship = "registered-external"
+        else:
+            relationship = "host"
+        decisions.append(
+            {
+                "name": name,
+                "score": decision["score"],
+                "reason": decision["reason"],
+                "matched_triggers": decision["matched_triggers"],
+                "state": "local_candidate",
+                "source": str(capability.get("source", "local-cache")),
+                "relationship": relationship,
+                "local_path_available": bool(capability.get("path")),
+                "boundary": (
+                    "Local catalog evidence only; private paths and descriptions "
+                    "are withheld. Read the target SKILL.md and verify host "
+                    "activation before use."
+                ),
+            }
+        )
+    return sorted(
+        decisions,
+        key=lambda item: (-item["score"], item["name"].casefold()),
+    )[:limit]
 
 
 def _workflow_skill_names(workflow: dict) -> set[str]:
@@ -502,6 +591,8 @@ def resolve_routes(
     intent: str,
     *,
     context_markers: list[str] | None = None,
+    local_capabilities: list[dict] | None = None,
+    local_catalog: dict | None = None,
     limit: int = 5,
 ) -> dict:
     """Rank route candidates and retain explainable rejection evidence."""
@@ -575,6 +666,31 @@ def resolve_routes(
         _string_list(ecosystem_skill.get("external_candidate_negative_intent")),
         "\n".join([intent, *markers]),
     )
+    external_by_name = {
+        str(item.get("name", "")): item
+        for item in manifest.get("external_dependencies", [])
+        if isinstance(item, dict)
+    }
+    external_names = set(external_by_name)
+    local_candidates = _resolve_local_candidates(
+        local_capabilities or [],
+        intent,
+        markers,
+        built_in_names=set(skills_by_name),
+        external_names=external_names,
+        limit=limit,
+    )
+    overridden_external_negatives = {
+        phrase
+        for signal in composed_signals
+        if signal["route"] == "ecosystem-scout"
+        for phrase in signal.get("overrides_negative_intent", [])
+    }
+    external_candidate_blockers = [
+        phrase
+        for phrase in external_candidate_blockers
+        if phrase not in overridden_external_negatives
+    ]
     external_decisions = (
         []
         if external_candidate_blockers
@@ -585,11 +701,6 @@ def resolve_routes(
             and str(dependency.get("name", "")).strip()
         ]
     )
-    external_by_name = {
-        str(item.get("name", "")): item
-        for item in manifest.get("external_dependencies", [])
-        if isinstance(item, dict)
-    }
     external_candidates = []
     for decision in sorted(
         (item for item in external_decisions if item["reason"] == "matched"),
@@ -628,6 +739,10 @@ def resolve_routes(
     lifecycle_state = "selected" if selected else "failed"
     if not selected and collaboration_candidates:
         lifecycle_state = "collaboration_candidate"
+    elif not selected and local_candidates:
+        lifecycle_state = "local_candidate"
+    elif not selected and external_candidates:
+        lifecycle_state = "external_candidate"
     return {
         "routing_contract_version": (
             contract.get("version") if isinstance(contract, dict) else None
@@ -636,6 +751,14 @@ def resolve_routes(
         "selected": selected,
         "collaboration_contract_version": collaboration_version,
         "collaboration_candidates": collaboration_candidates,
+        "local_candidates": local_candidates,
+        "local_catalog": local_catalog
+        or {
+            "status": "not_provided",
+            "schema_version": None,
+            "generated_at": None,
+            "skill_count": 0,
+        },
         "external_candidates": external_candidates,
         "external_candidate_blockers": external_candidate_blockers,
         "rejected": rejected,

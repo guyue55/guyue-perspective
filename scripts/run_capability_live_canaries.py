@@ -23,6 +23,7 @@ def routing_sha256() -> str:
     manifest = json.loads((ROOT / "skills_manifest.json").read_text(encoding="utf-8"))
     skill_fields = (
         "name", "path", "trigger_intent", "negative_intent",
+        "external_candidate_negative_intent",
         "required_any_context", "routing_priority", "description",
         "root_exposure", "activation_policy",
     )

@@ -24,6 +24,7 @@ DEVELOPMENT_EVIDENCE_WARNINGS = {
     "live activation evidence must cover every manifest skill exactly once",
     "live activation evidence is stale for routing semantics",
     "all-Skill output-quality evidence is incomplete",
+    "all-Skill output-quality evidence is stale for current Skill files",
 }
 
 
@@ -38,6 +39,7 @@ def file_sha256(path: Path) -> str:
 def routing_sha256(manifest: dict[str, object]) -> str:
     skill_fields = (
         "name", "path", "trigger_intent", "negative_intent",
+        "external_candidate_negative_intent",
         "required_any_context", "routing_priority", "description",
         "root_exposure", "activation_policy",
     )
@@ -61,6 +63,23 @@ def routing_sha256(manifest: dict[str, object]) -> str:
         payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")
     ).encode("utf-8")
     return hashlib.sha256(encoded).hexdigest()
+
+
+def model_activation_claim_verified(
+    live: dict,
+    *,
+    routing_current: bool,
+    live_passed: int,
+    live_total: int,
+    expected_total: int,
+) -> bool:
+    return (
+        routing_current
+        and live.get("status") == "pass"
+        and live.get("claims", {}).get("model_activation_verified") is True
+        and live_passed == expected_total
+        and live_total == expected_total
+    )
 
 
 def build_receipt(root: Path = ROOT) -> dict[str, object]:
@@ -383,6 +402,7 @@ def build_receipt(root: Path = ROOT) -> dict[str, object]:
 
     live_path = root / "evals/evidence/capability-live-canaries-2026-07-13.json"
     model_activation_verified = False
+    live_routing_current = False
     live_passed = 0
     live_total = 0
     if live_path.is_file():
@@ -436,13 +456,17 @@ def build_receipt(root: Path = ROOT) -> dict[str, object]:
                 errors.append(
                     "live activation evidence must cover every manifest skill exactly once"
                 )
-            if live.get("routing_sha256") != routing_sha256(manifest):
+            live_routing_current = (
+                live.get("routing_sha256") == routing_sha256(manifest)
+            )
+            if not live_routing_current:
                 errors.append("live activation evidence is stale for routing semantics")
-            model_activation_verified = (
-                live.get("status") == "pass"
-                and live.get("claims", {}).get("model_activation_verified") is True
-                and live_passed == len(skills)
-                and live_total == len(skills)
+            model_activation_verified = model_activation_claim_verified(
+                live,
+                routing_current=live_routing_current,
+                live_passed=live_passed,
+                live_total=live_total,
+                expected_total=len(skills),
             )
     else:
         errors.append("missing capability live activation evidence")
@@ -502,6 +526,7 @@ def build_receipt(root: Path = ROOT) -> dict[str, object]:
         root / "evals/evidence/capability-output-quality-2026-07-13.json"
     )
     all_skill_output_quality_verified = False
+    stale_quality_skills: list[str] = []
     if not output_quality_path.is_file():
         errors.append("missing all-Skill output-quality evidence")
     else:
@@ -533,10 +558,15 @@ def build_receipt(root: Path = ROOT) -> dict[str, object]:
             producer_path = root / str(result.get("producer_artifact", ""))
             review = load_json(review_path) if review_path.is_file() else None
             producer = load_json(producer_path) if producer_path.is_file() else None
+            skill_path = root / "skills" / name / "SKILL.md"
+            skill_current = (
+                skill_path.is_file()
+                and result.get("skill_sha256") == file_sha256(skill_path)
+            )
             parsed_review = (
                 review.get("parsed_review") if isinstance(review, dict) else None
             )
-            valid = (
+            base_valid = (
                 result.get("status") == "pass"
                 and artifacts_valid
                 and isinstance(producer, dict)
@@ -544,10 +574,17 @@ def build_receipt(root: Path = ROOT) -> dict[str, object]:
                 and isinstance(parsed_review, dict)
                 and parsed_review.get("status") == "pass"
             )
+            valid = base_valid and skill_current
             if valid:
                 valid_quality_results += 1
+            elif base_valid and not skill_current:
+                stale_quality_skills.append(name)
             else:
                 errors.append(f"invalid output-quality evidence for {name}")
+        if stale_quality_skills:
+            errors.append(
+                "all-Skill output-quality evidence is stale for current Skill files"
+            )
         all_skill_output_quality_verified = (
             isinstance(output_quality, dict)
             and output_quality.get("status") == "pass"
@@ -593,8 +630,10 @@ def build_receipt(root: Path = ROOT) -> dict[str, object]:
         "live_activation_checks": {
             "passed": live_passed,
             "total": live_total,
+            "routing_current": live_routing_current,
         },
         "evidence_profiles": dict(sorted(profile_counts.items())),
+        "stale_output_quality_skills": sorted(stale_quality_skills),
         "external_dependency_count": len(external),
         "claims": {
             "deterministic_routing_verified": (
@@ -609,6 +648,7 @@ def build_receipt(root: Path = ROOT) -> dict[str, object]:
                 and len(collaboration_skill_coverage) == len(skills)
             ),
             "model_activation_verified": model_activation_verified,
+            "required_action_execution_verified": False,
             "profile_output_quality_verified": profile_output_quality_verified,
             "all_skill_synthetic_output_quality_verified": (
                 all_skill_output_quality_verified

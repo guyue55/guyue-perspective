@@ -38,6 +38,15 @@
 - v1.4.0 最终精确候选与严格索引出生证明均识别 236 个发布文件，在空 HOME、无 `.git` 环境通过 15/15；不可变身份由最终 commit 与 annotated tag 提供，避免把整树 hash 写回树内造成自指失效。
 - 诚实边界：以上证明确定性路由、Codex 激活、四档代表样本和每个 Skill 的一个合成输出，不证明任意真实业务输入、其他 runtime 或长期用户价值。
 
+### 1.2 2026-07-29 复审校正
+
+- 当前基线是 27 个内置 Skill、10 个登记外部候选、114 条结构路由、66 条行为合同、12 条协作合同和 222 条近邻负例；上面的 26/12/19 等数字只保留为历史快照。
+- 新版私有本地索引已经接入 CLI、MCP 和首轮验货，路由只返回名称、来源、匹配证据与边界，不返回本机绝对路径或本地描述；旧 `名称 -> 路径` 缓存仅按降级模式读取。
+- `external_candidate` 已能作为独立成功候选态返回，不再被 CLI/MCP/验货入口误写成无路由失败。
+- manifest 的外部 lifecycle 是必须依次通过的门清单，不是持久状态机。仓库当前没有保存 `source_checked -> installed -> security_checked -> authorized -> activated` 的迁移状态；每一步仍需单独动作收据。
+- 行为合同的确定性门只执行路由断言。`required_actions` 与 `forbidden_side_effects` 当前执行证据为 `0/66`，不得由 66/66 路由绿灯替代。
+- 旧模型激活和逐 Skill 输出质量收据未绑定当前路由/Skill 哈希时，相关 claim 必须为 `false`；开发门只警告，严格发布门阻断。
+
 ## 2. 审计口径
 
 ### 2.1 六段能力链
@@ -271,10 +280,10 @@ boundary: what this evidence does not prove
 ### M2：建立外部候选状态机（P0）
 
 - [x] `resolve_routes()` 增加独立 `external_candidates` 输出，不把外部候选冒充内置 selected。
-- [x] 为 12 个依赖补 `type`、意图、负例、来源 URL、固定 commit/version、安装状态、风险级别和替代关系。
+- [x] 为当时登记的外部依赖补 `type`、意图、负例、来源 URL、固定 ref、风险级别和替代关系；安装与来源健康继续由环境探针和动作收据判定。
 - [x] 移除 `ecosystem-scout` 的“20 字以内 description”硬规则，改为受 discovery budget 约束的有效描述。
 - [x] 连接 `discover_local_skills.py` 的位置索引与路由候选，但不将私人绝对路径写入公开收据。
-- [x] 执行状态机：candidate -> source_checked -> installed -> security_checked -> authorized -> activated / blocked。
+- [x] 声明必须顺序通过的门：candidate -> source_checked -> installed -> security_checked -> authorized -> activated / blocked；明确它不是持久状态机，列表本身不证明任何迁移已发生。
 - [x] 为内置能力优先、外部互补和外部替代分别增加回放。
 
 验收：未安装、未安检、未授权的外部能力只能显示候选和边界；任何情况下都不能直接执行命令。

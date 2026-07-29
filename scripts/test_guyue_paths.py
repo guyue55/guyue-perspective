@@ -24,6 +24,8 @@ from src.paths import (  # noqa: E402
     guyue_home,
     private_memory_dir,
 )
+from scripts.doctor import dependency_health  # noqa: E402
+from scripts.discover_local_skills import write_index_atomic  # noqa: E402
 
 
 def require(condition: bool, message: str) -> None:
@@ -140,6 +142,35 @@ def main() -> int:
                 os.environ.pop("GUYUE_MEMORY_DIR", None)
             else:
                 os.environ["GUYUE_MEMORY_DIR"] = previous_memory
+
+        unverified_skill = root / "skills" / "find-skills"
+        unverified_skill.mkdir(parents=True)
+        (unverified_skill / "SKILL.md").write_text(
+            "---\nname: find-skills\n---\n",
+            encoding="utf-8",
+        )
+        health = dependency_health(
+            {
+                "name": "find-skills",
+                "package_id": "vercel-labs/skills@find-skills",
+                "ref": "4ce6d48ac44c8b637db87b2102fea3baca719df1",
+            },
+            [root / "skills"],
+            source_root=root / "sources",
+        )
+        require(
+            health["status"] == "unverified",
+            "a loose Skill directory must not be reported as a verified dependency",
+        )
+        cache_file = configured / "cache" / "discovery" / "skills-index.json"
+        write_index_atomic(
+            cache_file,
+            {"schema_version": 2, "generated_at": None, "skills": []},
+        )
+        require(
+            (cache_file.stat().st_mode & 0o777) == 0o600,
+            "private discovery cache files must use mode 0600",
+        )
 
     print("Guyue path ownership tests passed.")
     return 0

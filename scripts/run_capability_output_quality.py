@@ -21,6 +21,8 @@ except ModuleNotFoundError:
 
 
 ROOT = Path(__file__).resolve().parent.parent
+EVALUATION_CONFIG_PATH = ROOT / "evals/capability-output-quality.json"
+RUNNER_PATH = Path(__file__).resolve()
 DEFAULT_ARTIFACT_DIR = Path(
     "evals/evidence/artifacts/capability-output-quality-2026-07-13"
 )
@@ -28,6 +30,20 @@ DEFAULT_ARTIFACT_DIR = Path(
 
 def file_sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def evaluation_identity() -> dict[str, str]:
+    return {
+        "evaluation_contract_sha256": file_sha256(EVALUATION_CONFIG_PATH),
+        "evaluation_runner_sha256": file_sha256(RUNNER_PATH),
+    }
+
+
+def evaluation_identity_matches(receipt: object) -> bool:
+    identity = evaluation_identity()
+    return isinstance(receipt, dict) and all(
+        receipt.get(field) == digest for field, digest in identity.items()
+    )
 
 
 def sanitize(value: object) -> str:
@@ -293,6 +309,7 @@ def run_case(
         write_json(review_path, review_artifact)
         return {
             "skill": skill,
+            "skill_sha256": skill_sha256,
             "status": "fail",
             "criteria_count": len(case.get("criteria", [])),
             "producer_artifact": artifact_ref(producer_path),
@@ -354,6 +371,7 @@ def run_case(
     )
     return {
         "skill": skill,
+        "skill_sha256": skill_sha256,
         "status": "pass" if passed else "fail",
         "criteria_count": len(criteria),
         "producer_artifact": artifact_ref(producer_path),
@@ -393,9 +411,8 @@ def main() -> int:
         help="Reuse hash-matched producer artifacts and run only their review",
     )
     args = parser.parse_args()
-    config = json.loads(
-        (ROOT / "evals/capability-output-quality.json").read_text(encoding="utf-8")
-    )
+    current_evaluation_identity = evaluation_identity()
+    config = json.loads(EVALUATION_CONFIG_PATH.read_text(encoding="utf-8"))
     cases = [
         case
         for case in config["cases"]
@@ -433,6 +450,10 @@ def main() -> int:
     output_path = args.output if args.output.is_absolute() else ROOT / args.output
     if args.merge_existing and output_path.is_file():
         existing = json.loads(output_path.read_text(encoding="utf-8"))
+        if not evaluation_identity_matches(existing):
+            raise SystemExit(
+                "existing output-quality receipt uses a stale evaluation contract or runner"
+            )
         merged = {
             str(result["skill"]): result
             for result in existing.get("results", [])
@@ -444,6 +465,7 @@ def main() -> int:
     passed = sum(result["status"] == "pass" for result in results)
     receipt = {
         "schema_version": 1,
+        **current_evaluation_identity,
         "status": "pass" if passed == len(results) else "fail",
         "runtime": "codex-cli",
         "runtime_version": subprocess.run(

@@ -311,7 +311,7 @@ python3 scripts/check_context_budget.py
 - **长程任务执行骨架**：为多阶段目标准备总控文档、执行账本、否定清单和活体证据要求，确保恢复时能从项目事实继续，而不是从聊天上下文猜进度。
 - **会话证据提取器**：`scripts/codex_extractor.py` 流式提取 Codex JSONL 中的 user/final 证据，支持项目、起止时间、主任务/子任务、关键词、角色、去重、统计、清单和限长，并排除开发者/工具载荷、脱敏常见凭证与个人主目录。
 - **分层行为评测**：当前开发合同包含 114 个路由用例、42 个行为合同、12 个协作用例、222 个近邻负例和 11 个工作流，并保留绑定证据文件 SHA-256 的真实回放观察检查器；确定性门全绿不会冒充模型行为已通过。
-- **安装收据**：`release-manifest.json` 定义载荷规则，`release-payload.lock.json` 绑定精确文件哈希；`scripts/check_full_install.py --runtime <runtime> --json` 输出载荷、Skill 数、来源提交和工作区状态。安装成功仍需真实激活回放。
+- **安装收据**：`release-manifest.json` 定义载荷规则，`release-payload.lock.json` 绑定精确文件哈希；`scripts/check_full_install.py --runtime <runtime> --json` 输出载荷、Skill 数、来源提交、工作区状态和可核验的发布身份。开发快照不会冒充 tag 发布，安装成功仍需真实激活回放。
 - **双轨长时记忆引擎 (Structured Memory Bank)**：公共精选条目随 `memory-bank` Skill 发布；私有运行记忆默认写入 `~/.guyue/knowledge/memory/`，不再绑定安装目录。检索会读取命中的 Markdown 详情并标出待复查记录；写入使用排他锁和原子替换，空查询、常见密钥、令牌和个人绝对路径会被拒绝。旧 `.guyue_memory/local/` 仅只读兼容，可通过显式迁移工具对账和回滚。
 - **可选 MCP 接口**：`src/mcp_server.py` 可通过 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) 暴露技能清单、可解释路由和本地记忆工具；它是完整仓库上的可选运行层，不代表所有 Agent Skills 运行时都会自动加载 MCP。
 - **依赖健康探针 (Doctor Probe)**：内置 `scripts/doctor.py` 探针，调度外部技能（如 `LearnPrompt/luban-skill`、`alchaincyf/nuwa-skill`）前检查环境，并把可选依赖缺口标成不阻塞项。

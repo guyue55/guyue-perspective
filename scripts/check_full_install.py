@@ -65,6 +65,42 @@ def git_state(install_root: Path) -> tuple[str | None, bool | None]:
     return result.stdout.strip(), bool(status.stdout.strip()) if status.returncode == 0 else None
 
 
+def release_identity(
+    install_root: Path,
+    *,
+    version: str,
+    release_state: str,
+    source_commit: str | None,
+) -> tuple[str, str, bool]:
+    release_tag = f"v{version}"
+    if release_state == "development":
+        return release_tag, "development_snapshot", False
+    if release_state == "candidate":
+        return release_tag, "release_candidate", False
+    if release_state != "released":
+        return release_tag, "unknown_release_state", False
+    if source_commit is None:
+        return release_tag, "released_payload_without_git_identity", False
+    tag_result = subprocess.run(
+        [
+            "git",
+            "-C",
+            str(install_root),
+            "rev-parse",
+            "--verify",
+            f"refs/tags/{release_tag}^{{commit}}",
+        ],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if tag_result.returncode != 0:
+        return release_tag, "release_tag_missing", False
+    if tag_result.stdout.strip() != source_commit:
+        return release_tag, "release_tag_mismatch", False
+    return release_tag, "verified_release_tag", True
+
+
 def build_receipt(install_root: Path, runtime: str) -> dict:
     try:
         skill_manifest = json.loads(
@@ -81,12 +117,29 @@ def build_receipt(install_root: Path, runtime: str) -> dict:
     except (OSError, json.JSONDecodeError, ValueError):
         policy = {}
         locked_count = 0
+    version = str(policy.get("version", skill_manifest.get("version", "unknown")))
+    declared_release_state = str(policy.get("release_state", "unknown"))
+    release_tag, identity_status, identity_verified = release_identity(
+        install_root,
+        version=version,
+        release_state=declared_release_state,
+        source_commit=commit,
+    )
+    release_state = (
+        "unverified_release"
+        if declared_release_state == "released" and not identity_verified
+        else declared_release_state
+    )
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "package": str(policy.get("package", skill_manifest.get("name", "guyue"))),
-        "version": str(policy.get("version", skill_manifest.get("version", "unknown"))),
-        "release_state": str(policy.get("release_state", "unknown")),
+        "version": version,
+        "release_state": release_state,
+        "declared_release_state": declared_release_state,
         "base_tag": str(policy.get("base_tag", "")),
+        "release_tag": release_tag,
+        "release_identity_status": identity_status,
+        "release_identity_verified": identity_verified,
         "runtime": runtime,
         "payload_status": "complete" if not missing else "incomplete",
         "required_file_count": locked_count,
@@ -115,6 +168,13 @@ def run_self_test() -> None:
         receipt = build_receipt(ROOT, runtime)
         if receipt["payload_status"] != "complete" or not receipt["required_payload_sha256"]:
             raise AssertionError(f"repository must produce a complete {runtime} receipt: {receipt}")
+        if receipt["declared_release_state"] == "development" and (
+            receipt["release_identity_status"] != "development_snapshot"
+            or receipt["release_identity_verified"] is not False
+        ):
+            raise AssertionError(
+                f"development checkout must not claim a verified release: {receipt}"
+            )
 
 
 def main() -> int:

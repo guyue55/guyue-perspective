@@ -2,8 +2,8 @@
   "schema_version": 1,
   "package": "guyue-digital-twin",
   "version": "1.70.1",
-  "release_state": "released",
-  "base_tag": "v1.70",
+  "release_state": "development",
+  "base_tag": "v1.70.1",
   "lock_file": "release-payload.lock.json",
   "profiles": {
     "install": {

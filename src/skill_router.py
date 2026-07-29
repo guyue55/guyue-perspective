@@ -462,6 +462,8 @@ def _resolve_local_candidates(
     for capability in capabilities:
         if not isinstance(capability, dict):
             continue
+        if capability.get("path_available") is not True:
+            continue
         name = str(capability.get("name", "")).strip()
         if not name:
             continue
@@ -499,7 +501,7 @@ def _resolve_local_candidates(
                 "state": "local_candidate",
                 "source": str(capability.get("source", "local-cache")),
                 "relationship": relationship,
-                "local_path_available": bool(capability.get("path")),
+                "local_path_available": capability.get("path_available") is True,
                 "boundary": (
                     "Local catalog evidence only; private paths and descriptions "
                     "are withheld. Read the target SKILL.md and verify host "

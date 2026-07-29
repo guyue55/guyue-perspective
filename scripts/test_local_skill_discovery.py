@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import sys
 import tempfile
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 
@@ -28,7 +29,7 @@ def require(condition: bool, message: str) -> None:
 
 
 def write_skill(path: Path, *, name: str, description: str, body: str) -> None:
-    path.mkdir(parents=True)
+    path.mkdir(parents=True, exist_ok=True)
     (path / "SKILL.md").write_text(
         "---\n"
         f"name: {name}\n"
@@ -119,17 +120,62 @@ def main() -> int:
             ),
             "public route receipts must not expose private local content",
         )
+        require(
+            all(item["local_path_available"] is True for item in route["local_candidates"]),
+            "local route receipts must only report paths verified during index load",
+        )
+
+        (secondary / "testing" / "SKILL.md").unlink()
+        loaded_after_delete = load_local_skill_index(index_path)
+        available_after_delete, deleted_metadata = router_inputs(loaded_after_delete)
+        require(
+            {item["name"] for item in available_after_delete} == {"documentation"}
+            and deleted_metadata["unavailable_skill_count"] == 1,
+            "deleted cached paths must not survive as local route candidates",
+        )
+
+        write_skill(
+            primary / "documentation",
+            name="documentation",
+            description="Fresh documentation capability.",
+            body='## 触发词示例\n“维护文档”',
+        )
+        stale = load_local_skill_index(
+            index_path,
+            now=datetime.now(timezone.utc),
+        )
+        stale_capabilities, stale_metadata = router_inputs(stale)
+        require(
+            stale_metadata["status"] == "available"
+            and "维护文档" in stale_capabilities[0]["search_text"],
+            "modified Skill files must refresh even while the index is fresh",
+        )
+        stale = load_local_skill_index(
+            index_path,
+            now=datetime.now(timezone.utc) + timedelta(days=2),
+        )
+        _, stale_metadata = router_inputs(stale)
+        require(
+            stale_metadata["status"] == "stale",
+            "expired indexes must be labeled stale",
+        )
 
         legacy_path = root / "legacy.json"
         legacy_path.write_text(
-            json.dumps({"documentation": str(primary / "documentation")}),
+            json.dumps(
+                {
+                    "documentation": str(primary / "documentation"),
+                    "ghost": str(root / "missing-ghost"),
+                }
+            ),
             encoding="utf-8",
         )
         legacy = load_local_skill_index(legacy_path)
         require(
             legacy["status"] == "legacy"
-            and legacy["skills"][0]["name"] == "documentation",
-            "legacy name-to-path caches must remain readable during migration",
+            and [item["name"] for item in legacy["skills"]] == ["documentation"]
+            and legacy["unavailable_skill_count"] == 1,
+            "legacy caches must remain readable without reviving missing paths",
         )
 
     print("Local Skill discovery tests passed.")

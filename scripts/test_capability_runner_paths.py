@@ -19,9 +19,13 @@ from scripts.run_capability_live_canaries import (  # noqa: E402
 )
 from scripts.check_capability_chain import (  # noqa: E402
     model_activation_claim_verified,
+    output_quality_identity_current,
 )
+from scripts import run_capability_output_quality as quality_runner  # noqa: E402
 from scripts.run_capability_output_quality import (  # noqa: E402
     artifact_ref as quality_artifact_ref,
+    evaluation_identity,
+    evaluation_identity_matches,
 )
 
 
@@ -54,6 +58,22 @@ def main() -> int:
             expected_total=27,
         ),
         "current complete live evidence should preserve model activation truth",
+    )
+    quality_identity = evaluation_identity()
+    require(
+        output_quality_identity_current(quality_identity) == (True, True),
+        "output-quality receipt identity must bind the current contract and runner",
+    )
+    stale_identity = dict(quality_identity)
+    stale_identity["evaluation_runner_sha256"] = "0" * 64
+    require(
+        output_quality_identity_current(stale_identity) == (True, False),
+        "a changed output-quality runner must invalidate prior evidence",
+    )
+    require(
+        evaluation_identity_matches(quality_identity)
+        and not evaluation_identity_matches(stale_identity),
+        "merge mode must reject receipts produced by a stale contract or runner",
     )
     repository_artifact = ROOT / "evals" / "evidence" / "sample.json"
     expected_repository_ref = "evals/evidence/sample.json"
@@ -102,6 +122,101 @@ def main() -> int:
             payload["observed_final"] == "ACTIVATED:cognitive-expansion",
             "路径回退不得改变模型小样结果",
         )
+
+        skill = "code-minimalism"
+        skill_path = f"skills/{skill}/SKILL.md"
+        case = {
+            "skill": skill,
+            "prompt": "给出一个精炼的代码审查结论。",
+            "criteria": ["结论具体且不编造事实"],
+        }
+        producer = {
+            "messages": ["这是经过证据约束的精炼结论。" * 12],
+            "commands": [
+                {
+                    "command": f"sed -n '1,80p' {skill_path}",
+                    "exit_code": 0,
+                    "status": "completed",
+                }
+            ],
+            "usage": {},
+            "exit_code": 0,
+            "timed_out": False,
+            "elapsed_seconds": 0.01,
+            "failure_diagnostic": "",
+            "raw_sha256": "1" * 64,
+        }
+        reviewer = {
+            "messages": [
+                json.dumps(
+                    {
+                        "status": "pass",
+                        "criteria": [
+                            {
+                                "criterion": "结论具体且不编造事实",
+                                "status": "pass",
+                                "evidence": "输出保持证据边界。",
+                            }
+                        ],
+                        "findings": [],
+                        "boundary": "synthetic",
+                    },
+                    ensure_ascii=False,
+                )
+            ],
+            "commands": [],
+            "usage": {},
+            "exit_code": 0,
+            "timed_out": False,
+            "elapsed_seconds": 0.01,
+            "failure_diagnostic": "",
+            "raw_sha256": "2" * 64,
+        }
+        original_run_codex = quality_runner.run_codex
+        try:
+            responses = iter((producer, reviewer))
+            quality_runner.run_codex = lambda *_args, **_kwargs: dict(next(responses))
+            passed_result = quality_runner.run_case(
+                case,
+                artifact_dir / "quality-pass",
+                10,
+                None,
+                "codex",
+                False,
+            )
+            require(
+                passed_result["status"] == "pass"
+                and passed_result["skill_sha256"]
+                == quality_runner.file_sha256(ROOT / skill_path),
+                "successful output-quality results must bind the evaluated Skill hash",
+            )
+
+            failed_producer = dict(producer)
+            failed_producer.update(
+                {
+                    "messages": [],
+                    "commands": [],
+                    "exit_code": 1,
+                    "failure_diagnostic": "synthetic producer failure",
+                }
+            )
+            quality_runner.run_codex = lambda *_args, **_kwargs: dict(failed_producer)
+            failed_result = quality_runner.run_case(
+                case,
+                artifact_dir / "quality-fail",
+                10,
+                None,
+                "codex",
+                False,
+            )
+            require(
+                failed_result["status"] == "fail"
+                and failed_result["skill_sha256"]
+                == quality_runner.file_sha256(ROOT / skill_path),
+                "failed output-quality results must also bind the evaluated Skill hash",
+            )
+        finally:
+            quality_runner.run_codex = original_run_codex
 
     print("Capability runner path regression tests passed.")
     return 0

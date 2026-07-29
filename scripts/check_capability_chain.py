@@ -25,6 +25,8 @@ DEVELOPMENT_EVIDENCE_WARNINGS = {
     "live activation evidence is stale for routing semantics",
     "all-Skill output-quality evidence is incomplete",
     "all-Skill output-quality evidence is stale for current Skill files",
+    "all-Skill output-quality evidence is stale for evaluation contract",
+    "all-Skill output-quality evidence is stale for evaluation runner",
 }
 
 
@@ -34,6 +36,23 @@ def load_json(path: Path) -> object:
 
 def file_sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def output_quality_identity_current(
+    receipt: object,
+    *,
+    root: Path = ROOT,
+) -> tuple[bool, bool]:
+    if not isinstance(receipt, dict):
+        return False, False
+    contract_path = root / "evals/capability-output-quality.json"
+    runner_path = root / "scripts/run_capability_output_quality.py"
+    return (
+        contract_path.is_file()
+        and receipt.get("evaluation_contract_sha256") == file_sha256(contract_path),
+        runner_path.is_file()
+        and receipt.get("evaluation_runner_sha256") == file_sha256(runner_path),
+    )
 
 
 def routing_sha256(manifest: dict[str, object]) -> str:
@@ -531,6 +550,17 @@ def build_receipt(root: Path = ROOT) -> dict[str, object]:
         errors.append("missing all-Skill output-quality evidence")
     else:
         output_quality = load_json(output_quality_path)
+        quality_contract_current, quality_runner_current = (
+            output_quality_identity_current(output_quality, root=root)
+        )
+        if not quality_contract_current:
+            errors.append(
+                "all-Skill output-quality evidence is stale for evaluation contract"
+            )
+        if not quality_runner_current:
+            errors.append(
+                "all-Skill output-quality evidence is stale for evaluation runner"
+            )
         quality_results = (
             output_quality.get("results", [])
             if isinstance(output_quality, dict)
@@ -594,6 +624,8 @@ def build_receipt(root: Path = ROOT) -> dict[str, object]:
             is True
             and quality_names == skill_names
             and valid_quality_results == len(skills)
+            and quality_contract_current
+            and quality_runner_current
         )
         if not all_skill_output_quality_verified:
             errors.append("all-Skill output-quality evidence is incomplete")

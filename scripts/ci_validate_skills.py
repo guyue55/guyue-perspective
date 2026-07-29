@@ -184,12 +184,45 @@ def check_project_config(repo_root):
             file=sys.stderr,
         )
         passed = False
+    if release_manifest.get('release_state') not in {'development', 'candidate', 'released'}:
+        print(
+            "❌ [CONFIG ERROR] release_state must be development, candidate, or released",
+            file=sys.stderr,
+        )
+        passed = False
     if release_manifest.get('base_tag') != release_lock.get('base_tag'):
         print(
             "❌ [CONFIG ERROR] release manifest and lock base_tag must match",
             file=sys.stderr,
         )
         passed = False
+
+    if release_manifest.get('release_state') == 'released' and is_git_checkout(repo_root):
+        version = str(release_manifest.get('version', ''))
+        release_tag = f'v{version}'
+        tag_result = subprocess.run(
+            ['git', '-C', repo_root, 'rev-parse', '--verify', f'refs/tags/{release_tag}^{{commit}}'],
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        if tag_result.returncode == 0:
+            head_result = subprocess.run(
+                ['git', '-C', repo_root, 'rev-parse', 'HEAD'],
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            if (
+                head_result.returncode != 0
+                or head_result.stdout.strip() != tag_result.stdout.strip()
+            ):
+                print(
+                    f"❌ [CONFIG ERROR] released state reuses {release_tag} "
+                    "but HEAD does not match that tag",
+                    file=sys.stderr,
+                )
+                passed = False
 
     plugins = marketplace.get('plugins')
     if not isinstance(plugins, list) or len(plugins) != 1:

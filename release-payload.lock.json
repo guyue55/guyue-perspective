@@ -2,8 +2,8 @@
   "schema_version": 1,
   "package": "guyue-digital-twin",
   "version": "1.70.1",
-  "release_state": "released",
-  "base_tag": "v1.70",
+  "release_state": "development",
+  "base_tag": "v1.70.1",
   "files": [
     {
       "path": ".claude-plugin/marketplace.json",
@@ -27,7 +27,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "9abbeee3eb06339c6a46cfb720cd2c1da6741036fdf37533709357308322ee58"
+      "sha256": "195ee9f215936a110477d3524c440343ae8de843d388a6df6eeb78f0ec65845c"
     },
     {
       "path": "RTK.md",
@@ -691,7 +691,7 @@
     },
     {
       "path": "release-manifest.json",
-      "sha256": "62fef36bbebe1abf270160aede2fa46efd7d2c52a5336aa648cdf933c7cd2bf4"
+      "sha256": "f5e95cb38debe93df14c753525cf85d2ed7c1e464a94b589a1bdbd3e7634a128"
     },
     {
       "path": "requirements.txt",
@@ -723,7 +723,7 @@
     },
     {
       "path": "scripts/check_capability_chain.py",
-      "sha256": "34d126eef5909c0ceb1b4d1d451ed13eb4b12a73859ba32a5aabc85d006c706c"
+      "sha256": "f1711382ea34f76dacaf68a5e6f074617979135f0a72ac6e386639dc99ed3947"
     },
     {
       "path": "scripts/check_context_budget.py",
@@ -731,7 +731,7 @@
     },
     {
       "path": "scripts/check_full_install.py",
-      "sha256": "6bb4e33a7039444ca713a63e31fbb4660a0378178e615fdf82f3c7ca460c1a13"
+      "sha256": "fe0dc84ef4d85cfb6dcd5fe3739dee867f7c3ec717f5827670814bb934933605"
     },
     {
       "path": "scripts/check_long_goal_pack.py",
@@ -739,7 +739,7 @@
     },
     {
       "path": "scripts/ci_validate_skills.py",
-      "sha256": "ef15b4883480c3f654b9082614e9abc12036764527c8752255113c6ef0f37479"
+      "sha256": "5f7890e0eb4c71f6580fa1ddcd38405da11ae4120f34c74407b024dafa1b8394"
     },
     {
       "path": "scripts/claude_extractor.py",
@@ -795,7 +795,7 @@
     },
     {
       "path": "scripts/run_capability_output_quality.py",
-      "sha256": "8a84fd1f3d41f0d368b8c00a3a71bda461c32836cbf829399d857a54731ca897"
+      "sha256": "39b4bece72962c7f44d275ba53aa847db3695690e22bd633c6c4273e08208db3"
     },
     {
       "path": "scripts/run_eval.py",
@@ -823,7 +823,7 @@
     },
     {
       "path": "scripts/test_capability_runner_paths.py",
-      "sha256": "cd972b84a14d526d1f04f4fc7a0c1368d9e4c267cd252bd6acf153a618bc90f9"
+      "sha256": "32c92ab19e67e45e0ab6f60d8b15bbbf93370cce73de7dd8326c1cac62863fae"
     },
     {
       "path": "scripts/test_codex_extractor.py",
@@ -847,7 +847,7 @@
     },
     {
       "path": "scripts/test_local_skill_discovery.py",
-      "sha256": "dfccfc5eac73abacd83e3c7aaca96679c49b06fbb3df5bbdfd7bd30f48e8ed20"
+      "sha256": "8d1f6d09a8c7d5b81c77ba6124bd69bf3f2b2d6e8e89411e5f269b945d28cf2f"
     },
     {
       "path": "scripts/test_long_goal_pack.py",
@@ -951,7 +951,7 @@
     },
     {
       "path": "skills/ecosystem-scout/SKILL.md",
-      "sha256": "0544d05a58209c2f20509045673663375a0adadfbe61726240781d967d205aa0"
+      "sha256": "82c05fa3934dbf0b36014f5f0c1ed3f1e6db10f97577bfe68fedf3097720fe71"
     },
     {
       "path": "skills/frontend-expert/SKILL.md",
@@ -1055,7 +1055,7 @@
     },
     {
       "path": "src/local_skill_index.py",
-      "sha256": "a82601f967312a5b7494399d34a34f1acf747bf38f05361171be33f9eb7f6341"
+      "sha256": "8baea35316449a95c546699e9c7381336fac352f73a803c4f924c5cf0169d09a"
     },
     {
       "path": "src/mcp_server.py",
@@ -1079,7 +1079,7 @@
     },
     {
       "path": "src/skill_router.py",
-      "sha256": "5239450e346e38b526fc69a0a565bc62db826a24f6e07c0f3b786c10267a3ba9"
+      "sha256": "b30ea3e54acb017ceaaf1e085e559b486e9237357b9590fe950c5fb90bb75c63"
     },
     {
       "path": "test-prompts.json",

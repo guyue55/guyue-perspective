@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.70.1 - 2026-07-29
+## v1.7.1 - 2026-07-29
 
 Status: Released
 
@@ -19,7 +19,7 @@ Status: Released
 
 - This hotfix stabilizes the existing lint contract; adopting additional Ruff rules remains separate work.
 
-## v1.70 - 2026-07-29
+## v1.7.0 - 2026-07-29
 
 Status: Released
 
@@ -47,7 +47,7 @@ Status: Released
 - No autonomous browsing, self-modification, automatic promotion or external installation loop is enabled.
 - Model-side budget estimates remain proxies until the runner receipt is available.
 
-## v1.60 - 2026-07-21
+## v1.6.0 - 2026-07-21
 
 Status: Released
 
@@ -55,7 +55,7 @@ Status: Released
 
 - Rename the former project-bound static demo hardening Skill to the generic `static-demo-hardening` capability.
 - Replace customer/project-specific wording with anonymous static-demo surface language across routing contracts, evidence artifacts, examples, docs, and tests.
-- Promote the current public package metadata to `1.60` across the Skill manifest, release manifest, Claude marketplace metadata, README, release checklist, and payload lock.
+- Promote the current public package metadata to `1.6.0` across the Skill manifest, release manifest, Claude marketplace metadata, README, release checklist, and payload lock.
 
 ### Security
 

@@ -1,19 +1,19 @@
-# Guyue v1.70.1 Release
+# Guyue v1.7.1 Release
 
 Date: 2026-07-29
 State: `released`
-Base tag: `v1.70`
+Base tag: `v1.7.0`
 
 ## Purpose
 
-v1.70.1 is a reproducibility hotfix for v1.70. The runtime behavior and evidence contracts are unchanged; this patch prevents a Ruff upstream default-rule expansion from making local and GitHub Actions release gates evaluate different rule sets.
+v1.7.1 is a reproducibility hotfix for v1.7.0. The runtime behavior and evidence contracts are unchanged; this patch prevents a Ruff upstream default-rule expansion from making local and GitHub Actions release gates evaluate different rule sets.
 
 ## What Changed
 
 - Pin Ruff to `0.16.0` in `requirements.txt`.
 - Add `ruff.toml` with the previously effective `E4`, `E7`, `E9` and `F` rules selected explicitly.
 - Require both the dependency declaration and Ruff configuration in the install payload.
-- Preserve the v1.70 direction firewall, learning-governance, cognitive-expansion and evidence-runner changes without broad formatting churn.
+- Preserve the v1.7.0 direction firewall, learning-governance, cognitive-expansion and evidence-runner changes without broad formatting churn.
 
 ## Verification
 
@@ -31,4 +31,4 @@ v1.70.1 is a reproducibility hotfix for v1.70. The runtime behavior and evidence
 
 - This patch freezes the lint contract; it does not claim that all 413 Ruff 0.16 default rules have been adopted.
 - Expanding the lint policy remains a separate refactor and must not be smuggled into a release hotfix.
-- Runtime behavior evidence is inherited only because no routing or Skill behavior changed after the v1.70 receipts.
+- Runtime behavior evidence is inherited only because no routing or Skill behavior changed after the v1.7.0 receipts.

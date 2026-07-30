@@ -1,12 +1,12 @@
-# Guyue v1.70 Release
+# Guyue v1.7.0 Release
 
 Date: 2026-07-29
 State: `released`
-Base tag: `v1.60`
+Base tag: `v1.6.0`
 
 ## Purpose
 
-v1.70 strengthens Guyue's ability to learn without losing control. It adds a direction firewall for high-impact ideas, makes multi-turn plan drift resettable, and reduces the high-risk cognitive-expansion contract to a smaller evidence spine that can still be checked mechanically and independently.
+v1.7.0 strengthens Guyue's ability to learn without losing control. It adds a direction firewall for high-impact ideas, makes multi-turn plan drift resettable, and reduces the high-risk cognitive-expansion contract to a smaller evidence spine that can still be checked mechanically and independently.
 
 ## What Changed
 

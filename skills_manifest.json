@@ -1,6 +1,6 @@
 {
     "name": "guyue-digital-twin",
-    "version": "1.70.1",
+    "version": "1.7.1",
     "description": "Dynamic skill manifest for guyue digital twin orchestrator.",
     "routing_contract": {
         "version": 2,

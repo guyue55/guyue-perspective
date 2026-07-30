@@ -2,7 +2,7 @@
   "schema_version": 1,
   "package": "guyue-digital-twin",
   "version": "1.7.2",
-  "release_state": "candidate",
+  "release_state": "released",
   "base_tag": "v1.7.1",
   "files": [
     {
@@ -11,7 +11,7 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "8c3729a41c1644ec30149139a85b68e64e7c1e3c4cbee79c28d5b4601e39f363"
+      "sha256": "67daac4703bd7dd4894c6e243b11dd76fead0d58874d52b6e9fc081536aa96cf"
     },
     {
       "path": "GUYUE_PRINCIPLES.md",
@@ -23,7 +23,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "3d21ae0ddba95aa65a30ee097572394f191eedabad9a2e0c87e9c042a429a6aa"
+      "sha256": "28d57158482e51ae7ad6edad966a28d0274bfd24d55cb80fc0f6887047514a21"
     },
     {
       "path": "SKILL.md",
@@ -103,7 +103,7 @@
     },
     {
       "path": "docs/release-v1.7.2.md",
-      "sha256": "62468c70fa578417eeeb1345c4830ee7f05b58401e54ca6820ac694cae4dd1e1"
+      "sha256": "21aa23d9e18e3bbc1e2c946f0f43e1da633e856261ce9263601853288c672d76"
     },
     {
       "path": "docs/security.md",
@@ -659,7 +659,7 @@
     },
     {
       "path": "release-manifest.json",
-      "sha256": "db215f8691d3dc12015b28df3e8a6e18913ede7caf734685a77ef3d22c6f880a"
+      "sha256": "cd6a1763824e1aecb1bf63c364ffc9fbd563b37d6f735a1c4bbbbe824c3a1c6f"
     },
     {
       "path": "requirements.txt",

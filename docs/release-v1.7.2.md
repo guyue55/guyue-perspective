@@ -1,14 +1,14 @@
-# Guyue v1.7.2 Release Candidate
+# Guyue v1.7.2 Release
 
 Date: 2026-07-30
 Base tag: `v1.7.1`
-State: `candidate`
+State: `released`
 
 ## Why This Release Exists
 
 The public Guyue payload had absorbed a workflow tied to one company project. The useful permission-governance discipline was general, but its project identity, route and standalone Skill did not belong in a reusable public operating layer.
 
-This candidate removes that project surface, keeps only general backend authorization and audit principles, and strengthens the evidence contracts exposed by the cleanup replay.
+This release removes that project surface, keeps only general backend authorization and audit principles, and strengthens the evidence contracts exposed by the cleanup replay.
 
 ## What Changed
 

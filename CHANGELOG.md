@@ -2,7 +2,7 @@
 
 ## v1.7.2 - 2026-07-30
 
-Status: Candidate
+Status: Released
 
 ### Changed
 
@@ -18,7 +18,7 @@ Status: Candidate
 - `26/26` live activations remain current with the routing contract; the changed `documentation` Skill was regenerated and independently reviewed, restoring current `26/26` synthetic output-quality evidence on Codex CLI `0.146.0-alpha.3.1` with `gpt-5.6-terra`.
 - An empty-directory, read-only replay entered through `SKILL.md`, routed the architecture prompt to `system-design`, and did not load a host-specific instruction adapter.
 - Strict capability chain: `113/113` routes, `10/10` collaborations, `424/424` internal triggers, `41/41` external candidate triggers and `214/214` near misses.
-- Full release suite and exact payload lock are required before promotion from Candidate.
+- Full release suite and exact payload lock passed before tag promotion.
 
 ### Boundaries
 

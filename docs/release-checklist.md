@@ -2,10 +2,10 @@
 
 Release only when installation, verification, safety, and examples are understandable to a new user.
 
-## v1.60 Release Evidence
+## v1.6.0 Release Evidence
 
 Date: 2026-07-21
-Candidate version: `1.60`
+Candidate version: `1.6.0`
 Base tag: `v1.5.1`
 
 - [x] The former private static-demo Skill wording is renamed to `static-demo-hardening`.

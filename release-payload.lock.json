@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "package": "guyue-digital-twin",
-  "version": "1.60",
+  "version": "1.6.0",
   "release_state": "released",
   "base_tag": "v1.5.1",
   "files": [
     {
       "path": ".claude-plugin/marketplace.json",
-      "sha256": "594c27f9c4b2c6c7371a4c630c0a54161bdbd99392f3838848ee7362c69bce41"
+      "sha256": "8477fbf626fb098e3a51d4d51103cb7a264f64095c13836da03f9e72a63e2c20"
     },
     {
       "path": "AGENTS.md",
@@ -15,7 +15,7 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "830ed9b671a91a8b3caab4918e9a5f1c35bcc01f024c983e356e3cbb0e1f5962"
+      "sha256": "001dfe8d4eb71b04d734ff01fccff682392486caa114878d332b375405c6acae"
     },
     {
       "path": "GUYUE_PRINCIPLES.md",
@@ -27,7 +27,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "b059f3d20071e624d514374901df76caeb7612625cb671ed3f97e179e4553cd9"
+      "sha256": "1a006e9be4849a050fd4f4a528c93b104dc0a0afce4ebb47ed1719ab44a92bbb"
     },
     {
       "path": "RTK.md",
@@ -47,7 +47,7 @@
     },
     {
       "path": "docs/evaluation.md",
-      "sha256": "79f6f2cd25f187b325becfcd18c623dd72546e1dfa675989c7327f6c35c241ab"
+      "sha256": "87a4fdbcda089d2eb73a5cc768d3094d48e73f4162fe1542cfb5fe812629759c"
     },
     {
       "path": "docs/guyue-capability-discovery-evidence-audit-plan-2026-07-12.md",
@@ -83,11 +83,11 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "sha256": "0dfab9c63ff8f6fbc839547db78ae81871a0900967e8b42b1ae79fd9c89053c0"
+      "sha256": "0cf28896df9a012d902d16b7f97385a2a59f3679e1b05ea80ee920a3da91bb0c"
     },
     {
-      "path": "docs/release-v1.60.md",
-      "sha256": "446153e06e5bf6e1a7a236ce7dabbb27fec86dc5926bcc3fa16eaf18b1710860"
+      "path": "docs/release-v1.6.0.md",
+      "sha256": "11f0691f36d067943beac3b660390be2255b5e6094625129af8c3488d86def40"
     },
     {
       "path": "docs/runtime-adapters.md",
@@ -655,7 +655,7 @@
     },
     {
       "path": "release-manifest.json",
-      "sha256": "ce8e64d9e8b0a14361f282f0e22ad541fe15e28b83bb1c5519706506bee6f922"
+      "sha256": "d114bfe19685fc9e973c8487dc399f6aaba50df0fbe6ef2362154b007ca98aa7"
     },
     {
       "path": "requirements.txt",
@@ -679,7 +679,7 @@
     },
     {
       "path": "scripts/check_birth_certificate.py",
-      "sha256": "7f6d366418ebf840124a5a19180c27c29a69042b2efade01494082d504406999"
+      "sha256": "162e1a639e48f5639f88091516370bb134cc90215baaf937204521e04876acf8"
     },
     {
       "path": "scripts/check_capability_chain.py",
@@ -999,7 +999,7 @@
     },
     {
       "path": "skills_manifest.json",
-      "sha256": "a5692edcf12cf513c0fc809bc0a122394d824a3238322522f06fe46cfd5f3d0e"
+      "sha256": "30c79107f19c184714e2a89889ee817965ad1c195a293dd5741c71e6744539e8"
     },
     {
       "path": "src/context_budget.py",

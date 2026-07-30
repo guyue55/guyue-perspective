@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.60 - 2026-07-21
+## v1.6.0 - 2026-07-21
 
 Status: Released
 
@@ -8,7 +8,7 @@ Status: Released
 
 - Rename the former project-bound static demo hardening Skill to the generic `static-demo-hardening` capability.
 - Replace customer/project-specific wording with anonymous static-demo surface language across routing contracts, evidence artifacts, examples, docs, and tests.
-- Promote the current public package metadata to `1.60` across the Skill manifest, release manifest, Claude marketplace metadata, README, release checklist, and payload lock.
+- Promote the current public package metadata to `1.6.0` across the Skill manifest, release manifest, Claude marketplace metadata, README, release checklist, and payload lock.
 
 ### Security
 

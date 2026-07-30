@@ -42,7 +42,7 @@ README_NEEDLES = [
     "docs/installation.md",
     "docs/security.md",
     "docs/evaluation.md",
-    "docs/release-v1.60.md",
+    "docs/release-v1.6.0.md",
     "完整古月必须以整个仓库作为一个技能目录挂载",
     "claude plugin install guyue@guyue",
 ]

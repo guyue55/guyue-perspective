@@ -6,10 +6,10 @@
 
 ![Skill Badge](https://img.shields.io/badge/Agent_Skill-guyue-blue)
 ![Architecture](https://img.shields.io/badge/Architecture-Digital_Twin_Core_%2B_Specialties-success)
-![Status](https://img.shields.io/badge/Release-v1.60-brightgreen)
+![Status](https://img.shields.io/badge/Release-v1.6.0-brightgreen)
 
 > [!WARNING]
-> `v1.60` 是匿名化与发布卫生版本：旧项目绑定的静态 Demo 加固能力已改为通用 `static-demo-hardening`，当前发布载荷不再包含旧发布说明文件或旧项目技能入口。正式载荷已通过完整本地套件、零泄漏扫描、安装载荷校验和包含本地 worktree 副本的残留扫描。
+> `v1.6.0` 是匿名化与发布卫生版本：旧项目绑定的静态 Demo 加固能力已改为通用 `static-demo-hardening`，当前发布载荷不再包含旧发布说明文件或旧项目技能入口。正式载荷已通过完整本地套件、零泄漏扫描、安装载荷校验和包含本地 worktree 副本的残留扫描。
 
 > [!IMPORTANT]
 > 古月不是“完整的人”或万能自动化系统。它会主动完成边界明确、仓库内可逆的工作；公开发布、付费、凭证、权限扩大、不可逆迁移等高影响动作仍需绑定具体版本的授权。它不会把 AI 参与伪装成人工来源，也不会为了好听删除证据缺口或风险。
@@ -26,10 +26,10 @@ cd guyue-skill
 python3 scripts/try_guyue.py
 ```
 
-下面是当前 `v1.60` 的本地验货样例：
+下面是当前 `v1.6.0` 的本地验货样例：
 
 ```text
-[PASS] 包体 complete | v1.60 | 27 Skills
+[PASS] 包体 complete | v1.6.0 | 27 Skills
 1. static-demo-hardening | 证据: 静态 demo
 2. coding-discipline | 证据: PDF 导出
 项目边界: 静态 Demo 演示面、NexusFlow 专属能力未误触
@@ -45,7 +45,7 @@ python3 scripts/try_guyue.py
 |---|---|---|
 | `scripts/try_guyue.py` | 当前载荷、确定性路由、项目边界和上下文预算 | 目标运行时已激活，或模型一定遵守合同 |
 | 哈希绑定的只读回放 | 指定提示词在指定运行时中的真实行为 | 其余行为合同、其他运行时或长期结果 |
-| `v1.60` 的本地发布套件 | 当前 27 个 Skill 的结构、路由、协作、安装载荷、安全和上下文预算 | 其他运行时激活、任意输入质量、真实用户价值或长期效果 |
+| `v1.6.0` 的本地发布套件 | 当前 27 个 Skill 的结构、路由、协作、安装载荷、安全和上下文预算 | 其他运行时激活、任意输入质量、真实用户价值或长期效果 |
 | 当前发布套件与发布清单 | 精确载荷的本地结构、安全、远程 CI 和公开源安装完整性 | 其他运行时、GitHub Release 或长期用户价值 |
 
 > [!NOTE]
@@ -109,14 +109,14 @@ python3 scripts/try_guyue.py
 
 ## 安装到 Agent
 
-### v1.60：GitHub 源与 Claude Code Marketplace 元数据
+### v1.6.0：GitHub 源与 Claude Code Marketplace 元数据
 
 ```bash
 claude plugin marketplace add guyue55/guyue-skill
 claude plugin install guyue@guyue
 ```
 
-安装后可用 `claude plugin details guyue@guyue` 核对版本和组件清单。公开 tag `v1.60` 固定本次匿名化发布载荷，Marketplace 元数据与版本一致。Claude 模型激活和 Marketplace 提交仍是独立证据面，不能由结构校验、GitHub Release 或本地安装证据替代。
+安装后可用 `claude plugin details guyue@guyue` 核对版本和组件清单。公开 tag `v1.6.0` 固定本次匿名化发布载荷，Marketplace 元数据与版本一致。Claude 模型激活和 Marketplace 提交仍是独立证据面，不能由结构校验、GitHub Release 或本地安装证据替代。
 
 **Codex 完整安装：**
 
@@ -149,7 +149,7 @@ bash scripts/test_suite.sh
 
 更完整的运行时安装路径见 [docs/installation.md](docs/installation.md)。安全边界见 [docs/security.md](docs/security.md)。评测方式见 [docs/evaluation.md](docs/evaluation.md)。
 
-运行时边界见 [docs/runtime-adapters.md](docs/runtime-adapters.md)，长任务协议见 [docs/long-goal-protocol.md](docs/long-goal-protocol.md)，控制包字段见 [docs/templates/long-goal-control-pack.md](docs/templates/long-goal-control-pack.md)。当前证据见 [v1.60 发布说明](docs/release-v1.60.md) 和 [发布清单](docs/release-checklist.md#v160-release-evidence)。
+运行时边界见 [docs/runtime-adapters.md](docs/runtime-adapters.md)，长任务协议见 [docs/long-goal-protocol.md](docs/long-goal-protocol.md)，控制包字段见 [docs/templates/long-goal-control-pack.md](docs/templates/long-goal-control-pack.md)。当前证据见 [v1.6.0 发布说明](docs/release-v1.6.0.md) 和 [发布清单](docs/release-checklist.md#v160-release-evidence)。
 
 ## 核心心智矩阵：1 个核心分身 + 14 个基础能力 + 13 个扩展能力
 
@@ -394,13 +394,13 @@ guyue/
     └── video-extractor/
 ```
 
-## v1.60 发布证书
+## v1.6.0 发布证书
 
 ```text
 ┌───────────────────────────────────────────────┐
 │  出师证书 · 鲁班工坊                            │
 │                                               │
-│  作品：guyue (古月数字分身 v1.60)                 │
+│  作品：guyue (古月数字分身 v1.6.0)                 │
 │  状态：Released Payload，发布对象由 tag 固定          │
 │  打磨前：单项能力可验，但跨能力协作主要靠文字约定   │
 │  打磨后：27 项能力可路由、可协作、可安装态验收      │

@@ -11,7 +11,6 @@
         "SKILL.md",
         "GUYUE_PRINCIPLES.md",
         "skills_manifest.json",
-        "RTK.md",
         "requirements.txt",
         "ruff.toml",
         "release-manifest.json",
@@ -62,6 +61,7 @@
         "scripts/test_memory_concurrency.py",
         "scripts/test_memory_migration.py",
         "scripts/test_release_payload.py",
+        "scripts/test_single_entrypoint_contract.py",
         "scripts/test_mcp_server.py"
       ]
     },
@@ -74,7 +74,6 @@
         "CHANGELOG.md",
         "docs/evaluation.md",
         "docs/release-checklist.md",
-        "docs/runtime-adapters.md",
         "docs/long-goal-protocol.md",
         "docs/release-v1.7.2.md",
         "docs/templates/long-goal-control-pack.md",
@@ -93,9 +92,7 @@
   },
   "runtime_required": {
     "generic": [],
-    "codex": [
-      "AGENTS.md"
-    ],
+    "codex": [],
     "claude": [
       ".claude-plugin/marketplace.json"
     ]

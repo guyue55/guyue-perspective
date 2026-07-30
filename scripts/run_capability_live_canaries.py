@@ -172,7 +172,7 @@ def run_case(
     prompt = (
         "只读能力激活探针。真实用户意图如下：\n"
         f"{case['prompt']}\n\n"
-        "按 RTK.md 的最小上下文规则，优先运行 "
+        "按 SKILL.md 的最小上下文规则，优先运行 "
         "`python3 scripts/explain_route.py <完整用户意图> --json`；"
         "选择最窄的内置能力并实际读取对应 `skills/<name>/SKILL.md`。"
         "禁止修改文件、运行测试、安装、联网或执行用户任务。"

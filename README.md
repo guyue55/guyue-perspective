@@ -49,7 +49,7 @@ python3 scripts/try_guyue.py
 | 当前发布套件与发布清单 | 精确载荷的本地结构、安全、远程 CI 和公开源安装完整性 | 其他运行时、GitHub Release 或长期用户价值 |
 
 > [!NOTE]
-> 当前开发候选定义 26 个子 Skill、113 个路由用例、65 个行为合同、10 个协作用例、214 个近邻负例和 10 个工作流。当前载荷的 26/26 活体激活与 26/26 产出质量收据已重新生成；它们只证明指定 Codex 运行时和合成任务，不扩大为跨运行时或真实用户价值。
+> 当前开发候选定义 26 个子 Skill、113 个路由用例、65 个行为合同、10 个协作用例、214 个近邻负例和 10 个工作流。26/26 活体激活与当前路由一致，26/26 合成产出已通过独立审查；单入口迁移另有一次空目录只读活体回放。它们只证明指定 Codex 运行时、给定提示词和合成任务，不扩大为跨运行时或真实用户价值。
 
 普通开发门会把“活体收据陈旧/不完整”保留为可见警告，并维持相应能力声明为 `false`，避免额度阻断诱发无价值的全量重跑；正式发布仍必须用 `check_capability_chain.py --strict --json` 或 `GUYUE_RELEASE_STRICT=1` 将这些警告恢复为阻断门。
 
@@ -149,7 +149,7 @@ bash scripts/test_suite.sh
 
 更完整的运行时安装路径见 [docs/installation.md](docs/installation.md)。安全边界见 [docs/security.md](docs/security.md)。评测方式见 [docs/evaluation.md](docs/evaluation.md)。
 
-运行时边界见 [docs/runtime-adapters.md](docs/runtime-adapters.md)，长任务协议见 [docs/long-goal-protocol.md](docs/long-goal-protocol.md)，控制包字段见 [docs/templates/long-goal-control-pack.md](docs/templates/long-goal-control-pack.md)。当前证据见 [v1.7.2 发布说明](docs/release-v1.7.2.md) 和 [发布清单](docs/release-checklist.md#v172-release-evidence)。
+长任务协议见 [docs/long-goal-protocol.md](docs/long-goal-protocol.md)，控制包字段见 [docs/templates/long-goal-control-pack.md](docs/templates/long-goal-control-pack.md)。当前证据见 [v1.7.2 发布说明](docs/release-v1.7.2.md) 和 [发布清单](docs/release-checklist.md#v172-release-evidence)。
 
 ## 核心心智矩阵：1 个核心分身 + 26 个窄能力
 
@@ -253,7 +253,7 @@ bash scripts/test_suite.sh
 ```
 *注意：替换 `cwd` 为你实际克隆的目录路径。*
 
-**完整挂载方式**：克隆整个仓库，再把仓库目录链接或复制到 Claude Code、OpenClaw 或其他运行时配置的技能根目录。不同运行时的路径与实测状态见 [docs/installation.md](docs/installation.md) 和 [docs/runtime-adapters.md](docs/runtime-adapters.md)。
+**完整挂载方式**：克隆整个仓库，再把仓库目录链接或复制到 Claude Code、OpenClaw 或其他运行时配置的技能根目录。不同运行时的安装路径与实测边界见 [docs/installation.md](docs/installation.md)。
 
 **推荐的前端与交互基建技能（可选增强）**：
 
@@ -330,15 +330,12 @@ python3 scripts/check_context_budget.py
 
 ```text
 guyue/
-├── AGENTS.md                # coding-agent 项目指令适配入口
-├── RTK.md                   # 仓库编码代理维护适配说明
 ├── SKILL.md                 # 核心路由中枢
 ├── README.md                # 本文件
 ├── GUYUE_PRINCIPLES.md      # 古月大盘心法原则
 ├── skills.json              # 技能注册表
 ├── skills_manifest.json     # 动态包清单与路由分发引擎
 ├── docs/                    # 安装、安全、评测、发布边界
-│   ├── runtime-adapters.md  # Codex/Claude/Gemini/Copilot/Cursor 适配策略
 ├── scripts/                 # 核心脚本库
 │   ├── doctor.py            # 环境依赖健康探针
 │   ├── try_guyue.py         # 30 秒只读验货入口

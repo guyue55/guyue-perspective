@@ -17,11 +17,13 @@ This candidate removes that project surface, keeps only general backend authoriz
 - Added project-fingerprint detection and scanner regressions.
 - Corrected the output-quality reviewer so it receives the same synthetic task as the producer and distinguishes user-provided premises from independent verification.
 - Added narrow contracts for migration and verification, candidate memory, evidence-bounded UI work packages, dependency lockfile semantics, fault-boundary reasoning, closed-world documentation, action-level ecosystem authorization and source-anchored distillation.
+- Removed the host-specific instruction-adapter layer (`AGENTS.md`, `RTK.md`, and its runtime-adapter policy) so every supported runtime enters through the same `SKILL.md` contract.
 
 ## Verification
 
-- 26/26 live activations read the intended child `SKILL.md` and returned the expected activation marker.
-- 26/26 synthetic outputs passed independent review.
+- 26/26 live activations remain current with the routing contract.
+- The changed `documentation` Skill was regenerated and independently reviewed on Codex CLI `0.146.0-alpha.3.1` with `gpt-5.6-terra`; current synthetic output quality passes at 26/26.
+- An empty non-Git directory replay activated Guyue through `SKILL.md`, routed a multi-tenant audit-log architecture prompt to `system-design`, and did not load a host-specific instruction adapter.
 - Strict capability chain passed:
   - 113/113 capability routes
   - 10/10 collaboration routes with 26/26 Skill coverage

@@ -1,53 +1,73 @@
 {
   "schema_version": 1,
   "skill": "documentation",
-  "skill_sha256": "1d0bb7c649a9feabda51953d7451b91dcc64cb4fd516686bb18b4870c542de68",
+  "skill_sha256": "5d7d1f18425fb769514c74ccfd2e07746e7fbe073cb8cea826500a0f968a5b1b",
   "parsed_review": {
     "status": "pass",
     "criteria": [
       {
         "criterion": "只写给定事实并保留未验证边界",
         "status": "pass",
-        "evidence": "准确覆盖新增查询、仅租户管理员可见、保留 180 天、异步导出，并明确“公网部署尚未验证”；未伪称独立核验。"
+        "evidence": "逐项覆盖租户级查询、仅管理员可见、保留 180 天、异步导出及“公网部署尚未验证”，未扩展其语义。"
       },
       {
         "criterion": "业务读者能理解价值、角色和限制",
         "status": "pass",
-        "evidence": "说明了可用能力（审计日志查询）、适用角色（租户管理员）及关键限制（180 天保留、公网部署未验证）。"
+        "evidence": "明确了新增可查询能力、适用角色为租户管理员，以及 180 天保留和公网未验证的限制。"
       },
       {
         "criterion": "不使用空泛营销或伪造技术细节",
         "status": "pass",
-        "evidence": "措辞直接，无未提供的收益承诺、实现机制或技术参数。"
+        "evidence": "文本无营销承诺，未补充实现机制、性能或部署完成状态等未提供事实。"
       }
     ],
     "findings": [],
-    "boundary": "仅依据任务提供的事实前提及指定产物进行只读验收；未对真实项目或公网部署进行外部独立核验。"
+    "boundary": "仅依据评测任务提供的事实前提与交付文本进行只读审核；未对真实项目或公网部署作独立核验。"
   },
-  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"只写给定事实并保留未验证边界\",\"status\":\"pass\",\"evidence\":\"准确覆盖新增查询、仅租户管理员可见、保留 180 天、异步导出，并明确“公网部署尚未验证”；未伪称独立核验。\"},{\"criterion\":\"业务读者能理解价值、角色和限制\",\"status\":\"pass\",\"evidence\":\"说明了可用能力（审计日志查询）、适用角色（租户管理员）及关键限制（180 天保留、公网部署未验证）。\"},{\"criterion\":\"不使用空泛营销或伪造技术细节\",\"status\":\"pass\",\"evidence\":\"措辞直接，无未提供的收益承诺、实现机制或技术参数。\"}],\"findings\":[],\"boundary\":\"仅依据任务提供的事实前提及指定产物进行只读验收；未对真实项目或公网部署进行外部独立核验。\"}",
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"只写给定事实并保留未验证边界\",\"status\":\"pass\",\"evidence\":\"逐项覆盖租户级查询、仅管理员可见、保留 180 天、异步导出及“公网部署尚未验证”，未扩展其语义。\"},{\"criterion\":\"业务读者能理解价值、角色和限制\",\"status\":\"pass\",\"evidence\":\"明确了新增可查询能力、适用角色为租户管理员，以及 180 天保留和公网未验证的限制。\"},{\"criterion\":\"不使用空泛营销或伪造技术细节\",\"status\":\"pass\",\"evidence\":\"文本无营销承诺，未补充实现机制、性能或部署完成状态等未提供事实。\"}],\"findings\":[],\"boundary\":\"仅依据评测任务提供的事实前提与交付文本进行只读审核；未对真实项目或公网部署作独立核验。\"}",
   "exit_code": 0,
   "timed_out": false,
   "failure_diagnostic": "",
   "commands": [
     {
-      "command": "/bin/zsh -lc \"wc -l skills/documentation/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md && sed -n '1,240p' skills/documentation/SKILL.md && sed -n '1,240p' evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md\"",
+      "command": "/bin/zsh -lc \"pwd && rg --files -g 'AGENTS.md' -g 'RTK.md' -g 'SKILL.md' -g 'documentation.output.md' | rg '(\"'^RTK'\"\\\\.md\"'$|''^AGENTS'\"\\\\.md\"'$|''^skills/documentation/SKILL'\"\\\\.md\"'$|''^evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation'\"\\\\.output\\\\.md\"'$)'\"'\"",
       "exit_code": null,
       "status": "in_progress"
     },
     {
-      "command": "/bin/zsh -lc \"wc -l skills/documentation/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md && sed -n '1,240p' skills/documentation/SKILL.md && sed -n '1,240p' evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md\"",
+      "command": "/bin/zsh -lc \"pwd && rg --files -g 'AGENTS.md' -g 'RTK.md' -g 'SKILL.md' -g 'documentation.output.md' | rg '(\"'^RTK'\"\\\\.md\"'$|''^AGENTS'\"\\\\.md\"'$|''^skills/documentation/SKILL'\"\\\\.md\"'$|''^evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation'\"\\\\.output\\\\.md\"'$)'\"'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files -uu -g 'RTK.md' -g 'AGENTS.md' -g 'SKILL.md' -g 'documentation.output.md' | rg '(\"'^|/)(RTK'\"\\\\.md|AGENTS\\\\.md|SKILL\\\\.md|documentation\\\\.output\\\\.md)\"'$'\"'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files -uu -g 'RTK.md' -g 'AGENTS.md' -g 'SKILL.md' -g 'documentation.output.md' | rg '(\"'^|/)(RTK'\"\\\\.md|AGENTS\\\\.md|SKILL\\\\.md|documentation\\\\.output\\\\.md)\"'$'\"'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"wc -l skills/documentation/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md && sed -n '1,260p' skills/documentation/SKILL.md && printf '\\\\n--- ARTIFACT ---\\\\n' && sed -n '1,240p' evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"wc -l skills/documentation/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md && sed -n '1,260p' skills/documentation/SKILL.md && printf '\\\\n--- ARTIFACT ---\\\\n' && sed -n '1,240p' evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md\"",
       "exit_code": 0,
       "status": "completed"
     }
   ],
   "usage": {
-    "input_tokens": 47323,
-    "cached_input_tokens": 40960,
+    "input_tokens": 92241,
+    "cached_input_tokens": 64768,
     "cache_write_input_tokens": 0,
-    "output_tokens": 1176,
-    "reasoning_output_tokens": 830
+    "output_tokens": 1501,
+    "reasoning_output_tokens": 854
   },
-  "elapsed_seconds": 34.741,
-  "raw_sha256": "d9019c4884021e71da77ca90610fb455bbe8225de953e81ddd27bfc90d775594",
+  "elapsed_seconds": 46.766,
+  "raw_sha256": "0652aa12e68c7cdf95eb068f0e01f895fa86594f65826d62ffa6e188ed0d1fb3",
   "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
 }

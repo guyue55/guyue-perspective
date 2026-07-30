@@ -2794,24 +2794,18 @@ def check_loop_engineering_contract(repo_root):
     return passed
 
 
-def check_public_skill_portability_contract(repo_root):
-    """确保公共 Skill 行为不依赖仓库编码代理适配文件。"""
-    paths = {
-        'root_skill': os.path.join(repo_root, 'SKILL.md'),
-        'rtk': os.path.join(repo_root, 'RTK.md'),
-        'adapters': os.path.join(repo_root, 'docs', 'runtime-adapters.md'),
-    }
-    contents = {}
+def check_public_skill_single_entrypoint_contract(repo_root):
+    """确保公共 Skill 只有 SKILL.md 指令入口，不携带宿主适配控制层。"""
+    root_skill_path = Path(repo_root, 'SKILL.md')
     passed = True
 
-    for label, path in paths.items():
-        try:
-            contents[label] = Path(path).read_text(encoding='utf-8')
-        except OSError as e:
-            print(f"❌ [PUBLIC PORTABILITY ERROR] Failed to read {path}: {e}", file=sys.stderr)
-            passed = False
-
-    if not passed:
+    try:
+        root_skill = root_skill_path.read_text(encoding='utf-8')
+    except OSError as e:
+        print(
+            f"❌ [SINGLE ENTRYPOINT ERROR] Failed to read {root_skill_path}: {e}",
+            file=sys.stderr,
+        )
         return False
 
     public_needles = {
@@ -2824,44 +2818,96 @@ def check_public_skill_portability_contract(repo_root):
         'never auto-renew the budget',
     }
     for needle in public_needles:
-        if needle not in contents['root_skill']:
+        if needle not in root_skill:
             print(
-                f"❌ [PUBLIC PORTABILITY ERROR] SKILL.md missing public behavior `{needle}`",
+                f"❌ [SINGLE ENTRYPOINT ERROR] SKILL.md missing public behavior `{needle}`",
                 file=sys.stderr,
             )
             passed = False
 
-    forbidden_rtk_copies = {
-        '### Long Goal Clarification Budget',
-        '### Learning Direction Budget',
-        '### Direction Firewall Budget',
+    forbidden_adapter_paths = {
+        'RTK.md',
+        'AGENTS.md',
+        'AGENTS.override.md',
+        'CLAUDE.md',
+        'GEMINI.md',
+        '.cursorrules',
+        'docs/runtime-adapters.md',
+        '.github/copilot-instructions.md',
     }
-    for needle in forbidden_rtk_copies:
-        if needle in contents['rtk']:
+    for relative_path in sorted(forbidden_adapter_paths):
+        if Path(repo_root, relative_path).exists():
             print(
-                f"❌ [PUBLIC PORTABILITY ERROR] RTK.md duplicates public behavior `{needle}`",
+                f"❌ [SINGLE ENTRYPOINT ERROR] host-specific instruction adapter is present: "
+                f"{relative_path}",
                 file=sys.stderr,
             )
             passed = False
 
-    required_boundary_text = {
-        'rtk': [
-            'Public Guyue behavior must remain complete when this file is not loaded.',
-            'Do not add, restate, or strengthen user-visible behavior here',
-        ],
-        'adapters': [
-            'Keep the public Skill chain and the repository-maintenance chain separate.',
-            'Installing or invoking Guyue must never depend on this adapter chain.',
-        ],
-    }
-    for label, needles in required_boundary_text.items():
-        for needle in needles:
-            if needle not in contents[label]:
-                print(
-                    f"❌ [PUBLIC PORTABILITY ERROR] {label} missing boundary `{needle}`",
-                    file=sys.stderr,
-                )
-                passed = False
+    cursor_rules = Path(repo_root, '.cursor', 'rules')
+    if cursor_rules.exists() and any(path.is_file() for path in cursor_rules.rglob('*')):
+        print(
+            "❌ [SINGLE ENTRYPOINT ERROR] host-specific Cursor instruction rules are present",
+            file=sys.stderr,
+        )
+        passed = False
+
+    copilot_rules = Path(repo_root, '.github', 'instructions')
+    if copilot_rules.exists() and any(
+        path.is_file() and path.name.endswith('.instructions.md')
+        for path in copilot_rules.rglob('*')
+    ):
+        print(
+            "❌ [SINGLE ENTRYPOINT ERROR] host-specific Copilot instruction rules are present",
+            file=sys.stderr,
+        )
+        passed = False
+
+    try:
+        release_manifest = json.loads(
+            Path(repo_root, 'release-manifest.json').read_text(encoding='utf-8')
+        )
+    except (OSError, json.JSONDecodeError) as e:
+        print(
+            f"❌ [SINGLE ENTRYPOINT ERROR] Failed to read release-manifest.json: {e}",
+            file=sys.stderr,
+        )
+        return False
+
+    declared_paths = set()
+    for profile in release_manifest.get('profiles', {}).values():
+        if isinstance(profile, dict):
+            declared_paths.update(str(path) for path in profile.get('required_paths', []))
+    for runtime_paths in release_manifest.get('runtime_required', {}).values():
+        if isinstance(runtime_paths, list):
+            declared_paths.update(str(path) for path in runtime_paths)
+
+    leaked_paths = sorted(forbidden_adapter_paths & declared_paths)
+    if leaked_paths:
+        print(
+            "❌ [SINGLE ENTRYPOINT ERROR] release payload requires host adapters: "
+            + ", ".join(leaked_paths),
+            file=sys.stderr,
+        )
+        passed = False
+
+    try:
+        installation = Path(repo_root, 'docs', 'installation.md').read_text(
+            encoding='utf-8'
+        )
+    except OSError as e:
+        print(
+            f"❌ [SINGLE ENTRYPOINT ERROR] Failed to read installation docs: {e}",
+            file=sys.stderr,
+        )
+        return False
+    if '`SKILL.md` is the single instruction entrypoint' not in installation:
+        print(
+            "❌ [SINGLE ENTRYPOINT ERROR] installation docs do not declare SKILL.md "
+            "as the single instruction entrypoint",
+            file=sys.stderr,
+        )
+        passed = False
 
     return passed
 
@@ -3453,8 +3499,8 @@ def main():
     else:
         all_passed = False
 
-    if check_public_skill_portability_contract(repo_root):
-        print("✅ public Skill behavior is independent from repository adapters.")
+    if check_public_skill_single_entrypoint_contract(repo_root):
+        print("✅ public Skill single-entrypoint contract valid.")
     else:
         all_passed = False
 

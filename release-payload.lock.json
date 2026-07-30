@@ -10,12 +10,8 @@
       "sha256": "620797b62890124a721797d4acfcd9005f424eaf1b574460f0f7ddef42233d53"
     },
     {
-      "path": "AGENTS.md",
-      "sha256": "cf795535d37ca7f10c067a9bb6721036b45ad0eb47215d533da80580b63a24b7"
-    },
-    {
       "path": "CHANGELOG.md",
-      "sha256": "0118eb4b4ac98e0256ba25d67376582eadce5257e35490aec6bbffe00f569f38"
+      "sha256": "8c3729a41c1644ec30149139a85b68e64e7c1e3c4cbee79c28d5b4601e39f363"
     },
     {
       "path": "GUYUE_PRINCIPLES.md",
@@ -27,11 +23,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "90943898c121704e80a1cb902d48f8bf979c10cab360eec409f164585d001446"
-    },
-    {
-      "path": "RTK.md",
-      "sha256": "972ca1a4d3b65892b1fd8ea0be9589342c52ba96d9963ef2a95a26c18cd9818d"
+      "sha256": "3d21ae0ddba95aa65a30ee097572394f191eedabad9a2e0c87e9c042a429a6aa"
     },
     {
       "path": "SKILL.md",
@@ -47,7 +39,7 @@
     },
     {
       "path": "docs/evaluation.md",
-      "sha256": "26f7ebd7e934ac5d0c3ffba3193cad76969e81c07c4765397cd0f22042ed4ec7"
+      "sha256": "88858adfcecf9e587476d56d35f31f8a1cc08d9ba8345830b7cf8702365a1fc2"
     },
     {
       "path": "docs/guyue-capability-discovery-evidence-audit-plan-2026-07-12.md",
@@ -75,7 +67,7 @@
     },
     {
       "path": "docs/installation.md",
-      "sha256": "fc72e40d3f185b664eb4397bc53bc454ad9b0f8b9bc2e9615449928f9fa212d2"
+      "sha256": "09001eb84dadca82f9af659e93d248e2318967d9bdae6b5e51fd64ab70365004"
     },
     {
       "path": "docs/last30days-skill-intake-2026-07-28.md",
@@ -95,7 +87,7 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "sha256": "6556fb6568c78ceb0bb356aabe7b35410bb8cc07b716f108d9fb5068b55c549a"
+      "sha256": "efa2a97102c0eb6cd4604d1f6b2afa4992199ec4ca68384e953ffa7fd3747603"
     },
     {
       "path": "docs/release-v1.6.0.md",
@@ -111,11 +103,7 @@
     },
     {
       "path": "docs/release-v1.7.2.md",
-      "sha256": "4bd01645706fae20bc2d0d358c30908737f9f07a94f6b5539c8797adf192a866"
-    },
-    {
-      "path": "docs/runtime-adapters.md",
-      "sha256": "133a9c3180ffc2cbcd37f6a9c3cfb5c08e885c75e3c63db40a9bc3655790097d"
+      "sha256": "62468c70fa578417eeeb1345c4830ee7f05b58401e54ca6820ac694cae4dd1e1"
     },
     {
       "path": "docs/security.md",
@@ -275,7 +263,7 @@
     },
     {
       "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-cost-grounding-measurement.output.md",
-      "sha256": "bfba28a9b4203d9c22d7f521ed989352c230977658656a75f39f6d06612916b6"
+      "sha256": "85eadecac2b4bd872da92c190d6330839757c2b982e1874f6f44485e48b86860"
     },
     {
       "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-cost-grounding-measurement.producer.json",
@@ -371,15 +359,15 @@
     },
     {
       "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md",
-      "sha256": "2942ef38109773111f386db338a4998d73c180517aede931c17c6abd9b022ba4"
+      "sha256": "6f8d80a40a5cc489fe1d877a9874cc1c4342561c237656b812097f3009f6d193"
     },
     {
       "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.producer.json",
-      "sha256": "282123951297b58a31f5c57f3f1159249a0f2a55dbf079d8169232f0cdc12e51"
+      "sha256": "1542d02208b862ae6b894fc060f1a7633ad68a36a037bbd8b936b850685861a7"
     },
     {
       "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.review.json",
-      "sha256": "a8f434774d1c17fc715331f5a5fb7d318dce50432e6a1280cc816775b3c1ae3b"
+      "sha256": "63f51003e84b165b8ce2039ea3fbb557df0ed27cb2542e1a35884ae9e2e37f4d"
     },
     {
       "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ecosystem-scout.output.md",
@@ -491,7 +479,7 @@
     },
     {
       "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/skill-crafting.output.md",
-      "sha256": "f74abb961971cd527b88f528764794b05ab3b47b0a537493c8a0d7aac791c95a"
+      "sha256": "070a9c92b1b9c4b155154cb75cae17eca7c9be090e19110588d7292621c02523"
     },
     {
       "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/skill-crafting.producer.json",
@@ -527,7 +515,7 @@
     },
     {
       "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.output.md",
-      "sha256": "66aec0891a837ef34d1f6d2c61304defd8483685c9e9e9ab3aa6567c922000c7"
+      "sha256": "08f981ba51d13245c0161dd201fcb3e759d8299d3e3e071f70260722afef657b"
     },
     {
       "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.producer.json",
@@ -595,7 +583,7 @@
     },
     {
       "path": "evals/evidence/capability-output-quality-2026-07-30.json",
-      "sha256": "66a2263d7edfeffcc990c9aff0c03f98fd871d7c582fc22d69cd5767b88922b2"
+      "sha256": "4f7a981e9194ecdcede7e0efba303c108ea63dcffe59018fc867e5552d8f0d6c"
     },
     {
       "path": "evals/evidence/cognitive-expansion-comparison-2026-07-17.md",
@@ -635,7 +623,7 @@
     },
     {
       "path": "examples/quickstart-output.md",
-      "sha256": "f964231ed5dbbbe8efeb19a73499163a90217b2041f5ab9ba3cff21d398405fd"
+      "sha256": "42d5fdf8a755b3d6075fac078f412fa3680bbad011aca6dfce4505b716bd55a4"
     },
     {
       "path": "examples/saas-conversion-demo/index.html",
@@ -671,7 +659,7 @@
     },
     {
       "path": "release-manifest.json",
-      "sha256": "78a71cc0280ea5c07c1ae026c5d30910601987a4701d6413ce285860ab277ab8"
+      "sha256": "db215f8691d3dc12015b28df3e8a6e18913ede7caf734685a77ef3d22c6f880a"
     },
     {
       "path": "requirements.txt",
@@ -699,7 +687,7 @@
     },
     {
       "path": "scripts/check_birth_certificate.py",
-      "sha256": "0e1310a4ca200b40291f89ade7d8494f046acbcdc5d24e82e530fd0ce8508588"
+      "sha256": "1a019f120a6b197c381795548a0254968536720ea56f7f0e12dcca4d35957d62"
     },
     {
       "path": "scripts/check_capability_chain.py",
@@ -719,7 +707,7 @@
     },
     {
       "path": "scripts/ci_validate_skills.py",
-      "sha256": "f3358ca35a615fe92dd6a169e876ce0bd3d316d9f9bf745b6b89778f4e1695b5"
+      "sha256": "b40f601b82da56ab74f0ba0243b5e048b5a8c3d17f020d2c7eefe764a877fef1"
     },
     {
       "path": "scripts/claude_extractor.py",
@@ -771,7 +759,7 @@
     },
     {
       "path": "scripts/run_capability_live_canaries.py",
-      "sha256": "1519f7e8a9d5fa709cbe6869a5e6bfe68e7e06e5ecd6d5d12be91971910c7e1e"
+      "sha256": "5d7cc69663a5a2c9d2c3d0f6e8fc8f455de1b5b3d5a6c699d9aa4ae98c479b56"
     },
     {
       "path": "scripts/run_capability_output_quality.py",
@@ -854,12 +842,16 @@
       "sha256": "1f3b306da9a5d91cad3a05c5b119dab7cbaf273632412e2fa632e6e99b3c4b81"
     },
     {
+      "path": "scripts/test_single_entrypoint_contract.py",
+      "sha256": "4a4a2cdaba352ef2e7c353ad01b981a4a70968259cfa108758fa1e6a2ba1ce1d"
+    },
+    {
       "path": "scripts/test_skill_router.py",
       "sha256": "78166dac47162c3ac6a91353da042f74e4aa80462ea7e7f92a3ee4685b9b7624"
     },
     {
       "path": "scripts/test_suite.sh",
-      "sha256": "85ba688cb635380be5113dfbb320ce57b438065b678ad47ea1330afbbb3eaa83"
+      "sha256": "c5f5d4bcfd3d0b25c38ec5039109939a997935b0f6200f8c32d036426b35f091"
     },
     {
       "path": "scripts/test_try_guyue.py",
@@ -927,7 +919,7 @@
     },
     {
       "path": "skills/documentation/SKILL.md",
-      "sha256": "1d0bb7c649a9feabda51953d7451b91dcc64cb4fd516686bb18b4870c542de68"
+      "sha256": "5d7d1f18425fb769514c74ccfd2e07746e7fbe073cb8cea826500a0f968a5b1b"
     },
     {
       "path": "skills/ecosystem-scout/SKILL.md",

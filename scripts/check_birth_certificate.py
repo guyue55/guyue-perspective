@@ -200,7 +200,6 @@ def check_release_sync(errors: list[str], skill_count: int, prompt_count: int) -
 def check_public_boundaries(errors: list[str]) -> None:
     security = read_text("docs/security.md")
     release = read_text("docs/release-checklist.md")
-    runtime = read_text("docs/runtime-adapters.md")
 
     for needle in [
         "Do not store API keys",
@@ -222,11 +221,6 @@ def check_public_boundaries(errors: list[str]) -> None:
 
     if "push, tag, marketplace submission, or deployment" not in release:
         add_error(errors, "release checklist must preserve explicit public-action authorization boundary")
-
-    adapter_needles = ["thin adapter", "thinnest possible adapter", "薄适配器"]
-    if not any(needle in runtime for needle in adapter_needles):
-        add_error(errors, "runtime adapter doc must keep adapters thin")
-
 
 def main() -> int:
     errors: list[str] = []

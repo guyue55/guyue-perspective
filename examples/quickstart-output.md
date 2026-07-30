@@ -7,6 +7,20 @@ Workspace: `<repo-root>`
 
 This file records real quickstart replay output for Guyue. It is intentionally not a polished marketing transcript. Deviations are kept because they show where the skill suite needs tighter product boundaries.
 
+> [!NOTE]
+> Entries that mention `AGENTS.md` or `RTK.md` are historical receipts from the retired host-adapter architecture. They are preserved as evidence of what the runtime actually loaded at that time and do not describe the current single-`SKILL.md` entrypoint.
+
+## Single-Entrypoint Migration Replay
+
+- Date: 2026-07-30
+- Initial runtime: PATH Codex CLI `0.142.0`, empty non-Git working directory, read-only sandbox.
+- Prompt: explicit `$guyue` invocation through the absolute `SKILL.md` path.
+- Initial result: blocked before model execution. The PATH CLI reported that `gpt-5.6-sol` and `gpt-5.6-terra` require a newer Codex version, while `gpt-5.3-codex` is unsupported for the active ChatGPT account; no Guyue output was produced.
+- Compatible retry: ChatGPT application Codex CLI `0.146.0-alpha.3.1`, `gpt-5.6-terra`, same empty-directory and read-only boundary.
+- Compatible result: pass. The run entered through the explicit `SKILL.md`, routed the multi-tenant read-only audit-log architecture prompt to `system-design`, named only that child Skill as the next minimum read, and preserved `DIRECTION_UNPROVEN` without editing files or loading a host-specific instruction adapter.
+- Runtime deviations: unrelated locally installed malformed Skills and plugin-catalog/model-refresh warnings appeared before execution; they did not prevent the explicit Guyue route or alter the final answer.
+- Evidence boundary: this proves one explicit single-entrypoint routing prompt on one Codex runtime. It does not prove automatic activation, every host, arbitrary prompts, implementation quality or real-user value.
+
 ## Replay Method
 
 Command pattern:

@@ -6,7 +6,7 @@
   "runtime": "codex-cli",
   "runtime_version": "codex-cli 0.146.0-alpha.3.1",
   "requested_model": "gpt-5.6-terra",
-  "observed_at": "2026-07-30T03:23:01.469870+00:00",
+  "observed_at": "2026-07-30T04:47:50.518087+00:00",
   "passed": 26,
   "total": 26,
   "results": [
@@ -250,28 +250,28 @@
     },
     {
       "skill": "documentation",
-      "skill_sha256": "1d0bb7c649a9feabda51953d7451b91dcc64cb4fd516686bb18b4870c542de68",
+      "skill_sha256": "5d7d1f18425fb769514c74ccfd2e07746e7fbe073cb8cea826500a0f968a5b1b",
       "status": "pass",
       "criteria_count": 3,
       "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.producer.json",
-      "producer_artifact_sha256": "282123951297b58a31f5c57f3f1159249a0f2a55dbf079d8169232f0cdc12e51",
+      "producer_artifact_sha256": "1542d02208b862ae6b894fc060f1a7633ad68a36a037bbd8b936b850685861a7",
       "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md",
-      "output_sha256": "c8dbd6bfc0f1250151bd19e94f7142f1c2fddc2c4fbb1fc8ab1268c8775c268b",
+      "output_sha256": "6f8d80a40a5cc489fe1d877a9874cc1c4342561c237656b812097f3009f6d193",
       "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.review.json",
-      "review_artifact_sha256": "a8f434774d1c17fc715331f5a5fb7d318dce50432e6a1280cc816775b3c1ae3b",
+      "review_artifact_sha256": "63f51003e84b165b8ce2039ea3fbb557df0ed27cb2542e1a35884ae9e2e37f4d",
       "producer_usage": {
-        "input_tokens": 46613,
-        "cached_input_tokens": 40960,
+        "input_tokens": 71557,
+        "cached_input_tokens": 55552,
         "cache_write_input_tokens": 0,
-        "output_tokens": 491,
-        "reasoning_output_tokens": 310
+        "output_tokens": 708,
+        "reasoning_output_tokens": 459
       },
       "reviewer_usage": {
-        "input_tokens": 47323,
-        "cached_input_tokens": 40960,
+        "input_tokens": 92241,
+        "cached_input_tokens": 64768,
         "cache_write_input_tokens": 0,
-        "output_tokens": 1176,
-        "reasoning_output_tokens": 830
+        "output_tokens": 1501,
+        "reasoning_output_tokens": 854
       },
       "findings": [],
       "boundary": "One synthetic read-only task and one independent review for this Skill."

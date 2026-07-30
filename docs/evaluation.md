@@ -179,14 +179,7 @@ Record both passes and deviations. For example, if the runtime follows Guyue's d
 
 Security-gate live runs must be strict about target admission: if the prompt says only "this third-party skill" but provides no path, URL, package name, or archive path, the correct result is to ask for the target and stop. Inferring a local skill directory is a replay deviation and must be fixed before release.
 
-Runtime-entrypoint changes must also confirm that the agent no longer reports missing project instruction files such as `RTK.md`. Record that result in the live replay evidence.
-
-Runtime adapter changes must follow [runtime-adapters.md](runtime-adapters.md):
-
-- keep adapters thin and point them back to `RTK.md`;
-- run the local validation suite;
-- run a read-only live replay in the target runtime when feasible;
-- remove the adapter before commit if the runtime does not load it or if it creates duplicated/conflicting instructions.
+Root-entrypoint changes must confirm that explicit Guyue activation starts from `SKILL.md`, reaches only the required child resources, and does not depend on a host-specific instruction file. Run the local validation suite and one read-only live replay when feasible; record the result and any deviation.
 
 ## Release Evidence Template
 

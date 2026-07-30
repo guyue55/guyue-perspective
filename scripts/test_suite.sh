@@ -77,6 +77,7 @@ python3 scripts/doctor.py
 
 echo ""
 echo "[11/15] Running CI Validators..."
+python3 scripts/test_single_entrypoint_contract.py
 python3 scripts/ci_validate_skills.py
 
 echo ""

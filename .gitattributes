@@ -38,3 +38,6 @@ node_modules/** export-ignore
 .env export-ignore
 .env.* export-ignore
 *.log export-ignore
+
+# Preserve byte-exact model outputs, including Markdown hard-break spaces.
+evals/evidence/artifacts/**/*.output.md whitespace=-blank-at-eol

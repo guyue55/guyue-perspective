@@ -13,7 +13,9 @@ Base tag: `v1.7.1`
 - [x] Treat explicit user facts as task premises without falsely promoting them to independent verification or widening their meaning.
 - [x] Make the independent output reviewer read the same synthetic task, preventing evidence-free false failures caused by missing task context.
 - [x] Preserve useful delivery after safe blocking: architecture includes migration/verification, missing visual evidence still yields a bounded work package, and candidate memory does not fabricate write receipts.
-- [x] Live activation and output-quality receipts both pass `26/26` on Codex CLI `0.146.0-alpha.3.1` with requested model `gpt-5.6-terra`.
+- [x] Live activation receipts remain current at `26/26` on the recorded Codex runtime.
+- [x] Refresh the changed `documentation` output-quality receipt on Codex CLI `0.146.0-alpha.3.1` with `gpt-5.6-terra`; current synthetic output quality passes independent review at `26/26`.
+- [x] Replay explicit Guyue activation from an empty non-Git directory and confirm that `SKILL.md` routes to `system-design` without a host-specific instruction adapter.
 - [x] The strict capability chain passes `113/113` routing checks, `424/424` internal triggers, `41/41` external candidate triggers and `214/214` near misses.
 - [x] The corrected public lineage `v1.6.0 → v1.7.0 → v1.7.1 → v1.7.2` is consistent across tags, release metadata, documentation and payload locks.
 - [x] The live evidence runner and strict checker hash the same routing semantics, including composed-intent rules.
@@ -40,7 +42,7 @@ Base tag: `v1.7.1`
 - [ ] `docs/installation.md` covers OpenClaw local install.
 - [ ] Installation preserves the full repository payload; do not approve a root-only generic CLI copy as a complete Guyue install.
 - [ ] Default optional dependency handling is plan-only; networked third-party installation requires explicit mode selection.
-- [ ] `docs/runtime-adapters.md` is current before adding or changing runtime-specific adapter files.
+- [ ] The single-entrypoint gate confirms that no host-specific instruction adapter is present or required by the release payload.
 - [ ] `python3 scripts/try_guyue.py` passes before runtime installation and states that deterministic proof is not activation proof.
 
 ## Verification

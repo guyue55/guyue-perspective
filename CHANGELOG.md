@@ -11,10 +11,12 @@ Status: Candidate
 - Distinguish user-provided task premises from independently verified facts without widening their meaning.
 - Make independent output-quality reviewers read the same synthetic task as producers.
 - Strengthen migration/verification closure, evidence-bounded work packages, candidate-memory previews, dependency-version truth, fault-boundary reasoning, fact-closed documentation, action-level ecosystem authorization and source-anchored distillation.
+- Remove the host-specific `AGENTS.md` / `RTK.md` instruction chain and runtime-adapter document; make `SKILL.md` the only public instruction entrypoint and enforce that boundary in CI.
 
 ### Verification
 
-- Codex CLI `0.146.0-alpha.3.1`, requested model `gpt-5.6-terra`: `26/26` live activations and `26/26` independently reviewed synthetic outputs.
+- `26/26` live activations remain current with the routing contract; the changed `documentation` Skill was regenerated and independently reviewed, restoring current `26/26` synthetic output-quality evidence on Codex CLI `0.146.0-alpha.3.1` with `gpt-5.6-terra`.
+- An empty-directory, read-only replay entered through `SKILL.md`, routed the architecture prompt to `system-design`, and did not load a host-specific instruction adapter.
 - Strict capability chain: `113/113` routes, `10/10` collaborations, `424/424` internal triggers, `41/41` external candidate triggers and `214/214` near misses.
 - Full release suite and exact payload lock are required before promotion from Candidate.
 

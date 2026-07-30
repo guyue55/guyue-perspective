@@ -95,14 +95,7 @@ ln -s /path/to/guyue ~/.codex/skills/guyue
 
 Use a fresh Codex turn to confirm that the `guyue` root skill appears and can resolve routed files such as `skills/coding-discipline/SKILL.md`, `skills/debugging-mindset/SKILL.md`, and `skills/frontend-expert/SKILL.md`. Do not assume every runtime advertises repository-local routed modules as separate top-level skills.
 
-This repository also includes a minimal `AGENTS.md` and `RTK.md` for coding-agent runtime guidance. They are adapters, not public Skill standards:
-
-- `SKILL.md` remains the public Skill entrypoint.
-- `README.md` remains the human-facing entrypoint.
-- `AGENTS.md` tells compatible coding agents to read `RTK.md`.
-- `RTK.md` defines the local source-of-truth order, verification gates, and safety boundaries.
-
-Cross-runtime adapter policy lives in [runtime-adapters.md](runtime-adapters.md). Do not add active `CLAUDE.md`, `GEMINI.md`, Copilot, or Cursor adapter files until that runtime has a real user path and a read-only live replay.
+`SKILL.md` is the single instruction entrypoint for every supported runtime. Guyue does not ship host-specific instruction adapters such as `AGENTS.md`, `RTK.md`, `CLAUDE.md`, `GEMINI.md`, Copilot instructions, or Cursor rules. Runtime package metadata may expose the same Skill, but it must not define a second behavior source.
 
 For a quick runtime check:
 
@@ -134,9 +127,7 @@ Then start a new Claude Code session and trigger it with:
 使用古月的思路帮我分析这个需求，先别写代码。
 ```
 
-Claude Code has its own project memory conventions. If you need persistent Claude-specific guidance, mirror the small runtime-entrypoint summary into `CLAUDE.md` instead of assuming Claude will load `AGENTS.md` or `RTK.md`.
-
-When adding `CLAUDE.md`, keep it as a thin adapter to `RTK.md`; do not copy the full runtime rules.
+Claude Code has its own project memory conventions, but Guyue does not require a Claude-specific instruction file. Invoke the installed Skill through its `SKILL.md`; keep project memory outside the Guyue package.
 
 ## MCP Clients
 
@@ -205,9 +196,7 @@ Agent Skills are directory-based. The skill directory must contain `SKILL.md`, a
 
 After installation, review `SKILL.md` before enabling script execution. Keep terminal auto-approval narrow and avoid broad shell allow-lists.
 
-GitHub Copilot and Cursor have their own repository instruction mechanisms. Keep `SKILL.md` as the canonical Skill asset and only copy the runtime-entrypoint summary into those tool-specific instruction files when needed.
-
-If a Copilot or Cursor adapter is added, it must pass the adapter admission gate in [runtime-adapters.md](runtime-adapters.md).
+GitHub Copilot and Cursor have their own repository instruction mechanisms. Those project-level mechanisms are outside the Guyue package; do not copy Guyue behavior into tool-specific instruction files.
 
 ## OpenClaw
 

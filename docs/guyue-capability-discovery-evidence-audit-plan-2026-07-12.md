@@ -27,7 +27,7 @@
 ### 1.1 2026-07-13 实施结果
 
 - 54/54 宽意图路由合同通过；原 19/19 行为合同保持通过。
-- 345/345 内置 should-trigger 通过，208/208 近邻 should-not-trigger 通过；负例真实发现并修复“无 NexusFlow/static-demo标记”仍误触发的问题。
+- 345/345 内置 should-trigger 通过，208/208 近邻 should-not-trigger 通过；负例真实发现并修复“无稳定场景标记仍误触发上下文型能力”的问题。
 - 12 个外部增强改为独立 `external_candidates`，48/48 外部触发只进入候选态，不混入内置 selected；每项绑定 URL、commit、证据 profile 和四道激活门。
 - 26 个 Skill 全部声明 E1-E4 证据 profile，并由根证据合同机器校验。
 - Codex CLI `0.144.1` 对 26 个 Skill 逐项执行真实只读探针，26/26 都实际读取目标 `SKILL.md` 后输出正确激活结果；证据绑定 routing SHA-256、原始事件 hash、退出码和 token。
@@ -127,7 +127,7 @@
 | 21 | `context-compressor` | 2/3 | 1 / 0 | 🟡 部分成立 | 有预算合同，缺活体前后成本对比；基线 token、工具输出、压缩动作和损失采用 E2 | [x] |
 | 22 | `security-gate` | 0/3 | 1 / 0 | 🟡 部分成立 | 能扫描但 Skill 自身没有标准证据收据；目标来源、版本/hash、规则版本、命中和边界采用 E4 | [x] |
 | 23 | `reality-auditor` | 1/4 | 5 / 1 | 🟡 部分成立 | 窄合同最强但宽召回不稳；实现链、命令、活体产物、新鲜度和独立审查采用 E4 | [x] |
-| 24 | `nexusflow-governance-workflow` | 1/1 | 1 / 0 | 🟡 部分成立 | 上下文门有效，缺项目活体观察；权限快照、后端事实源、租户和审计日志采用 E4 | [x] |
+| 24 | 项目专用治理流（已移出公共载荷） | 1/1 | 1 / 0 | 🟡 部分成立 | 曾验证上下文门；通用权限原则保留在系统设计、开发纪律与真实性审查 | [x] |
 | 25 | `static-demo-hardening` | 2/2 | 1 / 0 | 🟡 部分成立 | 宽样本通过，但自定义触发 `Demo/index.html` 被自身上下文门拒绝；截图、导出、视口和来源采用 E3 | [x] |
 | 26 | `ai-cost-grounding-measurement` | 1/1 | 0 / 0 | 🟡 部分成立 | 证据合同强但无行为/活体绑定；原始响应、token、query、价格版本、汇率和账单边界采用 E4 | [x] |
 
@@ -136,7 +136,7 @@
 - **发现链 P0**：`sop-maker`、`debugging-mindset`、`skill-crafting`、`memory-bank`、`ai-website-cloner`、`software-advisor`、`code-minimalism`、`book-distiller`。
 - **路由协作 P0**：`product-sense -> requirement-analysis -> system-design`、`taste-aesthetics -> frontend-expert`、`reality-auditor -> debugging-mindset`、`skill-crafting -> sop-maker/documentation`。
 - **证据 P0**：`security-gate`、`software-advisor`、`ecosystem-scout`、`memory-bank`、`book-distiller`、`video-extractor`、`ai-cost-grounding-measurement`。
-- **项目上下文 P1**：`nexusflow-governance-workflow`、`static-demo-hardening`；保留严格上下文门，不用扩大泛词召回换取表面命中率。
+- **项目上下文 P1**：项目专用治理流已移回项目边界；`static-demo-hardening` 保留严格上下文门，不用扩大泛词召回换取表面命中率。
 
 ## 6. 12 个外部增强依赖清单
 
@@ -361,7 +361,7 @@ boundary: what this evidence does not prove
 | context-compressor | [x] | [x] | [x] | [x] | [x] |
 | security-gate | [x] | [x] | [x] | [x] | [x] |
 | reality-auditor | [x] | [x] | [x] | [x] | [x] |
-| nexusflow-governance-workflow | [x] | [x] | [x] | [x] | [x] |
+| 项目专用治理流（已移出公共载荷） | [x] | [x] | [x] | [x] | [x] |
 | static-demo-hardening | [x] | [x] | [x] | [x] | [x] |
 | ai-cost-grounding-measurement | [x] | [x] | [x] | [x] | [x] |
 

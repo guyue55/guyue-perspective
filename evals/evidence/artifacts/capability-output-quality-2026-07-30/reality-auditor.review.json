@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "skill": "reality-auditor",
+  "skill_sha256": "008ae59b60ed4a065c381624a313bb4647498de24eb9e24a679b0a2bd4eb6fcc",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "发现前端显隐不能证明后端授权",
+        "status": "pass",
+        "evidence": "明确指出 role 隐藏按钮仅是 UX，不构成安全边界；并要求提供服务端授权链路及越权拒绝验证。"
+      },
+      {
+        "criterion": "区分本地配置、产物、远端接受和运行行为",
+        "status": "pass",
+        "evidence": "以独立四行列出本地配置、产物打包、远端接受、生产运行可观察性，均按现有证据判为未证实。"
+      },
+      {
+        "criterion": "按严重度给结论与最小补证动作",
+        "status": "pass",
+        "evidence": "按 P0/P1 给出阻断结论，并提出服务端授权链路、构建标识、部署记录和生产冒烟验证等最小补证动作。"
+      }
+    ],
+    "findings": [
+      "输出实质回答了只读验真任务，未将前端显隐误作后端授权证明。",
+      "输出将任务提供的“无权限中间件、无部署记录”等前提表述为未见或未提供的证据缺口，未伪称独立访问真实项目、平台或生产环境。",
+      "“直接调用接口可能绕过前端限制”属于基于客户端仅显隐且缺少服务端授权证据的风险推断，未扩大为既成事实。"
+    ],
+    "boundary": "只审核指定 Skill、产物和任务给定前提；未执行代码、部署、接口或远端平台核验。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"发现前端显隐不能证明后端授权\",\"status\":\"pass\",\"evidence\":\"明确指出 role 隐藏按钮仅是 UX，不构成安全边界；并要求提供服务端授权链路及越权拒绝验证。\"},{\"criterion\":\"区分本地配置、产物、远端接受和运行行为\",\"status\":\"pass\",\"evidence\":\"以独立四行列出本地配置、产物打包、远端接受、生产运行可观察性，均按现有证据判为未证实。\"},{\"criterion\":\"按严重度给结论与最小补证动作\",\"status\":\"pass\",\"evidence\":\"按 P0/P1 给出阻断结论，并提出服务端授权链路、构建标识、部署记录和生产冒烟验证等最小补证动作。\"}],\"findings\":[\"输出实质回答了只读验真任务，未将前端显隐误作后端授权证明。\",\"输出将任务提供的“无权限中间件、无部署记录”等前提表述为未见或未提供的证据缺口，未伪称独立访问真实项目、平台或生产环境。\",\"“直接调用接口可能绕过前端限制”属于基于客户端仅显隐且缺少服务端授权证据的风险推断，未扩大为既成事实。\"],\"boundary\":\"只审核指定 Skill、产物和任务给定前提；未执行代码、部署、接口或远端平台核验。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/reality-auditor/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/reality-auditor/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/reality-auditor.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/reality-auditor.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 69747,
+    "cached_input_tokens": 64256,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1286,
+    "reasoning_output_tokens": 743
+  },
+  "elapsed_seconds": 41.843,
+  "raw_sha256": "2792c66e9e16a546f1a00c21522d89df2a87f428d87afe0fe7742f1c7fa01cd6",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

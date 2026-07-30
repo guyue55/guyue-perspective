@@ -117,11 +117,6 @@
       "criteria": ["发现前端显隐不能证明后端授权", "区分本地配置、产物、远端接受和运行行为", "按严重度给结论与最小补证动作"]
     },
     {
-      "skill": "nexusflow-governance-workflow",
-      "prompt": "已确认当前仓库是 NexusFlow，存在 permissionSnapshot。需求：租户管理员能看到本租户成员，但不能修改平台角色。请输出治理实现与验收方案，不改文件。",
-      "criteria": ["使用 NexusFlow 和 permissionSnapshot 上下文边界", "后端租户与平台角色权限分层", "覆盖前端体现、审计和越权反例验收"]
-    },
-    {
       "skill": "static-demo-hardening",
       "prompt": "已确认是 static demo surface 的 Demo/index.html。要求离线演示时报告导出按钮若依赖缺失应显示教程回退，不能伪装导出成功。请给加固方案。",
       "criteria": ["限定静态 Demo 场景", "依赖缺失时提供诚实可见回退", "覆盖导出成功、失败、离线和资源边界"]

@@ -29,9 +29,18 @@ def write_memory(
     solution: str,
     tags: list[str],
     *,
+    user_intent: str = "请记住这个已经验证的项目经验",
+    scope: str | None = "project:alpha",
     review_after: str = "",
     supersedes: list[str] | None = None,
 ) -> str:
+    kwargs = {
+        "user_intent": user_intent,
+        "review_after": review_after,
+        "supersedes": supersedes,
+    }
+    if scope is not None:
+        kwargs["scope"] = scope
     return mcp_server.guyue_write_memory(
         symptom,
         root_cause,
@@ -39,8 +48,7 @@ def write_memory(
         "Add a targeted regression check before the next release.",
         "Reproduced locally and verified by the focused test.",
         tags,
-        review_after=review_after,
-        supersedes=supersedes,
+        **kwargs,
     )
 
 
@@ -53,17 +61,17 @@ def main() -> int:
     )
     generic_names = {item["name"] for item in generic_route["selected"]}
     require(
-        "nexusflow-governance-workflow" not in generic_names,
+        "static-demo-hardening" not in generic_names,
         "generic requests must not select context-gated workflows",
     )
-    nexus_route = json.loads(
+    static_route = json.loads(
         mcp_server.guyue_explain_route(
-            "修复租户治理权限。",
-            context_markers=["NexusFlow", "permissionSnapshot"],
+            "继续加固报告导出。",
+            context_markers=["static demo", "Demo/index.html"],
         )
     )
     require(
-        nexus_route["selected"][0]["name"] == "nexusflow-governance-workflow",
+        static_route["selected"][0]["name"] == "static-demo-hardening",
         "MCP route explanations must honor explicit context markers",
     )
     require(
@@ -104,6 +112,61 @@ def main() -> int:
             empty_result = mcp_server.guyue_read_memory("   ")
             require(
                 "must contain" in empty_result, "empty memory queries must be rejected"
+            )
+            missing_scope = mcp_server.guyue_read_memory(
+                "stale-artifact",
+                scope="   ",
+            )
+            require(
+                "scope" in missing_scope,
+                "memory lookup must require an explicit scope",
+            )
+            invalid_limit = mcp_server.guyue_read_memory(
+                "stale-artifact",
+                scope="project:alpha",
+                limit=0,
+            )
+            require(
+                "between 1 and" in invalid_limit,
+                "memory lookup must reject an invalid result limit",
+            )
+
+            missing_intent = write_memory(
+                "A lesson was verified",
+                "The write had no user authorization",
+                "Require an explicit request",
+                ["authorization"],
+                user_intent="",
+            )
+            require(
+                "explicit user request" in missing_intent,
+                "memory writes without explicit user intent must be rejected",
+            )
+            negative_intent = write_memory(
+                "A lesson was verified",
+                "The user explicitly declined persistence",
+                "Do not write the lesson",
+                ["authorization"],
+                user_intent="不要保存或记录这条经验",
+            )
+            require(
+                "explicit user request" in negative_intent,
+                "negative memory intent must be rejected",
+            )
+            ambiguous_scope = write_memory(
+                "A lesson was verified",
+                "The project identity was omitted",
+                "Require a stable scope",
+                ["scope"],
+                scope="project",
+            )
+            require(
+                "ambiguous memory scope" in ambiguous_scope,
+                "new project memories must require a stable project scope",
+            )
+            require(
+                not memory_dir.exists(),
+                "unauthorized memory writes must not create storage files",
             )
 
             fake_credential = "sk" + "-" + "1234567890abcdefghijkl"
@@ -164,9 +227,30 @@ def main() -> int:
                 "Restart and compare the live artifact",
                 ["theme", "stale-artifact"],
             )
+            beta = write_memory(
+                "A different project reused a stale artifact",
+                "Beta had its own long-running process",
+                "Restart Beta without changing Alpha",
+                ["beta", "stale-artifact"],
+                scope="project:beta",
+            )
+            user_preference = write_memory(
+                "The user requested a reusable release check",
+                "User preferences must not leak through a project expansion",
+                "Query user memory with the user scope",
+                ["user", "stale-artifact"],
+                scope=None,
+            )
             require(
-                "Successfully saved" in first and "Successfully saved" in second,
-                "normal memories must be stored",
+                all(
+                    "Successfully saved" in result
+                    for result in (first, second, beta, user_preference)
+                ),
+                "explicitly requested memories must be stored",
+            )
+            require(
+                "scope user" in user_preference,
+                "write confirmation must disclose the default global scope",
             )
 
             index = json.loads(mcp_server.INDEX_FILE.read_text(encoding="utf-8"))
@@ -175,8 +259,12 @@ def main() -> int:
             )
             filenames = [item["filename"] for item in index["memories"]]
             memory_ids = [item["id"] for item in index["memories"]]
-            require(len(filenames) == 2, "two memory entries must be indexed")
-            require(len(set(memory_ids)) == 2, "rapid writes must not collide")
+            require(len(filenames) == 4, "four memory entries must be indexed")
+            require(len(set(memory_ids)) == 4, "rapid writes must not collide")
+            require(
+                index["memories"][3]["scope"] == "user",
+                "an unqualified explicit save must default to user-global scope",
+            )
             require(
                 all(filename.startswith("active/") for filename in filenames),
                 "details must live under active/",
@@ -217,19 +305,82 @@ def main() -> int:
                 "superseded memory status must be updated",
             )
 
-            read_result = mcp_server.guyue_read_memory("stale-artifact")
+            read_result = mcp_server.guyue_read_memory(
+                "stale-artifact",
+                scope="project:alpha",
+            )
             read_entries = json.loads(read_result)
             require(
-                len(read_entries) == 2,
-                "lookup must return active entries and omit superseded ones",
+                len(read_entries) == 3,
+                "project lookup must include current-project and user-global entries",
             )
             require(
                 all(entry["source"] == "local" for entry in read_entries),
                 "runtime results must identify their source",
             )
             require(
-                all("## Root Cause" in entry["detail"] for entry in read_entries),
-                "lookup must return the verified Markdown detail, not only index metadata",
+                [entry["scope"] for entry in read_entries]
+                == ["project:alpha", "project:alpha", "user"],
+                "project lookup must rank current-project entries before global entries",
+            )
+            require(
+                all("detail" not in entry for entry in read_entries),
+                "routine lookup must return summaries without Markdown details",
+            )
+            project_only_entries = json.loads(
+                mcp_server.guyue_read_memory(
+                    "stale-artifact",
+                    scope="project:alpha",
+                    include_user=False,
+                )
+            )
+            require(
+                len(project_only_entries) == 2
+                and all(
+                    entry["scope"] == "project:alpha"
+                    for entry in project_only_entries
+                ),
+                "callers must be able to disable user-global enrichment",
+            )
+            global_entries = json.loads(
+                mcp_server.guyue_read_memory("stale-artifact")
+            )
+            require(
+                len(global_entries) == 1 and global_entries[0]["scope"] == "user",
+                "unqualified lookup must default to user-global memory",
+            )
+
+            detail_entries = json.loads(
+                mcp_server.guyue_read_memory(
+                    "stale-artifact",
+                    scope="project:alpha",
+                    include_detail=True,
+                )
+            )
+            require(
+                all("## Root Cause" in entry["detail"] for entry in detail_entries),
+                "detail lookup must return verified Markdown only when requested",
+            )
+            cross_project_entries = json.loads(
+                mcp_server.guyue_read_memory(
+                    "stale-artifact",
+                    scope="project:alpha",
+                    cross_project=True,
+                )
+            )
+            require(
+                {entry["scope"] for entry in cross_project_entries}
+                == {"project:alpha", "project:beta", "user"},
+                "cross-project lookup must require explicit opt-in",
+            )
+            require(
+                [entry["scope"] for entry in cross_project_entries]
+                == ["project:alpha", "project:alpha", "user", "project:beta"],
+                "cross-project lookup must rank current project, then global, then others",
+            )
+            require(
+                all("detail" not in entry for entry in cross_project_entries),
+                "cross-project lookup must remain summary-only by default",
             )
 
             dry_run_dir = root / "dry-run-must-not-exist"
@@ -266,7 +417,13 @@ def main() -> int:
                 (memory_dir / review_entry["filename"]).is_file(),
                 "review-required memory must preserve the full detail file",
             )
-            review_result = json.loads(mcp_server.guyue_read_memory("stale-artifact"))
+            review_result = json.loads(
+                mcp_server.guyue_read_memory(
+                    "stale-artifact",
+                    scope="project:alpha",
+                    include_user=False,
+                )
+            )
             due_result = next(
                 item for item in review_result if item["id"] == review_entry["id"]
             )

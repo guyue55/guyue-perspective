@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "skill": "book-distiller",
+  "skill_sha256": "b8dbdaf64e73aa64cb011d18b29474b9bc68b5cf723df450fe5fccda35fdf6e1",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "每条方法绑定给定章节来源",
+        "status": "pass",
+        "evidence": "三条候选方法分别标注第2、5、8章及对应摘录。"
+      },
+      {
+        "criterion": "从观点转为触发、步骤、检查和反模式",
+        "status": "pass",
+        "evidence": "每条均包含触发条件、编号步骤、检查信号和反模式。"
+      },
+      {
+        "criterion": "明确材料不完整与引文边界",
+        "status": "pass",
+        "evidence": "逐条说明摘录未覆盖的细节；最小闭环明确仅基于三则摘录、非原书结构，并标注缺少验证。"
+      }
+    ],
+    "findings": [
+      "输出实质完成了可执行方法蒸馏。",
+      "未伪称独立核验或补造原书事实；执行化内容以“候选蒸馏”呈现，且保留适用边界。",
+      "未见越权操作或超出证据范围的事实主张。"
+    ],
+    "boundary": "核验仅基于给定技能规范与该输出文本；未取得原书全文，因此不将其作为外部事实验证依据。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"每条方法绑定给定章节来源\",\"status\":\"pass\",\"evidence\":\"三条候选方法分别标注第2、5、8章及对应摘录。\"},{\"criterion\":\"从观点转为触发、步骤、检查和反模式\",\"status\":\"pass\",\"evidence\":\"每条均包含触发条件、编号步骤、检查信号和反模式。\"},{\"criterion\":\"明确材料不完整与引文边界\",\"status\":\"pass\",\"evidence\":\"逐条说明摘录未覆盖的细节；最小闭环明确仅基于三则摘录、非原书结构，并标注缺少验证。\"}],\"findings\":[\"输出实质完成了可执行方法蒸馏。\",\"未伪称独立核验或补造原书事实；执行化内容以“候选蒸馏”呈现，且保留适用边界。\",\"未见越权操作或超出证据范围的事实主张。\"],\"boundary\":\"核验仅基于给定技能规范与该输出文本；未取得原书全文，因此不将其作为外部事实验证依据。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"rg -n -i -C 2 'book-distiller|capability-output-quality|独立只读|验收' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' RTK.md && sed -n '1,260p' skills/book-distiller/SKILL.md && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/book-distiller.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -i -C 2 'book-distiller|capability-output-quality|独立只读|验收' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' RTK.md && sed -n '1,260p' skills/book-distiller/SKILL.md && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/book-distiller.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 46707,
+    "cached_input_tokens": 40448,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1343,
+    "reasoning_output_tokens": 882
+  },
+  "elapsed_seconds": 40.646,
+  "raw_sha256": "2c3bce701db41accefa57cd81bc03c6ced9abee67877e801f6d25bb5ca8ddd6a",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

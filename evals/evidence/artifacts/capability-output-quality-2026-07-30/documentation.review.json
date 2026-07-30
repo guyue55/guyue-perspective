@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "skill": "documentation",
+  "skill_sha256": "1d0bb7c649a9feabda51953d7451b91dcc64cb4fd516686bb18b4870c542de68",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "只写给定事实并保留未验证边界",
+        "status": "pass",
+        "evidence": "准确覆盖新增查询、仅租户管理员可见、保留 180 天、异步导出，并明确“公网部署尚未验证”；未伪称独立核验。"
+      },
+      {
+        "criterion": "业务读者能理解价值、角色和限制",
+        "status": "pass",
+        "evidence": "说明了可用能力（审计日志查询）、适用角色（租户管理员）及关键限制（180 天保留、公网部署未验证）。"
+      },
+      {
+        "criterion": "不使用空泛营销或伪造技术细节",
+        "status": "pass",
+        "evidence": "措辞直接，无未提供的收益承诺、实现机制或技术参数。"
+      }
+    ],
+    "findings": [],
+    "boundary": "仅依据任务提供的事实前提及指定产物进行只读验收；未对真实项目或公网部署进行外部独立核验。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"只写给定事实并保留未验证边界\",\"status\":\"pass\",\"evidence\":\"准确覆盖新增查询、仅租户管理员可见、保留 180 天、异步导出，并明确“公网部署尚未验证”；未伪称独立核验。\"},{\"criterion\":\"业务读者能理解价值、角色和限制\",\"status\":\"pass\",\"evidence\":\"说明了可用能力（审计日志查询）、适用角色（租户管理员）及关键限制（180 天保留、公网部署未验证）。\"},{\"criterion\":\"不使用空泛营销或伪造技术细节\",\"status\":\"pass\",\"evidence\":\"措辞直接，无未提供的收益承诺、实现机制或技术参数。\"}],\"findings\":[],\"boundary\":\"仅依据任务提供的事实前提及指定产物进行只读验收；未对真实项目或公网部署进行外部独立核验。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"wc -l skills/documentation/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md && sed -n '1,240p' skills/documentation/SKILL.md && sed -n '1,240p' evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"wc -l skills/documentation/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md && sed -n '1,240p' skills/documentation/SKILL.md && sed -n '1,240p' evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 47323,
+    "cached_input_tokens": 40960,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1176,
+    "reasoning_output_tokens": 830
+  },
+  "elapsed_seconds": 34.741,
+  "raw_sha256": "d9019c4884021e71da77ca90610fb455bbe8225de953e81ddd27bfc90d775594",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

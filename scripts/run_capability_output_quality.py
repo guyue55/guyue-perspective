@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 EVALUATION_CONFIG_PATH = ROOT / "evals/capability-output-quality.json"
 RUNNER_PATH = Path(__file__).resolve()
 DEFAULT_ARTIFACT_DIR = Path(
-    "evals/evidence/artifacts/capability-output-quality-2026-07-13"
+    "evals/evidence/artifacts/capability-output-quality-2026-07-30"
 )
 
 
@@ -227,8 +227,11 @@ def run_case(
         producer_prompt = (
             f"你正在接受 Guyue 子能力输出质量验收。必须先读取 `{skill_path}`，"
             "然后仅依据该 Skill、仓库内可用事实和下面的自包含任务作答。"
+            "任务中明确标为“事实”“已确认”或“用户确认”的内容，只作为本次合成任务的"
+            "用户提供前提：可以据此完成任务，但不得扩张成已经过外部或仓库独立核验的事实。"
             "全程只读；不修改文件、不联网、不安装、不提交。若完成任务缺少必要输入，"
-            "正确输出应明确阻断、缺口和最小下一步，禁止编造。"
+            "正确输出应明确阻断、缺口和最小下一步，禁止编造；若任务只要求方案或工作包，"
+            "不得仅因仓库中没有同名真实目标就整项拒绝，仍须交付给定前提下可安全确定的部分。"
             "不要使用行尾空格制造 Markdown 硬换行。"
             "不要解释验收流程，直接交付用户产物。\n\n"
             f"用户任务：{case['prompt']}"
@@ -332,6 +335,12 @@ def run_case(
         "你是独立只读验收者，不采信作者自述。先读取 "
         f"{review_inputs}，逐项核验以下标准：\n"
         + "\n".join(f"{index}. {criterion}" for index, criterion in enumerate(criteria, 1))
+        + "\n\n评测任务原文：\n"
+        + str(case["prompt"])
+        + "\n任务中明确标为“事实”“已确认”或“用户确认”的内容，是本次合成任务的"
+        "用户提供前提，不等于外部独立核验。输出可以在注明或不混淆其来源的前提下使用，"
+        "不得因审核者未拿到原始链接或真实项目文件而判失败；但若输出扩大了前提语义、"
+        "伪称已独立核验，或增加任务未给出的事实，仍应判失败。"
         + "\n同时检查输出是否实质回答任务、是否编造事实、是否越过授权或证据边界。"
         "最终只能输出一个 JSON 对象，格式："
         '{"status":"pass|fail","criteria":[{"criterion":"...","status":"pass|fail","evidence":"..."}],'

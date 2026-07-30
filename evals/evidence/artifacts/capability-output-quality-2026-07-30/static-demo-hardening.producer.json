@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "skill": "static-demo-hardening",
+  "skill_sha256": "be59239db224a214af3a2dd6b5d75d2aeb91d7636af7e473bacaaa4bc7ab9109",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.output.md",
+  "output_sha256": "08f981ba51d13245c0161dd201fcb3e759d8299d3e3e071f70260722afef657b",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/static-demo-hardening/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/static-demo-hardening/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' RTK.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' RTK.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc 'git status --short --branch'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc 'git status --short --branch'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files -g 'index.html' -g '*demo*' -g '*Demo*' | sed -n '1,200p'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files -g 'index.html' -g '*demo*' -g '*Demo*' | sed -n '1,200p'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -i 'export|导出|print|html2canvas|jspdf|tutorial|教程' examples/saas-conversion-demo/index.html skills/static-demo-hardening README.md docs 2>/dev/null | sed -n '1,240p'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -i 'export|导出|print|html2canvas|jspdf|tutorial|教程' examples/saas-conversion-demo/index.html skills/static-demo-hardening README.md docs 2>/dev/null | sed -n '1,240p'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.review.json\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.review.json\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 213564,
+    "cached_input_tokens": 198144,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 5450,
+    "reasoning_output_tokens": 3898
+  },
+  "elapsed_seconds": 119.779,
+  "raw_sha256": "4d348810566921f27a3a4200e17a2207352bfb7532b7c0d71549b4716a36667d",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

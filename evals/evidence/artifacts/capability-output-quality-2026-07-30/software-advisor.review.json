@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "skill": "software-advisor",
+  "skill_sha256": "49d50cffdbdff865a7a085cc31f5f3dcc86089569f2a7d154e8be2cddf62f7f6",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "真实使用或引用本地目录结果",
+        "status": "pass",
+        "evidence": "产物引用了本地 `skills/software-advisor/software_catalog.json`；当前目录中悟空CRM和LinkWeChat的描述、链接及“开源CRM/SCRM”定位与产物一致。"
+      },
+      {
+        "criterion": "提供可复跑命令、来源与目录指纹",
+        "status": "pass",
+        "evidence": "产物提供 `rg` 与 `shasum -a 256` 命令、相对路径、核对时间、4条命中及候选说明；独立复跑得到目录SHA-256为 `7b68f24dfc7aa1b10f0b226013a440f19f4e23a76bde627e16e29d957719e288`，与产物一致。"
+      },
+      {
+        "criterion": "明确外部版本、许可证或维护状态的未知",
+        "status": "pass",
+        "evidence": "两项推荐均明确未联网，并逐项声明许可证、最新版本、安全/兼容性及当前维护状态未核验；外部版本与上游Hash标为 `not-applicable`，未伪称已做外部核验。"
+      }
+    ],
+    "findings": [
+      "产物实质回答了从本地目录推荐开源CRM的任务，且将推荐理由限定为本地目录记录。",
+      "未发现扩大本地目录语义、编造外部事实或越过未联网授权边界的重大问题。"
+    ],
+    "boundary": "本验收仅独立核对当前本地目录与产物声明的一致性；未访问外部链接，也不将本地目录记录视为上游项目的实时事实。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"真实使用或引用本地目录结果\",\"status\":\"pass\",\"evidence\":\"产物引用了本地 `skills/software-advisor/software_catalog.json`；当前目录中悟空CRM和LinkWeChat的描述、链接及“开源CRM/SCRM”定位与产物一致。\"},{\"criterion\":\"提供可复跑命令、来源与目录指纹\",\"status\":\"pass\",\"evidence\":\"产物提供 `rg` 与 `shasum -a 256` 命令、相对路径、核对时间、4条命中及候选说明；独立复跑得到目录SHA-256为 `7b68f24dfc7aa1b10f0b226013a440f19f4e23a76bde627e16e29d957719e288`，与产物一致。\"},{\"criterion\":\"明确外部版本、许可证或维护状态的未知\",\"status\":\"pass\",\"evidence\":\"两项推荐均明确未联网，并逐项声明许可证、最新版本、安全/兼容性及当前维护状态未核验；外部版本与上游Hash标为 `not-applicable`，未伪称已做外部核验。\"}],\"findings\":[\"产物实质回答了从本地目录推荐开源CRM的任务，且将推荐理由限定为本地目录记录。\",\"未发现扩大本地目录语义、编造外部事实或越过未联网授权边界的重大问题。\"],\"boundary\":\"本验收仅独立核对当前本地目录与产物声明的一致性；未访问外部链接，也不将本地目录记录视为上游项目的实时事实。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"pwd && rg -n -i -C 2 'software-advisor|capability-output-quality|本地软件目录|CRM' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"pwd && rg -n -i -C 2 'software-advisor|capability-output-quality|本地软件目录|CRM' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' RTK.md && printf '\\\\n--- SKILL ---\\\\n' && sed -n '1,300p' skills/software-advisor/SKILL.md && printf '\\\\n--- ARTIFACT ---\\\\n' && sed -n '1,360p' evals/evidence/artifacts/capability-output-quality-2026-07-30/software-advisor.output.md && printf '\\\\n--- CONTEXT ---\\\\n' && git status --short && rg --files | rg '(\"'^|/)(software-advisor|local-software|software).*(md|json)$|(''^|/)software-advisor/'\"'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' RTK.md && printf '\\\\n--- SKILL ---\\\\n' && sed -n '1,300p' skills/software-advisor/SKILL.md && printf '\\\\n--- ARTIFACT ---\\\\n' && sed -n '1,360p' evals/evidence/artifacts/capability-output-quality-2026-07-30/software-advisor.output.md && printf '\\\\n--- CONTEXT ---\\\\n' && git status --short && rg --files | rg '(\"'^|/)(software-advisor|local-software|software).*(md|json)$|(''^|/)software-advisor/'\"'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"set -e\nprintf '%s\\\\n' '--- exact recorded search ---'\nrg -n -i '\\\"description\\\": \\\".*crm' skills/software-advisor/software_catalog.json || true\nprintf '%s\\\\n' '--- exact catalog digest ---'\nshasum -a 256 skills/software-advisor/software_catalog.json\nprintf '%s\\\\n' '--- candidate records ---'\njq -r '.. | objects | select((.name? // \\\"\\\") | test(\\\"CRM|LinkWeChat\\\"; \\\"i\\\")) | {name, category, url, description}' skills/software-advisor/software_catalog.json\nprintf '%s\\\\n' '--- structural catalog check ---'\njq -r '[.. | objects | select((.description? // \\\"\\\") | test(\\\"crm\\\"; \\\"i\\\")) | .name] | @json' skills/software-advisor/software_catalog.json\nprintf '%s\\\\n' '--- artifact integrity ---'\nshasum -a 256 evals/evidence/artifacts/capability-output-quality-2026-07-30/software-advisor.output.md\nwc -l skills/software-advisor/software_catalog.json evals/evidence/artifacts/capability-output-quality-2026-07-30/software-advisor.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"set -e\nprintf '%s\\\\n' '--- exact recorded search ---'\nrg -n -i '\\\"description\\\": \\\".*crm' skills/software-advisor/software_catalog.json || true\nprintf '%s\\\\n' '--- exact catalog digest ---'\nshasum -a 256 skills/software-advisor/software_catalog.json\nprintf '%s\\\\n' '--- candidate records ---'\njq -r '.. | objects | select((.name? // \\\"\\\") | test(\\\"CRM|LinkWeChat\\\"; \\\"i\\\")) | {name, category, url, description}' skills/software-advisor/software_catalog.json\nprintf '%s\\\\n' '--- structural catalog check ---'\njq -r '[.. | objects | select((.description? // \\\"\\\") | test(\\\"crm\\\"; \\\"i\\\")) | .name] | @json' skills/software-advisor/software_catalog.json\nprintf '%s\\\\n' '--- artifact integrity ---'\nshasum -a 256 evals/evidence/artifacts/capability-output-quality-2026-07-30/software-advisor.output.md\nwc -l skills/software-advisor/software_catalog.json evals/evidence/artifacts/capability-output-quality-2026-07-30/software-advisor.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,82p' skills/software-advisor/software_catalog.json && sed -n '158,182p' skills/software-advisor/software_catalog.json && printf '\\\\n--- schema keys ---\\\\n' && jq -r '.. | objects | select((.description? // \\\"\\\") | test(\\\"crm\\\"; \\\"i\\\")) | {keys: keys, record: .}' skills/software-advisor/software_catalog.json\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,82p' skills/software-advisor/software_catalog.json && sed -n '158,182p' skills/software-advisor/software_catalog.json && printf '\\\\n--- schema keys ---\\\\n' && jq -r '.. | objects | select((.description? // \\\"\\\") | test(\\\"crm\\\"; \\\"i\\\")) | {keys: keys, record: .}' skills/software-advisor/software_catalog.json\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 135337,
+    "cached_input_tokens": 122112,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2160,
+    "reasoning_output_tokens": 1007
+  },
+  "elapsed_seconds": 76.845,
+  "raw_sha256": "c31b7d5b0e83f5879f2bb79f8a4e22be6c823a928a01bb6847280bd54eaa4edc",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

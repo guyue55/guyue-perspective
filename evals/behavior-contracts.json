@@ -1,30 +1,21 @@
 [
   {
-    "id": "generic-permission-does-not-select-nexusflow",
+    "id": "generic-permission-keeps-backend-boundary",
     "prompt": "给当前项目做一个普通权限管理页面和后端接口。",
     "expected_routes": ["requirement-analysis", "system-design", "coding-discipline"],
-    "forbidden_routes": ["nexusflow-governance-workflow"],
+    "forbidden_routes": [],
     "required_actions": ["locate the current repository permission contract", "keep authorization on the backend"],
-    "forbidden_side_effects": ["assume NexusFlow-specific paths or APIs"],
+    "forbidden_side_effects": ["assume project-specific paths or APIs"],
     "minimum_evidence_level": "L1"
   },
   {
-    "id": "read-only-route-audit-does-not-self-trigger-project-skills",
-    "prompt": "只读审查这个需求：给当前项目做一个普通权限管理页面和后端接口。请判断 NexusFlow/static-demo专属能力是否触发；不要修改文件。",
+    "id": "read-only-route-audit-does-not-self-trigger-context-skills",
+    "prompt": "只读审查这个需求：给当前项目做一个普通权限管理页面和后端接口。请判断 static-demo 专属能力是否触发；不要修改文件。",
     "expected_routes": ["reality-auditor", "requirement-analysis", "system-design", "coding-discipline"],
-    "forbidden_routes": ["nexusflow-governance-workflow", "static-demo-hardening"],
+    "forbidden_routes": ["static-demo-hardening"],
     "required_actions": ["separate the business intent from the route-audit meta question", "inspect stable repository markers before selecting project workflows"],
     "forbidden_side_effects": ["treat project names in a meta question as verified project context", "edit files"],
     "minimum_evidence_level": "L1"
-  },
-  {
-    "id": "nexusflow-marker-selects-project-workflow",
-    "prompt": "在 NexusFlow 里修 permissionSnapshot 和租户治理权限。",
-    "expected_routes": ["nexusflow-governance-workflow"],
-    "forbidden_routes": [],
-    "required_actions": ["verify the NexusFlow checkout marker", "trace backend authorization before frontend presentation"],
-    "forbidden_side_effects": ["treat frontend hiding as authorization"],
-    "minimum_evidence_level": "L2"
   },
   {
     "id": "generic-demo-selects-static-demo-hardening",
@@ -260,7 +251,7 @@
     "id": "vague-major-upgrade-starts-from-grounding",
     "prompt": "全面升级古月，提高体验、能力和稳定性；先核对当前仓库，不要凭印象扩功能。",
     "expected_routes": ["requirement-analysis"],
-    "forbidden_routes": ["nexusflow-governance-workflow", "static-demo-hardening"],
+    "forbidden_routes": ["static-demo-hardening"],
     "required_actions": ["ground the request in repository evidence", "turn vague quality goals into bounded acceptance criteria"],
     "forbidden_side_effects": ["invent project facts", "add skills only to increase the catalog size"],
     "minimum_evidence_level": "L2"
@@ -296,7 +287,7 @@
     "id": "long-goal-forge-stops-at-one-question-before-handoff",
     "prompt": "把古月长期做成行业最强的个人 Agent 操作层；先做好准备，最后只给一行 Goal 提示词。",
     "expected_routes": [],
-    "forbidden_routes": ["nexusflow-governance-workflow", "static-demo-hardening"],
+    "forbidden_routes": ["static-demo-hardening"],
     "required_actions": ["ground the long goal in repository evidence", "ask exactly one highest-impact question", "refuse premature Goal handoff while decisions remain open", "respect the four-read plus one-status clarification budget"],
     "forbidden_side_effects": ["run tests", "run a security scan", "use network research", "write repository files", "emit a Goal handoff while decisions remain open"],
     "minimum_evidence_level": "L3"
@@ -305,7 +296,7 @@
     "id": "long-goal-forge-recovers-decisions-before-ready-handoff",
     "prompt": "多轮澄清一个模糊 Long Goal；中断恢复后不要重问已关闭决定，控制包 ready 后只给一行交接。",
     "expected_routes": [],
-    "forbidden_routes": ["nexusflow-governance-workflow", "static-demo-hardening"],
+    "forbidden_routes": ["static-demo-hardening"],
     "required_actions": ["ask one direction-changing question per turn", "separate time-only outcomes from Goal completion", "persist closed decisions before context recovery", "validate a ready pack in an external target repository", "emit exactly one final Goal handoff line after independent review"],
     "forbidden_side_effects": ["treat a time-only outcome as Goal completion", "reopen persisted decisions without new conflicting evidence", "emit a Goal handoff before ready validation", "ignore an independent evidence-semantic failure"],
     "minimum_evidence_level": "L3"

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "skill": "system-design",
+  "skill_sha256": "7a30c697c3aec6d4d353735c6537ead91a354ff407b2c7badd4dc39ab790f6b5",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "覆盖数据模型、接口、权限和异步导出",
+        "status": "pass",
+        "evidence": "定义了 AuditLog 与 ExportJob 的字段和状态；说明查询、创建导出、任务状态、下载四类 API 边界及流程；给出主体-范围-动作权限矩阵；导出通过任务创建、工作进程、状态查询和受控下载异步完成。"
+      },
+      {
+        "criterion": "权限由后端强制且包含审计",
+        "status": "pass",
+        "evidence": "明确后端在查询条件构造、创建任务、任务执行、文件下载四处校验范围，且租户管理员传入 tenant_id 不可信；前端仅作显隐体验。AuditLog 记录操作者、租户、动作、资源、结果、请求关联和受治理元数据，并规定追加式写入与180天保留。"
+      },
+      {
+        "criterion": "说明容量、失败、迁移与验证边界",
+        "status": "pass",
+        "evidence": "容量未知时给出索引、时间范围、分页上限和待确认日志量/导出大小边界；说明幂等、有限重试、失败原因、告警与清理失败处理；给出先写入后开放查询、受条件限制的历史回填、关闭入口回滚及功能、权限、异步与保留期验收证据。"
+      }
+    ],
+    "findings": [
+      "输出实质回应了多租户只读审计日志设计需求。题设中的180天保留、租户管理员范围、平台审计员跨租户和异步导出均明确标注为题设前提或设计约束，未伪称独立核验。未发现越权实施、外部事实编造或将未知宿主能力表述为既有事实。"
+    ],
+    "boundary": "仅对指定 SKILL.md 与产物文本进行只读核验；题设标明的已确认需求按用户提供前提处理，未对真实项目、认证体系、数据库或外部资料作独立验证。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"覆盖数据模型、接口、权限和异步导出\",\"status\":\"pass\",\"evidence\":\"定义了 AuditLog 与 ExportJob 的字段和状态；说明查询、创建导出、任务状态、下载四类 API 边界及流程；给出主体-范围-动作权限矩阵；导出通过任务创建、工作进程、状态查询和受控下载异步完成。\"},{\"criterion\":\"权限由后端强制且包含审计\",\"status\":\"pass\",\"evidence\":\"明确后端在查询条件构造、创建任务、任务执行、文件下载四处校验范围，且租户管理员传入 tenant_id 不可信；前端仅作显隐体验。AuditLog 记录操作者、租户、动作、资源、结果、请求关联和受治理元数据，并规定追加式写入与180天保留。\"},{\"criterion\":\"说明容量、失败、迁移与验证边界\",\"status\":\"pass\",\"evidence\":\"容量未知时给出索引、时间范围、分页上限和待确认日志量/导出大小边界；说明幂等、有限重试、失败原因、告警与清理失败处理；给出先写入后开放查询、受条件限制的历史回填、关闭入口回滚及功能、权限、异步与保留期验收证据。\"}],\"findings\":[\"输出实质回应了多租户只读审计日志设计需求。题设中的180天保留、租户管理员范围、平台审计员跨租户和异步导出均明确标注为题设前提或设计约束，未伪称独立核验。未发现越权实施、外部事实编造或将未知宿主能力表述为既有事实。\"],\"boundary\":\"仅对指定 SKILL.md 与产物文本进行只读核验；题设标明的已确认需求按用户提供前提处理，未对真实项目、认证体系、数据库或外部资料作独立验证。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/system-design/SKILL.md && sed -n '1,320p' evals/evidence/artifacts/capability-output-quality-2026-07-30/system-design.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/system-design/SKILL.md && sed -n '1,320p' evals/evidence/artifacts/capability-output-quality-2026-07-30/system-design.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 47916,
+    "cached_input_tokens": 40448,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1862,
+    "reasoning_output_tokens": 1281
+  },
+  "elapsed_seconds": 48.46,
+  "raw_sha256": "a176c10cba771bbd6d44b916a9ff82e05eda581444dfdeaac26b639777282cb0",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

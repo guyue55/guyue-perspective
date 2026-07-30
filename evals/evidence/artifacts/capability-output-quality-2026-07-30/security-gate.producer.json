@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "security-gate",
+  "skill_sha256": "5885ab2ce9d7aba9cacbbc7b100d19b7bccb4f72e20883f11c0340c1595fe5c2",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/security-gate.output.md",
+  "output_sha256": "f2e9ba72b7822898f8fcea9e6a91dfed01e43e85465b9ef12a2953ebad0d66cb",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/security-gate/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/security-gate/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 44293,
+    "cached_input_tokens": 39424,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1048,
+    "reasoning_output_tokens": 653
+  },
+  "elapsed_seconds": 30.523,
+  "raw_sha256": "d3c643a9345c87cd65009b1fc5c563699ae0fee155de9533d6e6200ac9bcca56",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

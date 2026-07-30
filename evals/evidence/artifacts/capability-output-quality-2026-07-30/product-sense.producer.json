@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "skill": "product-sense",
+  "skill_sha256": "c5d6c45de2b07788ce2f8f864720b436f8beae13db270422020813013d37e896",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/product-sense.output.md",
+  "output_sha256": "963f575640fe0da65335c43b5972cbef2b00923c7b8d2c07ef51b3c551379b9e",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"pwd && sed -n '1,240p' skills/product-sense/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"pwd && sed -n '1,240p' skills/product-sense/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -i --glob '\"'!node_modules'\"' --glob '\"'!dist'\"' --glob '\"'!build'\"' '五级分销|分销积分|积分商城|提升复购|竞品都有' . || true\nrg --files -g 'README.md' -g 'docs/**' -g 'skills/**/SKILL.md' | sed -n '1,160p'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -i --glob '\"'!node_modules'\"' --glob '\"'!dist'\"' --glob '\"'!build'\"' '五级分销|分销积分|积分商城|提升复购|竞品都有' . || true\nrg --files -g 'README.md' -g 'docs/**' -g 'skills/**/SKILL.md' | sed -n '1,160p'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 72608,
+    "cached_input_tokens": 62720,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2825,
+    "reasoning_output_tokens": 1818
+  },
+  "elapsed_seconds": 68.595,
+  "raw_sha256": "4ab292ffd86515c5ba7d8c97f15738fe4917db8be5a14e4d92e5591010af601b",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

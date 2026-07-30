@@ -307,25 +307,12 @@
       ]
     },
     {
-      "skill": "nexusflow-governance-workflow",
-      "prompts": [
-        "普通项目的权限管理页面",
-        "无 NexusFlow 标记的租户系统",
-        "讨论 NexusFlow 能力是否应触发",
-        "静态 Demo 导出",
-        "通用 GCP 教程",
-        "推荐开源权限库",
-        "排查普通接口 500",
-        "写一份权限设计文档"
-      ]
-    },
-    {
       "skill": "static-demo-hardening",
       "prompts": [
         "普通静态页面优化",
         "无静态演示页面的 PDF 导出",
         "讨论 static demo surface 能力是否应触发",
-        "NexusFlow 权限治理",
+        "普通权限治理",
         "通用 GSAP 动画教程",
         "实现真实后端报告服务",
         "推荐开源 CRM",

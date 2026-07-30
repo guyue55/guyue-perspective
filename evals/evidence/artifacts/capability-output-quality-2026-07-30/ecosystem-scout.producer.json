@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "skill": "ecosystem-scout",
+  "skill_sha256": "6725498da0c4b89b11cf2bbcaf3522289c76da43f1792292016b16eefec20718",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ecosystem-scout.output.md",
+  "output_sha256": "7265e214fa1d3e2cbfbff999f693b91397b96cc482ed694781b54aac18663a15",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/ecosystem-scout/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/ecosystem-scout/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files -g 'skills_manifest.json' -g 'skills-index.json' -g 'SKILL.md' | sed -n '1,240p'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files -g 'skills_manifest.json' -g 'skills-index.json' -g 'SKILL.md' | sed -n '1,240p'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills_manifest.json && for file in skills/*/SKILL.md; do awk -v file=\\\"\"'$file\" '\"'NR==1 {in_front=1; next} in_front && /\"'^---$/ {exit} in_front && /''^(name|description):/ {print file \": \" $0}'\"' \\\"\"'$file\"; done'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills_manifest.json && for file in skills/*/SKILL.md; do awk -v file=\\\"\"'$file\" '\"'NR==1 {in_front=1; next} in_front && /\"'^---$/ {exit} in_front && /''^(name|description):/ {print file \": \" $0}'\"' \\\"\"'$file\"; done'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -C 3 'external_dependencies|Repo A|Repo B|curl|curl\\\\s*.*\\\\|' skills_manifest.json || true\nindex_path='<HOME>/.guyue/cache/discovery/skills-index.json'\nif [ -r \\\"\"'$index_path\" ]; then\n  printf '\"'%s\\\\n' \\\"CACHE_READABLE=\"'$index_path\"\n  stat -f '\"'CACHE_MODIFIED=%Sm' -t '%Y-%m-%dT%H:%M:%S%z' \\\"\"'$index_path\"\n  rg -n -i -C 2 '\"'repo a|repo b|install|curl|ecosystem|security|skill' \\\"\"'$index_path\" | sed -n '\"'1,220p'\nelse\n  printf '%s\\\\n' \\\"CACHE_UNAVAILABLE=\"'$index_path\"\nfi'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -C 3 'external_dependencies|Repo A|Repo B|curl|curl\\\\s*.*\\\\|' skills_manifest.json || true\nindex_path='<HOME>/.guyue/cache/discovery/skills-index.json'\nif [ -r \\\"\"'$index_path\" ]; then\n  printf '\"'%s\\\\n' \\\"CACHE_READABLE=\"'$index_path\"\n  stat -f '\"'CACHE_MODIFIED=%Sm' -t '%Y-%m-%dT%H:%M:%S%z' \\\"\"'$index_path\"\n  rg -n -i -C 2 '\"'repo a|repo b|install|curl|ecosystem|security|skill' \\\"\"'$index_path\" | sed -n '\"'1,220p'\nelse\n  printf '%s\\\\n' \\\"CACHE_UNAVAILABLE=\"'$index_path\"\nfi'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1336,1425p' skills_manifest.json\nindex_path='<HOME>/.guyue/cache/discovery/skills-index.json'\nprintf '%s\\\\n' 'CANDIDATE_NAME_MATCHES:'\nrg -n -i '\\\"(repo a|repo b)\\\"|/(repo-a|repo-b)(/|\\\"|\"'$)'\"' \\\"\"'$index_path\" skills_manifest.json || true\nprintf '\"'%s\\\\n' 'CACHE_POINTERS_READABLE:'\nwhile IFS= read -r skill_path; do\n  [ -r \\\"\"'$skill_path/SKILL.md\" ] && printf '\"'%s\\\\n' \\\"\"'$skill_path\"\ndone < <(rg -o '\"'\\\"/[\"'^\"]+\"'\"' \\\"\"'$index_path\" | tr -d '\"'\\\"' | sed -n '1,20p')\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1336,1425p' skills_manifest.json\nindex_path='<HOME>/.guyue/cache/discovery/skills-index.json'\nprintf '%s\\\\n' 'CANDIDATE_NAME_MATCHES:'\nrg -n -i '\\\"(repo a|repo b)\\\"|/(repo-a|repo-b)(/|\\\"|\"'$)'\"' \\\"\"'$index_path\" skills_manifest.json || true\nprintf '\"'%s\\\\n' 'CACHE_POINTERS_READABLE:'\nwhile IFS= read -r skill_path; do\n  [ -r \\\"\"'$skill_path/SKILL.md\" ] && printf '\"'%s\\\\n' \\\"\"'$skill_path\"\ndone < <(rg -o '\"'\\\"/[\"'^\"]+\"'\"' \\\"\"'$index_path\" | tr -d '\"'\\\"' | sed -n '1,20p')\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 192817,
+    "cached_input_tokens": 161792,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 4404,
+    "reasoning_output_tokens": 3176
+  },
+  "elapsed_seconds": 110.825,
+  "raw_sha256": "34606497e50c4beb07e3e20d64c67357383ad94a3fb281873ec074f593e0d14d",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

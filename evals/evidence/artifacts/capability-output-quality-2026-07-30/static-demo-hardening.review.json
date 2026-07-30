@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "skill": "static-demo-hardening",
+  "skill_sha256": "be59239db224a214af3a2dd6b5d75d2aeb91d7636af7e473bacaaa4bc7ab9109",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "限定静态 Demo 场景",
+        "status": "pass",
+        "evidence": "明确将范围限定为 `Demo/index.html` 静态报告面，并排除后端、框架和在线依赖。"
+      },
+      {
+        "criterion": "依赖缺失时提供诚实可见回退",
+        "status": "pass",
+        "evidence": "规定依赖缺失显示持久教程卡片/对话框，明确“未生成 PDF 或下载文件”，禁止成功提示，并提供浏览器打印回退。"
+      },
+      {
+        "criterion": "覆盖导出成功、失败、离线和资源边界",
+        "status": "pass",
+        "evidence": "验收矩阵覆盖成功下载、未准备完成、函数异常、缺失依赖、file://、断网、移动端及打印；同时要求教程使用页面内置内容和本地资源。"
+      }
+    ],
+    "findings": [],
+    "boundary": "输出将 static demo 场景及 Demo/index.html 视为用户已确认前提，明确未独立定位文件或验证实现；未伪称已修改、已导出或已完成外部核验。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"限定静态 Demo 场景\",\"status\":\"pass\",\"evidence\":\"明确将范围限定为 `Demo/index.html` 静态报告面，并排除后端、框架和在线依赖。\"},{\"criterion\":\"依赖缺失时提供诚实可见回退\",\"status\":\"pass\",\"evidence\":\"规定依赖缺失显示持久教程卡片/对话框，明确“未生成 PDF 或下载文件”，禁止成功提示，并提供浏览器打印回退。\"},{\"criterion\":\"覆盖导出成功、失败、离线和资源边界\",\"status\":\"pass\",\"evidence\":\"验收矩阵覆盖成功下载、未准备完成、函数异常、缺失依赖、file://、断网、移动端及打印；同时要求教程使用页面内置内容和本地资源。\"}],\"findings\":[],\"boundary\":\"输出将 static demo 场景及 Demo/index.html 视为用户已确认前提，明确未独立定位文件或验证实现；未伪称已修改、已导出或已完成外部核验。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/static-demo-hardening/SKILL.md && printf '\\\\n--- ARTIFACT ---\\\\n' && sed -n '1,280p' evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/static-demo-hardening/SKILL.md && printf '\\\\n--- ARTIFACT ---\\\\n' && sed -n '1,280p' evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 45386,
+    "cached_input_tokens": 40960,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 890,
+    "reasoning_output_tokens": 483
+  },
+  "elapsed_seconds": 36.576,
+  "raw_sha256": "adc9ff9c5263413d93b2b5516a31a432e3b0a97237da4e7dd97125774a3dd0bc",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

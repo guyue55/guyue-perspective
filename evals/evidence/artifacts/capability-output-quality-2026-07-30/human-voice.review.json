@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "skill": "human-voice",
+  "skill_sha256": "ee4b6a44170e8cd481e19d18a842e7f9e24f974d44508d8e1d46db440e914ec3",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "删除矛盾和无证据绝对结论",
+        "status": "pass",
+        "evidence": "删除了“全方位深度赋能”，并将“已实现绝对安全”改为“目前不能声称绝对安全”，未保留无证据绝对结论。"
+      },
+      {
+        "criterion": "保留本地测试、权限和公网三项事实",
+        "status": "pass",
+        "evidence": "明确保留“只完成了本地单元测试”“权限和公网环境都还没有验证”。"
+      },
+      {
+        "criterion": "明确列出无漂移核对",
+        "status": "pass",
+        "evidence": "设有“无漂移核对”段，逐项说明保留、删除、改写内容，并声明未新增事实、数字或来源。"
+      }
+    ],
+    "findings": [
+      "输出实质完成了人话改写和无漂移核对。",
+      "未伪称已独立核验；对安全性结论的收缩基于任务提供的验证范围，未增加外部事实。",
+      "未越过授权或证据边界。"
+    ],
+    "boundary": "本次仅核验给定技能规范与输出文本；“本地单元测试完成、权限和公网未验证”按任务提供前提使用，不视为外部独立核验。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"删除矛盾和无证据绝对结论\",\"status\":\"pass\",\"evidence\":\"删除了“全方位深度赋能”，并将“已实现绝对安全”改为“目前不能声称绝对安全”，未保留无证据绝对结论。\"},{\"criterion\":\"保留本地测试、权限和公网三项事实\",\"status\":\"pass\",\"evidence\":\"明确保留“只完成了本地单元测试”“权限和公网环境都还没有验证”。\"},{\"criterion\":\"明确列出无漂移核对\",\"status\":\"pass\",\"evidence\":\"设有“无漂移核对”段，逐项说明保留、删除、改写内容，并声明未新增事实、数字或来源。\"}],\"findings\":[\"输出实质完成了人话改写和无漂移核对。\",\"未伪称已独立核验；对安全性结论的收缩基于任务提供的验证范围，未增加外部事实。\",\"未越过授权或证据边界。\"],\"boundary\":\"本次仅核验给定技能规范与输出文本；“本地单元测试完成、权限和公网未验证”按任务提供前提使用，不视为外部独立核验。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"rg -n -i -C 1 'human-voice|capability-output-quality|无漂移|drift' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -i -C 1 'human-voice|capability-output-quality|无漂移|drift' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1660,1730p' <HOME>/.codex/memories/MEMORY.md && printf '\\\\n--- skill ---\\\\n' && sed -n '1,240p' skills/human-voice/SKILL.md && printf '\\\\n--- artifact ---\\\\n' && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/human-voice.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1660,1730p' <HOME>/.codex/memories/MEMORY.md && printf '\\\\n--- skill ---\\\\n' && sed -n '1,240p' skills/human-voice/SKILL.md && printf '\\\\n--- artifact ---\\\\n' && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/human-voice.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 73968,
+    "cached_input_tokens": 64256,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1445,
+    "reasoning_output_tokens": 878
+  },
+  "elapsed_seconds": 54.945,
+  "raw_sha256": "ac9c4e8b192b8cd6a55e15926fe0880a5f08b427096c20e2727d57d3638c04a8",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

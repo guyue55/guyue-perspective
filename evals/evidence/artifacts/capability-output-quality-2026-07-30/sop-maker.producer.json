@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "skill": "sop-maker",
+  "skill_sha256": "d0aca7b00e3c7498608383c7e83d919563352b6821a967084c1c70c03bf7eadf",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/sop-maker.output.md",
+  "output_sha256": "b48c96f576ec865ccd7af349e2163566e85630318ce11fa0e8873bba0e714e1a",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"pwd && sed -n '1,240p' skills/sop-maker/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"pwd && sed -n '1,240p' skills/sop-maker/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc 'wc -l skills/sop-maker/SKILL.md'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc 'wc -l skills/sop-maker/SKILL.md'",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 70169,
+    "cached_input_tokens": 62720,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3979,
+    "reasoning_output_tokens": 2691
+  },
+  "elapsed_seconds": 90.437,
+  "raw_sha256": "a6866bce93ec7eacb7e5d1376afe49c4a1cd257346b4995b2a41b885d8d8f8b2",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

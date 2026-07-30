@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "video-creation-sop",
+  "skill_sha256": "a11c42c7ab27b71166f18749adc1147ddfd4098dd51c452746d5650085dd426d",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-creation-sop.output.md",
+  "output_sha256": "429027156d5ad570df2dbe4f83a0e803aca269eb4df2db8f9891b78156faaf1c",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/video-creation-sop/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/video-creation-sop/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 47523,
+    "cached_input_tokens": 40960,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 5333,
+    "reasoning_output_tokens": 3179
+  },
+  "elapsed_seconds": 110.648,
+  "raw_sha256": "d1b760b57c0de056032630669b5c0eb415a1848fcd9b4202bda254cbbc277952",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

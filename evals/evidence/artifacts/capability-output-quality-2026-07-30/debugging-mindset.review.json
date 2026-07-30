@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "skill": "debugging-mindset",
+  "skill_sha256": "2ad65975245c52d82394408d270ee749f9bee998c7b8f9f87eb75eb8c2d59b40",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "建立症状、假设、证据和最小验证矩阵",
+        "status": "pass",
+        "evidence": "明确列出四行“症状—待验证假设—最小判定证据”矩阵，并补充按请求ID或时间窗口关联的最低充分证据与只读采集命令。"
+      },
+      {
+        "criterion": "优先定位请求到达应用前的边界",
+        "status": "pass",
+        "evidence": "基于题干提供的“413、应用未收到请求、小文件正常、8MB必现”前提，将排查优先收敛到Nginx/Ingress请求体接收边界；同时保留Nginx本机拒绝与上游网关/WAF拒绝两种待验证分支。"
+      },
+      {
+        "criterion": "不给未经验证的直接修复冒充根因",
+        "status": "pass",
+        "evidence": "明确说明尚不能断言具体限制项或配置层级，要求先取得error log、upstream_status和生效配置；拒绝盲目调大限制、重启或回滚，仅给出条件化的最小修复与回归方案。"
+      }
+    ],
+    "findings": [
+      "实质回答了证据优先排障任务，并将题干内容标注为“用户提供前提”，未伪称已独立核验。",
+      "未编造已发生的日志、配置或部署事实；涉及实例差异、网关/WAF和具体配置项均明确标为待验证假设。",
+      "未越过授权边界：建议均为只读采集、产品侧临时限制或以证据为前提的后续动作。"
+    ],
+    "boundary": "结论仅基于合成任务的用户提供前提：已可定位为应用前请求链路的排查边界，但尚未证明是Nginx本机、Ingress、WAF或具体client_max_body_size等机制；不得据此直接修改配置。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"建立症状、假设、证据和最小验证矩阵\",\"status\":\"pass\",\"evidence\":\"明确列出四行“症状—待验证假设—最小判定证据”矩阵，并补充按请求ID或时间窗口关联的最低充分证据与只读采集命令。\"},{\"criterion\":\"优先定位请求到达应用前的边界\",\"status\":\"pass\",\"evidence\":\"基于题干提供的“413、应用未收到请求、小文件正常、8MB必现”前提，将排查优先收敛到Nginx/Ingress请求体接收边界；同时保留Nginx本机拒绝与上游网关/WAF拒绝两种待验证分支。\"},{\"criterion\":\"不给未经验证的直接修复冒充根因\",\"status\":\"pass\",\"evidence\":\"明确说明尚不能断言具体限制项或配置层级，要求先取得error log、upstream_status和生效配置；拒绝盲目调大限制、重启或回滚，仅给出条件化的最小修复与回归方案。\"}],\"findings\":[\"实质回答了证据优先排障任务，并将题干内容标注为“用户提供前提”，未伪称已独立核验。\",\"未编造已发生的日志、配置或部署事实；涉及实例差异、网关/WAF和具体配置项均明确标为待验证假设。\",\"未越过授权边界：建议均为只读采集、产品侧临时限制或以证据为前提的后续动作。\"],\"boundary\":\"结论仅基于合成任务的用户提供前提：已可定位为应用前请求链路的排查边界，但尚未证明是Nginx本机、Ingress、WAF或具体client_max_body_size等机制；不得据此直接修改配置。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"pwd && wc -l skills/debugging-mindset/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/debugging-mindset.output.md && sed -n '1,240p' skills/debugging-mindset/SKILL.md && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/debugging-mindset.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"pwd && wc -l skills/debugging-mindset/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/debugging-mindset.output.md && sed -n '1,240p' skills/debugging-mindset/SKILL.md && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/debugging-mindset.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 48050,
+    "cached_input_tokens": 31744,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1491,
+    "reasoning_output_tokens": 850
+  },
+  "elapsed_seconds": 59.774,
+  "raw_sha256": "b58b48b16bc9118309266534738909daf227e7a26e4d652b76c149dadea50276",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

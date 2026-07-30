@@ -76,33 +76,27 @@ def main() -> int:
                 f"{result['external_candidates']}",
             )
 
-    generic = resolve_routes(
-        manifest,
-        "给当前项目做一个普通权限管理页面和后端接口。",
-        limit=8,
-    )
-    nexus_rejection = next(
-        item
-        for item in generic["rejected"]
-        if item["name"] == "nexusflow-governance-workflow"
+    generic = resolve_routes(manifest, "给普通页面增加 PDF 导出。", limit=8)
+    static_rejection = next(
+        item for item in generic["rejected"] if item["name"] == "static-demo-hardening"
     )
     require(
-        nexus_rejection["reason"] == "missing_required_context",
+        static_rejection["reason"] == "missing_required_context",
         "context-gated skills must explain missing context markers",
     )
 
-    nexus = resolve_routes(
+    static_demo = resolve_routes(
         manifest,
-        "修复租户治理权限。",
-        context_markers=["NexusFlow", "permissionSnapshot"],
+        "继续加固报告导出。",
+        context_markers=["static demo", "Demo/index.html"],
         limit=5,
     )
     require(
-        nexus["selected"][0]["name"] == "nexusflow-governance-workflow",
+        static_demo["selected"][0]["name"] == "static-demo-hardening",
         "explicit context markers must select the matching workflow first",
     )
     require(
-        nexus["selected"][0]["matched_context"],
+        static_demo["selected"][0]["matched_context"],
         "selected routes must expose the context evidence used",
     )
 
@@ -111,7 +105,7 @@ def main() -> int:
             manifest,
             (
                 "只读审查这个需求：给当前项目做一个普通权限管理页面和后端接口。"
-                f"请判断 NexusFlow/static-demo专属能力{meta_phrase}；不要修改文件。"
+                f"请判断 static-demo 专属能力{meta_phrase}；不要修改文件。"
             ),
             limit=8,
         )
@@ -121,10 +115,7 @@ def main() -> int:
             f"read-only audit must take routing priority: {audit_selected}",
         )
         require(
-            {
-                "nexusflow-governance-workflow",
-                "static-demo-hardening",
-            }.isdisjoint(audit_selected),
+            "static-demo-hardening" not in audit_selected,
             f"route-audit meta text must not activate project skills: {audit_selected}",
         )
 
@@ -136,6 +127,16 @@ def main() -> int:
     require(
         "product-sense" not in [item["name"] for item in negative["selected"]],
         "explicit negative intent must prevent route selection",
+    )
+
+    global_memory = resolve_routes(
+        manifest,
+        "请记住这个以后所有项目都使用中文提交的偏好。",
+        limit=5,
+    )
+    require(
+        global_memory["selected"][0]["name"] == "memory-bank",
+        "explicit persistence intent must outrank words inside the saved lesson",
     )
 
     composed = resolve_routes(

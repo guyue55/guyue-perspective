@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "coding-discipline",
+  "skill_sha256": "73d6dd778f5f55192ae40a4e38953fa04b1dc158775948b27c5283f55f9c309d",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/coding-discipline.output.md",
+  "output_sha256": "7d5b87d1e43531d764092c6294092b34950d115c02e4a2c1afe491856d716299",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/coding-discipline/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/coding-discipline/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 46453,
+    "cached_input_tokens": 31232,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 817,
+    "reasoning_output_tokens": 434
+  },
+  "elapsed_seconds": 29.569,
+  "raw_sha256": "7caadef1dfeb0799c1548666391ef5325f1faa6a9b180382a6dffd9e4e3e63a8",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

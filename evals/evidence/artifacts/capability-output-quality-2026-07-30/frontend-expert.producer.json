@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "skill": "frontend-expert",
+  "skill_sha256": "42ec190bc7aa369fdbac7ea3dfac3bef71e527fed17768ebfa4fe18ee4fb36d6",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/frontend-expert.output.md",
+  "output_sha256": "81111ccccbd64080c11e504ed241e53a93cfeb4e35a4b5d1d0967afc29c47b35",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/frontend-expert/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/frontend-expert/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files -g '\"'!*node_modules*'\"' | rg '(\"'^|/)(components|ui|hooks|constants|dialogs)/|(''^|/)(package'\"\\\\.json|DESIGN\\\\.md)\"'$|toast|form'\"' | head -n 240\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files -g '\"'!*node_modules*'\"' | rg '(\"'^|/)(components|ui|hooks|constants|dialogs)/|(''^|/)(package'\"\\\\.json|DESIGN\\\\.md)\"'$|toast|form'\"' | head -n 240\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files -g '\"'!*node_modules*'\"' | head -n 160\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files -g '\"'!*node_modules*'\"' | head -n 160\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 97615,
+    "cached_input_tokens": 84992,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 5501,
+    "reasoning_output_tokens": 3552
+  },
+  "elapsed_seconds": 128.32,
+  "raw_sha256": "9d11018bf212d2f48495109daceccdcb840496ad9df5e3313ad68313ac6a3495",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

@@ -274,7 +274,7 @@ def main() -> int:
     parser.add_argument(
         "--artifact-dir",
         type=Path,
-        default=Path("evals/evidence/artifacts/capability-live-canaries-2026-07-13"),
+        default=Path("evals/evidence/artifacts/capability-live-canaries-2026-07-30"),
     )
     parser.add_argument("--timeout", type=int, default=180)
     parser.add_argument(

@@ -83,8 +83,9 @@ Use this mode when the claim is "the workflow is automated", "the agent loop can
 
 - Backend authorization is the security boundary.
 - Missing middleware proves only that authorization was not found at that layer. Before declaring server-side authorization absent, trace controller, service, policy engine, gateway, database policy, and equivalent enforcement points; when that trace is unavailable, say “no server-side authorization evidence was provided/found,” not “authorization does not exist.”
-- Frontend gates such as `permissionSnapshot`, `PermissionGate`, and disabled buttons are UX only.
+- 前端权限快照、能力响应、权限组件和禁用按钮都只是 UX；必须继续追到后端授权事实源。
 - Do not accept role-name checks, hardcoded admin logic, stale JWT claims, or client-only hiding as proof.
+- 权限验真必须区分主体身份、作用域、动作和资源；同名显示值、跨租户成员关系或客户端缓存不能证明身份与授权等价。
 - Approval, cancellation, membership, and audit actions must update backend state and audit evidence together.
 - Public indexes, search payloads, AI context slices, exported JSON, and static build artifacts must not contain private or owner-only data. If private data reaches the client and is merely hidden, the verdict is fake or unsafe.
 

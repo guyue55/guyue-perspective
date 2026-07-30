@@ -47,6 +47,8 @@ Do not infer backend implementation from demo-review requests.
 
 ## Workflow
 
+用户只要求加固方案且已明确给出静态 Demo 场景时，可把该场景作为任务前提输出方案、失败状态机、回退文案与验证矩阵；不得因当前仓库未包含目标文件就把方案任务误判为实现任务。只有用户要求实际修改而目标文件无法定位时才阻断写入，并报告已检查范围。
+
 1. Map the demo surface.
    - Identify affected sections, triggers, modals, sticky controls, and export paths.
 2. Design the smallest static change.

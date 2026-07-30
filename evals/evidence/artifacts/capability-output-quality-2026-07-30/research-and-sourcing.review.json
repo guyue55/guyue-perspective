@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "skill": "research-and-sourcing",
+  "skill_sha256": "a07f508f0cbfee09d358993a050a16d399426b42d263d445bee64e8c3ac26140",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "明确区分外部材料与本地项目事实",
+        "status": "pass",
+        "evidence": "将材料 A 的停服信息与材料 B 的 package-lock 锁定状态分别陈述，并明确二者均为用户提供前提；未把 lockfile 视为运行事实。"
+      },
+      {
+        "criterion": "结论绑定来源、日期和适用边界",
+        "status": "pass",
+        "evidence": "证据边界明确列出材料 A、日期 2026-06-01、停服日期及材料 B 的版本；同时说明 lockfile 仅证明锁定状态，不能证明调用或生产运行。"
+      },
+      {
+        "criterion": "不声称已核验材料之外的当前事实",
+        "status": "pass",
+        "evidence": "明确列出未能证明的调用、生产运行与兼容性事实，并将后续内容表述为建议和待核验项。"
+      }
+    ],
+    "findings": [
+      "实质回答了迁移调研任务，未编造新 API、调用链或生产状态事实。",
+      "“停服日前完成”属于基于给定停服前提的迁移建议，未伪称已执行或已独立核验。"
+    ],
+    "boundary": "仅依据用户提供的材料 A（外部官方迁移说明前提）与材料 B（项目 package-lock 前提）验收；未联网、未独立读取原始链接或项目文件。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"明确区分外部材料与本地项目事实\",\"status\":\"pass\",\"evidence\":\"将材料 A 的停服信息与材料 B 的 package-lock 锁定状态分别陈述，并明确二者均为用户提供前提；未把 lockfile 视为运行事实。\"},{\"criterion\":\"结论绑定来源、日期和适用边界\",\"status\":\"pass\",\"evidence\":\"证据边界明确列出材料 A、日期 2026-06-01、停服日期及材料 B 的版本；同时说明 lockfile 仅证明锁定状态，不能证明调用或生产运行。\"},{\"criterion\":\"不声称已核验材料之外的当前事实\",\"status\":\"pass\",\"evidence\":\"明确列出未能证明的调用、生产运行与兼容性事实，并将后续内容表述为建议和待核验项。\"}],\"findings\":[\"实质回答了迁移调研任务，未编造新 API、调用链或生产状态事实。\",\"“停服日前完成”属于基于给定停服前提的迁移建议，未伪称已执行或已独立核验。\"],\"boundary\":\"仅依据用户提供的材料 A（外部官方迁移说明前提）与材料 B（项目 package-lock 前提）验收；未联网、未独立读取原始链接或项目文件。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"rg -n -i -C 1 'research-and-sourcing|capability-output-quality|验收' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -i -C 1 'research-and-sourcing|capability-output-quality|验收' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"wc -l skills/research-and-sourcing/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/research-and-sourcing.output.md && sed -n '2628,2654p' <HOME>/.codex/memories/MEMORY.md && sed -n '1,260p' skills/research-and-sourcing/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"wc -l skills/research-and-sourcing/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/research-and-sourcing.output.md && sed -n '2628,2654p' <HOME>/.codex/memories/MEMORY.md && sed -n '1,260p' skills/research-and-sourcing/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,120p' evals/evidence/artifacts/capability-output-quality-2026-07-30/research-and-sourcing.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,120p' evals/evidence/artifacts/capability-output-quality-2026-07-30/research-and-sourcing.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 96326,
+    "cached_input_tokens": 88576,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2635,
+    "reasoning_output_tokens": 1931
+  },
+  "elapsed_seconds": 70.302,
+  "raw_sha256": "bd2629c82857cbf71a5b4ed70fc69496fd843f5f5adc8d7d02f5cc94a41c2dc5",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

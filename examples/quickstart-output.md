@@ -61,15 +61,29 @@ Post-metadata micro smoke replay:
 - Boundary: after emitting the final message, the CLI reported `Reading additional input from stdin` and the launcher did not return a recordable exit code. The retained final artifact confirms the micro shape but is not counted as an activation canary or output-quality receipt.
 - Evidence: prompt, current Skill hash, final-message hash and full boundary are in [the metadata smoke replay](../evals/evidence/cognitive-expansion-metadata-replay-2026-07-17.md).
 
-v1.70 release-wide evidence refresh:
+v1.7.0 release-wide evidence refresh:
 
 - Receipt time: `2026-07-28T17:29:45.573664+00:00`.
 - Runtime/model: Codex CLI `0.146.0-alpha.3.1`, requested model `gpt-5.6-terra`, ephemeral read-only sandbox.
 - Live activation: `27/27`; every case read its selected child `SKILL.md`, returned the exact activation marker and retained a sanitized, hash-bound command artifact.
 - Synthetic output quality: `27/27`; every child Skill produced one bounded task artifact and passed independent review. The cognitive-expansion case also passed the mechanical output audit and runtime-receipt budget check on the fresh “特殊教育学校无障碍电梯设备采购” sample.
 - Strict chain after refresh: routing `114/114`, collaboration `12/12`, internal triggers `416/416`, external candidate triggers `41/41`, near misses `222/222`.
-- Evidence: [activation receipt](../evals/evidence/capability-live-canaries-2026-07-13.json) and [output-quality receipt](../evals/evidence/capability-output-quality-2026-07-13.json), with per-Skill artifacts under their adjacent `artifacts/` directories.
+- Historical evidence: the former 27-Skill receipts were retired after the project-only capability left the public payload. Current 26-Skill activation and output-quality receipts are regenerated under the `2026-07-30` evidence paths before release.
 - Boundary: this proves one runtime/model matrix and the recorded synthetic tasks. It does not prove arbitrary inputs, other runtimes, real-user value, public-network behavior or long-term outcomes.
+
+## Replay 42: Project Isolation And Evidence-Semantics Repair
+
+- Date: 2026-07-30 (Asia/Shanghai).
+- Runtime/model: Codex CLI `0.146.0-alpha.3.1`, requested model `gpt-5.6-terra`, ephemeral read-only child sessions.
+- Direction reset: a 27-Skill activation run exposed that one public Skill was tied to a single company project. The run was stopped; the standalone Skill, route, collaboration workflow and generated historical receipts were removed instead of being renamed.
+- Capability retention: generic actor/scope/action/resource authorization, backend enforcement, frontend representation, audit evidence and unauthorized negative-test rules were absorbed into existing system-design, coding-discipline and reality-auditor contracts.
+- Activation result: the cleaned public payload passed `26/26`; every case read the intended child `SKILL.md` and returned the exact activation marker.
+- First output result: `16/26`. Ten failures exposed both real Skill gaps and a runner defect: the independent reviewer did not receive the synthetic task, so it sometimes rejected task-provided premises as unavailable evidence.
+- Runner repair: producer and reviewer now receive the same task. User-provided premises may be used inside that task but cannot be widened or presented as independently verified. A regression test binds this reviewer context.
+- Contract repair: narrow changes added migration/verification closure, candidate-memory previews, evidence-bounded UI plans, lockfile-vs-runtime truth, fault-boundary separation, fact-closed documentation, action-level ecosystem authorization and source-anchored distillation.
+- Final output result: `26/26`. The strict chain passed `113/113` routes, `10/10` collaborations, `424/424` internal triggers, `41/41` external candidate triggers and `214/214` near misses.
+- Project-isolation result: a full repository scan found no removed company-project name or project-only permission contract field.
+- Boundary: the final receipt proves one synthetic output per Skill and one Codex runtime/model configuration. It does not prove every prompt, other runtimes, public-network installation, real-user value or long-term outcomes.
 
 ## Replay 1: Points Mall, "Write All Code Now"
 
@@ -858,34 +872,12 @@ Targeted prompt:
 This is local checker evidence, not a model live replay.
 
 - Session intake: all 79 Codex JSONL files were scanned; 46 had user/final evidence inside the frozen ten-day window, comprising 21 user tasks, 25 subagent tasks, 21 root thread IDs, 9 project paths, 840 messages, and 0 malformed files. Filtering used message timestamps rather than filename dates, so resumed older sessions were retained; inventory mode redacted personal home roots and excluded developer/tool payloads.
-- Generic permission route: `system-design` scored 36.500 from `权限管理`; `coding-discipline` scored 34.000 from `后端接口`; NexusFlow was rejected for missing project context.
-- Explicit NexusFlow route: `nexusflow-governance-workflow` scored 106.000 with `NexusFlow` and `permissionSnapshot` as both trigger and context evidence.
+- Generic permission route: `system-design` scored 36.500 from `权限管理`; `coding-discipline` scored 34.000 from `后端接口`; the former project-specific route was rejected for missing context.
+- Historical project-specific route: a stable project marker and server-issued permission snapshot once selected the project-local workflow; that workflow has since been removed from the public payload.
 - Contract gate: 16/16 deterministic positive/negative route contracts passed.
 - Context gate: 26 Skills; discovery 6212/12000 characters; root 10216/24000 Unicode characters and 20378 UTF-8 bytes; 0 errors, 0 warnings, 0 high-similarity collisions.
 - Long Goal v3 failure injection: a complete fixture passed; missing delegation contract, stale evidence, and artifact SHA-256 mismatch were rejected.
 - Ecosystem intake: 52/52 selected repositories downloaded to a temporary directory and reviewed at exact commits; no third-party source or runtime dependency was added to Guyue.
-
-At the 2026-07-10 freeze point, the fresh model replay remained `blocked_before_model` for the account reasons above. Replay 27 below supersedes that narrow status with one successful, hash-bound 2026-07-11 contract; it does not retroactively turn the other contracts into live passes.
-
-## Replay 27: Read-Only Route Audit And Meta-Question Isolation
-
-Prompt:
-
-```text
-使用当前仓库中的 $guyue。只读审查这个需求：给当前项目做一个普通权限管理页面和后端接口。请判断 NexusFlow/static-demo专属能力是否触发。不要修改文件，不要联网，不要提交。
-```
-
-- Date: 2026-07-11 (Asia/Shanghai).
-- Runtime: Codex CLI `0.144.1`, model reported as `gpt-5.6-sol`, ephemeral read-only sandbox.
-- Diagnostic finding 1: the fresh model noticed that the 16/16 deterministic gate accepted any one expected route; `requirement-analysis` was missing from a contract that expected three routes.
-- Fix 1: both deterministic evaluators now require the complete expected route set. The unchanged route failed RED before `给当前项目做一个` was added as a requirement-convergence signal.
-- Diagnostic finding 2: the model correctly rejected NexusFlow/static-demo by repository identity, but its shortened probe phrase `是否触发` bypassed the first, narrower meta-question guard and produced lexical project-route candidates.
-- Fix 2: both `是否触发` and `是否应触发` are covered by project-route negative tests. A seventeenth machine-readable contract freezes this meta-question boundary.
-- Final fresh smoke result: `pass`. The model ran one specified probe, reported `reality-auditor -> requirement-analysis -> system-design -> coding-discipline`, reported no NexusFlow/static-demo activation, and refused to infer actual project identity from route output alone.
-- Deterministic result: 17/17 contracts pass with all expected routes required; both meta-question variants exclude project workflows.
-- Forbidden side effects: none. The model made no repository writes and did not use network research, commit, push, or the full suite; the harness wrote only its requested last-message evidence under `/tmp`.
-- Hash-bound evidence: [`route-audit-live-2026-07-11.md`](../evals/evidence/route-audit-live-2026-07-11.md) and `evals/observations-2026-07-11.json`.
-- Residual boundary: this is one newly successful contract, not complete live coverage of all 17 contracts or every runtime. Codex still warned that globally enabled Skill descriptions exceeded its shared 2% discovery budget.
 
 ## Replay 28: Long Goal v4 Meta-Control Attack Review
 
@@ -943,7 +935,7 @@ Prompt:
 
 - Date: 2026-07-13 (Asia/Shanghai).
 - Baseline: only 25/54 broad prompts passed the actual deterministic router even though the previous structural evaluation was green.
-- Deterministic repair: 54/54 broad routes, 345/345 internal should-trigger cases, 208/208 adjacent should-not-trigger cases, and 48/48 external-candidate triggers pass. Near-miss failures exposed and fixed negated NexusFlow/static-demo context leakage.
+- Deterministic repair: 54/54 broad routes, 345/345 internal should-trigger cases, 208/208 adjacent should-not-trigger cases, and 48/48 external-candidate triggers pass. Near-miss failures exposed and fixed negated project/static-demo context leakage.
 - External boundary: all 12 optional dependencies retain URL and reviewed commit provenance but remain `external_candidate`; source, installation, security, and action-specific authorization gates are explicit.
 - Live result: Codex CLI `0.144.1` ran one fresh read-only canary per child Skill. All 26 event streams actually read the expected `skills/<name>/SKILL.md` and ended with the expected activation line. The receipt keeps per-run exit code, token usage, and raw-event SHA-256.
 - Evidence result: E1-E4 representative outputs failed two independent reviews, drove fixes to fact/hypothesis separation, rewrite drift, catalog fingerprinting, and blocked security receipts, then passed the third review.
@@ -1047,3 +1039,21 @@ Prompt:
 - Deterministic post-repair result: 85/85 capability routes, including primary-route order, 41/41 behavior contracts, 12/12 collaboration contracts, 416/416 internal triggers, 41/41 external candidates, and 222/222 adjacent near misses.
 - Efficiency boundary: the replay used 37,432 tokens. That is lower than Replay 38 and excluded Memory, but still loaded the full public root plus three child Skills; it proves correct staged selection for these three samples, not minimal host startup cost or arbitrary multi-turn accuracy.
 - Host boundary: Codex reported that the globally enabled Skill catalog exceeded its shared 2% discovery budget and omitted many descriptions. The repository router still selected the intended local child Skills through explicit script evidence, but Guyue cannot reduce unrelated host-wide catalog cost.
+
+## Replay 40: Explicit-Only Private Memory Write
+
+- Date: 2026-07-29 (Asia/Shanghai).
+- Runtime: Codex CLI `0.142.0`, model reported as `gpt-5.5`, ephemeral read-only sandbox.
+- Probe: the user requested an important incident retrospective but explicitly said not to save, remember, or record it in long-term memory. The prompt prohibited private memory reads, Codex Memory, and file changes.
+- Correctness result: `pass`. The model refused the private-memory write, treated the negative persistence intent as authoritative, and kept the retrospective in the current response. It correctly required a future affirmative request plus `user` or `project:<stable-project-id>` scope, verified reusable content, and no implicit cross-project exposure.
+- Isolation result: `pass`. The run read only public `SKILL.md` and repository adapter `RTK.md`; it did not read a private memory directory or modify files.
+- Efficiency result: `bounded_but_expensive`. The run used about 24,927 tokens and again reported host-wide Skill catalog warnings. This verifies one negative-write behavior in Codex, not low-cost startup, positive write-tool execution, arbitrary paraphrases, or cross-runtime compliance.
+- Deterministic companion evidence: MCP tests reject missing or negative `user_intent` before storage creation, reject ambiguous new-project scope, return exact-scope summaries by default, and require separate opt-ins for cross-project search and Markdown detail.
+
+## Replay 41: Global Default Scope Follow-Up
+
+- Date: 2026-07-29 (Asia/Shanghai).
+- Live status: `not_run`. The runtime approval layer rejected the nested Codex replay before launch because it could expose local repository context to an external service without separate authorization. No model process started and no live behavior claim is made.
+- Deterministic result: `pass`. An unqualified explicit save defaults to `user`; a current-project query ranks exact project matches before `user`; `include_user=false` restores project-only lookup; `cross_project=true` is required before other project scopes participate; every path remains summary-only unless detail is explicitly requested.
+- Routing result: explicit “请记住” persistence intent outranks development words inside the lesson, while negative save intent still rejects `memory-bank`.
+- Supersession boundary: this V2 contract supersedes Replay 40's exact-scope retrieval companion claim. Replay 40's live refusal of a negative write remains valid.

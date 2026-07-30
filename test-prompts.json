@@ -87,7 +87,7 @@
   {
     "name": "Trigger Memory Bank",
     "prompt": "把我们今天踩的关于 React Hydration 的坑记下来。",
-    "expected_behavior": "Should trigger `memory-bank`. Agent must store the verified lesson under `~/.guyue/knowledge/memory/` or the configured `GUYUE_HOME`, not mutate the curated public index. The schema-v2 index and Markdown detail must include Symptom, Root Cause, Solution, Prevention, provenance, scope, evidence, confidence, lifecycle status, supersedes, and review_after; secrets and personal paths must be rejected. Due records become `needs_review` instead of being silently archived. It should emit one takeover trace and must not claim a historical match without an indexed record."
+    "expected_behavior": "Should trigger `memory-bank`. The explicit request must be passed as `user_intent`; an unqualified save defaults to `user`, while an explicitly project-only request must use `project:<stable-project-id>`. It must store under `~/.guyue/knowledge/memory/` or the configured `GUYUE_HOME`, not mutate the curated public index. Project lookup ranks the current project before `user`; other projects and Markdown detail require explicit opt-ins. The schema-v2 index and detail must preserve evidence and lifecycle metadata; secrets and personal paths must be rejected. It should emit one takeover trace and must not claim a historical match without an indexed record."
   },
   {
     "name": "Trigger Product Sense",
@@ -263,11 +263,6 @@
     "name": "Trigger Deployment Reality Auditor",
     "prompt": "帮我确认这次部署真的用上了新的 MODEL_NAME 和配置，不要重新部署，只做只读证据审查。",
     "expected_behavior": "Should trigger `reality-auditor` deployment reality mode. Agent must trace local config through build/deploy command, packaged artifact or metadata, remote environment/process, and live health/API evidence when available. It must distinguish configured locally, packaged, accepted remotely, and observable at runtime, and it must not deploy, restart, mutate cloud state, or rotate secrets."
-  },
-  {
-    "name": "Trigger NexusFlow Governance Workflow",
-    "prompt": "在 NexusFlow 里继续推进权限管理，牢记后端控制权限，前端控制体现，完成后用中文 conventional commit。",
-    "expected_behavior": "Should trigger `nexusflow-governance-workflow`. Agent must read `AGENTS.md`, `RTK.md`, `docs/plans/README.md`, inspect `git status`, keep backend authorization as the truth source, use frontend permission state only for UX, run targeted backend/frontend validation, and stage only task-related files before any Chinese conventional commit."
   },
   {
     "name": "Trigger Static Demo Hardening",

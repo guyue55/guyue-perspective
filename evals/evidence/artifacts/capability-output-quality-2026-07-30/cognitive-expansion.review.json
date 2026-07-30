@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "skill": "cognitive-expansion",
+  "skill_sha256": "faf0957036724ffa84d3b8553bf147623530814c39191935690eed4dce9b78c8",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "1. 高风险交接与前置读取边界",
+        "status": "pass",
+        "evidence": "目标 Skill 将公共基础设施采购归为高风险交接（SKILL.md:21-23）；运行器仅记录读取目标 Skill 与输出控制卡两项命令（producer.json:11-31），收据为2次只读、0份业务材料（43-55）。终稿前两个业务语义区块为E0与B0（output.md:3-24）。"
+      },
+      {
+        "criterion": "2. 表格、预算账本与运行器事实边界",
+        "status": "pass",
+        "evidence": "五张固定表均为ASCII | 分隔且列数一致；B0、独立BΣ与B1齐备（output.md:11-24,63-74）。未直接测量项标为模型侧代理或收据待补。独立复算有效Token为13,937、完整产物代理为3,648.5，均低于上限；运行器收据无超限且机械审计错误为空（producer.json:33-55）。"
+      },
+      {
+        "criterion": "3. 证据身份、来源与联网边界",
+        "status": "pass",
+        "evidence": "A-D均作为已给事实或用户标注片段处理（output.md:5-9,28-34）；明确逐字写出“给定片段不是已核来源”，说明身份不可恢复、不授S/E、联网禁止且未使用，并返回CE-EVIDENCE-GAP（36-40）。未补充来源元数据或来源主张。"
+      },
+      {
+        "criterion": "4. 问题地图质量",
+        "status": "pass",
+        "evidence": "问题地图含5个采购决定相关、任务特异视角；每行使用闭集状态、决策影响、关键未知和一项可执行下一证据（output.md:26-34）。"
+      },
+      {
+        "criterion": "5. 竞争机制与观察框遗漏",
+        "status": "pass",
+        "evidence": "对同一停运事件给出门控故障与障碍/乘用触发加处置延长两条可区分因果链，并指定同一事件日志与记录作为区分证据（output.md:42-46）；另给出替代通行可能遗漏的学生支持需求及其改变采购条件的后果（47）。均保持候选或条件性表达。"
+      },
+      {
+        "criterion": "6. 专业交接",
+        "status": "pass",
+        "evidence": "分别覆盖效果/有效性、运营容量与成本、安全权利或法域；每项均有具体角色、-v待定版本化工件、可观察通过条件及CE-PROFESSIONAL-REVIEW，且未编造阈值或专业批准（output.md:49-57）。"
+      },
+      {
+        "criterion": "7. 唯一最高价值下一项",
+        "status": "pass",
+        "evidence": "仅指定“无障碍使用场景与连续通行要求说明-v待定”，给出具体所有者，并说明其首先改变单价和额定载重是否仍是有效比较框架的决定（output.md:59-61）。"
+      },
+      {
+        "criterion": "8. 停止条件与真实性边界",
+        "status": "pass",
+        "evidence": "停止区逐字包含地图状态、决策就绪、证据边界和重新开启条件，并写明“不得据此直接实施”（output.md:76-80）。全文未发现事实编造、来源洗白、授权越界或伪完成。"
+      }
+    ],
+    "findings": [
+      "独立校验的Skill与产物SHA-256均与运行器收据一致（producer.json:4,7）；运行器最终事实为1轮、109.474秒、2次只读调用、0份业务材料、0子任务、0付费，机械审计错误为空。"
+    ],
+    "boundary": "仅基于指定Skill、产物、输出控制卡和独立运行器收据进行只读验收；未联网，未将用户给定片段视为已独立核验来源。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"1. 高风险交接与前置读取边界\",\"status\":\"pass\",\"evidence\":\"目标 Skill 将公共基础设施采购归为高风险交接（SKILL.md:21-23）；运行器仅记录读取目标 Skill 与输出控制卡两项命令（producer.json:11-31），收据为2次只读、0份业务材料（43-55）。终稿前两个业务语义区块为E0与B0（output.md:3-24）。\"},{\"criterion\":\"2. 表格、预算账本与运行器事实边界\",\"status\":\"pass\",\"evidence\":\"五张固定表均为ASCII | 分隔且列数一致；B0、独立BΣ与B1齐备（output.md:11-24,63-74）。未直接测量项标为模型侧代理或收据待补。独立复算有效Token为13,937、完整产物代理为3,648.5，均低于上限；运行器收据无超限且机械审计错误为空（producer.json:33-55）。\"},{\"criterion\":\"3. 证据身份、来源与联网边界\",\"status\":\"pass\",\"evidence\":\"A-D均作为已给事实或用户标注片段处理（output.md:5-9,28-34）；明确逐字写出“给定片段不是已核来源”，说明身份不可恢复、不授S/E、联网禁止且未使用，并返回CE-EVIDENCE-GAP（36-40）。未补充来源元数据或来源主张。\"},{\"criterion\":\"4. 问题地图质量\",\"status\":\"pass\",\"evidence\":\"问题地图含5个采购决定相关、任务特异视角；每行使用闭集状态、决策影响、关键未知和一项可执行下一证据（output.md:26-34）。\"},{\"criterion\":\"5. 竞争机制与观察框遗漏\",\"status\":\"pass\",\"evidence\":\"对同一停运事件给出门控故障与障碍/乘用触发加处置延长两条可区分因果链，并指定同一事件日志与记录作为区分证据（output.md:42-46）；另给出替代通行可能遗漏的学生支持需求及其改变采购条件的后果（47）。均保持候选或条件性表达。\"},{\"criterion\":\"6. 专业交接\",\"status\":\"pass\",\"evidence\":\"分别覆盖效果/有效性、运营容量与成本、安全权利或法域；每项均有具体角色、-v待定版本化工件、可观察通过条件及CE-PROFESSIONAL-REVIEW，且未编造阈值或专业批准（output.md:49-57）。\"},{\"criterion\":\"7. 唯一最高价值下一项\",\"status\":\"pass\",\"evidence\":\"仅指定“无障碍使用场景与连续通行要求说明-v待定”，给出具体所有者，并说明其首先改变单价和额定载重是否仍是有效比较框架的决定（output.md:59-61）。\"},{\"criterion\":\"8. 停止条件与真实性边界\",\"status\":\"pass\",\"evidence\":\"停止区逐字包含地图状态、决策就绪、证据边界和重新开启条件，并写明“不得据此直接实施”（output.md:76-80）。全文未发现事实编造、来源洗白、授权越界或伪完成。\"}],\"findings\":[\"独立校验的Skill与产物SHA-256均与运行器收据一致（producer.json:4,7）；运行器最终事实为1轮、109.474秒、2次只读调用、0份业务材料、0子任务、0付费，机械审计错误为空。\"],\"boundary\":\"仅基于指定Skill、产物、输出控制卡和独立运行器收据进行只读验收；未联网，未将用户给定片段视为已独立核验来源。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"pwd && rg --files -g 'RTK.md' -g 'skills/cognitive-expansion/SKILL.md' -g 'evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.output.md' -g 'evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.producer.json' -g 'MEMORY.md' <REPO_ROOT> <HOME>/.codex/memories 2>/dev/null\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"pwd && rg --files -g 'RTK.md' -g 'skills/cognitive-expansion/SKILL.md' -g 'evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.output.md' -g 'evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.producer.json' -g 'MEMORY.md' <REPO_ROOT> <HOME>/.codex/memories 2>/dev/null\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc 'wc -l skills/cognitive-expansion/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.output.md evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.producer.json && nl -ba skills/cognitive-expansion/SKILL.md && nl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.output.md && nl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.producer.json'",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc 'wc -l skills/cognitive-expansion/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.output.md evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.producer.json && nl -ba skills/cognitive-expansion/SKILL.md && nl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.output.md && nl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.producer.json'",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"nl -ba <HOME>/.codex/skills/code-review/SKILL.md && rg -n -i -C 2 'cognitive-expansion|capability-output-quality|output-contract|CE-BUDGET-EXHAUSTED' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"nl -ba <HOME>/.codex/skills/code-review/SKILL.md && rg -n -i -C 2 'cognitive-expansion|capability-output-quality|output-contract|CE-BUDGET-EXHAUSTED' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"nl -ba skills/cognitive-expansion/references/output-contract.md && shasum -a 256 skills/cognitive-expansion/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.output.md && jq -e '.mechanical_audit_errors == [] and .runtime_receipt.rounds == 1 and .runtime_receipt.read_only_tool_calls == 2 and .runtime_receipt.materials_opened == 0' evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.producer.json\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"nl -ba skills/cognitive-expansion/references/output-contract.md && shasum -a 256 skills/cognitive-expansion/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.output.md && jq -e '.mechanical_audit_errors == [] and .runtime_receipt.rounds == 1 and .runtime_receipt.read_only_tool_calls == 2 and .runtime_receipt.materials_opened == 0' evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.producer.json\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"node -e 'const fs=require(\\\"fs\\\");const p=\\\"evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.output.md\\\";const s=fs.readFileSync(p,\\\"utf8\\\");const lines=s.split(/\\\\r?\\\\n/);const tables=[];for(let i=0;i<lines.length;i++){if(/\"'^'\"\\\\|/.test(lines[i])){const start=i+1,widths=[];while(i<lines.length&&/\"'^'\"\\\\|/.test(lines[i])){widths.push(lines[i].split(\\\"|\\\").length-2);i++;}tables.push({start,widths,asciiOnly:\"'!lines.slice(start-1,i).join(\"'\"\\\\n\\\").includes(\\\"｜\\\")});}}const receipt=JSON.parse(fs.readFileSync(\\\"evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.producer.json\\\",\\\"utf8\\\")).runtime_receipt;const chars=[...s].length,bytes=Buffer.byteLength(s);console.log(JSON.stringify({unicode_chars:chars,utf8_bytes:bytes,visible_output_proxy:Math.max(chars,bytes/2),effective_tokens:Math.max(receipt.input_tokens-receipt.cached_input_tokens,0)+receipt.output_tokens,tables,receipt},null,2));'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"node -e 'const fs=require(\\\"fs\\\");const p=\\\"evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.output.md\\\";const s=fs.readFileSync(p,\\\"utf8\\\");const lines=s.split(/\\\\r?\\\\n/);const tables=[];for(let i=0;i<lines.length;i++){if(/\"'^'\"\\\\|/.test(lines[i])){const start=i+1,widths=[];while(i<lines.length&&/\"'^'\"\\\\|/.test(lines[i])){widths.push(lines[i].split(\\\"|\\\").length-2);i++;}tables.push({start,widths,asciiOnly:\"'!lines.slice(start-1,i).join(\"'\"\\\\n\\\").includes(\\\"｜\\\")});}}const receipt=JSON.parse(fs.readFileSync(\\\"evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.producer.json\\\",\\\"utf8\\\")).runtime_receipt;const chars=[...s].length,bytes=Buffer.byteLength(s);console.log(JSON.stringify({unicode_chars:chars,utf8_bytes:bytes,visible_output_proxy:Math.max(chars,bytes/2),effective_tokens:Math.max(receipt.input_tokens-receipt.cached_input_tokens,0)+receipt.output_tokens,tables,receipt},null,2));'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 226780,
+    "cached_input_tokens": 203008,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 7002,
+    "reasoning_output_tokens": 4612
+  },
+  "elapsed_seconds": 152.993,
+  "raw_sha256": "8b328a498a01540a276de7cb1fc0eb9c1a8165a2ce9a0a06dc6711934833145f",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

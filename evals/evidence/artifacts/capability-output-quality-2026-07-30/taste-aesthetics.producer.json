@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "taste-aesthetics",
+  "skill_sha256": "c75a16b530c21460032b88550221360495d6a30259c32ad3dede4e16b49ec586",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/taste-aesthetics.output.md",
+  "output_sha256": "257939466421f5a35ace2df3baf828fa5717f3df61731e626f5e5a730cc908bc",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/taste-aesthetics/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/taste-aesthetics/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 43975,
+    "cached_input_tokens": 40960,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1064,
+    "reasoning_output_tokens": 320
+  },
+  "elapsed_seconds": 33.239,
+  "raw_sha256": "1721afe61039fb48bcae257a5d071a84501049e5178738770794f8a6b3e7738a",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

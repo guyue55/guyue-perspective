@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "video-extractor",
+  "skill_sha256": "c6d604bd0d966ad45bc6d24e2c9b198be9a8cef8f9ad68992239ea912a4ac0c6",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-extractor.output.md",
+  "output_sha256": "a27e412ebb16f84eb8156e90b19c7a3608e3924a2317951f009271cbe633ae07",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/video-extractor/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/video-extractor/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 43819,
+    "cached_input_tokens": 40960,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1239,
+    "reasoning_output_tokens": 623
+  },
+  "elapsed_seconds": 38.399,
+  "raw_sha256": "ff75b1a98f381e3400aa18a07565bf5c800f46acbbda01d85b78acfd15ab1514",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

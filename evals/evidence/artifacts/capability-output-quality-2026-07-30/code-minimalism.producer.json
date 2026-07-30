@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "code-minimalism",
+  "skill_sha256": "c12da2dfa3f177ac78e4f8ca3fc740b8563ba0a965dd0967a71ceb9b5d66c058",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/code-minimalism.output.md",
+  "output_sha256": "b156650df694c4d789c6dcf33b81e264ad55fe1b7619a87e9f327bf8e28a4dbc",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/code-minimalism/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/code-minimalism/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 43909,
+    "cached_input_tokens": 39424,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 567,
+    "reasoning_output_tokens": 258
+  },
+  "elapsed_seconds": 30.759,
+  "raw_sha256": "2b6a019131a0b7c9fccaf6e556088522d4d00fae7c8d69f387bcefc582443073",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

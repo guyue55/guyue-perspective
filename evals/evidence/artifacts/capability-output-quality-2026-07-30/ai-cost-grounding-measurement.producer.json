@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "ai-cost-grounding-measurement",
+  "skill_sha256": "4dd0c26d4de3fe70c0d510cfe9dd7b54edd2c436476f07e4d9f44a8f38bbba52",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-cost-grounding-measurement.output.md",
+  "output_sha256": "85eadecac2b4bd872da92c190d6330839757c2b982e1874f6f44485e48b86860",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/ai-cost-grounding-measurement/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/ai-cost-grounding-measurement/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 43991,
+    "cached_input_tokens": 40960,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1153,
+    "reasoning_output_tokens": 672
+  },
+  "elapsed_seconds": 40.219,
+  "raw_sha256": "4706ec6d2b33debbf6ed09d08db941d4b3f6cd9f4d5bef1c1fc6a0fa9db86a99",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

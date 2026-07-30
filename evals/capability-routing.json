@@ -54,7 +54,6 @@
     {"id":"permission-boundary-review","prompt_name":"Trigger Server Permission Boundary Review","expected_routes":["reality-auditor","security-gate"],"forbidden_routes":[]},
     {"id":"reality-dashboard","prompt_name":"Trigger Reality Auditor","expected_routes":["reality-auditor"],"forbidden_routes":["debugging-mindset"]},
     {"id":"reality-deployment","prompt_name":"Trigger Deployment Reality Auditor","expected_routes":["reality-auditor"],"forbidden_routes":[]},
-    {"id":"nexusflow-governance","prompt_name":"Trigger NexusFlow Governance Workflow","expected_routes":["nexusflow-governance-workflow"],"forbidden_routes":[]},
     {"id":"static-demo-hardening","prompt_name":"Trigger Static Demo Hardening","expected_routes":["static-demo-hardening"],"forbidden_routes":["frontend-expert"]},
     {"id":"ai-cost-grounding","prompt_name":"Trigger AI Cost Grounding Measurement","expected_routes":["ai-cost-grounding-measurement"],"forbidden_routes":[]},
     {"id":"boundary-product-first","prompt_name":"Route Boundary - Product Before Requirements Before Design","expected_routes":["product-sense","requirement-analysis"],"forbidden_routes":["system-design","coding-discipline"]},

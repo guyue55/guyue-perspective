@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "skill": "video-extractor",
+  "skill_sha256": "c6d604bd0d966ad45bc6d24e2c9b198be9a8cef8f9ad68992239ea912a4ac0c6",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "区分已给元数据、授权和待执行动作",
+        "status": "pass",
+        "evidence": "known_metadata 明确列出标题、时长和无字幕；authorization_basis 单列且标注 provenance:user_input；planned_assets、execution:blocked 及“不下载”约束将待执行动作与事实分开。"
+      },
+      {
+        "criterion": "覆盖媒体、字幕缺失、校验和来源字段",
+        "status": "pass",
+        "evidence": "source_media、platform_caption 分别覆盖媒体与字幕不可用；各资产均含 sha256、byte_size、verification_status；已知元数据和授权字段均含 provenance。"
+      },
+      {
+        "criterion": "不声称下载或转录已经发生",
+        "status": "pass",
+        "evidence": "明确写明“不下载、不生成文件”，source_media 为 planned_blocked/not_downloaded，所有校验和为 null，generated 为 0，且未声明已转录。"
+      }
+    ],
+    "findings": [
+      "输出实质给出了规范化提取计划和结果 schema；未扩大用户提供的元数据或授权前提，且因缺少 URL 和平台将执行保持为阻塞状态。"
+    ],
+    "boundary": "标题、时长、无字幕及作者授权均作为用户提供前提使用，未伪称外部独立核验；未执行下载、生成文件或转录。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"区分已给元数据、授权和待执行动作\",\"status\":\"pass\",\"evidence\":\"known_metadata 明确列出标题、时长和无字幕；authorization_basis 单列且标注 provenance:user_input；planned_assets、execution:blocked 及“不下载”约束将待执行动作与事实分开。\"},{\"criterion\":\"覆盖媒体、字幕缺失、校验和来源字段\",\"status\":\"pass\",\"evidence\":\"source_media、platform_caption 分别覆盖媒体与字幕不可用；各资产均含 sha256、byte_size、verification_status；已知元数据和授权字段均含 provenance。\"},{\"criterion\":\"不声称下载或转录已经发生\",\"status\":\"pass\",\"evidence\":\"明确写明“不下载、不生成文件”，source_media 为 planned_blocked/not_downloaded，所有校验和为 null，generated 为 0，且未声明已转录。\"}],\"findings\":[\"输出实质给出了规范化提取计划和结果 schema；未扩大用户提供的元数据或授权前提，且因缺少 URL 和平台将执行保持为阻塞状态。\"],\"boundary\":\"标题、时长、无字幕及作者授权均作为用户提供前提使用，未伪称外部独立核验；未执行下载、生成文件或转录。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/video-extractor/SKILL.md && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/video-extractor.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/video-extractor/SKILL.md && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/video-extractor.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"nl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/video-extractor.output.md | sed -n '1,180p'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"nl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/video-extractor.output.md | sed -n '1,180p'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 70067,
+    "cached_input_tokens": 62208,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2405,
+    "reasoning_output_tokens": 1891
+  },
+  "elapsed_seconds": 70.992,
+  "raw_sha256": "679548b80f800b3d86a207c8268d2765f5a1b9083f327845c5f118324e413694",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

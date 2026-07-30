@@ -1,6 +1,6 @@
 {
     "name": "guyue-digital-twin",
-    "version": "1.70.1",
+    "version": "1.7.2",
     "description": "Dynamic skill manifest for guyue digital twin orchestrator.",
     "routing_contract": {
         "version": 2,
@@ -337,7 +337,7 @@
                 "stages": [
                     {"id": "scope", "mode": "primary-plus-conditional", "skills": ["product-sense", "ai-website-cloner"]},
                     {"id": "design", "mode": "as-needed", "skills": ["system-design"]},
-                    {"id": "implement", "mode": "primary-plus-conditional", "skills": ["frontend-expert", "coding-discipline", "code-minimalism"]},
+                    {"id": "implement", "mode": "primary-plus-conditional", "skills": ["frontend-expert", "static-demo-hardening", "coding-discipline", "code-minimalism"]},
                     {"id": "taste", "mode": "independent", "skills": ["taste-aesthetics"]},
                     {"id": "verify", "mode": "independent", "skills": ["reality-auditor"]}
                 ],
@@ -362,33 +362,6 @@
                     {"id": "communicate", "mode": "as-needed", "skills": ["documentation"]}
                 ],
                 "completion_gate": "Recommendation evidence is current, tradeoffs are explicit, and installation is separately authorized and verified."
-            },
-            {
-                "id": "project-governance",
-                "description": "Handle context-gated governance, static-demo hardening, and measured AI evidence without leaking those assumptions into generic routes.",
-                "required_any_context": [
-                    "NexusFlow",
-                    "permissionSnapshot",
-                    "static demo",
-                    "Grounding"
-                ],
-                "trigger_intent": [
-                    "项目治理完整验收",
-                    "NexusFlow 权限治理",
-                    "静态 Demo 演示加固"
-                ],
-                "entry_skills": [
-                    "nexusflow-governance-workflow",
-                    "static-demo-hardening",
-                    "ai-cost-grounding-measurement"
-                ],
-                "stages": [
-                    {"id": "project", "mode": "primary-plus-conditional", "skills": ["nexusflow-governance-workflow", "static-demo-hardening", "ai-cost-grounding-measurement"]},
-                    {"id": "repair", "mode": "as-needed", "skills": ["debugging-mindset", "frontend-expert"]},
-                    {"id": "verify", "mode": "independent", "skills": ["reality-auditor"]},
-                    {"id": "report", "mode": "as-needed", "skills": ["documentation", "human-voice"]}
-                ],
-                "completion_gate": "Context markers, server-side boundaries, measured evidence, live behavior, and public report claims agree."
             },
             {
                 "id": "cognitive-expansion-loop",
@@ -844,17 +817,27 @@
             "trigger_intent": [
                 "remember this",
                 "recall issue",
-                "what did we learn",
+                "save this lesson",
+                "请记住",
+                "请记住这个",
                 "记下来",
                 "记住这个坑",
-                "踩的坑",
+                "保存这条经验",
                 "上次怎么修",
                 "记录这次教训"
             ],
-            "description": "Persistent memory storage and retrieval for continuous growth.",
+            "negative_intent": [
+                "do not save this",
+                "don't remember this",
+                "不要保存",
+                "不要记住",
+                "不用记录"
+            ],
+            "description": "Recall verified personal experience globally by default and enrich current-project lookup without mixing other projects; write privately only after an explicit user request to remember, save, or record.",
             "root_exposure": "explicit",
             "evidence_profile": "E3-lineage",
             "activation_policy": "model-or-explicit",
+            "routing_priority": 40,
             "live_canary_required": true
         },
         {
@@ -1235,41 +1218,6 @@
             "root_exposure": "explicit",
             "evidence_profile": "E4-audit",
             "activation_policy": "model-or-explicit",
-            "live_canary_required": true
-        },
-        {
-            "name": "nexusflow-governance-workflow",
-            "path": "skills/nexusflow-governance-workflow/SKILL.md",
-            "routing_priority": 100,
-            "required_any_context": [
-                "NexusFlow",
-                "permissionSnapshot",
-                "tenant governance",
-                "GCP import",
-                "repository marker for NexusFlow"
-            ],
-            "trigger_intent": [
-                "NexusFlow",
-                "permissionSnapshot",
-                "tenant governance",
-                "GCP import",
-                "NexusFlow 权限",
-                "NexusFlow 租户",
-                "NexusFlow 审计日志",
-                "NexusFlow 角色"
-            ],
-            "negative_intent": [
-                "generic permission management",
-                "unrelated tenant system",
-                "是否触发",
-                "是否应触发",
-                "repository without a NexusFlow marker",
-                "无 NexusFlow 标记"
-            ],
-            "description": "Project-specific NexusFlow workflow for permission, tenant governance, platform visibility, dashboard, GCP import, audit-log, and Chinese commit work.",
-            "root_exposure": "contextual",
-            "evidence_profile": "E4-audit",
-            "activation_policy": "context-gated",
             "live_canary_required": true
         },
         {

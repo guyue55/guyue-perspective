@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "skill": "sop-maker",
+  "skill_sha256": "d0aca7b00e3c7498608383c7e83d919563352b6821a967084c1c70c03bf7eadf",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "只使用给定成功事实，不补造事故细节",
+        "status": "pass",
+        "evidence": "根因、8080→8081 修改、nginx -t、reload、curl /health 均与任务前提一致；未补写健康检查地址、状态码或响应体，并明确要求执行时记录。"
+      },
+      {
+        "criterion": "包含稳定输入、步骤、检查器、失败回退和停止条件",
+        "status": "pass",
+        "evidence": "Loop Contract 列出稳定输入、循环步骤、Nginx 配置校验与健康检查检查器、失败停止条件和预算；异常处理及回退边界覆盖校验、reload、健康检查和 502 未消失等分支。"
+      },
+      {
+        "criterion": "区分本次事实与可复用规则",
+        "status": "pass",
+        "evidence": "“已验证的成功链路”和“本次故障的根因”限定本次事实；适用场景、执行前阻断、操作步骤、异常处理和 Loop Contract 以未来执行规则表述。"
+      }
+    ],
+    "findings": [
+      "输出实质沉淀为可执行 SOP，未伪称外部独立核验，未越过授权边界；reload 与配置修改均要求采用已获批准的环境方式。"
+    ],
+    "boundary": "本验收仅核对用户提供的任务前提与产物文本；未取得原始配置、命令输出或运行环境，因此不将其视为对真实事件的独立核验。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"只使用给定成功事实，不补造事故细节\",\"status\":\"pass\",\"evidence\":\"根因、8080→8081 修改、nginx -t、reload、curl /health 均与任务前提一致；未补写健康检查地址、状态码或响应体，并明确要求执行时记录。\"},{\"criterion\":\"包含稳定输入、步骤、检查器、失败回退和停止条件\",\"status\":\"pass\",\"evidence\":\"Loop Contract 列出稳定输入、循环步骤、Nginx 配置校验与健康检查检查器、失败停止条件和预算；异常处理及回退边界覆盖校验、reload、健康检查和 502 未消失等分支。\"},{\"criterion\":\"区分本次事实与可复用规则\",\"status\":\"pass\",\"evidence\":\"“已验证的成功链路”和“本次故障的根因”限定本次事实；适用场景、执行前阻断、操作步骤、异常处理和 Loop Contract 以未来执行规则表述。\"}],\"findings\":[\"输出实质沉淀为可执行 SOP，未伪称外部独立核验，未越过授权边界；reload 与配置修改均要求采用已获批准的环境方式。\"],\"boundary\":\"本验收仅核对用户提供的任务前提与产物文本；未取得原始配置、命令输出或运行环境，因此不将其视为对真实事件的独立核验。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/sop-maker/SKILL.md && sed -n '1,320p' evals/evidence/artifacts/capability-output-quality-2026-07-30/sop-maker.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/sop-maker/SKILL.md && sed -n '1,320p' evals/evidence/artifacts/capability-output-quality-2026-07-30/sop-maker.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 46448,
+    "cached_input_tokens": 40448,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1574,
+    "reasoning_output_tokens": 1141
+  },
+  "elapsed_seconds": 62.749,
+  "raw_sha256": "9d9352a627b378c43547fa3ab36b8768b462936519fc5d034433d81080437b9b",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

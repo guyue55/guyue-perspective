@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "debugging-mindset",
+  "skill_sha256": "2ad65975245c52d82394408d270ee749f9bee998c7b8f9f87eb75eb8c2d59b40",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/debugging-mindset.output.md",
+  "output_sha256": "3bbcb22204f0f377fe14b86ec53f5b880c33434e0008be3a1f1a3eefb88f0a7a",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/debugging-mindset/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/debugging-mindset/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 46671,
+    "cached_input_tokens": 40448,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3753,
+    "reasoning_output_tokens": 2778
+  },
+  "elapsed_seconds": 97.782,
+  "raw_sha256": "1f2a3e27921c53ea81c0658f69c2ea58e5f6a84569be942fb0e8c7e937c41f4a",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

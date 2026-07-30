@@ -1,0 +1,790 @@
+{
+  "schema_version": 1,
+  "evaluation_contract_sha256": "444984582352c00a4672c3288812a6a810a5479f1c0e6cf8ca644189d5d21725",
+  "evaluation_runner_sha256": "9a2ca7187b67a442055a6832809a101e88349c50e5227d8e5191f64be55c32fa",
+  "status": "pass",
+  "runtime": "codex-cli",
+  "runtime_version": "codex-cli 0.146.0-alpha.3.1",
+  "requested_model": "gpt-5.6-terra",
+  "observed_at": "2026-07-30T03:23:01.469870+00:00",
+  "passed": 26,
+  "total": 26,
+  "results": [
+    {
+      "skill": "sop-maker",
+      "skill_sha256": "d0aca7b00e3c7498608383c7e83d919563352b6821a967084c1c70c03bf7eadf",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/sop-maker.producer.json",
+      "producer_artifact_sha256": "376fb6911a0bc50d1375bd652a85ee0d3722fa2b3599ca7023ec2d271725bd43",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/sop-maker.output.md",
+      "output_sha256": "b48c96f576ec865ccd7af349e2163566e85630318ce11fa0e8873bba0e714e1a",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/sop-maker.review.json",
+      "review_artifact_sha256": "98be924eee25485de15841640f601a0cc20933606f1e46b8a9d369a3e5e06494",
+      "producer_usage": {
+        "input_tokens": 70169,
+        "cached_input_tokens": 62720,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3979,
+        "reasoning_output_tokens": 2691
+      },
+      "reviewer_usage": {
+        "input_tokens": 46448,
+        "cached_input_tokens": 40448,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1574,
+        "reasoning_output_tokens": 1141
+      },
+      "findings": [
+        "输出实质沉淀为可执行 SOP，未伪称外部独立核验，未越过授权边界；reload 与配置修改均要求采用已获批准的环境方式。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "frontend-expert",
+      "skill_sha256": "42ec190bc7aa369fdbac7ea3dfac3bef71e527fed17768ebfa4fe18ee4fb36d6",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/frontend-expert.producer.json",
+      "producer_artifact_sha256": "d1721a3d7698308309c491c9ab50fa1dbc0205fe0b707c91447abea54be1861f",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/frontend-expert.output.md",
+      "output_sha256": "81111ccccbd64080c11e504ed241e53a93cfeb4e35a4b5d1d0967afc29c47b35",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/frontend-expert.review.json",
+      "review_artifact_sha256": "87aef950465a17f37524ca76af3838c2a560afdff7de393f5461d8f890a882da",
+      "producer_usage": {
+        "input_tokens": 97615,
+        "cached_input_tokens": 84992,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5501,
+        "reasoning_output_tokens": 3552
+      },
+      "reviewer_usage": {
+        "input_tokens": 111219,
+        "cached_input_tokens": 93184,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4348,
+        "reasoning_output_tokens": 3397
+      },
+      "findings": [],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "product-sense",
+      "skill_sha256": "c5d6c45de2b07788ce2f8f864720b436f8beae13db270422020813013d37e896",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/product-sense.producer.json",
+      "producer_artifact_sha256": "f55e55df5dbff803a685d2c380a713b20c37f45e3a05d2e4236d444032d51fdb",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/product-sense.output.md",
+      "output_sha256": "963f575640fe0da65335c43b5972cbef2b00923c7b8d2c07ef51b3c551379b9e",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/product-sense.review.json",
+      "review_artifact_sha256": "5f66abccfff24a84595febfdbedc07e8a8dfa573e0679e239fd31353cd7c4780",
+      "producer_usage": {
+        "input_tokens": 72608,
+        "cached_input_tokens": 62720,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2825,
+        "reasoning_output_tokens": 1818
+      },
+      "reviewer_usage": {
+        "input_tokens": 72348,
+        "cached_input_tokens": 53504,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2300,
+        "reasoning_output_tokens": 1580
+      },
+      "findings": [
+        "交付实质回答了“值不值得做”，结论为暂不立项，且未直接设计系统。",
+        "未编造外部调研、竞品数据、财务数据或合规结论；风险与收益均以待证、未知或需验证的边界呈现。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "research-and-sourcing",
+      "skill_sha256": "a07f508f0cbfee09d358993a050a16d399426b42d263d445bee64e8c3ac26140",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/research-and-sourcing.producer.json",
+      "producer_artifact_sha256": "fd106559cbd0fe720f8a55153fc45c257f35c55daad8a0bc3aed6ed759d1b275",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/research-and-sourcing.output.md",
+      "output_sha256": "fea35748ff705de0297e376c39c50f58998cc825e327c515125ae91e50eaccdf",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/research-and-sourcing.review.json",
+      "review_artifact_sha256": "b04955dbaf222356433666447387ad7ff86c21e35f305b18d9a24d25307aa8c8",
+      "producer_usage": {
+        "input_tokens": 44860,
+        "cached_input_tokens": 40448,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1264,
+        "reasoning_output_tokens": 762
+      },
+      "reviewer_usage": {
+        "input_tokens": 96326,
+        "cached_input_tokens": 88576,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2635,
+        "reasoning_output_tokens": 1931
+      },
+      "findings": [
+        "实质回答了迁移调研任务，未编造新 API、调用链或生产状态事实。",
+        "“停服日前完成”属于基于给定停服前提的迁移建议，未伪称已执行或已独立核验。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "requirement-analysis",
+      "skill_sha256": "f371376f7a9dc96d286c74eecc2eeed4ab77a7aaf49ceb1bfc16995f4ee8aa18",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/requirement-analysis.producer.json",
+      "producer_artifact_sha256": "17fb6deb54ea75f51d5c0b9290a5def21ba1c841070e5d29b25ca68b343a163c",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/requirement-analysis.output.md",
+      "output_sha256": "230de51ce9066670ab590a74c2d18f0b91f86253e9ed198f79f01ea487a9f781",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/requirement-analysis.review.json",
+      "review_artifact_sha256": "bcc9469b2b7e61ce801c0190355683a9600476597e4d2ec39b0de9dbeec681eb",
+      "producer_usage": {
+        "input_tokens": 46307,
+        "cached_input_tokens": 40448,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 984,
+        "reasoning_output_tokens": 452
+      },
+      "reviewer_usage": {
+        "input_tokens": 47708,
+        "cached_input_tokens": 31744,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1231,
+        "reasoning_output_tokens": 727
+      },
+      "findings": [],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "system-design",
+      "skill_sha256": "7a30c697c3aec6d4d353735c6537ead91a354ff407b2c7badd4dc39ab790f6b5",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/system-design.producer.json",
+      "producer_artifact_sha256": "bbf0f3411c7a8d3732413a95efe573efce9a9adb0e4ef44da237cfb83ee1cd08",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/system-design.output.md",
+      "output_sha256": "f9c8bc939befd700c616d55ecbd87e6f656eac673d591f05355904a21e6ff0d1",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/system-design.review.json",
+      "review_artifact_sha256": "1a15a29a94b23a613bfb1cb40a631485028d5fb395ceb3bc53fbf66a304a9144",
+      "producer_usage": {
+        "input_tokens": 46192,
+        "cached_input_tokens": 40448,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2151,
+        "reasoning_output_tokens": 653
+      },
+      "reviewer_usage": {
+        "input_tokens": 47916,
+        "cached_input_tokens": 40448,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1862,
+        "reasoning_output_tokens": 1281
+      },
+      "findings": [
+        "输出实质回应了多租户只读审计日志设计需求。题设中的180天保留、租户管理员范围、平台审计员跨租户和异步导出均明确标注为题设前提或设计约束，未伪称独立核验。未发现越权实施、外部事实编造或将未知宿主能力表述为既有事实。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "coding-discipline",
+      "skill_sha256": "73d6dd778f5f55192ae40a4e38953fa04b1dc158775948b27c5283f55f9c309d",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/coding-discipline.producer.json",
+      "producer_artifact_sha256": "04410bd7d4629f97917abe6ef054ea526b150a8feb004481ad38188e33f97004",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/coding-discipline.output.md",
+      "output_sha256": "7d5b87d1e43531d764092c6294092b34950d115c02e4a2c1afe491856d716299",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/coding-discipline.review.json",
+      "review_artifact_sha256": "56c829647af120d43bda326e23b66a7ab29dff635a676c7fb55fd3124437abbd",
+      "producer_usage": {
+        "input_tokens": 46453,
+        "cached_input_tokens": 31232,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 817,
+        "reasoning_output_tokens": 434
+      },
+      "reviewer_usage": {
+        "input_tokens": 74467,
+        "cached_input_tokens": 66304,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1463,
+        "reasoning_output_tokens": 945
+      },
+      "findings": [],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "debugging-mindset",
+      "skill_sha256": "2ad65975245c52d82394408d270ee749f9bee998c7b8f9f87eb75eb8c2d59b40",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/debugging-mindset.producer.json",
+      "producer_artifact_sha256": "83892b9a927768ac990ec7b0404ee3224df5f205725995c199da978a26b2919e",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/debugging-mindset.output.md",
+      "output_sha256": "3bbcb22204f0f377fe14b86ec53f5b880c33434e0008be3a1f1a3eefb88f0a7a",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/debugging-mindset.review.json",
+      "review_artifact_sha256": "fe65d7b59f8936a22c24629ff27d05701b7b21008e5011bcbc20d05c5289c601",
+      "producer_usage": {
+        "input_tokens": 46671,
+        "cached_input_tokens": 40448,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3753,
+        "reasoning_output_tokens": 2778
+      },
+      "reviewer_usage": {
+        "input_tokens": 48050,
+        "cached_input_tokens": 31744,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1491,
+        "reasoning_output_tokens": 850
+      },
+      "findings": [
+        "实质回答了证据优先排障任务，并将题干内容标注为“用户提供前提”，未伪称已独立核验。",
+        "未编造已发生的日志、配置或部署事实；涉及实例差异、网关/WAF和具体配置项均明确标为待验证假设。",
+        "未越过授权边界：建议均为只读采集、产品侧临时限制或以证据为前提的后续动作。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "documentation",
+      "skill_sha256": "1d0bb7c649a9feabda51953d7451b91dcc64cb4fd516686bb18b4870c542de68",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.producer.json",
+      "producer_artifact_sha256": "282123951297b58a31f5c57f3f1159249a0f2a55dbf079d8169232f0cdc12e51",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md",
+      "output_sha256": "c8dbd6bfc0f1250151bd19e94f7142f1c2fddc2c4fbb1fc8ab1268c8775c268b",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.review.json",
+      "review_artifact_sha256": "a8f434774d1c17fc715331f5a5fb7d318dce50432e6a1280cc816775b3c1ae3b",
+      "producer_usage": {
+        "input_tokens": 46613,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 491,
+        "reasoning_output_tokens": 310
+      },
+      "reviewer_usage": {
+        "input_tokens": 47323,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1176,
+        "reasoning_output_tokens": 830
+      },
+      "findings": [],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "human-voice",
+      "skill_sha256": "ee4b6a44170e8cd481e19d18a842e7f9e24f974d44508d8e1d46db440e914ec3",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/human-voice.producer.json",
+      "producer_artifact_sha256": "e603b84844e39e7be7227c030eae53238319d05cbeab49c34ab2dfc361a7388f",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/human-voice.output.md",
+      "output_sha256": "7a2114244c0042ea2f7aea0232a52a477fa4c3c303afff98de4e7791df1dc515",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/human-voice.review.json",
+      "review_artifact_sha256": "bd0f544d6acab2ab23eba7cb0d23b85cfd710ce962703567ad2740396963e45d",
+      "producer_usage": {
+        "input_tokens": 68050,
+        "cached_input_tokens": 60672,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1018,
+        "reasoning_output_tokens": 600
+      },
+      "reviewer_usage": {
+        "input_tokens": 73968,
+        "cached_input_tokens": 64256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1445,
+        "reasoning_output_tokens": 878
+      },
+      "findings": [
+        "输出实质完成了人话改写和无漂移核对。",
+        "未伪称已独立核验；对安全性结论的收缩基于任务提供的验证范围，未增加外部事实。",
+        "未越过授权或证据边界。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "skill-crafting",
+      "skill_sha256": "e47f4d6fc108caaa7d5f00e9f52e6e0425414de4f100bbeda0f74bd4f438d9ba",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/skill-crafting.producer.json",
+      "producer_artifact_sha256": "33d02f1d2383859574be6af4465cdbabc5137aecc57ef855089d1b5c09a18d16",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/skill-crafting.output.md",
+      "output_sha256": "070a9c92b1b9c4b155154cb75cae17eca7c9be090e19110588d7292621c02523",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/skill-crafting.review.json",
+      "review_artifact_sha256": "34f0c0a0e583f504bf8997324f286471af1ecd10331b8e6d84c331bf5b8ad77b",
+      "producer_usage": {
+        "input_tokens": 104283,
+        "cached_input_tokens": 90112,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2905,
+        "reasoning_output_tokens": 1472
+      },
+      "reviewer_usage": {
+        "input_tokens": 47994,
+        "cached_input_tokens": 40448,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1493,
+        "reasoning_output_tokens": 1107
+      },
+      "findings": [],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "memory-bank",
+      "skill_sha256": "e135f197cd81521f889b02de15c60127399380a7ab73944ea6bb42c3135b7aee",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/memory-bank.producer.json",
+      "producer_artifact_sha256": "e1d9028b08f200b8f37a060d40adf41423d4d7b7f12f1deacff307f6cf54d641",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/memory-bank.output.md",
+      "output_sha256": "84dae86b6d8b1840112950736edfd02687c735b6cb8ed55625a0f9a2140182cd",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/memory-bank.review.json",
+      "review_artifact_sha256": "5630fc24947b3fc124b8488420b67a4c2bb065971715fedf7af6f78f2f84c29c",
+      "producer_usage": {
+        "input_tokens": 45022,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1000,
+        "reasoning_output_tokens": 626
+      },
+      "reviewer_usage": {
+        "input_tokens": 71850,
+        "cached_input_tokens": 64768,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1740,
+        "reasoning_output_tokens": 1211
+      },
+      "findings": [],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "ecosystem-scout",
+      "skill_sha256": "6725498da0c4b89b11cf2bbcaf3522289c76da43f1792292016b16eefec20718",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ecosystem-scout.producer.json",
+      "producer_artifact_sha256": "f7c4cab7c7ec72f6216c49ee4938107d799d07432288e8691219edca2942d285",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ecosystem-scout.output.md",
+      "output_sha256": "7265e214fa1d3e2cbfbff999f693b91397b96cc482ed694781b54aac18663a15",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ecosystem-scout.review.json",
+      "review_artifact_sha256": "3c29589409a2cdbc6b02ee9d3ee409018d0fdcf93c142dae321fc7b0ef869086",
+      "producer_usage": {
+        "input_tokens": 192817,
+        "cached_input_tokens": 161792,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4404,
+        "reasoning_output_tokens": 3176
+      },
+      "reviewer_usage": {
+        "input_tokens": 189152,
+        "cached_input_tokens": 165888,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4980,
+        "reasoning_output_tokens": 3782
+      },
+      "findings": [
+        "未发现伪称独立核验、扩大用户提供前提或越过授权边界的重大问题。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "ai-website-cloner",
+      "skill_sha256": "0e3aea2c261910eb2cb776f7cdb75285075ea95340d4203e07277ec14f0e38b4",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-website-cloner.producer.json",
+      "producer_artifact_sha256": "49af3b39b6d146d4d2ace731852e77acfa32ef4e1bf78deaf913503bedcba7b8",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-website-cloner.output.md",
+      "output_sha256": "81cecd45b74f62756fa864549f00d6c9cc0bb7741af26a1ad3eed724261b9108",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-website-cloner.review.json",
+      "review_artifact_sha256": "2dde94e6845d46ab1d19129c4df9f18867d2910b344541fbd027980262c86055",
+      "producer_usage": {
+        "input_tokens": 44289,
+        "cached_input_tokens": 40448,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2148,
+        "reasoning_output_tokens": 620
+      },
+      "reviewer_usage": {
+        "input_tokens": 74996,
+        "cached_input_tokens": 64768,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1697,
+        "reasoning_output_tokens": 1082
+      },
+      "findings": [],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "software-advisor",
+      "skill_sha256": "49d50cffdbdff865a7a085cc31f5f3dcc86089569f2a7d154e8be2cddf62f7f6",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/software-advisor.producer.json",
+      "producer_artifact_sha256": "b14311b440cd425a64e83c8cdb6302663f19be678c309589e8396d712823822c",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/software-advisor.output.md",
+      "output_sha256": "172ae024181c951dd5357f808cec7aee2041146713463a474955c6ee38241db8",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/software-advisor.review.json",
+      "review_artifact_sha256": "658d8b1972410e22a1a6f183ba05dae6d97edde634dd436f46ea61b5e0068f24",
+      "producer_usage": {
+        "input_tokens": 120994,
+        "cached_input_tokens": 102144,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3553,
+        "reasoning_output_tokens": 2506
+      },
+      "reviewer_usage": {
+        "input_tokens": 135337,
+        "cached_input_tokens": 122112,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2160,
+        "reasoning_output_tokens": 1007
+      },
+      "findings": [
+        "产物实质回答了从本地目录推荐开源CRM的任务，且将推荐理由限定为本地目录记录。",
+        "未发现扩大本地目录语义、编造外部事实或越过未联网授权边界的重大问题。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "taste-aesthetics",
+      "skill_sha256": "c75a16b530c21460032b88550221360495d6a30259c32ad3dede4e16b49ec586",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/taste-aesthetics.producer.json",
+      "producer_artifact_sha256": "89f2220514dd9e0d2446b7df0066db8ceb517da592b4399263fd7ccba8d91e7c",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/taste-aesthetics.output.md",
+      "output_sha256": "257939466421f5a35ace2df3baf828fa5717f3df61731e626f5e5a730cc908bc",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/taste-aesthetics.review.json",
+      "review_artifact_sha256": "fcbc4016fcb380c9940a53b3451b944d15b310b917be902ba25c26eb0c4b027b",
+      "producer_usage": {
+        "input_tokens": 43975,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1064,
+        "reasoning_output_tokens": 320
+      },
+      "reviewer_usage": {
+        "input_tokens": 71783,
+        "cached_input_tokens": 62720,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1301,
+        "reasoning_output_tokens": 778
+      },
+      "findings": [],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "code-minimalism",
+      "skill_sha256": "c12da2dfa3f177ac78e4f8ca3fc740b8563ba0a965dd0967a71ceb9b5d66c058",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/code-minimalism.producer.json",
+      "producer_artifact_sha256": "cd0239ab3036c0e42c5c3a10a81864d3c5107ba551adb8b253076f860eec53b9",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/code-minimalism.output.md",
+      "output_sha256": "b156650df694c4d789c6dcf33b81e264ad55fe1b7619a87e9f327bf8e28a4dbc",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/code-minimalism.review.json",
+      "review_artifact_sha256": "dee3f68c5ac1269b3fc446cc276253cd872ffb253e946c54a8a5786c8ab7e423",
+      "producer_usage": {
+        "input_tokens": 43909,
+        "cached_input_tokens": 39424,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 567,
+        "reasoning_output_tokens": 258
+      },
+      "reviewer_usage": {
+        "input_tokens": 86889,
+        "cached_input_tokens": 71936,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1570,
+        "reasoning_output_tokens": 986
+      },
+      "findings": [],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "book-distiller",
+      "skill_sha256": "b8dbdaf64e73aa64cb011d18b29474b9bc68b5cf723df450fe5fccda35fdf6e1",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/book-distiller.producer.json",
+      "producer_artifact_sha256": "744f10e64702d479414131c3f806daa98355469270b16569dbcf5f48f0f015d0",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/book-distiller.output.md",
+      "output_sha256": "70fe0e85e8c5fe2a23a156f6cb5a3b3b37b13023d29acc3766892213fe3ab0c6",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/book-distiller.review.json",
+      "review_artifact_sha256": "53be56a359176f869af04a40470c6b259ddb882f14779e0f35d9cc42b50fba36",
+      "producer_usage": {
+        "input_tokens": 44254,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1167,
+        "reasoning_output_tokens": 488
+      },
+      "reviewer_usage": {
+        "input_tokens": 46707,
+        "cached_input_tokens": 40448,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1343,
+        "reasoning_output_tokens": 882
+      },
+      "findings": [
+        "输出实质完成了可执行方法蒸馏。",
+        "未伪称独立核验或补造原书事实；执行化内容以“候选蒸馏”呈现，且保留适用边界。",
+        "未见越权操作或超出证据范围的事实主张。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "video-extractor",
+      "skill_sha256": "c6d604bd0d966ad45bc6d24e2c9b198be9a8cef8f9ad68992239ea912a4ac0c6",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-extractor.producer.json",
+      "producer_artifact_sha256": "e6f97df469cbe3340a5021e826fcefe9f5f6d37b9076ba0847c67c7a3993818e",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-extractor.output.md",
+      "output_sha256": "a27e412ebb16f84eb8156e90b19c7a3608e3924a2317951f009271cbe633ae07",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-extractor.review.json",
+      "review_artifact_sha256": "8412b7be217ac5a2629820a63df9f8a585c1bf0efedd04a32bc83c581396388a",
+      "producer_usage": {
+        "input_tokens": 43819,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1239,
+        "reasoning_output_tokens": 623
+      },
+      "reviewer_usage": {
+        "input_tokens": 70067,
+        "cached_input_tokens": 62208,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2405,
+        "reasoning_output_tokens": 1891
+      },
+      "findings": [
+        "输出实质给出了规范化提取计划和结果 schema；未扩大用户提供的元数据或授权前提，且因缺少 URL 和平台将执行保持为阻塞状态。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "video-creation-sop",
+      "skill_sha256": "a11c42c7ab27b71166f18749adc1147ddfd4098dd51c452746d5650085dd426d",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-creation-sop.producer.json",
+      "producer_artifact_sha256": "dc3a71a86b847b9d15acaa3719f783b6115cd47bc7db6391a0b311ab0c71c790",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-creation-sop.output.md",
+      "output_sha256": "429027156d5ad570df2dbe4f83a0e803aca269eb4df2db8f9891b78156faaf1c",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-creation-sop.review.json",
+      "review_artifact_sha256": "a4ff5c6e0eff9d91899bbbc85ea84b28453d1db11a4e7abaeb5bfa823b5fba07",
+      "producer_usage": {
+        "input_tokens": 47523,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5333,
+        "reasoning_output_tokens": 3179
+      },
+      "reviewer_usage": {
+        "input_tokens": 81525,
+        "cached_input_tokens": 67840,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1448,
+        "reasoning_output_tokens": 775
+      },
+      "findings": [
+        "输出实质提供了可审计的 30 秒规划包，同时将缺失的产品信息、画幅、文件和最终音频决策列为阻断项。未发现对用户提供前提的扩大、伪称独立核验或新增事实。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "context-compressor",
+      "skill_sha256": "537fb46eefde3f2bba229cbf19ea1350706b8327d0e1172cdefe71f82f115065",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/context-compressor.producer.json",
+      "producer_artifact_sha256": "cf664a3296cf678521c2b2aa7451fbd40db0412e07011c879aa776db462e7f26",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/context-compressor.output.md",
+      "output_sha256": "d0992c9cdea5acbfe03b070fcde850334253fd163179f8ed08a743dc9577721e",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/context-compressor.review.json",
+      "review_artifact_sha256": "db888de37fa22b4f8d5ee409cdc99881e61d7ee0e5d78536f1c1fd5e292521ac",
+      "producer_usage": {
+        "input_tokens": 46757,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2586,
+        "reasoning_output_tokens": 1581
+      },
+      "reviewer_usage": {
+        "input_tokens": 76738,
+        "cached_input_tokens": 59648,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2086,
+        "reasoning_output_tokens": 1410
+      },
+      "findings": [
+        "输出实质回答了压缩方案与节省度量任务。",
+        "未把用户题设伪称为独立核验事实，未扩大题设语义或编造具体节省数字。",
+        "未执行安装、配置或外部操作；对运行环境限制仅作条件性说明，未越权。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "security-gate",
+      "skill_sha256": "5885ab2ce9d7aba9cacbbc7b100d19b7bccb4f72e20883f11c0340c1595fe5c2",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/security-gate.producer.json",
+      "producer_artifact_sha256": "ac5919d1933f0bb40af010fa0760d72868050e03c0b29ded7a0ca4af5678c45c",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/security-gate.output.md",
+      "output_sha256": "f2e9ba72b7822898f8fcea9e6a91dfed01e43e85465b9ef12a2953ebad0d66cb",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/security-gate.review.json",
+      "review_artifact_sha256": "b7be2d4b8b20ee57f625819dad8903ef340f8b511ded033761bd6b76ce3cf0b2",
+      "producer_usage": {
+        "input_tokens": 44293,
+        "cached_input_tokens": 39424,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1048,
+        "reasoning_output_tokens": 653
+      },
+      "reviewer_usage": {
+        "input_tokens": 45036,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 923,
+        "reasoning_output_tokens": 548
+      },
+      "findings": [],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "reality-auditor",
+      "skill_sha256": "008ae59b60ed4a065c381624a313bb4647498de24eb9e24a679b0a2bd4eb6fcc",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/reality-auditor.producer.json",
+      "producer_artifact_sha256": "004ec55abf2f53c8611c90b5e51d3e18e80e33d03f4057d478b59c12a6f3c0f8",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/reality-auditor.output.md",
+      "output_sha256": "8e85f721a6ba55d67029ed39b3549e2aeb3bc42cc190427c083b6a5693eb2c38",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/reality-auditor.review.json",
+      "review_artifact_sha256": "2cd752858170615821253f11b453f24b8854d19f9318ca19848131e59f22329c",
+      "producer_usage": {
+        "input_tokens": 73087,
+        "cached_input_tokens": 63744,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1535,
+        "reasoning_output_tokens": 970
+      },
+      "reviewer_usage": {
+        "input_tokens": 69747,
+        "cached_input_tokens": 64256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1286,
+        "reasoning_output_tokens": 743
+      },
+      "findings": [
+        "输出实质回答了只读验真任务，未将前端显隐误作后端授权证明。",
+        "输出将任务提供的“无权限中间件、无部署记录”等前提表述为未见或未提供的证据缺口，未伪称独立访问真实项目、平台或生产环境。",
+        "“直接调用接口可能绕过前端限制”属于基于客户端仅显隐且缺少服务端授权证据的风险推断，未扩大为既成事实。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "static-demo-hardening",
+      "skill_sha256": "be59239db224a214af3a2dd6b5d75d2aeb91d7636af7e473bacaaa4bc7ab9109",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.producer.json",
+      "producer_artifact_sha256": "9043cfc7b35fb1e7f585ad3f9a594e13bb7e976b339bbc9431234529ed57d702",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.output.md",
+      "output_sha256": "08f981ba51d13245c0161dd201fcb3e759d8299d3e3e071f70260722afef657b",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.review.json",
+      "review_artifact_sha256": "f9b1480c9bf84214fdc6299ede0a96decb46357b8e6766184364fbd998bcb5b2",
+      "producer_usage": {
+        "input_tokens": 213564,
+        "cached_input_tokens": 198144,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5450,
+        "reasoning_output_tokens": 3898
+      },
+      "reviewer_usage": {
+        "input_tokens": 45386,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 890,
+        "reasoning_output_tokens": 483
+      },
+      "findings": [],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "ai-cost-grounding-measurement",
+      "skill_sha256": "4dd0c26d4de3fe70c0d510cfe9dd7b54edd2c436476f07e4d9f44a8f38bbba52",
+      "status": "pass",
+      "criteria_count": 3,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-cost-grounding-measurement.producer.json",
+      "producer_artifact_sha256": "b50e9cbc087366031e5843a9675ea907f68114fd1484dc6b135f683b2cc89b1f",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-cost-grounding-measurement.output.md",
+      "output_sha256": "85eadecac2b4bd872da92c190d6330839757c2b982e1874f6f44485e48b86860",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-cost-grounding-measurement.review.json",
+      "review_artifact_sha256": "2fffca43fe5843848d0e3737ef61e9497e31b59a341bacbd879982af521905cf",
+      "producer_usage": {
+        "input_tokens": 43991,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1153,
+        "reasoning_output_tokens": 672
+      },
+      "reviewer_usage": {
+        "input_tokens": 67497,
+        "cached_input_tokens": 61696,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1339,
+        "reasoning_output_tokens": 757
+      },
+      "findings": [],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    },
+    {
+      "skill": "cognitive-expansion",
+      "skill_sha256": "faf0957036724ffa84d3b8553bf147623530814c39191935690eed4dce9b78c8",
+      "status": "pass",
+      "criteria_count": 8,
+      "producer_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.producer.json",
+      "producer_artifact_sha256": "669d7080661198fa1fc5202890f86e7b439c2306fc70c169513aa14af3998065",
+      "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.output.md",
+      "output_sha256": "781a4ff128abc0093c676fcb79f117f5d6a13ccc419b719a7e5f265e40f5f39a",
+      "review_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.review.json",
+      "review_artifact_sha256": "7416553cbf8d49bd2c09c17075b37a5fe152407a87206650727a88de00464d18",
+      "producer_usage": {
+        "input_tokens": 72577,
+        "cached_input_tokens": 63744,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5104,
+        "reasoning_output_tokens": 2729
+      },
+      "reviewer_usage": {
+        "input_tokens": 226780,
+        "cached_input_tokens": 203008,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7002,
+        "reasoning_output_tokens": 4612
+      },
+      "findings": [
+        "独立校验的Skill与产物SHA-256均与运行器收据一致（producer.json:4,7）；运行器最终事实为1轮、109.474秒、2次只读调用、0份业务材料、0子任务、0付费，机械审计错误为空。"
+      ],
+      "boundary": "One synthetic read-only task and one independent review for this Skill."
+    }
+  ],
+  "claims": {
+    "all_skill_synthetic_output_quality_verified": true,
+    "real_user_value_verified": false,
+    "cross_runtime_verified": false,
+    "public_network_verified": false
+  },
+  "boundary": "Covers one realistic synthetic task per Skill with an independent review; does not prove every domain input or real-user value."
+}

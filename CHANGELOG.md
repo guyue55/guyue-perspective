@@ -1,6 +1,29 @@
 # Changelog
 
-## v1.70.1 - 2026-07-29
+## v1.7.2 - 2026-07-30
+
+Status: Candidate
+
+### Changed
+
+- Remove the company-project workflow from the public Skill payload and retain only its generic permission-governance principles in existing system design, coding and audit capabilities.
+- Add project-fingerprint scanning and regressions so company names or project-only contract fields cannot return unnoticed.
+- Distinguish user-provided task premises from independently verified facts without widening their meaning.
+- Make independent output-quality reviewers read the same synthetic task as producers.
+- Strengthen migration/verification closure, evidence-bounded work packages, candidate-memory previews, dependency-version truth, fault-boundary reasoning, fact-closed documentation, action-level ecosystem authorization and source-anchored distillation.
+
+### Verification
+
+- Codex CLI `0.146.0-alpha.3.1`, requested model `gpt-5.6-terra`: `26/26` live activations and `26/26` independently reviewed synthetic outputs.
+- Strict capability chain: `113/113` routes, `10/10` collaborations, `424/424` internal triggers, `41/41` external candidate triggers and `214/214` near misses.
+- Full release suite and exact payload lock are required before promotion from Candidate.
+
+### Boundaries
+
+- This version builds on the corrected `v1.7.1` public base; release metadata, tags and payload locks must preserve the normal SemVer lineage.
+- Codex evidence does not prove Claude activation, every runtime, arbitrary inputs, real-user value or public-network installation.
+
+## v1.7.1 - 2026-07-29
 
 Status: Released
 
@@ -19,7 +42,7 @@ Status: Released
 
 - This hotfix stabilizes the existing lint contract; adopting additional Ruff rules remains separate work.
 
-## v1.70 - 2026-07-29
+## v1.7.0 - 2026-07-29
 
 Status: Released
 
@@ -47,7 +70,7 @@ Status: Released
 - No autonomous browsing, self-modification, automatic promotion or external installation loop is enabled.
 - Model-side budget estimates remain proxies until the runner receipt is available.
 
-## v1.60 - 2026-07-21
+## v1.6.0 - 2026-07-21
 
 Status: Released
 
@@ -55,7 +78,7 @@ Status: Released
 
 - Rename the former project-bound static demo hardening Skill to the generic `static-demo-hardening` capability.
 - Replace customer/project-specific wording with anonymous static-demo surface language across routing contracts, evidence artifacts, examples, docs, and tests.
-- Promote the current public package metadata to `1.60` across the Skill manifest, release manifest, Claude marketplace metadata, README, release checklist, and payload lock.
+- Promote the current public package metadata to `1.6.0` across the Skill manifest, release manifest, Claude marketplace metadata, README, release checklist, and payload lock.
 
 ### Security
 

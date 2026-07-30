@@ -40,7 +40,7 @@ python3 scripts/check_behavior_replay.py <observations.json> --require-all
 
 Each observation records the contract ID, observed routes/actions/side effects, evidence level, reviewer, observation time, evidence path, and SHA-256. The checker verifies the referenced file and rejects stale hashes. `scripts/test_suite.sh` checks every `evals/observations-*.json` file. Human labeling remains a judgment step; the script makes that judgment auditable rather than pretending to replace it.
 
-The 2026-07-11 read-only route-audit replay is recorded in [`evals/evidence/route-audit-live-2026-07-11.md`](../evals/evidence/route-audit-live-2026-07-11.md) and bound by `evals/observations-2026-07-11.json`. The 2026-07-12 one-turn and multi-turn Long Goal Forge replays are recorded in [`evals/evidence/long-goal-forge-live-2026-07-12.md`](../evals/evidence/long-goal-forge-live-2026-07-12.md) and [`evals/evidence/long-goal-forge-multiturn-simulation-2026-07-12.md`](../evals/evidence/long-goal-forge-multiturn-simulation-2026-07-12.md), then bound by `evals/observations-2026-07-12.json`. These are partial contract observations; do not use them as `--require-all` evidence. A separate [`new-user-six-question-audit-2026-07-12.md`](../evals/evidence/new-user-six-question-audit-2026-07-12.md) checks public comprehensibility but does not replace runtime replay or package tests.
+The 2026-07-12 one-turn and multi-turn Long Goal Forge replays are recorded in [`evals/evidence/long-goal-forge-live-2026-07-12.md`](../evals/evidence/long-goal-forge-live-2026-07-12.md) and [`evals/evidence/long-goal-forge-multiturn-simulation-2026-07-12.md`](../evals/evidence/long-goal-forge-multiturn-simulation-2026-07-12.md), then bound by `evals/observations-2026-07-12.json`. These are partial contract observations; do not use them as `--require-all` evidence. A separate [`new-user-six-question-audit-2026-07-12.md`](../evals/evidence/new-user-six-question-audit-2026-07-12.md) checks public comprehensibility but does not replace runtime replay or package tests.
 
 Use the full suite before a commit:
 
@@ -60,7 +60,7 @@ The 15-stage suite also runs `python3 scripts/check_full_install.py --self-test`
 
 The routing stage also runs `python3 scripts/check_capability_chain.py --json`. Current deterministic routing, trigger, near-miss, collaboration, file-integrity, and schema defects always fail. Stale global activation receipts or incomplete all-Skill synthetic output evidence remain visible as warnings during ordinary development, with the corresponding model-activation and output-quality claims left `false`; this prevents a temporary quota or a changed global routing hash from forcing repetitive model calls merely to unblock local implementation. Release verification must run `python3 scripts/check_capability_chain.py --strict --json` (or set `GUYUE_RELEASE_STRICT=1`), where the same warnings become blocking errors. Never hand-edit or relabel a failed receipt to satisfy either mode.
 
-The current development contract covers 27 built-in Skills, 114 structural routing prompts, 66 behavior contracts, 12 collaboration contracts, 11 workflows and 222 near-miss cases. The behavior contracts declare expected routes, required actions and forbidden side effects, but deterministic evaluation executes only the route assertions: it reports required-action execution as `0/66` until separate live replay evidence exists. The receipt separately reports arbitrary-input, real-user, cross-runtime and public-network boundaries; a green deterministic development result cannot silently promote those claims or a failed high-risk live replay.
+The current development contract covers 26 built-in Skills, 113 structural routing prompts, 65 behavior contracts, 10 collaboration contracts, 10 workflows and 214 near-miss cases. The behavior contracts declare expected routes, required actions and forbidden side effects, but deterministic evaluation executes only the route assertions: it reports required-action execution as `0/65` until separate live replay evidence exists. The receipt separately reports arbitrary-input, real-user, cross-runtime and public-network boundaries; a green deterministic development result cannot silently promote those claims or a failed high-risk live replay.
 
 Both live runners accept `--model <runtime-model-id>` or `GUYUE_EVAL_MODEL`, and `--codex-bin <path>` or `GUYUE_CODEX_BIN`. The receipt records the requested model and observed runtime version. A model switch does not authorize extra retries or make old failed evidence pass.
 
@@ -106,7 +106,6 @@ The repository checkout is named `guyue-skill`, while the installed root skill i
 - video creation and short-drama stage gates;
 - context compression, context budget management, and third-party quick-install gates;
 - reality auditing;
-- NexusFlow governance workflow;
 - static demo hardening;
 - AI cost and Grounding measurement.
 
@@ -170,7 +169,7 @@ python3 scripts/run_capability_live_canaries.py \
   --fail-fast --model <runtime-model-id> --codex-bin <codex-path>
 
 python3 scripts/run_capability_output_quality.py \
-  --output evals/evidence/capability-output-quality-2026-07-13.json \
+  --output evals/evidence/capability-output-quality-2026-07-30.json \
   --model <runtime-model-id> --codex-bin <codex-path>
 ```
 
@@ -191,7 +190,7 @@ Runtime adapter changes must follow [runtime-adapters.md](runtime-adapters.md):
 
 ## Release Evidence Template
 
-Current release lineage is tracked in [release-v1.70.1.md](release-v1.70.1.md), while the reusable release gates and remaining boundaries live in [release-checklist.md](release-checklist.md). Update both before a release tag or marketplace submission.
+Current release lineage is tracked in [release-v1.7.2.md](release-v1.7.2.md), while the reusable release gates and remaining boundaries live in [release-checklist.md](release-checklist.md). Update both before a release tag or marketplace submission.
 
 Use this template when preparing a release:
 

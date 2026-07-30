@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "skill": "frontend-expert",
+  "skill_sha256": "42ec190bc7aa369fdbac7ea3dfac3bef71e527fed17768ebfa4fe18ee4fb36d6",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "遵循现有 React 组件和复用边界",
+        "status": "pass",
+        "evidence": "明确复用现有表单、按钮、token 与 toast；以 authenticate/notify 适配未知 API，并注明字段应替换为既有 Form.Field/Form.Control（第9、27-31、96行）。"
+      },
+      {
+        "criterion": "覆盖可访问性、响应式、加载与错误状态",
+        "status": "pass",
+        "evidence": "包含语义 form、label、键盘提交、焦点回退、role=alert、focus-visible、aria-busy；pending 禁用与“登录中”状态；网络、限流和认证错误；以及窄视口尺寸约束与 320/375/768px 验收项（第5-8、51-53、84-133、163-220行）。"
+      },
+      {
+        "criterion": "不把前端隐藏当作后端安全控制",
+        "status": "pass",
+        "evidence": "统一认证失败文案且不透传后端原文；明确要求后端同时消除响应、状态码与时序泄露，并说明前端统一文案不是完整安全边界（第139-159、221-222行）。"
+      },
+      {
+        "criterion": "实质回答任务",
+        "status": "pass",
+        "evidence": "给出可接入现有 React 体系的组件、认证适配层、样式和验收要点，直接覆盖登录失败场景。"
+      },
+      {
+        "criterion": "真实性与证据边界",
+        "status": "pass",
+        "evidence": "未把任务前提伪称为独立外部核验；登录接口路径明确为占位，未新增未经说明的项目接口事实。"
+      },
+      {
+        "criterion": "授权边界",
+        "status": "pass",
+        "evidence": "仅输出方案与关键代码片段，未修改仓库或执行外部操作。"
+      }
+    ],
+    "findings": [],
+    "boundary": "仅依据用户提供的任务前提、指定技能说明与指定产物核验；未将未提供的真实项目接口或后端行为视为已独立验证。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"遵循现有 React 组件和复用边界\",\"status\":\"pass\",\"evidence\":\"明确复用现有表单、按钮、token 与 toast；以 authenticate/notify 适配未知 API，并注明字段应替换为既有 Form.Field/Form.Control（第9、27-31、96行）。\"},{\"criterion\":\"覆盖可访问性、响应式、加载与错误状态\",\"status\":\"pass\",\"evidence\":\"包含语义 form、label、键盘提交、焦点回退、role=alert、focus-visible、aria-busy；pending 禁用与“登录中”状态；网络、限流和认证错误；以及窄视口尺寸约束与 320/375/768px 验收项（第5-8、51-53、84-133、163-220行）。\"},{\"criterion\":\"不把前端隐藏当作后端安全控制\",\"status\":\"pass\",\"evidence\":\"统一认证失败文案且不透传后端原文；明确要求后端同时消除响应、状态码与时序泄露，并说明前端统一文案不是完整安全边界（第139-159、221-222行）。\"},{\"criterion\":\"实质回答任务\",\"status\":\"pass\",\"evidence\":\"给出可接入现有 React 体系的组件、认证适配层、样式和验收要点，直接覆盖登录失败场景。\"},{\"criterion\":\"真实性与证据边界\",\"status\":\"pass\",\"evidence\":\"未把任务前提伪称为独立外部核验；登录接口路径明确为占位，未新增未经说明的项目接口事实。\"},{\"criterion\":\"授权边界\",\"status\":\"pass\",\"evidence\":\"仅输出方案与关键代码片段，未修改仓库或执行外部操作。\"}],\"findings\":[],\"boundary\":\"仅依据用户提供的任务前提、指定技能说明与指定产物核验；未将未提供的真实项目接口或后端行为视为已独立验证。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"pwd && rg -n -i -C 2 'frontend-expert|capability-output-quality|验收|output-quality' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"pwd && rg -n -i -C 2 'frontend-expert|capability-output-quality|验收|output-quality' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"wc -l skills/frontend-expert/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/frontend-expert.output.md && sed -n '1,260p' skills/frontend-expert/SKILL.md && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/frontend-expert.output.md && sed -n '2678,2784p' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"wc -l skills/frontend-expert/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/frontend-expert.output.md && sed -n '1,260p' skills/frontend-expert/SKILL.md && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/frontend-expert.output.md && sed -n '2678,2784p' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"nl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/frontend-expert.output.md | sed -n '1,240p' && nl -ba <HOME>/.codex/memories/MEMORY.md | sed -n '2678,2691p'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"nl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/frontend-expert.output.md | sed -n '1,240p' && nl -ba <HOME>/.codex/memories/MEMORY.md | sed -n '2678,2691p'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 111219,
+    "cached_input_tokens": 93184,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 4348,
+    "reasoning_output_tokens": 3397
+  },
+  "elapsed_seconds": 118.258,
+  "raw_sha256": "e4df4dd976ec9f4daef57ef6c97295d707b4c9d25ed6a4109431e06016906bff",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

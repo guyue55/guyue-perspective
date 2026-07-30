@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "skill": "human-voice",
+  "skill_sha256": "ee4b6a44170e8cd481e19d18a842e7f9e24f974d44508d8e1d46db440e914ec3",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/human-voice.output.md",
+  "output_sha256": "7a2114244c0042ea2f7aea0232a52a477fa4c3c303afff98de4e7791df1dc515",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"pwd && rg --files -g 'SKILL.md' -g 'RTK.md' -g 'AGENTS.md' | rg '(\"'^|/)skills/human-voice/SKILL'\"\\\\.md\"'$|(''^|/)RTK'\"\\\\.md\"'$|(''^|/)AGENTS'\"\\\\.md\"'$'\"'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"pwd && rg --files -g 'SKILL.md' -g 'RTK.md' -g 'AGENTS.md' | rg '(\"'^|/)skills/human-voice/SKILL'\"\\\\.md\"'$|(''^|/)RTK'\"\\\\.md\"'$|(''^|/)AGENTS'\"\\\\.md\"'$'\"'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/human-voice/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/human-voice/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 68050,
+    "cached_input_tokens": 60672,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1018,
+    "reasoning_output_tokens": 600
+  },
+  "elapsed_seconds": 36.127,
+  "raw_sha256": "ffdfd6f730516f30d76b5803c89c33c2da93e1730a68d398af5433d31bd3bdf7",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

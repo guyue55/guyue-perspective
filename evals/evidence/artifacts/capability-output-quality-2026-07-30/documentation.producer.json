@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "documentation",
+  "skill_sha256": "1d0bb7c649a9feabda51953d7451b91dcc64cb4fd516686bb18b4870c542de68",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md",
+  "output_sha256": "c8dbd6bfc0f1250151bd19e94f7142f1c2fddc2c4fbb1fc8ab1268c8775c268b",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/documentation/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/documentation/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 46613,
+    "cached_input_tokens": 40960,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 491,
+    "reasoning_output_tokens": 310
+  },
+  "elapsed_seconds": 25.974,
+  "raw_sha256": "b6ed06cd7560313765f87b56ff72f7ddd516cbb690bad7b0304ca926d341a98d",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "book-distiller",
+  "skill_sha256": "b8dbdaf64e73aa64cb011d18b29474b9bc68b5cf723df450fe5fccda35fdf6e1",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/book-distiller.output.md",
+  "output_sha256": "70fe0e85e8c5fe2a23a156f6cb5a3b3b37b13023d29acc3766892213fe3ab0c6",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/book-distiller/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/book-distiller/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 44254,
+    "cached_input_tokens": 40960,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1167,
+    "reasoning_output_tokens": 488
+  },
+  "elapsed_seconds": 39.172,
+  "raw_sha256": "c5ab87db4494044e8ecc237d6477de0ad0d10da30e33d4a6f64388556180efa9",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

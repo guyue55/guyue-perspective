@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "skill": "product-sense",
+  "skill_sha256": "c5d6c45de2b07788ce2f8f864720b436f8beae13db270422020813013d37e896",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "分开事实、假设、决定与未知",
+        "status": "pass",
+        "evidence": "交付明确使用“已确认事实、待证假设、决定/建议、未知”四个独立章节；题设前提均标注“来源：本题”，未伪称外部核验。"
+      },
+      {
+        "criterion": "质疑手段但保留真实业务目标",
+        "status": "pass",
+        "evidence": "明确反对直接立项“五级分销”，但保留“提升复购”目标，并提出先验证单层复购激励和更简单积分留存方案。"
+      },
+      {
+        "criterion": "给最小实验和可推翻条件",
+        "status": "pass",
+        "evidence": "提出不开发系统、短期单层激励与未激励对照组的最小实验，并列出复购问题证实、净增量利润、多层额外收益证据及书面合规结论等可推翻条件。"
+      }
+    ],
+    "findings": [
+      "交付实质回答了“值不值得做”，结论为暂不立项，且未直接设计系统。",
+      "未编造外部调研、竞品数据、财务数据或合规结论；风险与收益均以待证、未知或需验证的边界呈现。"
+    ],
+    "boundary": "本验收仅核对交付文本与题设提供前提；“竞品都有”“提升复购”等被正确标为本题来源，未视为外部独立核验事实。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"分开事实、假设、决定与未知\",\"status\":\"pass\",\"evidence\":\"交付明确使用“已确认事实、待证假设、决定/建议、未知”四个独立章节；题设前提均标注“来源：本题”，未伪称外部核验。\"},{\"criterion\":\"质疑手段但保留真实业务目标\",\"status\":\"pass\",\"evidence\":\"明确反对直接立项“五级分销”，但保留“提升复购”目标，并提出先验证单层复购激励和更简单积分留存方案。\"},{\"criterion\":\"给最小实验和可推翻条件\",\"status\":\"pass\",\"evidence\":\"提出不开发系统、短期单层激励与未激励对照组的最小实验，并列出复购问题证实、净增量利润、多层额外收益证据及书面合规结论等可推翻条件。\"}],\"findings\":[\"交付实质回答了“值不值得做”，结论为暂不立项，且未直接设计系统。\",\"未编造外部调研、竞品数据、财务数据或合规结论；风险与收益均以待证、未知或需验证的边界呈现。\"],\"boundary\":\"本验收仅核对交付文本与题设提供前提；“竞品都有”“提升复购”等被正确标为本题来源，未视为外部独立核验事实。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"pwd && rg --files -g 'RTK.md' -g 'SKILL.md' -g 'product-sense.output.md' -g 'AGENTS.md' | rg '(\"'^RTK'\"\\\\.md\"'$|''^AGENTS'\"\\\\.md\"'$|skills/product-sense/SKILL'\"\\\\.md\"'$|evals/evidence/artifacts/capability-output-quality-2026-07-30/product-sense'\"\\\\.output\\\\.md\"'$|''^'\"\\\\.codex/skills/code-review/SKILL\\\\.md\"'$)'\"'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"pwd && rg --files -g 'RTK.md' -g 'SKILL.md' -g 'product-sense.output.md' -g 'AGENTS.md' | rg '(\"'^RTK'\"\\\\.md\"'$|''^AGENTS'\"\\\\.md\"'$|skills/product-sense/SKILL'\"\\\\.md\"'$|evals/evidence/artifacts/capability-output-quality-2026-07-30/product-sense'\"\\\\.output\\\\.md\"'$|''^'\"\\\\.codex/skills/code-review/SKILL\\\\.md\"'$)'\"'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' RTK.md && sed -n '1,260p' skills/product-sense/SKILL.md && sed -n '1,320p' evals/evidence/artifacts/capability-output-quality-2026-07-30/product-sense.output.md && sed -n '1,260p' <HOME>/.codex/skills/code-review/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' RTK.md && sed -n '1,260p' skills/product-sense/SKILL.md && sed -n '1,320p' evals/evidence/artifacts/capability-output-quality-2026-07-30/product-sense.output.md && sed -n '1,260p' <HOME>/.codex/skills/code-review/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 72348,
+    "cached_input_tokens": 53504,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2300,
+    "reasoning_output_tokens": 1580
+  },
+  "elapsed_seconds": 77.026,
+  "raw_sha256": "e831eed51b50d8296dcb1133a923ac68a666787986bfb57f01a8978ca9a48e26",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

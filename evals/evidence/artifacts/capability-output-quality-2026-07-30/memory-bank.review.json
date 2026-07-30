@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "skill": "memory-bank",
+  "skill_sha256": "e135f197cd81521f889b02de15c60127399380a7ab73944ea6bb42c3135b7aee",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "区分长期决定与临时上下文",
+        "status": "pass",
+        "evidence": "产物明确标注为“候选记忆”，将规则标为项目长期团队规则，并将未提供的事故背景标为“不适用／未提供”（产物第1、7、9-10、13行）。"
+      },
+      {
+        "criterion": "包含来源、作用域、状态和失效条件",
+        "status": "pass",
+        "evidence": "包含 scope、status、provenance、evidence、review_after 和失效条件（产物第4-8、14-15行），符合 Skill 对候选预览保留这些元数据的要求（SKILL 第44行）。"
+      },
+      {
+        "criterion": "不记录秘密、个人路径或未经确认推断",
+        "status": "pass",
+        "evidence": "未包含秘密或个人绝对路径；“团队确认”明确限定为本轮用户提供前提且注明未独立核验，未伪称外部验证（产物第6-8行）。"
+      }
+    ],
+    "findings": [],
+    "boundary": "该结论仅核验候选输出是否忠实使用本次任务提供的“团队确认”前提；未将其视为外部独立核验，也未发现写入文件或伪造已落盘记录。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"区分长期决定与临时上下文\",\"status\":\"pass\",\"evidence\":\"产物明确标注为“候选记忆”，将规则标为项目长期团队规则，并将未提供的事故背景标为“不适用／未提供”（产物第1、7、9-10、13行）。\"},{\"criterion\":\"包含来源、作用域、状态和失效条件\",\"status\":\"pass\",\"evidence\":\"包含 scope、status、provenance、evidence、review_after 和失效条件（产物第4-8、14-15行），符合 Skill 对候选预览保留这些元数据的要求（SKILL 第44行）。\"},{\"criterion\":\"不记录秘密、个人路径或未经确认推断\",\"status\":\"pass\",\"evidence\":\"未包含秘密或个人绝对路径；“团队确认”明确限定为本轮用户提供前提且注明未独立核验，未伪称外部验证（产物第6-8行）。\"}],\"findings\":[],\"boundary\":\"该结论仅核验候选输出是否忠实使用本次任务提供的“团队确认”前提；未将其视为外部独立核验，也未发现写入文件或伪造已落盘记录。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/memory-bank/SKILL.md && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/memory-bank.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/memory-bank/SKILL.md && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/memory-bank.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"nl -ba skills/memory-bank/SKILL.md | sed -n '31,68p'\nnl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/memory-bank.output.md | sed -n '1,40p'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"nl -ba skills/memory-bank/SKILL.md | sed -n '31,68p'\nnl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/memory-bank.output.md | sed -n '1,40p'\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 71850,
+    "cached_input_tokens": 64768,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1740,
+    "reasoning_output_tokens": 1211
+  },
+  "elapsed_seconds": 46.404,
+  "raw_sha256": "e44da8cf2043cb6cb8f271088e4879ba109cb0ad8d1d6b1ac9a257aee928740c",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "skill": "skill-crafting",
+  "skill_sha256": "e47f4d6fc108caaa7d5f00e9f52e6e0425414de4f100bbeda0f74bd4f438d9ba",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/skill-crafting.output.md",
+  "output_sha256": "070a9c92b1b9c4b155154cb75cae17eca7c9be090e19110588d7292621c02523",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/skill-crafting/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/skill-crafting/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files -g 'SKILL.md' skills | rg -i '(test|debug|build|ci|fix|failure)' | head -80 && rg --files | rg -i '(\"'^|/)(manifest|skill.*index|index.*skill|catalog).*(json|ya?ml|md)$'\"' | head -60\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg --files -g 'SKILL.md' skills | rg -i '(test|debug|build|ci|fix|failure)' | head -80 && rg --files | rg -i '(\"'^|/)(manifest|skill.*index|index.*skill|catalog).*(json|ya?ml|md)$'\"' | head -60\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/debugging-mindset/SKILL.md && printf '\\\\n--- coding discipline ---\\\\n' && sed -n '1,220p' skills/coding-discipline/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/debugging-mindset/SKILL.md && printf '\\\\n--- coding discipline ---\\\\n' && sed -n '1,220p' skills/coding-discipline/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 104283,
+    "cached_input_tokens": 90112,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2905,
+    "reasoning_output_tokens": 1472
+  },
+  "elapsed_seconds": 69.713,
+  "raw_sha256": "553090b189616837a6c1ab4aed6b9e07a9b29f42185f5b7a7582f14d8593bb86",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

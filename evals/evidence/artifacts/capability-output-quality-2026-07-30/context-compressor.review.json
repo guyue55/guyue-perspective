@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "skill": "context-compressor",
+  "skill_sha256": "537fb46eefde3f2bba229cbf19ea1350706b8327d0e1172cdefe71f82f115065",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "诊断主要 token 浪费来源",
+        "status": "pass",
+        "evidence": "输出第5-11行将2,000行日志、26个Skill全文、80个MCP schema明确列为用户提供且未Token实测的基线，并分别给出压缩处方。"
+      },
+      {
+        "criterion": "采用按需读取、摘要和工具收敛而非丢失关键证据",
+        "status": "pass",
+        "evidence": "第9-11行采用日志窗口、按需激活Skill、搜索工具到执行工具两段式；第15-27行保留原始文件、行号、Skill路径及schema版本/哈希，并明确摘要不替代事实源。"
+      },
+      {
+        "criterion": "节省量区分实测与估算并给停止条件",
+        "status": "pass",
+        "evidence": "第29-51行规定使用实际模型tokenizer或API usage作对照测量，未复算时标为预估；第53-58行规定质量验收、连续两轮边际节省低于预设阈值即停止，未实测不得承诺比例。"
+      }
+    ],
+    "findings": [
+      "输出实质回答了压缩方案与节省度量任务。",
+      "未把用户题设伪称为独立核验事实，未扩大题设语义或编造具体节省数字。",
+      "未执行安装、配置或外部操作；对运行环境限制仅作条件性说明，未越权。"
+    ],
+    "boundary": "题设中的加载规模被正确标注为用户提供、尚未实测；结论仅验收输出内容与给定Skill要求的一致性，不声称独立取得原始日志、Skill全集或MCP schema。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"诊断主要 token 浪费来源\",\"status\":\"pass\",\"evidence\":\"输出第5-11行将2,000行日志、26个Skill全文、80个MCP schema明确列为用户提供且未Token实测的基线，并分别给出压缩处方。\"},{\"criterion\":\"采用按需读取、摘要和工具收敛而非丢失关键证据\",\"status\":\"pass\",\"evidence\":\"第9-11行采用日志窗口、按需激活Skill、搜索工具到执行工具两段式；第15-27行保留原始文件、行号、Skill路径及schema版本/哈希，并明确摘要不替代事实源。\"},{\"criterion\":\"节省量区分实测与估算并给停止条件\",\"status\":\"pass\",\"evidence\":\"第29-51行规定使用实际模型tokenizer或API usage作对照测量，未复算时标为预估；第53-58行规定质量验收、连续两轮边际节省低于预设阈值即停止，未实测不得承诺比例。\"}],\"findings\":[\"输出实质回答了压缩方案与节省度量任务。\",\"未把用户题设伪称为独立核验事实，未扩大题设语义或编造具体节省数字。\",\"未执行安装、配置或外部操作；对运行环境限制仅作条件性说明，未越权。\"],\"boundary\":\"题设中的加载规模被正确标注为用户提供、尚未实测；结论仅验收输出内容与给定Skill要求的一致性，不声称独立取得原始日志、Skill全集或MCP schema。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/context-compressor/SKILL.md && rg -n -i -C 2 'context-compressor|capability-output-quality|只读验收|证据边界' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/context-compressor/SKILL.md && rg -n -i -C 2 'context-compressor|capability-output-quality|只读验收|证据边界' <HOME>/.codex/memories/MEMORY.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '2728,2740p;2787,2798p' <HOME>/.codex/memories/MEMORY.md\nwc -l evals/evidence/artifacts/capability-output-quality-2026-07-30/context-compressor.output.md\nnl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/context-compressor.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '2728,2740p;2787,2798p' <HOME>/.codex/memories/MEMORY.md\nwc -l evals/evidence/artifacts/capability-output-quality-2026-07-30/context-compressor.output.md\nnl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/context-compressor.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 76738,
+    "cached_input_tokens": 59648,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2086,
+    "reasoning_output_tokens": 1410
+  },
+  "elapsed_seconds": 56.809,
+  "raw_sha256": "981f030e13f2d000bff4b71178cd601d9a8c700c507ecee0cd8691c8778fb012",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

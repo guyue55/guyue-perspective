@@ -113,7 +113,7 @@ python3 scripts/try_guyue.py --json
 
 - README 首屏现在按“定位 -> 安全边界 -> GIF -> 30 秒命令 -> 真实输出 -> 能力解释”展开。
 - 示例输出明确区分 `deterministic_local_proof`、`runtime_activation_verified` 和 `model_behavior_verified`。
-- Showcase 展示普通权限需求与带 NexusFlow 项目标记的差异，证明项目能力不会因泛关键词误触。
+- Showcase 展示普通权限需求与带稳定场景标记的差异，证明上下文型能力不会因泛关键词误触。
 - VHS tape 直接运行验货脚本；内置 GIF 渲染器让没有 VHS 的环境也能复现同一叙事。
 - 演示校验不再只看文件存在或 GIF 头，而会拒绝尺寸错误、缺帧、稀疏画面和重复帧。
 

@@ -24,6 +24,7 @@ description: Evidence-first diagnosis for active bugs, exceptions, production er
 4. **假设-验证闭环 (Hypothesis-Driven Verification)**
    - 根据现象提出几个可能的原因（Hypothesis）。
    - 针对每个原因，设计一个最小的验证动作（如：加一行打印、打个断点、发一个包含特定 `Authorization` Header 和复现 Payload 的 cURL 请求），根据结果逐一排除。
+   - 严格分开“故障边界已定位”和“具体根因已证明”：例如代理返回 413 且应用未收到请求，可以收敛到应用前边界，但未读取生效配置和对应错误日志前，仍不能断言具体 directive、Ingress annotation 或 Controller 配置；每个剩余机制都要写明独立判定证据。
 5. **治本重于治标 (Fix the Root Cause, Not the Symptom)**
    - 绝不接受通过“加个 `try-catch` 把错误吞掉”或“简单加个 `if (obj != null)`”来糊弄 Bug。
    - 必须回答灵魂拷问：“为什么这里会传入 null？”、“为什么这个状态会不一致？”只有回答了这些，才能进行修复。

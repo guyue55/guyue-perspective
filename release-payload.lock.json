@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "package": "guyue-digital-twin",
-  "version": "1.70.1",
-  "release_state": "development",
-  "base_tag": "v1.70.1",
+  "version": "1.7.2",
+  "release_state": "candidate",
+  "base_tag": "v1.7.1",
   "files": [
     {
       "path": ".claude-plugin/marketplace.json",
-      "sha256": "4c34f5be146a8fd5313dafc8dcd9b433ee7f1727c8630c35e042fe53cd018856"
+      "sha256": "620797b62890124a721797d4acfcd9005f424eaf1b574460f0f7ddef42233d53"
     },
     {
       "path": "AGENTS.md",
@@ -15,7 +15,7 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "b15e1b57464670918f2b84339338bdeccf66293524c22e65dceea1fa31ea8f55"
+      "sha256": "0118eb4b4ac98e0256ba25d67376582eadce5257e35490aec6bbffe00f569f38"
     },
     {
       "path": "GUYUE_PRINCIPLES.md",
@@ -27,7 +27,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "195ee9f215936a110477d3524c440343ae8de843d388a6df6eeb78f0ec65845c"
+      "sha256": "90943898c121704e80a1cb902d48f8bf979c10cab360eec409f164585d001446"
     },
     {
       "path": "RTK.md",
@@ -35,7 +35,7 @@
     },
     {
       "path": "SKILL.md",
-      "sha256": "ab9ecd1aeeee2fc128102cd08ab15696f75bafe008e6aec0dfddad073a9b1ae6"
+      "sha256": "f7831a6bb36100e91da19b424b97460b07c933f737bac29cf48950c4a8010c55"
     },
     {
       "path": "assets/demo.gif",
@@ -47,11 +47,11 @@
     },
     {
       "path": "docs/evaluation.md",
-      "sha256": "3a2628c16dada6d44d57c0d135da693cd58fac5109b31edf4aa1fb7dc0d4aa7d"
+      "sha256": "26f7ebd7e934ac5d0c3ffba3193cad76969e81c07c4765397cd0f22042ed4ec7"
     },
     {
       "path": "docs/guyue-capability-discovery-evidence-audit-plan-2026-07-12.md",
-      "sha256": "8d5fe6597ca88c1467da8914952358df009e198355498b5d69b85cb411e5dd87"
+      "sha256": "45cebc4b7881b40c08986ac90a69ec784b12a340b3530e750fbfa40f0da43b09"
     },
     {
       "path": "docs/guyue-capability-expansion-open-source-landscape-2026-07-28.md",
@@ -63,7 +63,7 @@
     },
     {
       "path": "docs/guyue-first-run-polish-2026-07-11.md",
-      "sha256": "d2bad4982e9520d46399d34eb5bdc66ce797dfde7ea84d885bc98295ee6b9209"
+      "sha256": "8c83c5ac9494df40a8f328a39b8b49380f37e57c988af548e42cf8137a12e82d"
     },
     {
       "path": "docs/guyue-long-goal-meta-control-polish-2026-07-11.md",
@@ -71,11 +71,11 @@
     },
     {
       "path": "docs/guyue-upgrade-audit-2026-07-10.md",
-      "sha256": "ccb7f4232df8c8d381583d927bcc3de0e0e6e42776b7b4f3c495d63d91d17a88"
+      "sha256": "8090cfd487b337fe54d742f1884eb398a9aaac205fb5e3976d60fa8a9683246d"
     },
     {
       "path": "docs/installation.md",
-      "sha256": "1f6d68bf27c394523d259ba636949e2ee2248041599a943a507a6bb773a43717"
+      "sha256": "fc72e40d3f185b664eb4397bc53bc454ad9b0f8b9bc2e9615449928f9fa212d2"
     },
     {
       "path": "docs/last30days-skill-intake-2026-07-28.md",
@@ -95,19 +95,23 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "sha256": "aedef47b1b12fff1059b9e750d8eca02d6df8d80889199c974c70676a778898c"
+      "sha256": "6556fb6568c78ceb0bb356aabe7b35410bb8cc07b716f108d9fb5068b55c549a"
     },
     {
-      "path": "docs/release-v1.60.md",
-      "sha256": "446153e06e5bf6e1a7a236ce7dabbb27fec86dc5926bcc3fa16eaf18b1710860"
+      "path": "docs/release-v1.6.0.md",
+      "sha256": "11f0691f36d067943beac3b660390be2255b5e6094625129af8c3488d86def40"
     },
     {
-      "path": "docs/release-v1.70.1.md",
-      "sha256": "40d80b37ec0728cc710d4f132b2be5a9fd0e616237b78bf470110d0490719f66"
+      "path": "docs/release-v1.7.0.md",
+      "sha256": "30ac5567f7276d915de067b9ad015c03e6309b5d35a5d41ddb58245f7624c79b"
     },
     {
-      "path": "docs/release-v1.70.md",
-      "sha256": "523f82d1a5273520236d3a1bdc81d3a55f99f3758e494d7d373fc5375c9ada71"
+      "path": "docs/release-v1.7.1.md",
+      "sha256": "a08782d01e852b6c65917d2a923d0db2acaacf2d2a9ae94245025312e75968eb"
+    },
+    {
+      "path": "docs/release-v1.7.2.md",
+      "sha256": "4bd01645706fae20bc2d0d358c30908737f9f07a94f6b5539c8797adf192a866"
     },
     {
       "path": "docs/runtime-adapters.md",
@@ -115,7 +119,7 @@
     },
     {
       "path": "docs/security.md",
-      "sha256": "e8612bb96ed8140fa533514c843ba62bdaef09dd6ce81e00b9e906a99f3ab62b"
+      "sha256": "dd67f8616d43a3ffd7c5e2889fb708ad56001261fef4623e53965f417ad488ee"
     },
     {
       "path": "docs/superpowers/plans/2026-07-17-cognitive-expansion.md",
@@ -131,27 +135,27 @@
     },
     {
       "path": "evals/behavior-contracts.json",
-      "sha256": "82b642c2ef53cd02aaaafdbae0e3560e85c0b846e5da9fe19cff92f2a00ba8d6"
+      "sha256": "539a827ba6f11a9821652981b2e5fe2c8afb68b1e37fd18ab8e7c03c4d8337a6"
     },
     {
       "path": "evals/capability-collaboration.json",
-      "sha256": "7ecfc19013e75660b57a43b64b212caca2209c1823cc58f6e3eee6b0b4754d9b"
+      "sha256": "db36a4dbb76fb4b9d447627022022335a2df6493a80d295a7d61f891f85ae995"
     },
     {
       "path": "evals/capability-live-canaries.json",
-      "sha256": "487ee14b6368980486f5621e126e7b9cf710b60218eefeefaa4068e215073588"
+      "sha256": "f96171036cdfa2fa0e73b276d4c0285b08d62cb2bcbee33c7ded707c4f2d5dad"
     },
     {
       "path": "evals/capability-near-misses.json",
-      "sha256": "f25bc0578d240f60dcb53f3159fefbec98f77a22694700a63ff15d04e98bfb68"
+      "sha256": "61f534c26df3b87b455d6ad5397f5de992209a9431e2060f03493556b933c49c"
     },
     {
       "path": "evals/capability-output-quality.json",
-      "sha256": "041a1b6677945448a8a7108fa718462a8506eb77160755b1a65aa8c78ad3a780"
+      "sha256": "444984582352c00a4672c3288812a6a810a5479f1c0e6cf8ca644189d5d21725"
     },
     {
       "path": "evals/capability-routing.json",
-      "sha256": "a0a68827da894ba15d684ba224f9f19d85c62a66b2209f2bafda0b8eea255b93"
+      "sha256": "8081ea0ef41cf53a8667c6a7919e9774153bf489e135394589402c6ad2ff5ebe"
     },
     {
       "path": "evals/evidence/aesthetic-review-2026-07-02.md",
@@ -166,448 +170,432 @@
       "sha256": "f513b6a5b6905c7a5fabe3fb6fb34aacdbe3c3c9ea039fd919344a2527f18371"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/ai-cost-grounding-measurement.json",
-      "sha256": "3b4340d7b9259853a3c5b4bb3c22e6c3db693b2d60c269ad8a828943c8936b85"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/ai-cost-grounding-measurement.json",
+      "sha256": "3c52075372fc81e78bfdddec063e9e5e03f5f5616527c7570a10a8d9b07ed625"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/ai-website-cloner.json",
-      "sha256": "ba460cb47eae3d4652aad3d30937ec9becf32391ce6360440cf1ef9a676162f0"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/ai-website-cloner.json",
+      "sha256": "9ad16f4cba847b7f3edabfd11e9da43da9709f7ec86e442360c8f6c4f894de42"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/book-distiller.json",
-      "sha256": "d1b7eaae8cb0d056d76913e3fe6064886a8d39d1028bf8d3b234bff4f9a43c9c"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/book-distiller.json",
+      "sha256": "c8b9be4129ab51fc1bc2023ec412fb47f1fa411704d27078915688098ec67de4"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/code-minimalism.json",
-      "sha256": "4f6a2fc9309d1149155562db637e28b2da56de18bbba771b38fa0e3b8e5a274e"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/code-minimalism.json",
+      "sha256": "1a6c3dd3da2af54ec19a3c9b5ab7a3c44bd70910f3f00d8be244bf2cde0190fd"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/coding-discipline.json",
-      "sha256": "e93e36bf1d8aaa4558bb7eab696c4d41d9e16b1e98f2a1f885cb62f7f956a2c5"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/coding-discipline.json",
+      "sha256": "4593b3a5ef161b9a3a898fe7827f3535bf1a309a9bb663f6bdd26182c6cc638e"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/cognitive-expansion.json",
-      "sha256": "d1e30e94716aff23fe6b8f39d3064a3ac7d2ba23780811b8a8411e100e65f326"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/cognitive-expansion.json",
+      "sha256": "9ea090c64e8215b3a4710ae7e539d7c8a9686bf1fc273dcda1d519911c27e396"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/context-compressor.json",
-      "sha256": "bf26754701be3c32fa8be72743973f40c1529b33adbb08184fa6bcde51eaf9b5"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/context-compressor.json",
+      "sha256": "53c95858dbebe712464d64e7d3fa5402f8362b3e8f842f4433401f3c883999b4"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/debugging-mindset.json",
-      "sha256": "0e691f8ab5e323f325c96e320f784658d9f1830d283c89dae5f66393382d815c"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/debugging-mindset.json",
+      "sha256": "f3d65b35f9b765eb3e70848bb38f158e3508235df1fe60690a6dfb1a264c3b1a"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/documentation.json",
-      "sha256": "f5a49fd80eb0b45a815a2fc2494c2f182037a0da27ddc06cef459bb120eab1a0"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/documentation.json",
+      "sha256": "a59b45f17de6c80d1d664f8821da77e03e8d74b7b5b6b4ac1027e0c5a55974a7"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/ecosystem-scout.json",
-      "sha256": "bb1bf686c2616f973474885a81133c7d7c6c90f5f5a9101797a18498fdf62c57"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/ecosystem-scout.json",
+      "sha256": "8161730a76718be52a11332b15b7d1a446f6ce46b3d7530e0716b7e02eda72f9"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/frontend-expert.json",
-      "sha256": "5c7f8cc28eb4fccad3a488cf8b030b2c589afe2fce4c900f8585689ed19c6805"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/frontend-expert.json",
+      "sha256": "e074ee21a2d71d877566582a5777483c71e50fd34523786840efbade1c003532"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/human-voice.json",
-      "sha256": "eca80e9f69d668791a542089155ed16cfd3b1c8e305f93595ef833b9354bcb81"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/human-voice.json",
+      "sha256": "e7c488328336da97b89d63a368d8f199581c7695ab85f16aabe91fe337323e94"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/memory-bank.json",
-      "sha256": "14e53a78de6e92bf37eeadf4e870b5e3d9cd202ab41f63ba79ec4a71ee8ddc83"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/memory-bank.json",
+      "sha256": "a9bd3368dfc9199a67174509e73458defe9bef7d6de1885375b8a4592032ce66"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/nexusflow-governance-workflow.json",
-      "sha256": "d67b294584fd26d4413c1770d87f72958bc33c0c64eea7cf93a0a2f79ffdf59d"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/product-sense.json",
+      "sha256": "b818a9d50753d67930c5945580065081cfaa508de750325bb7fc50ed2544f1c6"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/product-sense.json",
-      "sha256": "bb354d7daa6b642cdfc474dd4dddca137db6eb982aada965656469a7a14392b7"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/reality-auditor.json",
+      "sha256": "3c884f0d68fda6b77d7fe665b934332eec3a1fe1d12cb6810950948a2c8cf70d"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/reality-auditor.json",
-      "sha256": "65a291da6069292c3e09c9d127b3bb7bff5faad243fb41cd589a23a1f1750932"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/requirement-analysis.json",
+      "sha256": "9d756ced890f9c4d3826666a78619eca4c803933721e2aaf1b2d189b0299af68"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/requirement-analysis.json",
-      "sha256": "b10cb819adfda79d55c55d1a06e863656614dd6b1518622efb6440f63df2a3f0"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/research-and-sourcing.json",
+      "sha256": "0bc426b96362697efd2e533d37e537d47ff71d30ea8996c13c538adb4eee9ecb"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/research-and-sourcing.json",
-      "sha256": "7a2070eada18bce6d925b6c7c277551fdd9e7a0312c8ce005046ab87f566db2a"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/security-gate.json",
+      "sha256": "b9f7d131983a7380b391b9fa675dd05da25907898bf329bfae31203f966333cf"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/security-gate.json",
-      "sha256": "1138b289db662706f5970ed5c3fb15d45efa6881c95efc06cd3ac1510eb6731e"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/skill-crafting.json",
+      "sha256": "6578be24a5e56e5951c3689f0dc2ead64fd559f93dfe63f0a53b397ee921fb2c"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/skill-crafting.json",
-      "sha256": "a804d296185a64d674597fe5d8f3d00dccc2f4b5f5ed9677a68d57e515cc7a5f"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/software-advisor.json",
+      "sha256": "d843848d2ddc893934ee3de97b483de86ab0045eff429044ce2e416724ac6288"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/software-advisor.json",
-      "sha256": "abcaf66fb35da6834cadd9bae2d19efff431cbd500b4cad195787b1c597f9edd"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/sop-maker.json",
+      "sha256": "dae457b697d3ba1e933afa4b56b3ea9f35f51d11173644c3c3c6fa3d05e0ed2c"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/sop-maker.json",
-      "sha256": "69c4c4fa077f563f4b83cea92e53b4ce72ad4813794fd0d6db0583ccb412e7f0"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/static-demo-hardening.json",
+      "sha256": "892f333088a902736039f08462e7a293f4b429e5c795e314de58575164b527a1"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/static-demo-hardening.json",
-      "sha256": "e6b726379defa0f67c53a55b46cf6d502efdf1da27f3ea6aea78de21e8cb2300"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/system-design.json",
+      "sha256": "a8f3bc03f7ae39eb82a13bfc5f20091113ea67296283214a52258eefac0b7d23"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/system-design.json",
-      "sha256": "256240ac6ef9cd9b9da86bc80c846c97ed4d5ddfa27b4d9a6081a7087f721dc8"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/taste-aesthetics.json",
+      "sha256": "8e8d121979149ee24bce830eeeb920b3134b605f67d671a6c29dff6fdcabab5f"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/taste-aesthetics.json",
-      "sha256": "cc4df2c7e858b779c3c7437746aaa1d25f930035e92e3f0ca56d67634d89750f"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/video-creation-sop.json",
+      "sha256": "19f81f6478e933265f122771d3406a020634e7f0d9f4e5a443203ac6b03791cb"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/video-creation-sop.json",
-      "sha256": "f12ca6c67dab8bb0a70b134981f8fe8de6b1841646da5a3c7785e4028cf778cf"
+      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-30/video-extractor.json",
+      "sha256": "9eb4db542739f6c938b619a6b5f1bdba95ef71eaf1e32fe9f192b5b514a8cf24"
     },
     {
-      "path": "evals/evidence/artifacts/capability-live-canaries-2026-07-13/video-extractor.json",
-      "sha256": "1ae7e4a0ae140782b7fe6784415306bb041fdabad02b7419835b54764798ee14"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-cost-grounding-measurement.output.md",
+      "sha256": "bfba28a9b4203d9c22d7f521ed989352c230977658656a75f39f6d06612916b6"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/ai-cost-grounding-measurement.output.md",
-      "sha256": "f6b0cb47cb7b73672feb0918997dffdd3825014b5f6b34f93fe4cd3afbb33596"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-cost-grounding-measurement.producer.json",
+      "sha256": "b50e9cbc087366031e5843a9675ea907f68114fd1484dc6b135f683b2cc89b1f"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/ai-cost-grounding-measurement.producer.json",
-      "sha256": "781dd196d525b359579657dca09f36bfb2c35d2f8e8302e0bb70c018f73ce959"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-cost-grounding-measurement.review.json",
+      "sha256": "2fffca43fe5843848d0e3737ef61e9497e31b59a341bacbd879982af521905cf"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/ai-cost-grounding-measurement.review.json",
-      "sha256": "b0d76edf647f52668e14166eb8e47115373fc35955cf011a04fcf8f328d27463"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-website-cloner.output.md",
+      "sha256": "81cecd45b74f62756fa864549f00d6c9cc0bb7741af26a1ad3eed724261b9108"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/ai-website-cloner.output.md",
-      "sha256": "985fb348b9fc35b125a0288c434f1023f025fb04d2962de4f32770e613cd5f62"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-website-cloner.producer.json",
+      "sha256": "49af3b39b6d146d4d2ace731852e77acfa32ef4e1bf78deaf913503bedcba7b8"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/ai-website-cloner.producer.json",
-      "sha256": "9103fdb27e2a057c2d9eb0e6d9165ea3a883c36a69a3b32a18c1647ce98c951a"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-website-cloner.review.json",
+      "sha256": "2dde94e6845d46ab1d19129c4df9f18867d2910b344541fbd027980262c86055"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/ai-website-cloner.review.json",
-      "sha256": "5f6ed60c65046b94901235a8b44f11f9199728840eea5f17a809a843ffd6dcff"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/book-distiller.output.md",
+      "sha256": "70fe0e85e8c5fe2a23a156f6cb5a3b3b37b13023d29acc3766892213fe3ab0c6"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/book-distiller.output.md",
-      "sha256": "3d13638a9b6276051bfec54a55719e578c1b4f3b582e9f76bd27775ad8a0073f"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/book-distiller.producer.json",
+      "sha256": "744f10e64702d479414131c3f806daa98355469270b16569dbcf5f48f0f015d0"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/book-distiller.producer.json",
-      "sha256": "16cfd51ea99a7add21b5b4faad0aab517942c60d06a8a1c73f9e3f9403bccc3f"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/book-distiller.review.json",
+      "sha256": "53be56a359176f869af04a40470c6b259ddb882f14779e0f35d9cc42b50fba36"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/book-distiller.review.json",
-      "sha256": "e1cafb5037531bb07e4354e40f0aba3fbcbcc3a75c29f1f0b8d178e75174e157"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/code-minimalism.output.md",
+      "sha256": "b156650df694c4d789c6dcf33b81e264ad55fe1b7619a87e9f327bf8e28a4dbc"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/code-minimalism.output.md",
-      "sha256": "a61984011700d28a8cd7367d9283f3d08250456625f64cd427f136bd6671b4e9"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/code-minimalism.producer.json",
+      "sha256": "cd0239ab3036c0e42c5c3a10a81864d3c5107ba551adb8b253076f860eec53b9"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/code-minimalism.producer.json",
-      "sha256": "4b7da29eed53decc98f9efe48d748f5a609960c59f70f21ee2f50c174c43ffc6"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/code-minimalism.review.json",
+      "sha256": "dee3f68c5ac1269b3fc446cc276253cd872ffb253e946c54a8a5786c8ab7e423"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/code-minimalism.review.json",
-      "sha256": "0db834a8c11becf25ae1162479c9a5964c43da018baf8b71cf37474906ec785d"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/coding-discipline.output.md",
+      "sha256": "7d5b87d1e43531d764092c6294092b34950d115c02e4a2c1afe491856d716299"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/coding-discipline.output.md",
-      "sha256": "2c7794e55dcfb665542cf6ea3b0dbad50a2577d498fced1a4c4325b0e078f97b"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/coding-discipline.producer.json",
+      "sha256": "04410bd7d4629f97917abe6ef054ea526b150a8feb004481ad38188e33f97004"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/coding-discipline.producer.json",
-      "sha256": "f389e8c66e8458cd58801e553c930fb26ec52b6efd208c886a57c1fd0a256726"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/coding-discipline.review.json",
+      "sha256": "56c829647af120d43bda326e23b66a7ab29dff635a676c7fb55fd3124437abbd"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/coding-discipline.review.json",
-      "sha256": "6ce08b7879171f2a9c8ee48aa48ff09462b1f351d71e303898fc095b81605b94"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.output.md",
+      "sha256": "781a4ff128abc0093c676fcb79f117f5d6a13ccc419b719a7e5f265e40f5f39a"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/cognitive-expansion.output.md",
-      "sha256": "4f381b7e4f463cbedf0f2a2931eefc1f9e00d060ebb634990de4d8b34a6783dd"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.producer.json",
+      "sha256": "669d7080661198fa1fc5202890f86e7b439c2306fc70c169513aa14af3998065"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/cognitive-expansion.producer.json",
-      "sha256": "e4a0ebd4dad9be44d3a3ca3fd96eb0abf3856cfd864b0bfe2ff5b94efed8a025"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.review.json",
+      "sha256": "7416553cbf8d49bd2c09c17075b37a5fe152407a87206650727a88de00464d18"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/cognitive-expansion.review.json",
-      "sha256": "58d214868720ffedf575a9a3e5438744b2e76f4d739e1d5d90493f53ed455450"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/context-compressor.output.md",
+      "sha256": "d0992c9cdea5acbfe03b070fcde850334253fd163179f8ed08a743dc9577721e"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/context-compressor.output.md",
-      "sha256": "9444f14cac79b96b1c740d5c2ae519d434f4f4929321aa022ef40d2023a9c430"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/context-compressor.producer.json",
+      "sha256": "cf664a3296cf678521c2b2aa7451fbd40db0412e07011c879aa776db462e7f26"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/context-compressor.producer.json",
-      "sha256": "9fa031193e334bd49a8a60ff53f426633ce4debd1cc50ccba528d6d271ef7e20"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/context-compressor.review.json",
+      "sha256": "db888de37fa22b4f8d5ee409cdc99881e61d7ee0e5d78536f1c1fd5e292521ac"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/context-compressor.review.json",
-      "sha256": "ae004640b946da80050299cf4c3e187d3df35eb0697acd3d4563bcc004ccebf1"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/debugging-mindset.output.md",
+      "sha256": "3bbcb22204f0f377fe14b86ec53f5b880c33434e0008be3a1f1a3eefb88f0a7a"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/debugging-mindset.output.md",
-      "sha256": "48de12c2613d7b1ca2242d15efec5690d47fbb89722f4e52c5cccbe8e0790c92"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/debugging-mindset.producer.json",
+      "sha256": "83892b9a927768ac990ec7b0404ee3224df5f205725995c199da978a26b2919e"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/debugging-mindset.producer.json",
-      "sha256": "335cb71aeea0d3479a8f082ef6a6eea90ae6f9d44490ba668fe2814ac613f390"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/debugging-mindset.review.json",
+      "sha256": "fe65d7b59f8936a22c24629ff27d05701b7b21008e5011bcbc20d05c5289c601"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/debugging-mindset.review.json",
-      "sha256": "e90a02483863be00618add27d90a766735cd566a2e20eab120506be549ed34b8"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.output.md",
+      "sha256": "2942ef38109773111f386db338a4998d73c180517aede931c17c6abd9b022ba4"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/documentation.output.md",
-      "sha256": "6ef8a55c838c578bb4118474e9a77fb5f2132b5e23e2c370812123657ebb53f0"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.producer.json",
+      "sha256": "282123951297b58a31f5c57f3f1159249a0f2a55dbf079d8169232f0cdc12e51"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/documentation.producer.json",
-      "sha256": "cd14efe536d1e0471fe72b7a5531912392dbe084caaa72ffd3147c69edfc2d68"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/documentation.review.json",
+      "sha256": "a8f434774d1c17fc715331f5a5fb7d318dce50432e6a1280cc816775b3c1ae3b"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/documentation.review.json",
-      "sha256": "c94d5122231e5db867b98090bc9ccecff7cc5a88e38f2a0a86ed59c767b35948"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ecosystem-scout.output.md",
+      "sha256": "7265e214fa1d3e2cbfbff999f693b91397b96cc482ed694781b54aac18663a15"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/ecosystem-scout.output.md",
-      "sha256": "b1bc12fdaab44972ba0b0d9241b96bbd38a80887f226ec92c84cc2b39c9a7f02"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ecosystem-scout.producer.json",
+      "sha256": "f7c4cab7c7ec72f6216c49ee4938107d799d07432288e8691219edca2942d285"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/ecosystem-scout.producer.json",
-      "sha256": "9b579eb3cd7c0a8a0419e416da63cad39c41c49ecdf42c830910954219a59e64"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ecosystem-scout.review.json",
+      "sha256": "3c29589409a2cdbc6b02ee9d3ee409018d0fdcf93c142dae321fc7b0ef869086"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/ecosystem-scout.review.json",
-      "sha256": "c5b263038e5930cc98fd3ad1fd920afbf15fbccfde93c74949409eb32dddab62"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/frontend-expert.output.md",
+      "sha256": "81111ccccbd64080c11e504ed241e53a93cfeb4e35a4b5d1d0967afc29c47b35"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/frontend-expert.output.md",
-      "sha256": "b82403ef076209cb696fa2f7bea44de688d8544811140718903cec05fba49d37"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/frontend-expert.producer.json",
+      "sha256": "d1721a3d7698308309c491c9ab50fa1dbc0205fe0b707c91447abea54be1861f"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/frontend-expert.producer.json",
-      "sha256": "4bd504b7ca2f46cfce58371ccac1ac7f8a2f9316acb89eeea89308f1f6793c0a"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/frontend-expert.review.json",
+      "sha256": "87aef950465a17f37524ca76af3838c2a560afdff7de393f5461d8f890a882da"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/frontend-expert.review.json",
-      "sha256": "b0a38d0c8bca441b92d3c40af0bd8bd8c682932d9de92494379656d7460fb2fe"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/human-voice.output.md",
+      "sha256": "7a2114244c0042ea2f7aea0232a52a477fa4c3c303afff98de4e7791df1dc515"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/human-voice.output.md",
-      "sha256": "51857b8b59cfe89581764a52ba334b1c13e02b930a407767f3f5807aa84e5fcb"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/human-voice.producer.json",
+      "sha256": "e603b84844e39e7be7227c030eae53238319d05cbeab49c34ab2dfc361a7388f"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/human-voice.producer.json",
-      "sha256": "7cce532cf840689ed1c752bc82fc368465f4e65565ba16c9d3654d54bb249c16"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/human-voice.review.json",
+      "sha256": "bd0f544d6acab2ab23eba7cb0d23b85cfd710ce962703567ad2740396963e45d"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/human-voice.review.json",
-      "sha256": "fc99606d6c27b348e86330d0deb27cc6c182901082b1598d909467043d1471e1"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/memory-bank.output.md",
+      "sha256": "84dae86b6d8b1840112950736edfd02687c735b6cb8ed55625a0f9a2140182cd"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/memory-bank.output.md",
-      "sha256": "7d08f3e706b98c73b95e868ee51a94b96c0e22d84d6add3053b2bc1017bfc116"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/memory-bank.producer.json",
+      "sha256": "e1d9028b08f200b8f37a060d40adf41423d4d7b7f12f1deacff307f6cf54d641"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/memory-bank.producer.json",
-      "sha256": "b0ec34b676e4bd9148fc837578adf8cd290664eeb80f711a3cfa44c73a95d85e"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/memory-bank.review.json",
+      "sha256": "5630fc24947b3fc124b8488420b67a4c2bb065971715fedf7af6f78f2f84c29c"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/memory-bank.review.json",
-      "sha256": "7781445ea2a71524a7ca9537aa6cf3299130b4c1aac79d416e6c3f24200548c6"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/product-sense.output.md",
+      "sha256": "963f575640fe0da65335c43b5972cbef2b00923c7b8d2c07ef51b3c551379b9e"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/nexusflow-governance-workflow.output.md",
-      "sha256": "4196e6bd006a8da388a329304720db681e02556ae362f61d5661152cf229d4dc"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/product-sense.producer.json",
+      "sha256": "f55e55df5dbff803a685d2c380a713b20c37f45e3a05d2e4236d444032d51fdb"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/nexusflow-governance-workflow.producer.json",
-      "sha256": "3e6f420b49c23d0fa70191779a127fcff3bdb8c81eddb3f2b3f54c335a1a241e"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/product-sense.review.json",
+      "sha256": "5f66abccfff24a84595febfdbedc07e8a8dfa573e0679e239fd31353cd7c4780"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/nexusflow-governance-workflow.review.json",
-      "sha256": "68da7362735b42877d6e5c17ae50a6a6c06c881d18b7e624b84a9945b679dd38"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/reality-auditor.output.md",
+      "sha256": "8e85f721a6ba55d67029ed39b3549e2aeb3bc42cc190427c083b6a5693eb2c38"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/product-sense.output.md",
-      "sha256": "bde4028db00e019d10cde1b4f3004d72c24acafd881d983109f7e75b18ceb058"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/reality-auditor.producer.json",
+      "sha256": "004ec55abf2f53c8611c90b5e51d3e18e80e33d03f4057d478b59c12a6f3c0f8"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/product-sense.producer.json",
-      "sha256": "1ee92d847b2e37b39a6b01cd72b5a8e7189f7a6fa23124090ce0403a32c98de5"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/reality-auditor.review.json",
+      "sha256": "2cd752858170615821253f11b453f24b8854d19f9318ca19848131e59f22329c"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/product-sense.review.json",
-      "sha256": "a9fbc4d00ec2a75eb2a8d0231aa9fab5231a2a0626cb20503db4a2bdc9c10f56"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/requirement-analysis.output.md",
+      "sha256": "230de51ce9066670ab590a74c2d18f0b91f86253e9ed198f79f01ea487a9f781"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/reality-auditor.output.md",
-      "sha256": "08567e2aed66cacb2d7bbad4b9ec492ddc8bc6057e72b1eaf48d1602382388f6"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/requirement-analysis.producer.json",
+      "sha256": "17fb6deb54ea75f51d5c0b9290a5def21ba1c841070e5d29b25ca68b343a163c"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/reality-auditor.producer.json",
-      "sha256": "68a6ec9d034e33b41954059f51ba32f2fdea8436a7fc254d1820a2e991d36322"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/requirement-analysis.review.json",
+      "sha256": "bcc9469b2b7e61ce801c0190355683a9600476597e4d2ec39b0de9dbeec681eb"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/reality-auditor.review.json",
-      "sha256": "f06967bf02d17717870b1fdb784e55ae3bf72ff4a2d4593fea0d5cf6d0e7cbf9"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/research-and-sourcing.output.md",
+      "sha256": "fea35748ff705de0297e376c39c50f58998cc825e327c515125ae91e50eaccdf"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/requirement-analysis.output.md",
-      "sha256": "4f3779d0484d4671cbcc505aedff868b2cb5f0457a126b9692054b0ea22d9c1e"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/research-and-sourcing.producer.json",
+      "sha256": "fd106559cbd0fe720f8a55153fc45c257f35c55daad8a0bc3aed6ed759d1b275"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/requirement-analysis.producer.json",
-      "sha256": "fcdba6e3edf67f1e1c4524ba310ad578bc4f5be7e15c3aa43b08d840465a60b2"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/research-and-sourcing.review.json",
+      "sha256": "b04955dbaf222356433666447387ad7ff86c21e35f305b18d9a24d25307aa8c8"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/requirement-analysis.review.json",
-      "sha256": "1e5f25be5eb15e235e457d7594f895b3c9118adf8d8d9bf7c2971322ae76b255"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/security-gate.output.md",
+      "sha256": "f2e9ba72b7822898f8fcea9e6a91dfed01e43e85465b9ef12a2953ebad0d66cb"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/research-and-sourcing.output.md",
-      "sha256": "edc09eae72efacb7db5f1cb2e7d53dae88b16b99855f7ec8ed7f2a43d6092c4c"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/security-gate.producer.json",
+      "sha256": "ac5919d1933f0bb40af010fa0760d72868050e03c0b29ded7a0ca4af5678c45c"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/research-and-sourcing.producer.json",
-      "sha256": "9eaa6db287f367af3162eeab0782308b960c268ea99c1bc0d9ce0d79c3e3a931"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/security-gate.review.json",
+      "sha256": "b7be2d4b8b20ee57f625819dad8903ef340f8b511ded033761bd6b76ce3cf0b2"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/research-and-sourcing.review.json",
-      "sha256": "09a33aeb12628e2cd5da983dd6357fab4184b0cecc025d1db35db4b0982eac8d"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/skill-crafting.output.md",
+      "sha256": "f74abb961971cd527b88f528764794b05ab3b47b0a537493c8a0d7aac791c95a"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/security-gate.output.md",
-      "sha256": "d0232bc07f87e8c030bcdec5d96759d48ef9067f66eb6efc861c743b6d46982b"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/skill-crafting.producer.json",
+      "sha256": "33d02f1d2383859574be6af4465cdbabc5137aecc57ef855089d1b5c09a18d16"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/security-gate.producer.json",
-      "sha256": "3b118675941fff3f646d69fb3e2e4a7b598f944a5d67cfd6cd6f01b8c364318d"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/skill-crafting.review.json",
+      "sha256": "34f0c0a0e583f504bf8997324f286471af1ecd10331b8e6d84c331bf5b8ad77b"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/security-gate.review.json",
-      "sha256": "20c5235c7df3c8c7ebb2f4e0378aeee8120598e544e5b848871422b7f272cd12"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/software-advisor.output.md",
+      "sha256": "172ae024181c951dd5357f808cec7aee2041146713463a474955c6ee38241db8"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/skill-crafting.output.md",
-      "sha256": "7101871939e8d2e3d908b8326e45ab45386b4419be91fadbd388e360485666f4"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/software-advisor.producer.json",
+      "sha256": "b14311b440cd425a64e83c8cdb6302663f19be678c309589e8396d712823822c"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/skill-crafting.producer.json",
-      "sha256": "18a1841f88c6b48f087847eb14dda2376baa2e6afc3f5f11d2f1586a09bfb2ac"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/software-advisor.review.json",
+      "sha256": "658d8b1972410e22a1a6f183ba05dae6d97edde634dd436f46ea61b5e0068f24"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/skill-crafting.review.json",
-      "sha256": "7558b7458bb3ff96792ba9ba98a5a78426706ca2b00a4d0da2e393a2fa9041f1"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/sop-maker.output.md",
+      "sha256": "b48c96f576ec865ccd7af349e2163566e85630318ce11fa0e8873bba0e714e1a"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/software-advisor.output.md",
-      "sha256": "0b36f3f1251e4f135115c211e9b28c57c07901b86603df47bfe54a990174665f"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/sop-maker.producer.json",
+      "sha256": "376fb6911a0bc50d1375bd652a85ee0d3722fa2b3599ca7023ec2d271725bd43"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/software-advisor.producer.json",
-      "sha256": "7d8c7690c8deb7034a733a655da05153e087d4d69d9ddd4122e3b292b9d15734"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/sop-maker.review.json",
+      "sha256": "98be924eee25485de15841640f601a0cc20933606f1e46b8a9d369a3e5e06494"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/software-advisor.review.json",
-      "sha256": "629922641d67e8efbc730648f711b2e828729211eaac2287e6e5b3034489ae3a"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.output.md",
+      "sha256": "66aec0891a837ef34d1f6d2c61304defd8483685c9e9e9ab3aa6567c922000c7"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/sop-maker.output.md",
-      "sha256": "d65689fa2b61fdf030ac0f76c7da5495fc7d0264805f749643e12d23db8a14d1"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.producer.json",
+      "sha256": "9043cfc7b35fb1e7f585ad3f9a594e13bb7e976b339bbc9431234529ed57d702"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/sop-maker.producer.json",
-      "sha256": "07cf2a289435b1e0cef7c8f132aaa6cae007a49243b8b996aaa59a5263fa51cf"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/static-demo-hardening.review.json",
+      "sha256": "f9b1480c9bf84214fdc6299ede0a96decb46357b8e6766184364fbd998bcb5b2"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/sop-maker.review.json",
-      "sha256": "fa6d28eeb242edcbc36532845bf76eaef496a42e5308e5a05f638184ac6e685b"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/system-design.output.md",
+      "sha256": "f9c8bc939befd700c616d55ecbd87e6f656eac673d591f05355904a21e6ff0d1"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/static-demo-hardening.output.md",
-      "sha256": "d0879f50eaa00ba44d1debc4f991a414efe43d03f4c6fa68df0e66710c47f85e"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/system-design.producer.json",
+      "sha256": "bbf0f3411c7a8d3732413a95efe573efce9a9adb0e4ef44da237cfb83ee1cd08"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/static-demo-hardening.producer.json",
-      "sha256": "fab8fd317d070231252126a2c3d77e63cb34c17aadaa3d42d42d96d259b14764"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/system-design.review.json",
+      "sha256": "1a15a29a94b23a613bfb1cb40a631485028d5fb395ceb3bc53fbf66a304a9144"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/static-demo-hardening.review.json",
-      "sha256": "b035de0766321d4c886cc83c748dd5869aebde01dad8a2afb4c0b5cd7dc779ab"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/taste-aesthetics.output.md",
+      "sha256": "257939466421f5a35ace2df3baf828fa5717f3df61731e626f5e5a730cc908bc"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/system-design.output.md",
-      "sha256": "f93b8ac846dbd056e2b51643ca4eb628bdf4f6f4eac09097f7779a63cf09bec2"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/taste-aesthetics.producer.json",
+      "sha256": "89f2220514dd9e0d2446b7df0066db8ceb517da592b4399263fd7ccba8d91e7c"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/system-design.producer.json",
-      "sha256": "c071029a8a25375bfd0d4fd346f7df87e590cee96274ad8aec55cdea5790534d"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/taste-aesthetics.review.json",
+      "sha256": "fcbc4016fcb380c9940a53b3451b944d15b310b917be902ba25c26eb0c4b027b"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/system-design.review.json",
-      "sha256": "a3eb1c90a37da9d77037c131e048e2b61e9352e53c06fb06bb6430bd981be98e"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-creation-sop.output.md",
+      "sha256": "429027156d5ad570df2dbe4f83a0e803aca269eb4df2db8f9891b78156faaf1c"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/taste-aesthetics.output.md",
-      "sha256": "5ad283d1058c0d920f6d0d69d55e95f6d264050facde1069ba5e49970b7a645b"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-creation-sop.producer.json",
+      "sha256": "dc3a71a86b847b9d15acaa3719f783b6115cd47bc7db6391a0b311ab0c71c790"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/taste-aesthetics.producer.json",
-      "sha256": "ef916d191f1a01b9a55a564e7d5c1ecf83eb6668e14152b84204ebb51893415b"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-creation-sop.review.json",
+      "sha256": "a4ff5c6e0eff9d91899bbbc85ea84b28453d1db11a4e7abaeb5bfa823b5fba07"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/taste-aesthetics.review.json",
-      "sha256": "6118e64fe9949141e63d853edf0a8ee76449d4a79f8676056d95fef1e6e35d2f"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-extractor.output.md",
+      "sha256": "a27e412ebb16f84eb8156e90b19c7a3608e3924a2317951f009271cbe633ae07"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/video-creation-sop.output.md",
-      "sha256": "4edf278c92abd8c39c4a83dc7ad8fd8d11169f8d68a2eb852af3a4783ab8b4a4"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-extractor.producer.json",
+      "sha256": "e6f97df469cbe3340a5021e826fcefe9f5f6d37b9076ba0847c67c7a3993818e"
     },
     {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/video-creation-sop.producer.json",
-      "sha256": "793e390dbb7fd00cc4f43fa0e030cf75cc289adbb2f5b5e156336365fbb1f27a"
-    },
-    {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/video-creation-sop.review.json",
-      "sha256": "fa01fe880d56261b3d5e813a36e7d7ab19b50fe1f2d48fe38f5be863da62f772"
-    },
-    {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/video-extractor.output.md",
-      "sha256": "158298aeef947bebf2c3a2de75b2f8f092c513c390aa6dc6da2573c051018491"
-    },
-    {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/video-extractor.producer.json",
-      "sha256": "6165efaabd8d142ba6ad4652cf0b7d558c39f56a0707593699feba99378f32ae"
-    },
-    {
-      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-13/video-extractor.review.json",
-      "sha256": "bffffd0b5fcce17a1a17099c146ecc96412ac36f4e646fef66bd1d4f96103a2b"
+      "path": "evals/evidence/artifacts/capability-output-quality-2026-07-30/video-extractor.review.json",
+      "sha256": "8412b7be217ac5a2629820a63df9f8a585c1bf0efedd04a32bc83c581396388a"
     },
     {
       "path": "evals/evidence/capability-evidence-profile-replay-2026-07-13.json",
       "sha256": "53f810a8b311a575c4fdaf32af741b39c9e40a7a42f734a0291703eef5c97754"
     },
     {
-      "path": "evals/evidence/capability-live-canaries-2026-07-13.json",
-      "sha256": "34cc743a6ac57adee822d9b2c92124908d37f52fafbe3a36d7515c2d497f225d"
+      "path": "evals/evidence/capability-live-canaries-2026-07-30.json",
+      "sha256": "e1abaaa83b4758e32e070092ad07dc8d57275fa89e332e4d6a117a1f8a15b22c"
     },
     {
-      "path": "evals/evidence/capability-output-quality-2026-07-13.json",
-      "sha256": "3186b395fcd89f53b02d58aca0b401ae566c749968164425c779b22636477673"
+      "path": "evals/evidence/capability-output-quality-2026-07-30.json",
+      "sha256": "66a2263d7edfeffcc990c9aff0c03f98fd871d7c582fc22d69cd5767b88922b2"
     },
     {
       "path": "evals/evidence/cognitive-expansion-comparison-2026-07-17.md",
@@ -638,16 +626,8 @@
       "sha256": "bbaaf7aef39f1bd9e4002ea036f18dec20fdd2039ba9e18e375e15adc70b9d02"
     },
     {
-      "path": "evals/evidence/route-audit-live-2026-07-11.md",
-      "sha256": "e769b64eeda79ba5a14847f11c3ae40f9fba28c9a2ea273ac79b028ba522ea51"
-    },
-    {
       "path": "evals/observations-2026-07-10.json",
       "sha256": "5753fdf5fcea6d9e4f7e8e362b37e45e7b9eae2211e6acc9415445d6e249d14a"
-    },
-    {
-      "path": "evals/observations-2026-07-11.json",
-      "sha256": "dfd60710d8df29cb3c294ba101f15814371346adf4a4f22b9c73adb08573c82d"
     },
     {
       "path": "evals/observations-2026-07-12.json",
@@ -655,7 +635,7 @@
     },
     {
       "path": "examples/quickstart-output.md",
-      "sha256": "240ef404b7f2a33024ee30210adb6ba7a3fda034de220fcfadb7cf8cb3a77260"
+      "sha256": "f964231ed5dbbbe8efeb19a73499163a90217b2041f5ab9ba3cff21d398405fd"
     },
     {
       "path": "examples/saas-conversion-demo/index.html",
@@ -671,7 +651,7 @@
     },
     {
       "path": "examples/showcase.md",
-      "sha256": "b8a4bb10a4e960a586c605e8f3eb69dd38f3751072f7be1826ad4777f14f67ba"
+      "sha256": "e611a7a8a44eb9a81037aab45de6733aaa2e7d7c33f13fff69ce314bccaf15ea"
     },
     {
       "path": "references/birth-checklist.md",
@@ -691,7 +671,7 @@
     },
     {
       "path": "release-manifest.json",
-      "sha256": "f5e95cb38debe93df14c753525cf85d2ed7c1e464a94b589a1bdbd3e7634a128"
+      "sha256": "78a71cc0280ea5c07c1ae026c5d30910601987a4701d6413ce285860ab277ab8"
     },
     {
       "path": "requirements.txt",
@@ -723,7 +703,7 @@
     },
     {
       "path": "scripts/check_capability_chain.py",
-      "sha256": "f1711382ea34f76dacaf68a5e6f074617979135f0a72ac6e386639dc99ed3947"
+      "sha256": "ce175d610114af786da15005cd84a090348abcdf43c68779fb3588b2a7d1785d"
     },
     {
       "path": "scripts/check_context_budget.py",
@@ -739,7 +719,7 @@
     },
     {
       "path": "scripts/ci_validate_skills.py",
-      "sha256": "5f7890e0eb4c71f6580fa1ddcd38405da11ae4120f34c74407b024dafa1b8394"
+      "sha256": "f3358ca35a615fe92dd6a169e876ce0bd3d316d9f9bf745b6b89778f4e1695b5"
     },
     {
       "path": "scripts/claude_extractor.py",
@@ -791,11 +771,11 @@
     },
     {
       "path": "scripts/run_capability_live_canaries.py",
-      "sha256": "fcf36637188e8600087ba51cee9c665e96a61b444ce6e2b6be7a045fefd01de0"
+      "sha256": "1519f7e8a9d5fa709cbe6869a5e6bfe68e7e06e5ecd6d5d12be91971910c7e1e"
     },
     {
       "path": "scripts/run_capability_output_quality.py",
-      "sha256": "39b4bece72962c7f44d275ba53aa847db3695690e22bd633c6c4273e08208db3"
+      "sha256": "9a2ca7187b67a442055a6832809a101e88349c50e5227d8e5191f64be55c32fa"
     },
     {
       "path": "scripts/run_eval.py",
@@ -807,7 +787,7 @@
     },
     {
       "path": "scripts/security_patterns.py",
-      "sha256": "67ba57e0907dcbd97046b72587d33266a88992e5fa8275e012ccb371893fb7c5"
+      "sha256": "3899e406849581c2b76a134cf4f497817d47c5af89e4f504f591df72f4fc0705"
     },
     {
       "path": "scripts/security_scanner.py",
@@ -823,7 +803,7 @@
     },
     {
       "path": "scripts/test_capability_runner_paths.py",
-      "sha256": "32c92ab19e67e45e0ab6f60d8b15bbbf93370cce73de7dd8326c1cac62863fae"
+      "sha256": "a131c64d69e160800e198b165892a00e74b1c54dd6e9ad96877fc43c5d1c14bd"
     },
     {
       "path": "scripts/test_codex_extractor.py",
@@ -855,7 +835,7 @@
     },
     {
       "path": "scripts/test_mcp_server.py",
-      "sha256": "9c6ad6e7034629f4c9b0ea6efee461a45a772d0de2e920bd7b68d418de7aa023"
+      "sha256": "8a05da45b25efe2db6d8310dd5652ec344c1e555f0080ac028fe8e9455bc89b4"
     },
     {
       "path": "scripts/test_memory_concurrency.py",
@@ -871,11 +851,11 @@
     },
     {
       "path": "scripts/test_security_scanners.py",
-      "sha256": "3a63cb8f0204b0900369f1b7b915d3941d2f747c8cc7b06259a4dcddb5e0523c"
+      "sha256": "1f3b306da9a5d91cad3a05c5b119dab7cbaf273632412e2fa632e6e99b3c4b81"
     },
     {
       "path": "scripts/test_skill_router.py",
-      "sha256": "0e1e892dc630dfa32e806eeba2fab57fdff0c8daaae37111195d50f72390ad6e"
+      "sha256": "78166dac47162c3ac6a91353da042f74e4aa80462ea7e7f92a3ee4685b9b7624"
     },
     {
       "path": "scripts/test_suite.sh",
@@ -883,7 +863,7 @@
     },
     {
       "path": "scripts/test_try_guyue.py",
-      "sha256": "fe8530fadcc6e0b07a538987231b651b3c5a48e4372b864b65ffb5e86d06564d"
+      "sha256": "eea952c1eebd83097358626507ef69ebdd446f14fc5951bb1dd4e6b0fca1c51e"
     },
     {
       "path": "scripts/try_guyue.py",
@@ -899,11 +879,11 @@
     },
     {
       "path": "skills/ai-website-cloner/SKILL.md",
-      "sha256": "d607a3b49a58b8e780132e77b0b3f488ad7bb28dcc7393247c44547ee916dbe8"
+      "sha256": "0e3aea2c261910eb2cb776f7cdb75285075ea95340d4203e07277ec14f0e38b4"
     },
     {
       "path": "skills/book-distiller/SKILL.md",
-      "sha256": "1fde615908f3cd7491db6cc9e1225f1483e7174c48ab1639fae01f2b205e0c71"
+      "sha256": "b8dbdaf64e73aa64cb011d18b29474b9bc68b5cf723df450fe5fccda35fdf6e1"
     },
     {
       "path": "skills/code-minimalism/SKILL.md",
@@ -911,7 +891,7 @@
     },
     {
       "path": "skills/coding-discipline/SKILL.md",
-      "sha256": "ed5413f2c758c198f435f0ce1f46b102a597d3b9a3bfe8530bb072b08f14dc1e"
+      "sha256": "73d6dd778f5f55192ae40a4e38953fa04b1dc158775948b27c5283f55f9c309d"
     },
     {
       "path": "skills/cognitive-expansion/SKILL.md",
@@ -943,15 +923,15 @@
     },
     {
       "path": "skills/debugging-mindset/SKILL.md",
-      "sha256": "01d804d4cfba5145a18bcbbcae0c3ab9a1096b31bc8d92b170cf87336386d290"
+      "sha256": "2ad65975245c52d82394408d270ee749f9bee998c7b8f9f87eb75eb8c2d59b40"
     },
     {
       "path": "skills/documentation/SKILL.md",
-      "sha256": "a9b41f84e6aa5d2c0aad6ef847e9d7ffd4703b6d20dd853035d677d175bbfb60"
+      "sha256": "1d0bb7c649a9feabda51953d7451b91dcc64cb4fd516686bb18b4870c542de68"
     },
     {
       "path": "skills/ecosystem-scout/SKILL.md",
-      "sha256": "82c05fa3934dbf0b36014f5f0c1ed3f1e6db10f97577bfe68fedf3097720fe71"
+      "sha256": "6725498da0c4b89b11cf2bbcaf3522289c76da43f1792292016b16eefec20718"
     },
     {
       "path": "skills/frontend-expert/SKILL.md",
@@ -963,15 +943,11 @@
     },
     {
       "path": "skills/memory-bank/SKILL.md",
-      "sha256": "04847775edec6da773bf2a179b649de39d0c7470bff9e3f31fd1ed6a944a8aa2"
+      "sha256": "e135f197cd81521f889b02de15c60127399380a7ab73944ea6bb42c3135b7aee"
     },
     {
       "path": "skills/memory-bank/references/curated/index.json",
       "sha256": "19a41f382cb25ef5631fc85a47d494c05f62224b253f2ad972d4d8af39d16ddf"
-    },
-    {
-      "path": "skills/nexusflow-governance-workflow/SKILL.md",
-      "sha256": "838ea74bd6ec6abacd65a1ab287dffeb2ef526760247f7cef551fc4788e4ad61"
     },
     {
       "path": "skills/product-sense/SKILL.md",
@@ -979,7 +955,7 @@
     },
     {
       "path": "skills/reality-auditor/SKILL.md",
-      "sha256": "89f380be6c0221ec37557937fb250d3bad84cfb56d982762085d70a13cc1b700"
+      "sha256": "008ae59b60ed4a065c381624a313bb4647498de24eb9e24a679b0a2bd4eb6fcc"
     },
     {
       "path": "skills/requirement-analysis/SKILL.md",
@@ -987,7 +963,7 @@
     },
     {
       "path": "skills/research-and-sourcing/SKILL.md",
-      "sha256": "ff28dcef087160696363b1db67f0bc6337438244dd1733d11f60b742cdbe191d"
+      "sha256": "a07f508f0cbfee09d358993a050a16d399426b42d263d445bee64e8c3ac26140"
     },
     {
       "path": "skills/security-gate/SKILL.md",
@@ -1011,11 +987,11 @@
     },
     {
       "path": "skills/static-demo-hardening/SKILL.md",
-      "sha256": "8402dae0cf37f158f96062ace60bb92688bbb23116ad244104df140058c4de6e"
+      "sha256": "be59239db224a214af3a2dd6b5d75d2aeb91d7636af7e473bacaaa4bc7ab9109"
     },
     {
       "path": "skills/system-design/SKILL.md",
-      "sha256": "37deedd3d74f58f47366dcea462c5dafb267078a90eebb6b3f222772fd3134a7"
+      "sha256": "7a30c697c3aec6d4d353735c6537ead91a354ff407b2c7badd4dc39ab790f6b5"
     },
     {
       "path": "skills/taste-aesthetics/SKILL.md",
@@ -1047,7 +1023,7 @@
     },
     {
       "path": "skills_manifest.json",
-      "sha256": "7ba2a133df771671b6acaea419de899fd64ec0cae95e21d5e4cc07ed7c20457f"
+      "sha256": "1d3aec3f3da8a6799b518788e56a081317db4a0a14bfc32a240efd9bcdb53e34"
     },
     {
       "path": "src/context_budget.py",
@@ -1059,7 +1035,7 @@
     },
     {
       "path": "src/mcp_server.py",
-      "sha256": "413f9042c572977ba8a41240a6f526a789c0f96ccb892153c50902c11b9f4a53"
+      "sha256": "668ff9675b198cb09669ef39385e9c662bda4afd74cc351b9eb7b2a0ca6f4e77"
     },
     {
       "path": "src/memory_migration.py",
@@ -1083,7 +1059,7 @@
     },
     {
       "path": "test-prompts.json",
-      "sha256": "9432911da4096216cdb2c356ee5f5afb742a06ebddf91a6a11014a389ea919e9"
+      "sha256": "0d9d010691f6ba79a4dc7f7ec3dd39cd8f85080759aa59e807d95660b43cc4a6"
     }
   ]
 }

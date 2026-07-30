@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "skill": "cognitive-expansion",
+  "skill_sha256": "faf0957036724ffa84d3b8553bf147623530814c39191935690eed4dce9b78c8",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/cognitive-expansion.output.md",
+  "output_sha256": "781a4ff128abc0093c676fcb79f117f5d6a13ccc419b719a7e5f265e40f5f39a",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/cognitive-expansion/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/cognitive-expansion/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,320p' skills/cognitive-expansion/references/output-contract.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,320p' skills/cognitive-expansion/references/output-contract.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 72577,
+    "cached_input_tokens": 63744,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 5104,
+    "reasoning_output_tokens": 2729
+  },
+  "elapsed_seconds": 109.474,
+  "raw_sha256": "163f5993bca8b77e4765e6cf77fa3287ba8247eb543fdd71cb792120cd912092",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained.",
+  "runtime_receipt": {
+    "input_tokens": 72577,
+    "cached_input_tokens": 63744,
+    "output_tokens": 5104,
+    "reasoning_output_tokens": 2729,
+    "wall_clock_seconds": 109.474,
+    "rounds": 1,
+    "read_only_tool_calls": 2,
+    "materials_opened": 0,
+    "authorized_subtasks": 0,
+    "paid_cost": 0
+  },
+  "mechanical_audit_errors": []
+}

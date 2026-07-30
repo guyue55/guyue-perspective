@@ -140,14 +140,21 @@ When adding `CLAUDE.md`, keep it as a thin adapter to `RTK.md`; do not copy the 
 
 ## MCP Clients
 
-Use the MCP server when you want the agent to read the skill manifest, explain candidate routes without loading every Skill body, or use the local memory bank through tools. The exposed route tool is `guyue_explain_route`; it returns match and rejection evidence but does not execute a Skill.
+Use the optional MCP server when you want the agent to read the skill manifest, explain candidate routes without loading every Skill body, or use the local memory bank through tools. Guyue's public Skill behavior does not depend on MCP. The exposed route tool is `guyue_explain_route`; it returns match and rejection evidence but does not execute a Skill.
 
 ```json
 {
   "mcpServers": {
     "guyue": {
       "command": "uv",
-      "args": ["run", "--with", "mcp", "mcp_server.py"],
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]>=1.0.0,<2.0.0",
+        "--with",
+        "PyYAML>=6.0,<7.0",
+        "mcp_server.py"
+      ],
       "cwd": "/path/to/guyue/src"
     }
   }
@@ -155,6 +162,9 @@ Use the MCP server when you want the agent to read the skill manifest, explain c
 ```
 
 Replace `/path/to/guyue/src` with the absolute path to your checkout's `src` directory.
+The version range keeps the documented FastMCP v1 import contract stable; the YAML dependency is required by Guyue's route index loader.
+
+Private memory writes require the current user request to explicitly say to remember, save, or record the lesson. Callers must pass that request as `user_intent`. An unqualified save defaults to the cross-project `user` scope; an explicitly project-only request must use `project:<stable-project-id>`. Reads without a project scope use `user`; project reads rank the current project before `user`, and `include_user=false` disables that enrichment. Set `cross_project=true` or `include_detail=true` only for the corresponding explicit need.
 
 ## Private Data And Migration
 
@@ -166,6 +176,8 @@ Guyue keeps installable code and private runtime data separate:
 ├── cache/discovery/    # rebuildable local Skill paths
 └── state/migrations/   # sanitized migration receipts
 ```
+
+These subdirectories are created lazily. In particular, `knowledge/memory/` is absent until the first explicitly authorized memory write succeeds; an installation with only `cache/discovery/` is normal and does not mean memory support is broken.
 
 Set `GUYUE_HOME` when you need a portable or policy-controlled root. `GUYUE_MEMORY_DIR` remains supported only as a memory-specific compatibility override. Public curated knowledge stays inside the active Skill package and is not copied into HOME.
 

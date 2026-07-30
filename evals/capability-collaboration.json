@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "minimum_skill_coverage": 27,
+  "minimum_skill_coverage": 26,
   "cases": [
     {
       "id": "product-delivery",
       "prompt": "从需求到交付：把这个模糊产品想法分析、实现并完成独立验收。",
       "expected_workflow": "product-delivery",
-      "forbidden_workflows": ["project-governance"]
+      "forbidden_workflows": []
     },
     {
       "id": "incident-to-learning",
@@ -49,19 +49,6 @@
       "prompt": "软件选型并安装：基于当前证据比较候选，先做安全检查，安装动作另行授权。",
       "expected_workflow": "software-decision",
       "forbidden_workflows": []
-    },
-    {
-      "id": "project-governance",
-      "prompt": "NexusFlow 权限治理：验证服务端权限边界、修复实现并完成独立验收。",
-      "context_markers": ["NexusFlow", "permissionSnapshot"],
-      "expected_workflow": "project-governance",
-      "forbidden_workflows": []
-    },
-    {
-      "id": "project-governance-near-miss",
-      "prompt": "给普通项目做权限页面和后端接口，完成实现与验收。",
-      "expected_workflow": null,
-      "forbidden_workflows": ["project-governance"]
     },
     {
       "id": "cognitive-expansion-loop",

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "requirement-analysis",
+  "skill_sha256": "f371376f7a9dc96d286c74eecc2eeed4ab77a7aaf49ceb1bfc16995f4ee8aa18",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/requirement-analysis.output.md",
+  "output_sha256": "230de51ce9066670ab590a74c2d18f0b91f86253e9ed198f79f01ea487a9f781",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/requirement-analysis/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/requirement-analysis/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 46307,
+    "cached_input_tokens": 40448,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 984,
+    "reasoning_output_tokens": 452
+  },
+  "elapsed_seconds": 28.859,
+  "raw_sha256": "1264952d990e88ef8564a63cb69c0899c476c0f20323f307166f5e2d6c423ef2",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

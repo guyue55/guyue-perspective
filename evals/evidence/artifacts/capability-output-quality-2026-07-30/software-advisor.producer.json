@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "skill": "software-advisor",
+  "skill_sha256": "49d50cffdbdff865a7a085cc31f5f3dcc86089569f2a7d154e8be2cddf62f7f6",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/software-advisor.output.md",
+  "output_sha256": "172ae024181c951dd5357f808cec7aee2041146713463a474955c6ee38241db8",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/software-advisor/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/software-advisor/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -i -C 4 '\\\\bcrm\\\\b|customer relationship' skills/software-advisor/software_catalog.json\nshasum -a 256 skills/software-advisor/software_catalog.json\ndate '+%Y-%m-%dT%H:%M:%S%z'\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -i -C 4 '\\\\bcrm\\\\b|customer relationship' skills/software-advisor/software_catalog.json\nshasum -a 256 skills/software-advisor/software_catalog.json\ndate '+%Y-%m-%dT%H:%M:%S%z'\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"wc -c skills/software-advisor/software_catalog.json\nsed -n '1,240p' skills/software-advisor/software_catalog.json\nrg -n -i -C 3 'sales|客户|关系|客户管理|lead|pipeline' skills/software-advisor/software_catalog.json\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"wc -c skills/software-advisor/software_catalog.json\nsed -n '1,240p' skills/software-advisor/software_catalog.json\nrg -n -i -C 3 'sales|客户|关系|客户管理|lead|pipeline' skills/software-advisor/software_catalog.json\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -i 'crm' skills/software-advisor/software_catalog.json\nrg -n -i '\\\"description\\\": \\\".*crm' skills/software-advisor/software_catalog.json\nrg -n -i '悟空CRM|LinkWeChat|CRMEB' skills/software-advisor/software_catalog.json\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -i 'crm' skills/software-advisor/software_catalog.json\nrg -n -i '\\\"description\\\": \\\".*crm' skills/software-advisor/software_catalog.json\nrg -n -i '悟空CRM|LinkWeChat|CRMEB' skills/software-advisor/software_catalog.json\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 120994,
+    "cached_input_tokens": 102144,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3553,
+    "reasoning_output_tokens": 2506
+  },
+  "elapsed_seconds": 88.312,
+  "raw_sha256": "c752745ea6e7812dcd8bb5711f014707cae9935d216e2dda6cf2189043da9ede",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

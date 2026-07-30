@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "research-and-sourcing",
+  "skill_sha256": "a07f508f0cbfee09d358993a050a16d399426b42d263d445bee64e8c3ac26140",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/research-and-sourcing.output.md",
+  "output_sha256": "fea35748ff705de0297e376c39c50f58998cc825e327c515125ae91e50eaccdf",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/research-and-sourcing/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/research-and-sourcing/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 44860,
+    "cached_input_tokens": 40448,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1264,
+    "reasoning_output_tokens": 762
+  },
+  "elapsed_seconds": 55.202,
+  "raw_sha256": "392b32536c04146711c651b323c7d12dbee8692bf152c5ffcbf66641084e9d04",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

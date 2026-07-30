@@ -1,4 +1,5 @@
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -67,7 +68,18 @@ LEGACY_INDEX_FILE = LEGACY_MEMORY_DIR / "index.json"
 LEGACY_MEMORY_DIRS = legacy_runtime_memory_dirs(WORKSPACE_ROOT)
 MANIFEST_FILE = WORKSPACE_ROOT / "skills_manifest.json"
 MAX_MEMORY_RESULTS = 20
+DEFAULT_MEMORY_RESULTS = 5
 MAX_MEMORY_DETAIL_BYTES = 64 * 1024
+MEMORY_WRITE_INTENT_TERMS = ("记住", "记下来", "记录", "保存", "存下来")
+MEMORY_WRITE_NEGATION_RE = re.compile(
+    r"(?:不要|别|无需|不用|禁止).{0,8}(?:记住|记下来|记录|保存|存下来)"
+    r"|\b(?:do not|don't|never|no need to)\s+(?:remember|save|record|store)\b",
+    re.IGNORECASE,
+)
+MEMORY_WRITE_INTENT_RE = re.compile(
+    r"\b(?:remember|save|record|store)\b",
+    re.IGNORECASE,
+)
 
 def load_memory_index() -> dict:
     """Load the private runtime index, normalizing legacy rows if encountered."""
@@ -102,6 +114,62 @@ def read_memory_detail(memory_dir: Path, entry: dict) -> str:
     if detail_path.stat().st_size > MAX_MEMORY_DETAIL_BYTES:
         raise ValueError(f"memory detail exceeds {MAX_MEMORY_DETAIL_BYTES} bytes")
     return detail_path.read_text(encoding="utf-8")
+
+
+def has_explicit_memory_write_intent(user_intent: str) -> bool:
+    """Accept only an affirmative user request to persist a memory."""
+    normalized = user_intent.strip()
+    if not normalized or MEMORY_WRITE_NEGATION_RE.search(normalized):
+        return False
+    return any(term in normalized for term in MEMORY_WRITE_INTENT_TERMS) or bool(
+        MEMORY_WRITE_INTENT_RE.search(normalized)
+    )
+
+
+def is_project_memory_scope(scope: str) -> bool:
+    normalized = scope.strip().casefold()
+    return normalized == "project" or (
+        normalized.startswith("project:") and bool(normalized.removeprefix("project:"))
+    )
+
+
+def memory_scope_priority(
+    memory_scope: str,
+    requested_scope: str,
+    *,
+    cross_project: bool,
+    include_user: bool,
+) -> int | None:
+    """Rank exact scope first, global user experience second, other projects last."""
+    normalized_memory_scope = memory_scope.strip().casefold()
+    normalized_requested_scope = requested_scope.strip().casefold()
+    if normalized_memory_scope == normalized_requested_scope:
+        return 0
+    if include_user and normalized_memory_scope == "user":
+        return 1
+    if cross_project:
+        return 2 if is_project_memory_scope(normalized_memory_scope) else None
+    return None
+
+
+def memory_summary(entry: dict, source: str) -> dict:
+    """Return the bounded index fields needed to decide whether detail is relevant."""
+    keys = (
+        "id",
+        "tags",
+        "summary",
+        "timestamp",
+        "provenance",
+        "scope",
+        "confidence",
+        "status",
+        "supersedes",
+        "review_after",
+    )
+    result = {key: entry.get(key) for key in keys}
+    result["source"] = source
+    result["requires_review"] = entry.get("status") == "needs_review"
+    return result
 
 
 @mcp.tool()
@@ -142,11 +210,25 @@ def guyue_explain_route(
 
 
 @mcp.tool()
-def guyue_read_memory(query: str) -> str:
-    """Return active curated or local memories matching a keyword query."""
+def guyue_read_memory(
+    query: str,
+    scope: str = "user",
+    cross_project: bool = False,
+    include_detail: bool = False,
+    limit: int = DEFAULT_MEMORY_RESULTS,
+    include_user: bool = True,
+) -> str:
+    """Return global or project-plus-global summaries with bounded opt-ins."""
     normalized_query = query.strip().casefold()
     if not normalized_query:
         return "Memory query must contain a non-whitespace keyword."
+    normalized_scope = scope.strip()
+    if not normalized_scope:
+        return "Memory query must contain an explicit scope."
+    if cross_project and not is_project_memory_scope(normalized_scope):
+        return "Cross-project lookup requires a project scope."
+    if limit < 1 or limit > MAX_MEMORY_RESULTS:
+        return f"Memory result limit must be between 1 and {MAX_MEMORY_RESULTS}."
 
     try:
         indexes = load_search_indexes()
@@ -155,11 +237,23 @@ def guyue_read_memory(query: str) -> str:
     if not indexes:
         return "No memory bank index found."
 
-    results = []
+    result_buckets: dict[int, list[tuple[dict, Path, dict]]] = {
+        0: [],
+        1: [],
+        2: [],
+    }
     seen_ids: set[str] = set()
     for source, memory_dir, index in indexes:
         for memory in index.get("memories", []):
             if memory.get("status") not in {"active", "needs_review"}:
+                continue
+            priority = memory_scope_priority(
+                str(memory.get("scope", "")),
+                normalized_scope,
+                cross_project=cross_project,
+                include_user=include_user,
+            )
+            if priority is None or len(result_buckets[priority]) >= limit:
                 continue
             memory_id = str(memory.get("id", ""))
             if memory_id in seen_ids:
@@ -173,24 +267,26 @@ def guyue_read_memory(query: str) -> str:
                 ]
             ).casefold()
             if normalized_query in searchable:
-                try:
-                    detail = read_memory_detail(memory_dir, memory)
-                except (OSError, UnicodeError, ValueError) as exc:
-                    return f"Failed to read memory detail for {memory_id}: {exc}"
-                results.append(
-                    {
-                        **memory,
-                        "source": source,
-                        "requires_review": memory.get("status") == "needs_review",
-                        "detail": detail,
-                    }
-                )
+                result = memory_summary(memory, source)
+                result_buckets[priority].append((result, memory_dir, memory))
                 seen_ids.add(memory_id)
-                if len(results) >= MAX_MEMORY_RESULTS:
-                    return json.dumps(results, ensure_ascii=False, indent=2)
 
-    if not results:
+    selected = [
+        candidate
+        for priority in (0, 1, 2)
+        for candidate in result_buckets[priority]
+    ][:limit]
+    if not selected:
         return f"No memories found for query: {query}"
+    results = []
+    for result, memory_dir, memory in selected:
+        if include_detail:
+            memory_id = str(memory.get("id", ""))
+            try:
+                result["detail"] = read_memory_detail(memory_dir, memory)
+            except (OSError, UnicodeError, ValueError) as exc:
+                return f"Failed to read memory detail for {memory_id}: {exc}"
+        results.append(result)
     return json.dumps(results, ensure_ascii=False, indent=2)
 
 
@@ -203,12 +299,27 @@ def guyue_write_memory(
     evidence: str,
     tags: list[str],
     provenance: str = "current verified task",
-    scope: str = "project",
+    scope: str = "user",
     confidence: str = "high",
     review_after: str = "",
     supersedes: list[str] | None = None,
+    user_intent: str = "",
 ) -> str:
-    """Write a verified lesson to private, versioned local memory storage."""
+    """Write a verified lesson only after an explicit user persistence request."""
+    if not has_explicit_memory_write_intent(user_intent):
+        return (
+            "Refused to store memory without an explicit user request to remember, "
+            "save, or record it."
+        )
+    normalized_scope = scope.strip()
+    normalized_scope_key = normalized_scope.casefold()
+    if normalized_scope_key != "user" and not (
+        normalized_scope_key.startswith("project:")
+        and bool(normalized_scope_key.removeprefix("project:").strip())
+    ):
+        return (
+            "Refused ambiguous memory scope; use user or project:<stable-project-id>."
+        )
     normalized_tags = [str(tag).strip() for tag in (tags or []) if str(tag).strip()]
     normalized_supersedes = [
         str(memory_id).strip()
@@ -314,7 +425,10 @@ def guyue_write_memory(
                 raise
     except (OSError, TimeoutError) as exc:
         return f"Failed to save private memory safely: {exc}"
-    return f"Successfully saved private memory {memory_id} to {filename}."
+    return (
+        f"Successfully saved private memory {memory_id} to {filename} "
+        f"with scope {normalized_scope}."
+    )
 
 
 if __name__ == "__main__":

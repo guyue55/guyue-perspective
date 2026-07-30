@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "ai-website-cloner",
+  "skill_sha256": "0e3aea2c261910eb2cb776f7cdb75285075ea95340d4203e07277ec14f0e38b4",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/ai-website-cloner.output.md",
+  "output_sha256": "81cecd45b74f62756fa864549f00d6c9cc0bb7741af26a1ad3eed724261b9108",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/ai-website-cloner/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/ai-website-cloner/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 44289,
+    "cached_input_tokens": 40448,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2148,
+    "reasoning_output_tokens": 620
+  },
+  "elapsed_seconds": 56.901,
+  "raw_sha256": "a57f0bc3383bc86d7b9cbd23f7446e22710ba595a7baec0615659a85eb7ba817",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

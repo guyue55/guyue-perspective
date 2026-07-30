@@ -375,8 +375,10 @@ def check_project_config(repo_root):
             print(f"❌ [CONFIG ERROR] {name}.live_canary_required must be true", file=sys.stderr)
             passed = False
 
-    for context_gated_skill in ('nexusflow-governance-workflow', 'static-demo-hardening'):
-        item = next((skill for skill in manifest_skills if skill.get('name') == context_gated_skill), None)
+    for item in (
+        skill for skill in manifest_skills if skill.get('root_exposure') == 'contextual'
+    ):
+        context_gated_skill = item.get('name')
         if not item or not item.get('required_any_context') or not item.get('negative_intent'):
             print(
                 f"❌ [CONFIG ERROR] context-gated skill {context_gated_skill} requires positive context signals and negative routes",

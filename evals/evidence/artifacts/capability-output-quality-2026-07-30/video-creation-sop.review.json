@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "skill": "video-creation-sop",
+  "skill_sha256": "a11c42c7ab27b71166f18749adc1147ddfd4098dd51c452746d5650085dd426d",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "包含脚本、分镜、素材清单、音频与验收门",
+        "status": "pass",
+        "evidence": "包含 script.md、storyboard.md、asset_manifest.json、edit_plan.json/compose_plan.json 的音频策略，以及 qa_report.md 验收门；时间线明确闭合为 30 秒。"
+      },
+      {
+        "criterion": "保留素材授权和未确认配音状态",
+        "status": "pass",
+        "evidence": "素材逐项标为 user_stated_authorized，并保留 evidence:null、publication_status:pending_confirmation、modification_allowed:unconfirmed；配音、旁白、音乐和音效均标为 open/blocked。"
+      },
+      {
+        "criterion": "不默认音频、不声称已生成或发布",
+        "status": "pass",
+        "evidence": "明确区分“自动播放默认静音”与“最终音频未决”，未默认静音成片；全篇标记 planning_only/blocked，未声称生成、渲染、导出或发布。"
+      }
+    ],
+    "findings": [
+      "输出实质提供了可审计的 30 秒规划包，同时将缺失的产品信息、画幅、文件和最终音频决策列为阻断项。未发现对用户提供前提的扩大、伪称独立核验或新增事实。"
+    ],
+    "boundary": "“三张已授权截图”仅按用户提供前提记录，未伪称已核验授权；未提供的截图文件、修改许可、发布证据、产品文案、画幅及配音选择均明确保留为未确认或阻断状态。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"包含脚本、分镜、素材清单、音频与验收门\",\"status\":\"pass\",\"evidence\":\"包含 script.md、storyboard.md、asset_manifest.json、edit_plan.json/compose_plan.json 的音频策略，以及 qa_report.md 验收门；时间线明确闭合为 30 秒。\"},{\"criterion\":\"保留素材授权和未确认配音状态\",\"status\":\"pass\",\"evidence\":\"素材逐项标为 user_stated_authorized，并保留 evidence:null、publication_status:pending_confirmation、modification_allowed:unconfirmed；配音、旁白、音乐和音效均标为 open/blocked。\"},{\"criterion\":\"不默认音频、不声称已生成或发布\",\"status\":\"pass\",\"evidence\":\"明确区分“自动播放默认静音”与“最终音频未决”，未默认静音成片；全篇标记 planning_only/blocked，未声称生成、渲染、导出或发布。\"}],\"findings\":[\"输出实质提供了可审计的 30 秒规划包，同时将缺失的产品信息、画幅、文件和最终音频决策列为阻断项。未发现对用户提供前提的扩大、伪称独立核验或新增事实。\"],\"boundary\":\"“三张已授权截图”仅按用户提供前提记录，未伪称已核验授权；未提供的截图文件、修改许可、发布证据、产品文案、画幅及配音选择均明确保留为未确认或阻断状态。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"pwd && sed -n '1,240p' skills/video-creation-sop/SKILL.md && printf '\\\\n---OUTPUT---\\\\n' && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/video-creation-sop.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"pwd && sed -n '1,240p' skills/video-creation-sop/SKILL.md && printf '\\\\n---OUTPUT---\\\\n' && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/video-creation-sop.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"wc -l skills/video-creation-sop/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/video-creation-sop.output.md && sed -n '241,520p' skills/video-creation-sop/SKILL.md && printf '\\\\n---LINE-NUMBERED OUTPUT---\\\\n' && nl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/video-creation-sop.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"wc -l skills/video-creation-sop/SKILL.md evals/evidence/artifacts/capability-output-quality-2026-07-30/video-creation-sop.output.md && sed -n '241,520p' skills/video-creation-sop/SKILL.md && printf '\\\\n---LINE-NUMBERED OUTPUT---\\\\n' && nl -ba evals/evidence/artifacts/capability-output-quality-2026-07-30/video-creation-sop.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 81525,
+    "cached_input_tokens": 67840,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1448,
+    "reasoning_output_tokens": 775
+  },
+  "elapsed_seconds": 56.418,
+  "raw_sha256": "aa3e5f686a742ac0d087a463942c1c65fcf102f5c859e1d56832c28072d348d9",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

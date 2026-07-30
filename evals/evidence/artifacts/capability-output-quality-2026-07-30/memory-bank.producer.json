@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "memory-bank",
+  "skill_sha256": "e135f197cd81521f889b02de15c60127399380a7ab73944ea6bb42c3135b7aee",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/memory-bank.output.md",
+  "output_sha256": "84dae86b6d8b1840112950736edfd02687c735b6cb8ed55625a0f9a2140182cd",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/memory-bank/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/memory-bank/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 45022,
+    "cached_input_tokens": 40960,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1000,
+    "reasoning_output_tokens": 626
+  },
+  "elapsed_seconds": 38.075,
+  "raw_sha256": "c0df32048520bb97a9cc10a1054a5013fe910c181d3fdd15137ecfaddf75ccdc",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

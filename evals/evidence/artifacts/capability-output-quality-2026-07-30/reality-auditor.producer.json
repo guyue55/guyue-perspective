@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "skill": "reality-auditor",
+  "skill_sha256": "008ae59b60ed4a065c381624a313bb4647498de24eb9e24a679b0a2bd4eb6fcc",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/reality-auditor.output.md",
+  "output_sha256": "8e85f721a6ba55d67029ed39b3549e2aeb3bc42cc190427c083b6a5693eb2c38",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/reality-auditor/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/reality-auditor/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' RTK.md && git status --short\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' RTK.md && git status --short\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 73087,
+    "cached_input_tokens": 63744,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1535,
+    "reasoning_output_tokens": 970
+  },
+  "elapsed_seconds": 48.366,
+  "raw_sha256": "5919bf246957a9e60030ef2520e77ce62ed3dbeddb49f91589dc3a40e1f7fe6d",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

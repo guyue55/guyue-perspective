@@ -5,7 +5,7 @@ description: Record or recall verified decisions, fixes, lessons, and prevention
 
 # guyue / memory-bank
 
-记忆不是聊天摘要仓库。它只保存经证据确认、未来可能改变判断的决策与教训，并带来源、作用域、置信度、生命周期和复查期限。
+记忆不是聊天摘要仓库，也不自动保存模型认为“以后可能有用”的内容。只有用户明确要求保存、记住或记录时，才把经证据确认、未来可能改变判断的决策与教训写入私有记忆，并带来源、作用域、置信度、生命周期和复查期限。
 
 ## 存储边界
 
@@ -16,20 +16,22 @@ description: Record or recall verified decisions, fixes, lessons, and prevention
 
 ## 何时使用
 
-- 用户明确要求记录、回忆或更新一条历史教训。
-- 已验证的架构决定、复杂故障根因或发布事故可能在未来重复发生。
-- 当前任务与已知历史故障、长期 Goal 恢复或既往决定高度相关。
+- **写入**：用户本轮明确要求“保存、记住、记录、记下来”或等价持久化动作，并且内容已经验证。
+- **检索**：用户要求回忆或更新历史教训，或者当前任务与已知历史故障、长期 Goal 恢复或既往决定高度相关。
 
 普通新请求不默认加载全部记忆。检索失败只说明“未命中”，继续当前任务的正常取证路线，不自动假设需要联网调研。
+任务完成、信息重要、模型认为值得沉淀，或用户只要求复盘，都不能自动触发私有记忆写入。
 
 ## 写入契约
 
-优先调用 `guyue_write_memory`。每条 schema v2 记忆必须包含：
+优先调用 `guyue_write_memory`。调用时必须传入用户本轮明确要求保存、记住或记录的 `user_intent`；缺失或是否定表达时拒绝写入。`user_intent` 只用于当次授权判断，不进入索引或 Markdown 详情。
+
+每条 schema v2 记忆必须包含：
 
 - `id`：稳定 `MEM-...` 标识；
 - `Symptom`、`Root Cause`、`Solution`、`Prevention`；
 - `provenance`：来自哪次任务、决定或证据；
-- `scope`：适用项目、模块或通用范围；
+- `scope`：未限定作用域的明确保存请求默认使用跨项目生效的 `user`；只有用户明确要求限于本项目时才使用 `project:<稳定项目标识>`；含糊的 `project` 不允许用于新写入；
 - `evidence`：支持根因和解法的测试、日志、产物或人工确认；
 - `confidence`：`low`、`medium` 或 `high`；
 - `status`：`active`、`needs_review`、`superseded` 或 `archived`；
@@ -39,14 +41,17 @@ description: Record or recall verified decisions, fixes, lessons, and prevention
 
 只记录已验证教训。仍在猜测的根因应留在排障记录，不写成高置信记忆。写入前扫描密钥、Token、私有地址、个人绝对路径和敏感日志；发现后先脱敏。索引更新必须取得排他锁并使用临时文件原子替换；锁超时或索引损坏时拒绝覆盖，不能对 JSON 做无锁字符串追加。
 
+用户只要求“判断、整理候选记忆”而未授权写入时，输出 `candidate` 预览而不是伪造已落盘记录：保留来源、作用域、状态、置信度、失效条件和已知内容；`id`、`timestamp`、Trace 与存储收据留到真实写入时生成。长期决定不必硬套事故叙事，输入没有提供历史症状或根因时明确标为“不适用/未提供”，不得为了填满 `Symptom`、`Root Cause` 等字段编造事故。
+
 ## 检索契约
 
-1. 把查询收敛为项目、模块、错误、决定或风险关键词。
-2. 先检索公共精选索引和本地私有索引的 `tags`、`summary`、`scope`、`evidence`。
-3. 默认返回 `active` 和带 `requires_review` 标记的 `needs_review`；`superseded` 和 `archived` 仅在追溯历史时读取。
-4. 命中后核对 `scope`、`confidence`、`review_after` 和证据是否仍适用于当前版本。
-5. 只有高相关且未过期的记录才影响当前决定；否则把它标成历史线索并重新验证。
-6. 未命中时明确输出 `[Trace: 未命中本地记忆]`，严禁编造“我们上次处理过”。
+1. 把查询收敛为项目、模块、错误、决定或风险关键词；没有项目上下文时默认查询 `user` 全局经验。
+2. 明确当前项目时，默认按“当前 `project:<稳定项目标识>` → `user`”检索公共精选索引和本地私有索引的 `tags`、`summary`、`scope`、`evidence`，最多返回 5 条摘要；需要纯项目结果时设置 `include_user=false`。
+3. 只有显式设置 `cross_project=true` 才追加其他项目，排序保持“当前项目 → user → 其他项目”；Markdown 详情必须另行设置 `include_detail=true`。
+4. 默认返回 `active` 和带 `requires_review` 标记的 `needs_review`；`superseded` 和 `archived` 仅在追溯历史时读取。
+5. 命中后核对 `scope`、`confidence`、`review_after` 和证据是否仍适用于当前版本。
+6. 只有高相关且未过期的记录才影响当前决定；否则把它标成历史线索并重新验证。
+7. 未命中时明确输出 `[Trace: 未命中本地记忆]`，严禁编造“我们上次处理过”。
 
 ## 生命周期与 GC
 
@@ -67,6 +72,8 @@ description: Record or recall verified decisions, fixes, lessons, and prevention
 ## 反模式
 
 - 不把整段聊天、原始日志或未经验证的猜测存成记忆。
+- 不因任务完成、内容重要、模型推荐或“以后可能有用”自动写入记忆。
+- 不把含糊的 `project` 当成所有项目共用桶，不默认混入其他项目，也不默认返回完整详情。
 - 不让公开索引指向被发布规则排除或不存在的私有文件。
 - 不把“曾经有效”写成“当前仍然有效”。
 - 不因检索命中就跳过当前项目的测试、权限或版本核验。

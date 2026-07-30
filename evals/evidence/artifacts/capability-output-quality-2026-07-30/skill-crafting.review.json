@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "skill": "skill-crafting",
+  "skill_sha256": "e47f4d6fc108caaa7d5f00e9f52e6e0425414de4f100bbeda0f74bd4f438d9ba",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "证明满足重复、稳定输入和可重复步骤",
+        "status": "pass",
+        "evidence": "明确以题设的三次重复为复用依据；定义了稳定输入（构建日志、代码版本、测试命令映射、授权与预算）和六步固定闭环，并区分项目适配部分。"
+      },
+      {
+        "criterion": "给清晰触发与近邻不触发边界",
+        "status": "pass",
+        "evidence": "列出三个正向触发示例，并排除仅解释日志、新功能开发、性能优化、CI 设计及无失败证据的猜测性修复。"
+      },
+      {
+        "criterion": "包含验证资产、停止条件和失败路径",
+        "status": "pass",
+        "evidence": "提供覆盖多失败、日志截断、无法映射、无法复现、修复后新失败等情形的评测合同；明确停止条件、副作用边界及定向测试失败后的停止路径。"
+      }
+    ],
+    "findings": [],
+    "boundary": "结论仅基于题设提供的“三次重复流程”前提及被审输出文本；输出未伪称独立取得原始日志或项目文件，并将项目命令映射、历史失败分支和留出回放明确列为后续验证缺口。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"证明满足重复、稳定输入和可重复步骤\",\"status\":\"pass\",\"evidence\":\"明确以题设的三次重复为复用依据；定义了稳定输入（构建日志、代码版本、测试命令映射、授权与预算）和六步固定闭环，并区分项目适配部分。\"},{\"criterion\":\"给清晰触发与近邻不触发边界\",\"status\":\"pass\",\"evidence\":\"列出三个正向触发示例，并排除仅解释日志、新功能开发、性能优化、CI 设计及无失败证据的猜测性修复。\"},{\"criterion\":\"包含验证资产、停止条件和失败路径\",\"status\":\"pass\",\"evidence\":\"提供覆盖多失败、日志截断、无法映射、无法复现、修复后新失败等情形的评测合同；明确停止条件、副作用边界及定向测试失败后的停止路径。\"}],\"findings\":[],\"boundary\":\"结论仅基于题设提供的“三次重复流程”前提及被审输出文本；输出未伪称独立取得原始日志或项目文件，并将项目命令映射、历史失败分支和留出回放明确列为后续验证缺口。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/skill-crafting/SKILL.md && sed -n '1,320p' evals/evidence/artifacts/capability-output-quality-2026-07-30/skill-crafting.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,260p' skills/skill-crafting/SKILL.md && sed -n '1,320p' evals/evidence/artifacts/capability-output-quality-2026-07-30/skill-crafting.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 47994,
+    "cached_input_tokens": 40448,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1493,
+    "reasoning_output_tokens": 1107
+  },
+  "elapsed_seconds": 47.955,
+  "raw_sha256": "ecab724b00dde06902cd1f453fc4e98ee75c15f73878f55af2903834868a1868",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

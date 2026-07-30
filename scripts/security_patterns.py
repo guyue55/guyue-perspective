@@ -27,6 +27,14 @@ SECRET_PATTERNS = [
 
 PROJECT_FINGERPRINT_PATTERNS = [
     (
+        re.compile("Nexus" + "Flow", re.IGNORECASE),
+        "private governance project marker",
+    ),
+    (
+        re.compile("permission" + "Snapshot"),
+        "private permission-state identifier",
+    ),
+    (
         re.compile(r"\b" + "E" + r"AC\b"),
         "redacted project marker",
     ),

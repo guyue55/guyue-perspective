@@ -33,7 +33,7 @@ def main() -> int:
     require(proof["status"] == "pass", "the default local proof must pass")
     require(
         proof["package"]["payload_status"] == "complete"
-        and proof["package"]["skill_count"] == 27,
+        and proof["package"]["skill_count"] == 26,
         "the proof must expose full-package truth",
     )
     require(
@@ -42,8 +42,8 @@ def main() -> int:
         f"the default intent must expose useful routes, got {selected}",
     )
     require(
-        "nexusflow-governance-workflow" not in selected
-        and "nexusflow-governance-workflow" in gated,
+        "static-demo-hardening" not in selected
+        and "static-demo-hardening" in gated,
         "project-specific routes must stay behind an explained context gate",
     )
     require(
@@ -73,16 +73,15 @@ def main() -> int:
     )
     json.dumps(proof, ensure_ascii=False)
 
-    nexus = try_guyue.build_proof(
-        "修复租户治理权限。",
-        context_markers=["NexusFlow", "permissionSnapshot"],
+    static_demo = try_guyue.build_proof(
+        "继续加固报告导出。",
+        context_markers=["static demo", "Demo/index.html"],
         runtime="generic",
         limit=3,
     )
     require(
-        nexus["routing"]["selected"][0]["name"]
-        == "nexusflow-governance-workflow",
-        "explicit project markers must promote the project workflow",
+        static_demo["routing"]["selected"][0]["name"] == "static-demo-hardening",
+        "explicit context markers must promote the matching workflow",
     )
 
     external = try_guyue.build_proof(

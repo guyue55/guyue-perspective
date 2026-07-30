@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "context-compressor",
+  "skill_sha256": "537fb46eefde3f2bba229cbf19ea1350706b8327d0e1172cdefe71f82f115065",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/context-compressor.output.md",
+  "output_sha256": "d0992c9cdea5acbfe03b070fcde850334253fd163179f8ed08a743dc9577721e",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"wc -l skills/context-compressor/SKILL.md && sed -n '1,260p' skills/context-compressor/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"wc -l skills/context-compressor/SKILL.md && sed -n '1,260p' skills/context-compressor/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 46757,
+    "cached_input_tokens": 40960,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2586,
+    "reasoning_output_tokens": 1581
+  },
+  "elapsed_seconds": 58.168,
+  "raw_sha256": "6a960667e348ec7ad121969c74b0067bec95a2b75245f9a00ba68cbddad46037",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

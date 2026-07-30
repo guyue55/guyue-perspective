@@ -11,7 +11,7 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 
 import run_security_scan  # noqa: E402
-from security_patterns import find_secret_matches  # noqa: E402
+from security_patterns import find_project_fingerprint_matches, find_secret_matches  # noqa: E402
 
 
 ROOT = Path(__file__).resolve().parent
@@ -116,6 +116,18 @@ def main() -> int:
     require(
         not find_secret_matches(marked_fixture, allow_example=True),
         "a test-only caller may explicitly allow a synthetic fixture",
+    )
+    private_project_marker = "Nexus" + "Flow"
+    private_permission_identifier = "permission" + "Snapshot"
+    require(
+        "private governance project marker"
+        in find_project_fingerprint_matches(private_project_marker),
+        "private project names must be blocked from public release payloads",
+    )
+    require(
+        "private permission-state identifier"
+        in find_project_fingerprint_matches(private_permission_identifier),
+        "private project identifiers must be blocked from public release payloads",
     )
 
     print("Security scanner regression tests passed.")

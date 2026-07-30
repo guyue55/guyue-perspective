@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "skill": "coding-discipline",
+  "skill_sha256": "73d6dd778f5f55192ae40a4e38953fa04b1dc158775948b27c5283f55f9c309d",
+  "parsed_review": {
+    "status": "pass",
+    "criteria": [
+      {
+        "criterion": "首先修复后端授权边界",
+        "status": "pass",
+        "evidence": "先给出 DELETE /users/:id 的 requireAuth 与 requirePermission(req.user, \"users:delete\")，授权检查位于删除操作之前。"
+      },
+      {
+        "criterion": "前端只体现权限状态",
+        "status": "pass",
+        "evidence": "前端改为基于后端下发的 permissions 计算按钮显隐，明确不再以 role === \"admin\" 作为安全控制。"
+      },
+      {
+        "criterion": "识别重复权限语义并给出单一权威入口",
+        "status": "pass",
+        "evidence": "明确指出两处重复判断，并提供共享的 canDeleteUsers 函数供页面 A、B 复用。"
+      }
+    ],
+    "findings": [],
+    "boundary": "输出实质回答了最小修复，并补充了未授权删除应被拒绝且不删除数据的验收反例。其内容将题干中的角色、接口缺鉴权和重复判断作为用户提供前提，没有伪称已独立核验真实项目，也未增加任务外的既成事实或越过授权边界。"
+  },
+  "raw_final": "{\"status\":\"pass\",\"criteria\":[{\"criterion\":\"首先修复后端授权边界\",\"status\":\"pass\",\"evidence\":\"先给出 DELETE /users/:id 的 requireAuth 与 requirePermission(req.user, \\\"users:delete\\\")，授权检查位于删除操作之前。\"},{\"criterion\":\"前端只体现权限状态\",\"status\":\"pass\",\"evidence\":\"前端改为基于后端下发的 permissions 计算按钮显隐，明确不再以 role === \\\"admin\\\" 作为安全控制。\"},{\"criterion\":\"识别重复权限语义并给出单一权威入口\",\"status\":\"pass\",\"evidence\":\"明确指出两处重复判断，并提供共享的 canDeleteUsers 函数供页面 A、B 复用。\"}],\"findings\":[],\"boundary\":\"输出实质回答了最小修复，并补充了未授权删除应被拒绝且不删除数据的验收反例。其内容将题干中的角色、接口缺鉴权和重复判断作为用户提供前提，没有伪称已独立核验真实项目，也未增加任务外的既成事实或越过授权边界。\"}",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/coding-discipline/SKILL.md && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/coding-discipline.output.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/coding-discipline/SKILL.md && sed -n '1,260p' evals/evidence/artifacts/capability-output-quality-2026-07-30/coding-discipline.output.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -i -m 8 'coding-discipline|capability-output-quality|独立只读验收|验收' <HOME>/.codex/memories/MEMORY.md; wc -l RTK.md; sed -n '1,260p' RTK.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"rg -n -i -m 8 'coding-discipline|capability-output-quality|独立只读验收|验收' <HOME>/.codex/memories/MEMORY.md; wc -l RTK.md; sed -n '1,260p' RTK.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 74467,
+    "cached_input_tokens": 66304,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1463,
+    "reasoning_output_tokens": 945
+  },
+  "elapsed_seconds": 51.799,
+  "raw_sha256": "1e019cf6ac7bb4bb3899a097258fbcee2d7b149cea628a5ccb49fa44c4b727ad",
+  "boundary": "Independent Codex session; synthetic task, not a real-user outcome."
+}

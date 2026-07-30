@@ -2,22 +2,22 @@
 
 Release only when installation, verification, safety, and examples are understandable to a new user.
 
-## v1.70.1 Release Evidence
+## v1.7.2 Release Evidence
 
-Date: 2026-07-29
-Candidate version: `1.70.1`
-Base tag: `v1.70`
+Date: 2026-07-30
+Candidate version: `1.7.2`
+Base tag: `v1.7.1`
 
-- [x] Ruff is pinned to `0.16.0`, and the effective lint rules are explicit rather than inherited from an upstream default.
-- [x] Local and GitHub Actions release gates use the same Ruff toolchain and configuration.
-- [x] High-impact designs prove the problem, native baseline, alternatives, falsifier, blast radius and rollback before implementation.
-- [x] Material multi-turn direction changes reset inherited confidence instead of preserving an unproven premise.
-- [x] External learning remains candidate-only until value, overlap, maturity, placement, subtraction and regression impact are proven.
-- [x] The reduced cognitive-expansion output contract preserves source, competition, professional-review and budget truth boundaries.
-- [x] Live activation and output-quality receipts both pass `27/27` on Codex CLI `0.146.0-alpha.3.1` with requested model `gpt-5.6-terra`.
-- [x] The strict capability chain passes `114/114` routing checks, `416/416` internal triggers, `41/41` external candidate triggers and `222/222` near misses.
+- [x] Remove the company-project Skill and every public project identifier while retaining generic backend authorization, frontend representation, audit and negative-test discipline.
+- [x] Add a project-fingerprint security regression so company-specific names and contract fields cannot silently re-enter the public payload.
+- [x] Treat explicit user facts as task premises without falsely promoting them to independent verification or widening their meaning.
+- [x] Make the independent output reviewer read the same synthetic task, preventing evidence-free false failures caused by missing task context.
+- [x] Preserve useful delivery after safe blocking: architecture includes migration/verification, missing visual evidence still yields a bounded work package, and candidate memory does not fabricate write receipts.
+- [x] Live activation and output-quality receipts both pass `26/26` on Codex CLI `0.146.0-alpha.3.1` with requested model `gpt-5.6-terra`.
+- [x] The strict capability chain passes `113/113` routing checks, `424/424` internal triggers, `41/41` external candidate triggers and `214/214` near misses.
+- [x] The corrected public lineage `v1.6.0 → v1.7.0 → v1.7.1 → v1.7.2` is consistent across tags, release metadata, documentation and payload locks.
 - [x] The live evidence runner and strict checker hash the same routing semantics, including composed-intent rules.
-- [x] The exact payload lock is rebuilt after the release metadata and documentation changes.
+- [x] The exact payload lock is rebuilt after the final release metadata and documentation changes.
 - [x] The complete local suite passes.
 - [x] Ruff runs with `--no-cache`.
 - [x] Diff whitespace, generated-cache, zero-leakage and full-install proofs pass.
@@ -45,7 +45,7 @@ Base tag: `v1.70`
 
 ## Verification
 
-- [ ] Current deterministic contract contains 114 structural prompts; update this count whenever `test-prompts.json` changes.
+- [ ] Current deterministic contract contains 113 structural prompts; update this count whenever `test-prompts.json` changes.
 - [ ] `python3 scripts/security_scanner.py` passes.
 - [ ] `python3 scripts/doctor.py` passes.
 - [ ] `python3 scripts/ci_validate_skills.py` passes.

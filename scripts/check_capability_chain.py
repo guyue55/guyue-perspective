@@ -419,7 +419,7 @@ def build_receipt(root: Path = ROOT) -> dict[str, object]:
             f"skills missing near-miss coverage: {sorted(missing_near_miss_skills)}"
         )
 
-    live_path = root / "evals/evidence/capability-live-canaries-2026-07-13.json"
+    live_path = root / "evals/evidence/capability-live-canaries-2026-07-30.json"
     model_activation_verified = False
     live_routing_current = False
     live_passed = 0
@@ -542,7 +542,7 @@ def build_receipt(root: Path = ROOT) -> dict[str, object]:
                 errors.append("evidence-profile output replay is incomplete")
 
     output_quality_path = (
-        root / "evals/evidence/capability-output-quality-2026-07-13.json"
+        root / "evals/evidence/capability-output-quality-2026-07-30.json"
     )
     all_skill_output_quality_verified = False
     stale_quality_skills: list[str] = []

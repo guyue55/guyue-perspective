@@ -6,10 +6,10 @@
 
 ![Skill Badge](https://img.shields.io/badge/Agent_Skill-guyue-blue)
 ![Architecture](https://img.shields.io/badge/Architecture-Digital_Twin_Core_%2B_Specialties-success)
-![Status](https://img.shields.io/badge/Release-v1.70.1-brightgreen)
+![Status](https://img.shields.io/badge/Candidate-v1.7.2-yellow)
 
-> [!WARNING]
-> `v1.70.1` 是 v1.70 的可复现性修复版：保留高影响方向防火墙、跨轮置信度重置和精简认知拓界证据脊柱，同时固定 Ruff `0.16.0` 及显式规则集，避免本地与 CI 因上游默认规则变化而得出相反结论。正式载荷通过完整本地套件、严格能力链、零泄漏扫描，以及 Codex CLI 上 `27/27` 真实激活和 `27/27` 全能力合成输出质量验证。
+> [!NOTE]
+> 当前候选为 `v1.7.2`：公司或单一仓库能力已移回项目边界，通用权限治理原则保留在系统设计、编码纪律和真实性审查中。公开版本链已校正为 `v1.6.0 → v1.7.0 → v1.7.1 → v1.7.2`。
 
 > [!IMPORTANT]
 > 古月不是“完整的人”或万能自动化系统。它会主动完成边界明确、仓库内可逆的工作；公开发布、付费、凭证、权限扩大、不可逆迁移等高影响动作仍需绑定具体版本的授权。它不会把 AI 参与伪装成人工来源，也不会为了好听删除证据缺口或风险。
@@ -26,13 +26,13 @@ cd guyue-skill
 python3 scripts/try_guyue.py
 ```
 
-下面是当前 `v1.70.1` 的本地验货样例：
+下面是当前 `v1.7.2` 的本地验货样例：
 
 ```text
-[PASS] 包体 complete | v1.70.1 | 27 Skills
+[PASS] 包体 complete | v1.7.2 | 26 Skills
 1. static-demo-hardening | 证据: 静态 demo
 2. coding-discipline | 证据: PDF 导出
-项目边界: 静态 Demo 演示面、NexusFlow 专属能力未误触
+项目边界: 静态 Demo 演示面未误触
 上下文: 0 个高相似路由碰撞
 [PASS] 本地验货通过
 ```
@@ -45,11 +45,11 @@ python3 scripts/try_guyue.py
 |---|---|---|
 | `scripts/try_guyue.py` | 当前载荷、确定性路由、项目边界和上下文预算 | 目标运行时已激活，或模型一定遵守合同 |
 | 哈希绑定的只读回放 | 指定提示词在指定运行时中的真实行为 | 其余行为合同、其他运行时或长期结果 |
-| `v1.70.1` 的本地发布套件 | 当前 27 个 Skill 的结构、路由、协作、安装载荷、安全和上下文预算 | 其他运行时、任意输入质量、真实用户价值或长期效果 |
+| 当前开发候选的本地发布套件 | 当前 26 个 Skill 的结构、路由、协作、安装载荷、安全和上下文预算 | 其他运行时、任意输入质量、真实用户价值或长期效果 |
 | 当前发布套件与发布清单 | 精确载荷的本地结构、安全、远程 CI 和公开源安装完整性 | 其他运行时、GitHub Release 或长期用户价值 |
 
 > [!NOTE]
-> 当前发布已定义 27 个子 Skill、114 个路由用例、42 个行为合同、12 个协作用例、222 个近邻负例和 11 个工作流。严格发布收据另在 Codex CLI `0.146.0-alpha.3.1`、请求模型 `gpt-5.6-terra` 上通过 `27/27` 真实激活和 `27/27` 全能力合成输出质量验证；这仍不代表任意输入、其他运行时、真实用户价值或长期效果。
+> 当前开发候选定义 26 个子 Skill、113 个路由用例、65 个行为合同、10 个协作用例、214 个近邻负例和 10 个工作流。当前载荷的 26/26 活体激活与 26/26 产出质量收据已重新生成；它们只证明指定 Codex 运行时和合成任务，不扩大为跨运行时或真实用户价值。
 
 普通开发门会把“活体收据陈旧/不完整”保留为可见警告，并维持相应能力声明为 `false`，避免额度阻断诱发无价值的全量重跑；正式发布仍必须用 `check_capability_chain.py --strict --json` 或 `GUYUE_RELEASE_STRICT=1` 将这些警告恢复为阻断门。
 
@@ -105,18 +105,18 @@ python3 scripts/try_guyue.py
 |---|---|---|
 | 临时提示 | 一次性回答和局部执行 | 没有版本化路由、恢复账本、证据合同和回归门 |
 | 单一任务 Skill | 固化一个领域的稳定步骤 | 通常不负责跨任务仲裁、长线控制修订和终局封账 |
-| Guyue（当前发布清单） | 用 27 个窄能力组织认知建图、需求、实现、恢复、审查和沉淀 | 仍依赖目标运行时执行；本地发布套件不替代用户价值判断或时间型结果 |
+| Guyue（当前开发清单） | 用 26 个窄能力组织认知建图、需求、实现、恢复、审查和沉淀 | 仍依赖目标运行时执行；本地发布套件不替代用户价值判断或时间型结果 |
 
 ## 安装到 Agent
 
-### v1.70.1：GitHub 源与 Claude Code Marketplace 元数据
+### v1.7.2：GitHub 源与 Claude Code Marketplace 元数据
 
 ```bash
 claude plugin marketplace add guyue55/guyue-skill
 claude plugin install guyue@guyue
 ```
 
-安装后可用 `claude plugin details guyue@guyue` 核对版本和组件清单。公开 tag `v1.70.1` 固定本次判断治理、精简验真与 CI 可复现修复载荷，Marketplace 元数据与版本一致。Claude 模型激活和 Marketplace 提交仍是独立证据面，不能由 Codex 活体回放、结构校验、GitHub Release 或本地安装证据替代。
+安装后可用 `claude plugin details guyue@guyue` 核对版本和组件清单。候选 tag `v1.7.2` 用于固定本次项目隔离、证据语义与产出闭环载荷；正式发布前 Marketplace 元数据、tag 和发布包必须保持一致。Claude 模型激活和 Marketplace 提交仍是独立证据面，不能由 Codex 活体回放、结构校验、GitHub Release 或本地安装证据替代。
 
 **Codex 完整安装：**
 
@@ -149,14 +149,14 @@ bash scripts/test_suite.sh
 
 更完整的运行时安装路径见 [docs/installation.md](docs/installation.md)。安全边界见 [docs/security.md](docs/security.md)。评测方式见 [docs/evaluation.md](docs/evaluation.md)。
 
-运行时边界见 [docs/runtime-adapters.md](docs/runtime-adapters.md)，长任务协议见 [docs/long-goal-protocol.md](docs/long-goal-protocol.md)，控制包字段见 [docs/templates/long-goal-control-pack.md](docs/templates/long-goal-control-pack.md)。当前证据见 [v1.70.1 发布说明](docs/release-v1.70.1.md) 和 [发布清单](docs/release-checklist.md#v1701-release-evidence)。
+运行时边界见 [docs/runtime-adapters.md](docs/runtime-adapters.md)，长任务协议见 [docs/long-goal-protocol.md](docs/long-goal-protocol.md)，控制包字段见 [docs/templates/long-goal-control-pack.md](docs/templates/long-goal-control-pack.md)。当前证据见 [v1.7.2 发布说明](docs/release-v1.7.2.md) 和 [发布清单](docs/release-checklist.md#v172-release-evidence)。
 
-## 核心心智矩阵：1 个核心分身 + 14 个基础能力 + 13 个扩展能力
+## 核心心智矩阵：1 个核心分身 + 26 个窄能力
 
 本系统采用类似操作系统的技能路由架构（Digital Twin Orchestrator）。当运行时加载根 `SKILL.md` 后，主干根据意图选择最窄的内部能力模块：
 
 > [!NOTE]
-> 这里描述当前发布分支的 27 个子 Skill 和确定性合同。活体激活和输出质量收据必须按当前版本单独刷新，不能从旧版本继承。
+> 这里描述当前开发分支的 26 个子 Skill 和确定性合同。活体激活和输出质量收据必须按当前版本单独刷新，不能从旧版本继承。
 
 - 🚦 **核心分身 (guyue)**：接管意图，强制注入模块化解耦、全局规划、规范化纪律的底层思维 SOP。
 - 🗺️ **认知拓界 (cognitive-expansion)**：日常以微量模式补少数高价值遗漏，陌生或高风险领域才建立可被新证据修订的正式认知地图；把“等/等等/之类”视为种子而非闭集，模型知识优先，时效或证据门命中后才定向联网，不替代事实检索、需求拆解或架构设计。
@@ -171,9 +171,9 @@ bash scripts/test_suite.sh
 - ✨ **前端与交互美学 (frontend-expert)**：先服从产品类型、现有设计系统和技术栈，再落实 a11y、响应式与 UI 标准件复用；只有复杂时序或现有项目确有需要时才引入 GSAP 等增强能力。
 - 🏭 **标准件车间 (sop-maker)**：当一项复杂排障、开发流或重复 Agent 工作成功闭环后，将其提炼、泛化并打包为可复用的操作手册 (SOP) 或 Loop Contract。
 - 📒 **长线目标铸造与长程自治**：Long Goal v4 在 v3 的稳定 ID、委派收束和哈希证据上，增加三层时间尺度、事实/决定/假设/实验台账、可追溯控制修订、先纵切后扩张和 A/B/C Git 封账。检查器可通过 `--repo-root` 验证任意目标仓库；连续模拟覆盖三次失败、设计复核、批准恢复、封账、重启与篡改拒绝。承诺与 `FINAL/ATTEMPT` 证据双向对账，检查器通过仍只证明控制结构完整。v2/v3 仅保留历史解析兼容。
-- 🧠 **证据型双轨记忆 (memory-bank)**：公共精选索引与本地私有运行记忆分离；每条教训记录来源、证据、作用域、置信度、替代关系和复查日期，避免把过期经验当成当前事实。
+- 🧠 **证据型双轨记忆 (memory-bank)**：公共精选索引与本地私有运行记忆分离；私有记忆只有在用户明确要求保存、记住或记录时才写入。未限定作用域时默认保存为跨项目生效的个人经验；项目检索会优先当前项目并补充个人全局经验，其他项目和完整详情仍需显式开启。
 - 🛠️ **技能制作 (skill-crafting)**：先验证重复价值、稳定输入、可复用步骤和验证标准，再选择 Skill、Custom subagent、SOP、脚本、Hook、Automation 或 CI gate；用无 Skill 基线、留出样本、重复回放和安装验真取代评分表自嗨。
-- 📡 **能力链验真**：当前 manifest 的 27 个子 Skill、114 个路由用例、42 个行为合同、12 个协作用例、222 个近邻负例和 11 个工作流证明确定性发现与选择合同。10 个外部增强只能进入候选态，未完成来源、安装、安检和动作授权前不能冒充已激活能力。
+- 📡 **能力链验真**：当前 manifest 的 26 个子 Skill、113 个路由用例、65 个行为合同、10 个协作用例、214 个近邻负例和 10 个工作流证明确定性发现与选择合同。10 个外部增强只能进入候选态，未完成来源、安装、安检和动作授权前不能冒充已激活能力。
 - 🧭 **生态寻猎 (ecosystem-scout)**：调研外部技能/工具，按 Two-Phase Loading 轻量注册；确实适合第三方工具时，先给安装计划和安全边界，获明确授权后再快速接入。
 
 扩展能力用于处理更细分的高风险工作流，默认仍受安全、授权和验证门约束：
@@ -188,7 +188,6 @@ bash scripts/test_suite.sh
 - 🎞️ **视频提取 (video-extractor)**：在授权和平台规则内提取元数据、字幕和可选媒体。
 - 🗜️ **上下文预算 (context-compressor)**：先判断 token 浪费来自文件、工具、文档、长会话还是动态工作流，再用最小上下文、子任务预算和可追溯证据完成任务。
 - 🔎 **真实性审查 (reality-auditor)**：实现后独立验收，专查假数据、前端假过滤、权限边界、部署配置是否真实生效、动态工作流是否有停止条件和验证盲点。
-- 🏢 **NexusFlow 治理流 (nexusflow-governance-workflow)**：沉淀 NexusFlow 权限/治理/平台/仪表盘/GCP 导入工作的固定入口、验证门和中文提交纪律。
 - 🧾 **静态 Demo 加固 (static-demo-hardening)**：约束 `Demo/index.html` 静态演示、报告导出、教程 fallback 和 GSAP 运行时加固。
 - 💸 **AI 成本实测 (ai-cost-grounding-measurement)**：用真实 token、Grounding 元数据、计费搜索 Query 和中文 CSV 输出证明成本口径。
 
@@ -210,7 +209,6 @@ bash scripts/test_suite.sh
 | `documentation` / `sop-maker` / `skill-crafting` / `book-distiller` | 普通文档和项目摸底走 documentation；成功流程沉淀走 SOP；制作/升级 Skill 走 skill-crafting；长文方法论提炼走 book-distiller。 |
 | `context-compressor` / `sop-maker` / `skill-crafting` / `reality-auditor` | 循环工程和动态工作流先用 context-compressor 定成本预算；成功流程沉淀走 SOP；要变成 Skill、Custom subagent、Hook、Automation 或 CI gate 才走 skill-crafting；最后由 reality-auditor 独立验证。 |
 | `video-creation-sop` / `video-extractor` | 视频创作、分镜、生成/渲染/剪辑路由走 video-creation-sop；已有视频链接的元数据、字幕、授权边界提取走 video-extractor。 |
-| `nexusflow-governance-workflow` / 通用工程技能 | NexusFlow 权限、治理、平台可见性、仪表盘和 GCP 导入优先走项目技能，再按需调用通用技能。 |
 | `ai-cost-grounding-measurement` / `research-and-sourcing` / `reality-auditor` | 真跑 token、Grounding 和计费 Query 统计走成本实测；查资料走调研；复核声明真实性走审查。 |
 
 合并纪律：只有当真实回放或 `test-prompts.json` 证明两个技能反复误触发，且执行步骤高度重复时，才合并或删除。否则优先打磨 description、触发词和边界表，避免把专业技能揉成一个含糊的大技能。
@@ -228,11 +226,11 @@ bash scripts/test_suite.sh
    - **Human-in-the-Loop**: 审批绑定具体动作、参数、版本和失效条件；方向改变后旧授权不自动延续。
    - **Loop Engineering**: 把重复手工提示转成有目标、稳定输入、循环体、检查器、停止条件、预算和验证资产的工作流；不把动态工作流理解成无限循环或无限子 Agent。
 
-2. **能力契约**：当前开发 manifest 的 27 个内部路由技能都必须有公开规范兼容的 `name` / `description`，并能说清触发边界、可重复步骤、验证方式和越权死线；具体章节按技能复杂度取舍，不为形式统一复制空模板。
+2. **能力契约**：当前开发 manifest 的 26 个内部路由技能都必须有公开规范兼容的 `name` / `description`，并能说清触发边界、可重复步骤、验证方式和越权死线；具体章节按技能复杂度取舍，不为形式统一复制空模板。
 
 ## MCP 接入
 
-如果你使用 Cursor、Claude Desktop 等支持 MCP 协议的工具，可以直接将古月作为原生插件挂载，让大模型直接拥有读写古月记忆库和调用古月生态的能力。
+如果你使用 Cursor、Claude Desktop 等支持 MCP 协议的工具，可以把古月作为可选插件挂载，用于读取技能清单、解释路由和访问本地记忆。MCP 不是古月 Skill 的必需运行时；记忆写入仍只在用户明确要求保存、记住或记录时开放。
 
 在你的 MCP 配置文件中添加：
 ```json
@@ -243,7 +241,9 @@ bash scripts/test_suite.sh
       "args": [
         "run",
         "--with",
-        "mcp",
+        "mcp[cli]>=1.0.0,<2.0.0",
+        "--with",
+        "PyYAML>=6.0,<7.0",
         "mcp_server.py"
       ],
       "cwd": "/path/to/guyue/src"
@@ -312,7 +312,7 @@ python3 scripts/check_context_budget.py
 - **会话证据提取器**：`scripts/codex_extractor.py` 流式提取 Codex JSONL 中的 user/final 证据，支持项目、起止时间、主任务/子任务、关键词、角色、去重、统计、清单和限长，并排除开发者/工具载荷、脱敏常见凭证与个人主目录。
 - **分层行为评测**：当前开发合同包含 114 个路由用例、42 个行为合同、12 个协作用例、222 个近邻负例和 11 个工作流，并保留绑定证据文件 SHA-256 的真实回放观察检查器；确定性门全绿不会冒充模型行为已通过。
 - **安装收据**：`release-manifest.json` 定义载荷规则，`release-payload.lock.json` 绑定精确文件哈希；`scripts/check_full_install.py --runtime <runtime> --json` 输出载荷、Skill 数、来源提交、工作区状态和可核验的发布身份。开发快照不会冒充 tag 发布，安装成功仍需真实激活回放。
-- **双轨长时记忆引擎 (Structured Memory Bank)**：公共精选条目随 `memory-bank` Skill 发布；私有运行记忆默认写入 `~/.guyue/knowledge/memory/`，不再绑定安装目录。检索会读取命中的 Markdown 详情并标出待复查记录；写入使用排他锁和原子替换，空查询、常见密钥、令牌和个人绝对路径会被拒绝。旧 `.guyue_memory/local/` 仅只读兼容，可通过显式迁移工具对账和回滚。
+- **双轨长时记忆引擎 (Structured Memory Bank)**：公共精选条目随 `memory-bank` Skill 发布；私有运行记忆默认写入 `~/.guyue/knowledge/memory/`，并且只在第一次明确授权且成功的写入时创建，不再绑定安装目录。只有用户明确要求保存、记住或记录时才允许写入；未限定作用域时默认使用跨项目生效的 `user`，明确“本项目”时使用 `project:<稳定项目标识>`。无项目上下文时检索 `user`；项目内按“当前项目 → user”返回最多 5 条摘要，其他项目和 Markdown 详情需分别显式开启。写入仍使用排他锁和原子替换，并拒绝空意向、否定意向、常见密钥、令牌和个人绝对路径。旧 `.guyue_memory/local/` 仅只读兼容，可通过显式迁移工具对账和回滚。
 - **可选 MCP 接口**：`src/mcp_server.py` 可通过 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) 暴露技能清单、可解释路由和本地记忆工具；它是完整仓库上的可选运行层，不代表所有 Agent Skills 运行时都会自动加载 MCP。
 - **依赖健康探针 (Doctor Probe)**：内置 `scripts/doctor.py` 探针，调度外部技能（如 `LearnPrompt/luban-skill`、`alchaincyf/nuwa-skill`）前检查环境，并把可选依赖缺口标成不阻塞项。
 - **前端演示样例 (UI/UX Real-world Proving Ground)**：附带 `examples/saas-conversion-demo/` Demo，示范如何把 500 报错改写成业务方能理解的“商业代价预估”，并用 Vanilla JS + GSAP ScrollTrigger 做滚动动画。
@@ -379,7 +379,6 @@ guyue/
     ├── frontend-expert/
     ├── human-voice/
     ├── memory-bank/
-    ├── nexusflow-governance-workflow/
     ├── product-sense/
     ├── reality-auditor/
     ├── requirement-analysis/
@@ -394,16 +393,16 @@ guyue/
     └── video-extractor/
 ```
 
-## v1.70.1 发布证书
+## v1.7.2 候选证书
 
 ```text
 ┌───────────────────────────────────────────────┐
 │  出师证书 · 鲁班工坊                            │
 │                                               │
-│  作品：guyue (古月数字分身 v1.70.1)               │
-│  状态：Released Payload，发布对象由 tag 固定          │
-│  打磨前：方向门与高风险证据合同偏重、易局部优化     │
-│  打磨后：方向可重置，27 项能力激活与输出可验        │
+│  作品：guyue (古月数字分身 v1.7.2)                │
+│  状态：Candidate Payload，等待 tag 固定             │
+│  打磨前：公开载荷混入单一公司项目能力              │
+│  打磨后：项目身份清零，26 项能力激活与输出可验      │
 │  定位：Personal Agent Operating Layer            │
 │  绝活：方向防火墙 + 精简证据脊柱 + 活体对账        │
 │                                               │

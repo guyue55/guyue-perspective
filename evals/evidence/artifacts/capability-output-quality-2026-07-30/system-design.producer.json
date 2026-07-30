@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "skill": "system-design",
+  "skill_sha256": "7a30c697c3aec6d4d353735c6537ead91a354ff407b2c7badd4dc39ab790f6b5",
+  "skill_file_read": true,
+  "output_artifact": "evals/evidence/artifacts/capability-output-quality-2026-07-30/system-design.output.md",
+  "output_sha256": "f9c8bc939befd700c616d55ecbd87e6f656eac673d591f05355904a21e6ff0d1",
+  "exit_code": 0,
+  "timed_out": false,
+  "failure_diagnostic": "",
+  "commands": [
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/system-design/SKILL.md\"",
+      "exit_code": null,
+      "status": "in_progress"
+    },
+    {
+      "command": "/bin/zsh -lc \"sed -n '1,240p' skills/system-design/SKILL.md\"",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "usage": {
+    "input_tokens": 46192,
+    "cached_input_tokens": 40448,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2151,
+    "reasoning_output_tokens": 653
+  },
+  "elapsed_seconds": 60.704,
+  "raw_sha256": "1b70504e783792c31d0e37236798898aa9c7a9ac6fd18c6dcfcfe7c1c32bc473",
+  "boundary": "Sanitized command evidence; full raw stream and reasoning are not retained."
+}

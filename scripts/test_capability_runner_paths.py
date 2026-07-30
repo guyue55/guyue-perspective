@@ -175,7 +175,13 @@ def main() -> int:
         original_run_codex = quality_runner.run_codex
         try:
             responses = iter((producer, reviewer))
-            quality_runner.run_codex = lambda *_args, **_kwargs: dict(next(responses))
+            observed_prompts: list[str] = []
+
+            def run_codex_stub(prompt: str, *_args: object, **_kwargs: object) -> dict:
+                observed_prompts.append(prompt)
+                return dict(next(responses))
+
+            quality_runner.run_codex = run_codex_stub
             passed_result = quality_runner.run_case(
                 case,
                 artifact_dir / "quality-pass",
@@ -189,6 +195,12 @@ def main() -> int:
                 and passed_result["skill_sha256"]
                 == quality_runner.file_sha256(ROOT / skill_path),
                 "successful output-quality results must bind the evaluated Skill hash",
+            )
+            require(
+                len(observed_prompts) == 2
+                and case["prompt"] in observed_prompts[1]
+                and "用户提供前提" in observed_prompts[1],
+                "独立审核必须看到同一任务原文并区分任务前提与独立核验事实",
             )
 
             failed_producer = dict(producer)

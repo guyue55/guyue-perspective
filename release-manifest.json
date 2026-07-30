@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "package": "guyue-digital-twin",
-  "version": "1.70",
+  "version": "1.7.0",
   "release_state": "released",
-  "base_tag": "v1.60",
+  "base_tag": "v1.6.0",
   "lock_file": "release-payload.lock.json",
   "profiles": {
     "install": {
@@ -16,7 +16,7 @@
         "release-payload.lock.json",
         "docs/installation.md",
         "docs/security.md",
-        "docs/release-v1.70.md",
+        "docs/release-v1.7.0.md",
         "skills/cognitive-expansion/SKILL.md",
         "skills/cognitive-expansion/references/output-contract.md",
         "skills/memory-bank/SKILL.md",
@@ -72,7 +72,7 @@
         "docs/release-checklist.md",
         "docs/runtime-adapters.md",
         "docs/long-goal-protocol.md",
-        "docs/release-v1.70.md",
+        "docs/release-v1.7.0.md",
         "docs/templates/long-goal-control-pack.md",
         "docs/guyue-data-and-release-architecture-review-2026-07-13.md",
         "scripts/check_birth_certificate.py",

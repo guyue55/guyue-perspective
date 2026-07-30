@@ -2,11 +2,11 @@
 
 Release only when installation, verification, safety, and examples are understandable to a new user.
 
-## v1.70 Release Evidence
+## v1.7.0 Release Evidence
 
 Date: 2026-07-29
-Candidate version: `1.70`
-Base tag: `v1.60`
+Candidate version: `1.7.0`
+Base tag: `v1.6.0`
 
 - [x] High-impact designs prove the problem, native baseline, alternatives, falsifier, blast radius and rollback before implementation.
 - [x] Material multi-turn direction changes reset inherited confidence instead of preserving an unproven premise.

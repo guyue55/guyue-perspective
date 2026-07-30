@@ -6,10 +6,10 @@
 
 ![Skill Badge](https://img.shields.io/badge/Agent_Skill-guyue-blue)
 ![Architecture](https://img.shields.io/badge/Architecture-Digital_Twin_Core_%2B_Specialties-success)
-![Status](https://img.shields.io/badge/Release-v1.70-brightgreen)
+![Status](https://img.shields.io/badge/Release-v1.7.0-brightgreen)
 
 > [!WARNING]
-> `v1.70` 是判断治理与精简验真版本：高影响想法必须先证明问题和方向，跨轮方案实质改形会清空继承置信度；认知拓界的高风险输出合同已缩为可机械审计的最小证据脊柱。正式载荷通过完整本地套件、严格能力链、零泄漏扫描，以及 Codex CLI 上 `27/27` 真实激活和 `27/27` 全能力合成输出质量验证。
+> `v1.7.0` 是判断治理与精简验真版本：高影响想法必须先证明问题和方向，跨轮方案实质改形会清空继承置信度；认知拓界的高风险输出合同已缩为可机械审计的最小证据脊柱。正式载荷通过完整本地套件、严格能力链、零泄漏扫描，以及 Codex CLI 上 `27/27` 真实激活和 `27/27` 全能力合成输出质量验证。
 
 > [!IMPORTANT]
 > 古月不是“完整的人”或万能自动化系统。它会主动完成边界明确、仓库内可逆的工作；公开发布、付费、凭证、权限扩大、不可逆迁移等高影响动作仍需绑定具体版本的授权。它不会把 AI 参与伪装成人工来源，也不会为了好听删除证据缺口或风险。
@@ -26,10 +26,10 @@ cd guyue-skill
 python3 scripts/try_guyue.py
 ```
 
-下面是当前 `v1.70` 的本地验货样例：
+下面是当前 `v1.7.0` 的本地验货样例：
 
 ```text
-[PASS] 包体 complete | v1.70 | 27 Skills
+[PASS] 包体 complete | v1.7.0 | 27 Skills
 1. static-demo-hardening | 证据: 静态 demo
 2. coding-discipline | 证据: PDF 导出
 项目边界: 静态 Demo 演示面、NexusFlow 专属能力未误触
@@ -45,7 +45,7 @@ python3 scripts/try_guyue.py
 |---|---|---|
 | `scripts/try_guyue.py` | 当前载荷、确定性路由、项目边界和上下文预算 | 目标运行时已激活，或模型一定遵守合同 |
 | 哈希绑定的只读回放 | 指定提示词在指定运行时中的真实行为 | 其余行为合同、其他运行时或长期结果 |
-| `v1.70` 的本地发布套件 | 当前 27 个 Skill 的结构、路由、协作、安装载荷、安全和上下文预算 | 其他运行时、任意输入质量、真实用户价值或长期效果 |
+| `v1.7.0` 的本地发布套件 | 当前 27 个 Skill 的结构、路由、协作、安装载荷、安全和上下文预算 | 其他运行时、任意输入质量、真实用户价值或长期效果 |
 | 当前发布套件与发布清单 | 精确载荷的本地结构、安全、远程 CI 和公开源安装完整性 | 其他运行时、GitHub Release 或长期用户价值 |
 
 > [!NOTE]
@@ -109,14 +109,14 @@ python3 scripts/try_guyue.py
 
 ## 安装到 Agent
 
-### v1.70：GitHub 源与 Claude Code Marketplace 元数据
+### v1.7.0：GitHub 源与 Claude Code Marketplace 元数据
 
 ```bash
 claude plugin marketplace add guyue55/guyue-skill
 claude plugin install guyue@guyue
 ```
 
-安装后可用 `claude plugin details guyue@guyue` 核对版本和组件清单。公开 tag `v1.70` 固定本次判断治理与精简验真载荷，Marketplace 元数据与版本一致。Claude 模型激活和 Marketplace 提交仍是独立证据面，不能由 Codex 活体回放、结构校验、GitHub Release 或本地安装证据替代。
+安装后可用 `claude plugin details guyue@guyue` 核对版本和组件清单。公开 tag `v1.7.0` 固定本次判断治理与精简验真载荷，Marketplace 元数据与版本一致。Claude 模型激活和 Marketplace 提交仍是独立证据面，不能由 Codex 活体回放、结构校验、GitHub Release 或本地安装证据替代。
 
 **Codex 完整安装：**
 
@@ -149,7 +149,7 @@ bash scripts/test_suite.sh
 
 更完整的运行时安装路径见 [docs/installation.md](docs/installation.md)。安全边界见 [docs/security.md](docs/security.md)。评测方式见 [docs/evaluation.md](docs/evaluation.md)。
 
-运行时边界见 [docs/runtime-adapters.md](docs/runtime-adapters.md)，长任务协议见 [docs/long-goal-protocol.md](docs/long-goal-protocol.md)，控制包字段见 [docs/templates/long-goal-control-pack.md](docs/templates/long-goal-control-pack.md)。当前证据见 [v1.70 发布说明](docs/release-v1.70.md) 和 [发布清单](docs/release-checklist.md#v170-release-evidence)。
+运行时边界见 [docs/runtime-adapters.md](docs/runtime-adapters.md)，长任务协议见 [docs/long-goal-protocol.md](docs/long-goal-protocol.md)，控制包字段见 [docs/templates/long-goal-control-pack.md](docs/templates/long-goal-control-pack.md)。当前证据见 [v1.7.0 发布说明](docs/release-v1.7.0.md) 和 [发布清单](docs/release-checklist.md#v170-release-evidence)。
 
 ## 核心心智矩阵：1 个核心分身 + 14 个基础能力 + 13 个扩展能力
 
@@ -394,13 +394,13 @@ guyue/
     └── video-extractor/
 ```
 
-## v1.70 发布证书
+## v1.7.0 发布证书
 
 ```text
 ┌───────────────────────────────────────────────┐
 │  出师证书 · 鲁班工坊                            │
 │                                               │
-│  作品：guyue (古月数字分身 v1.70)                 │
+│  作品：guyue (古月数字分身 v1.7.0)                 │
 │  状态：Released Payload，发布对象由 tag 固定          │
 │  打磨前：方向门与高风险证据合同偏重、易局部优化     │
 │  打磨后：方向可重置，27 项能力激活与输出可验        │

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "package": "guyue-digital-twin",
-  "version": "1.70",
+  "version": "1.7.0",
   "release_state": "released",
-  "base_tag": "v1.60",
+  "base_tag": "v1.6.0",
   "files": [
     {
       "path": ".claude-plugin/marketplace.json",
-      "sha256": "e552690fe4db7e350284987ae9cf911714a8ce316e9b952a4b611077070151af"
+      "sha256": "17cd911acce7a3213a4bbf35c98fdc22581fb629d24c5210c60202a7361d944a"
     },
     {
       "path": "AGENTS.md",
@@ -15,7 +15,7 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "f22ab18f4c67618f10005b3d00d7b1e652fd2b2c5efb835462156d84c2ad09fc"
+      "sha256": "43ebeeaba7c5b29d56ab25e9f4f9054dd597a17291d5e18d46038e7ef5fb59de"
     },
     {
       "path": "GUYUE_PRINCIPLES.md",
@@ -27,7 +27,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "643bab7d8a49cd5aa4de0290e63c5bc7779fd02bb12bff5f2762b972322804a5"
+      "sha256": "e34cb1a8d87a84aaf2ff1753a00f8f30a2da4b18191e1812f39410ee01951571"
     },
     {
       "path": "RTK.md",
@@ -47,7 +47,7 @@
     },
     {
       "path": "docs/evaluation.md",
-      "sha256": "b7d1937ebabb856811c60ac17d5b22cfb0fb680d295c599ef249636ede6da8b4"
+      "sha256": "9d8d816d36fc012bd9cb4ccb53d36313ec04ae243a2c10b09933e12f0e3ed1ae"
     },
     {
       "path": "docs/guyue-capability-discovery-evidence-audit-plan-2026-07-12.md",
@@ -91,15 +91,15 @@
     },
     {
       "path": "docs/release-checklist.md",
-      "sha256": "b8675f90fe5b35816f59a4dfe671f5d855c42a8b785f509308fe3d4ccbf01818"
+      "sha256": "ec7262d3a39ad7c29f6bf09fd5311f822404fc573d94c524c6541d099fa3e319"
     },
     {
-      "path": "docs/release-v1.60.md",
-      "sha256": "446153e06e5bf6e1a7a236ce7dabbb27fec86dc5926bcc3fa16eaf18b1710860"
+      "path": "docs/release-v1.6.0.md",
+      "sha256": "11f0691f36d067943beac3b660390be2255b5e6094625129af8c3488d86def40"
     },
     {
-      "path": "docs/release-v1.70.md",
-      "sha256": "523f82d1a5273520236d3a1bdc81d3a55f99f3758e494d7d373fc5375c9ada71"
+      "path": "docs/release-v1.7.0.md",
+      "sha256": "30ac5567f7276d915de067b9ad015c03e6309b5d35a5d41ddb58245f7624c79b"
     },
     {
       "path": "docs/runtime-adapters.md",
@@ -647,7 +647,7 @@
     },
     {
       "path": "examples/quickstart-output.md",
-      "sha256": "240ef404b7f2a33024ee30210adb6ba7a3fda034de220fcfadb7cf8cb3a77260"
+      "sha256": "37aa270d767afc1cfadeb4479848bc6730b466c9ce716f7d0b06469149f46c8c"
     },
     {
       "path": "examples/saas-conversion-demo/index.html",
@@ -683,7 +683,7 @@
     },
     {
       "path": "release-manifest.json",
-      "sha256": "627fd357c925ad51aa4f977aa712a103ab12930c01d1fca4de9da845d7b65f50"
+      "sha256": "258277ff2607f8e244ca5b831b3c99cd661196b58dde883eaa8c8807cf915e82"
     },
     {
       "path": "requirements.txt",
@@ -1027,7 +1027,7 @@
     },
     {
       "path": "skills_manifest.json",
-      "sha256": "6f6c68df125d6e13aff328852c9e1a7e56fb8107694d145c819dff10765af5e0"
+      "sha256": "2f0f16a4376dd468ca32227f4bdb20850f1ba83e847be7a143df5f06ffeb2144"
     },
     {
       "path": "src/context_budget.py",

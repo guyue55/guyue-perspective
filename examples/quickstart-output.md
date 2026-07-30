@@ -61,7 +61,7 @@ Post-metadata micro smoke replay:
 - Boundary: after emitting the final message, the CLI reported `Reading additional input from stdin` and the launcher did not return a recordable exit code. The retained final artifact confirms the micro shape but is not counted as an activation canary or output-quality receipt.
 - Evidence: prompt, current Skill hash, final-message hash and full boundary are in [the metadata smoke replay](../evals/evidence/cognitive-expansion-metadata-replay-2026-07-17.md).
 
-v1.70 release-wide evidence refresh:
+v1.7.0 release-wide evidence refresh:
 
 - Receipt time: `2026-07-28T17:29:45.573664+00:00`.
 - Runtime/model: Codex CLI `0.146.0-alpha.3.1`, requested model `gpt-5.6-terra`, ephemeral read-only sandbox.
